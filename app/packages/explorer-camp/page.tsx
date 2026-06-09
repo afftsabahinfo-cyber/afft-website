@@ -5,18 +5,15 @@ export default function ExplorerCampPackage() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-20">
-
         <a
           href="/"
-          className="text-sm font-bold text-[#F3922B]"
+          className="text-sm font-bold text-[#F3922B] hover:opacity-80"
         >
           ← Back to AFFT.CLUB
         </a>
 
         <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:items-start">
-
           <div>
-
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
               Camping Package
             </p>
@@ -30,9 +27,8 @@ export default function ExplorerCampPackage() {
             </p>
 
             <p className="mt-6 max-w-xl text-lg text-white/70">
-              Our most popular AFFT camping experience. Designed for couples,
-              friends and first-time campers who want a complete outdoor
-              experience without owning camping equipment.
+              AFFT signature camping experience for couples, friends and
+              first-time campers who want a ready-made outdoor setup in Sabah.
             </p>
 
             <a
@@ -42,83 +38,53 @@ export default function ExplorerCampPackage() {
             >
               WhatsApp AFFT
             </a>
-
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4">
-
             <img
-              src="/images/kiulu-campsite.webp"
-              alt="Explorer Camp"
+              src="/images/afft-explorer-camp-rm599-sabah.webp"
+              alt="AFFT Explorer Camp RM599 Sabah Camping Package"
               className="w-full rounded-[1.5rem]"
             />
-
           </div>
-
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-
-          <Info
-            title="Package Type"
-            text="AFFT Signature Experience"
-          />
-
-          <Info
-            title="Duration"
-            text="2 Days 1 Night"
-          />
-
-          <Info
-            title="Suitable For"
-            text="Couples • Friends • First Time Campers"
-          />
-
+          <Info title="Package Type" text="AFFT Signature Camp" />
+          <Info title="Duration" text="2 Days 1 Night" />
+          <Info title="Suitable For" text="Couples • Friends • First Time Campers" />
         </div>
 
         <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
-
-          <h2 className="text-3xl font-bold">
-            Package Includes
-          </h2>
+          <h2 className="text-3xl font-bold">Package Includes</h2>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-
-            <Item text="Premium Tent Setup" />
-            <Item text="Camping Furniture Set" />
-            <Item text="Lighting Setup" />
-            <Item text="Coffee Experience Set" />
-            <Item text="Camp Styling Setup" />
-            <Item text="AFFT Outdoor Support" />
-
+            <Item text="Premium Camp Setup" />
+            <Item text="Tent & Sleeping Arrangement" />
+            <Item text="Camping Table & Chair Setup" />
+            <Item text="Basic Camp Lighting" />
+            <Item text="Coffee & Outdoor Lifestyle Setup" />
+            <Item text="AFFT Experience Support" />
           </div>
-
         </section>
 
         <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
-
-          <h2 className="text-3xl font-bold">
-            What This Package Is About
-          </h2>
+          <h2 className="text-3xl font-bold">What This Package Is About</h2>
 
           <p className="mt-5 max-w-4xl text-white/70">
-            Explorer Camp is AFFT's signature outdoor experience package.
-            It provides a complete camping environment for guests who want
-            to enjoy Sabah's nature without investing in expensive equipment.
-            Simply arrive and enjoy the experience.
+            Explorer Camp is AFFT&apos;s signature outdoor package for guests who
+            want a simple, comfortable and photo-friendly camping experience in
+            Sabah. It is designed for people who want to enjoy nature without
+            owning camping equipment or handling complicated setup work.
           </p>
-
         </section>
 
         <section className="mt-16">
-
-          <h2 className="text-3xl font-bold">
-            Need More Details?
-          </h2>
+          <h2 className="text-3xl font-bold">Need More Details?</h2>
 
           <p className="mt-4 max-w-3xl text-white/70">
-            Contact AFFT directly for campsite options, weather advice,
-            transportation arrangements and available dates.
+            Contact AFFT directly for campsite availability, weather advice,
+            transport arrangement, add-on equipment and available dates.
           </p>
 
           <a
@@ -128,9 +94,7 @@ export default function ExplorerCampPackage() {
           >
             Ask About Explorer Camp
           </a>
-
         </section>
-
       </section>
     </main>
   );
