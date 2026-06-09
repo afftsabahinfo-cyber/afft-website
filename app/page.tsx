@@ -110,9 +110,67 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-10 text-sm text-white/60 md:px-16">
-        AFFT.CLUB · Adventure Frontier Freedom Travel · Sabah, Malaysia
-      </footer>
+      <footer className="border-t border-white/10 bg-black/30 py-12">
+  <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+
+    <div>
+      <h3 className="text-white font-bold text-lg">
+        AFFT.CLUB
+      </h3>
+
+      <p className="text-white/70 mt-3">
+        Premium Outdoor Experiences,
+        Camping Packages,
+        Rent It Series &
+        Private Travel Services in Sabah.
+      </p>
+    </div>
+
+    <div>
+      <h4 className="text-white font-semibold mb-3">
+        Contact
+      </h4>
+
+      <p className="text-white/70">
+        WhatsApp
+      </p>
+
+      <a
+        href="https://wa.me/601111598920"
+        className="text-[#F3922B]"
+      >
+        +60 11-1159 8920
+      </a>
+
+      <p className="mt-3 text-white/70">
+        afft.sabah.info@gmail.com
+      </p>
+    </div>
+
+    <div>
+      <h4 className="text-white font-semibold mb-3">
+        Company Information
+      </h4>
+
+      <p className="text-white/70">
+        ADVENTURE FRONTIER FREEDOM TRAVEL
+      </p>
+
+      <p className="text-white/70">
+        (202401014720 (1560570-W))
+      </p>
+
+      <p className="text-white/70">
+        KPL/LN: 12014
+      </p>
+    </div>
+
+  </div>
+
+  <div className="text-center text-white/40 text-sm mt-10">
+    © 2026 AFFT.CLUB. All Rights Reserved.
+  </div>
+</footer>
 
       <a
         href={whatsapp}
