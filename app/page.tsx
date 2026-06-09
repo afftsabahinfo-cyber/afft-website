@@ -61,14 +61,43 @@ export default function Home() {
       </section>
 
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
-        <Title small="Camping Packages" big="Simple outdoor packages for couples, families and explorers." />
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card title="Solo Explorer" text="RM399 · PG-1 Mobility Camp" />
-          <Card title="Explorer Camp" text="RM599 · AFFT Signature Camp" />
-          <Card title="Astro Hunter" text="RM799 · Milky Way Experience" />
-          <Card title="Family Camp Series" text="Custom package for family outdoor trips." />
-        </div>
-      </section>
+  <Title
+    small="Camping Packages"
+    big="Simple outdoor packages for couples, families and explorers."
+  />
+
+  <div className="grid gap-6 md:grid-cols-4">
+
+    <a href="/packages/solo-explorer" className="block">
+      <Card
+        title="Solo Explorer"
+        text="RM399 · PG-1 Mobility Camp"
+      />
+    </a>
+
+    <a href="/packages/explorer-camp" className="block">
+      <Card
+        title="Explorer Camp"
+        text="RM599 · AFFT Signature Camp"
+      />
+    </a>
+
+    <a href="/packages/astro-hunter" className="block">
+      <Card
+        title="Astro Hunter"
+        text="RM799 · Milky Way Experience"
+      />
+    </a>
+
+    <a href="/packages/family-camp" className="block">
+      <Card
+        title="Family Camp Series"
+        text="Custom package for family outdoor trips."
+      />
+    </a>
+
+  </div>
+</section>
 
       <section id="rent-it" className="px-6 py-20 md:px-16">
         <Title small="AFFT Rent It Series" big="Sabah’s outdoor experience rental system." />
