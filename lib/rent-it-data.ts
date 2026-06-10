@@ -16,6 +16,8 @@ export type MainSeries = {
   hook: string;
   bestFor: string;
   startingFrom: string;
+  image: string;
+  imageAlt: string;
 };
 
 export type CatalogItem = {
@@ -60,6 +62,8 @@ export type SeriesPageSummary = {
   featuredPrice: string;
   featuredText: string;
   featuredImage?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
   bestFor: string;
   priceRange: string;
   route: string;
@@ -79,6 +83,8 @@ export const rentItMainSeries: MainSeries[] = [
     hook: "Pocket 4 / Action 6 / Mic 3 / Avata",
     bestFor: "Vlog, travel shooting, road trip edits and stargazing content.",
     startingFrom: "From RM49 / day",
+    image: "/images/rent-it-creator-series-cover.webp",
+    imageAlt: "AFFT Creator Series cover",
   },
   {
     slug: "camp-lifestyle-series",
@@ -87,6 +93,8 @@ export const rentItMainSeries: MainSeries[] = [
     hook: "Coffee / Snow Peak / KZM",
     bestFor: "Coffee corners, light cooking, slow mornings and campsite mood.",
     startingFrom: "From RM19 / day",
+    image: "/images/rent-it-camp-lifestyle-series-cover.webp",
+    imageAlt: "AFFT Camp Lifestyle Series cover",
   },
   {
     slug: "premium-camp-series",
@@ -95,6 +103,8 @@ export const rentItMainSeries: MainSeries[] = [
     hook: "Helinox / Snow Peak Furniture",
     bestFor: "Comfort-led camp setups, premium seating and better outdoor rest.",
     startingFrom: "From RM19 / day",
+    image: "/images/rent-it-premium-camp-series-cover.webp",
+    imageAlt: "AFFT Premium Camp Series cover",
   },
   {
     slug: "tent-experience-series",
@@ -103,6 +113,8 @@ export const rentItMainSeries: MainSeries[] = [
     hook: "Black Dog / Mobi Garden",
     bestFor: "Couple glamping, family camp and group camping statements.",
     startingFrom: "From RM159 / day",
+    image: "/images/rent-it-tent-experience-series-cover.webp",
+    imageAlt: "AFFT Tent Experience Series cover",
   },
 ];
 
@@ -384,6 +396,8 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredText:
       "The easiest first booking for guests who want smooth travel storytelling with a premium handheld setup.",
     featuredImage: "/images/dji-pocket4-creator-combo.webp",
+    heroImage: "/images/rent-it-creator-series-cover.webp",
+    heroImageAlt: "AFFT Creator Series hero cover",
     bestFor: "Vlogs, travel shooting, POV content and weekend creator trips.",
     priceRange: "RM49 to RM499 across creator items and bundles.",
     route: "/rent-it/creator-series",
@@ -397,6 +411,8 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredPrice: "From RM49 / day",
     featuredText:
       "A strong lifestyle anchor for cleaner cooking moments, better visuals and more premium campsite use.",
+    heroImage: "/images/rent-it-camp-lifestyle-series-cover.webp",
+    heroImageAlt: "AFFT Camp Lifestyle Series hero cover",
     bestFor: "Coffee rituals, simple meals, lifestyle glamping and visual campsite mood.",
     priceRange: "RM19 to RM119 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
@@ -411,6 +427,8 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredText:
       "The flagship premium-camp booking for guests who want a stronger lifestyle look and a more complete solo camp experience.",
     featuredImage: "/images/helinox-chair.webp",
+    heroImage: "/images/rent-it-premium-camp-series-cover.webp",
+    heroImageAlt: "AFFT Premium Camp Series hero cover",
     bestFor: "Comfort-led camp setups, glamping feel and upgraded rest.",
     priceRange: "RM19 to RM499 across premium camp furniture and Helinox systems.",
     route: "/rent-it/premium-camp-series",
@@ -425,6 +443,8 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredText:
       "The standout large-format tent option for group camp, gatherings and event-style outdoor plans.",
     featuredImage: "/images/blackdog-xingsu59.webp",
+    heroImage: "/images/rent-it-tent-experience-series-cover.webp",
+    heroImageAlt: "AFFT Tent Experience Series hero cover",
     bestFor: "Couple glamping, family camp, group camp and event-style stays.",
     priceRange: "RM159 to RM1199 across the current tent lineup.",
     route: "/rent-it/tent-experience-series",
