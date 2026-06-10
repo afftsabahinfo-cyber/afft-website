@@ -42,23 +42,34 @@ export default function CampLifestyleSeriesPage() {
             </a>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-8">
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
-              Featured Lifestyle Anchor
-            </p>
-            <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
-            <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
-            <p className="mt-5 text-white/70">{summary.featuredText}</p>
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+            {summary.heroImage ? (
+              <img
+                src={summary.heroImage}
+                alt={summary.heroImageAlt ?? summary.featuredTitle}
+                className="h-[320px] w-full object-cover md:h-[360px]"
+              />
+            ) : (
+              <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] md:min-h-[360px]" />
+            )}
+            <div className="border-t border-white/10 p-8">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
+                Featured Lifestyle Anchor
+              </p>
+              <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
+              <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
+              <p className="mt-5 text-white/70">{summary.featuredText}</p>
 
-            <div className="mt-8 grid gap-3">
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                Coffee rituals that make the campsite feel more intentional.
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                Cooking pieces that add more premium visual identity.
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                Lighting and tools that improve comfort without overbuilding the setup.
+              <div className="mt-8 grid gap-3">
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Coffee rituals that make the campsite feel more intentional.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Cooking pieces that add more premium visual identity.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Lighting and tools that improve comfort without overbuilding the setup.
+                </div>
               </div>
             </div>
           </div>
