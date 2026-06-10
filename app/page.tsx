@@ -257,7 +257,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 text-center text-sm text-white/40">
-          Â© 2026 AFFT.CLUB. All Rights Reserved.
+          © 2026 AFFT.CLUB. All Rights Reserved.
         </div>
       </footer>
 
@@ -318,17 +318,24 @@ function RentItSeriesCard({ series }: { series: MainSeries }) {
   return (
     <a
       href={series.route}
-      className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+      className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
     >
-      <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-        {series.startingFrom}
-      </p>
-      <h3 className="mt-4 text-2xl font-bold">{series.title}</h3>
-      <p className="mt-4 text-white/70">{series.hook}</p>
-      <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
-      <span className="mt-6 inline-block font-bold text-[#F3922B]">
-        Open Series &rarr;
-      </span>
+      <img
+        src={series.image}
+        alt={series.imageAlt}
+        className="h-52 w-full object-cover"
+      />
+      <div className="p-6">
+        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+          {series.startingFrom}
+        </p>
+        <h3 className="mt-4 text-2xl font-bold">{series.title}</h3>
+        <p className="mt-4 text-white/70">{series.hook}</p>
+        <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
+        <span className="mt-6 inline-block font-bold text-[#F3922B]">
+          Open Series &rarr;
+        </span>
+      </div>
     </a>
   );
 }
