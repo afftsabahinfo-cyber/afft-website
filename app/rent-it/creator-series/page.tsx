@@ -43,15 +43,23 @@ export default function CreatorSeriesPage() {
           </div>
 
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-            {summary.featuredImage ? (
+            {summary.heroImage || summary.featuredImage ? (
               <img
-                src={summary.featuredImage}
-                alt={summary.featuredTitle}
-                className="h-full w-full object-cover"
+                src={summary.heroImage ?? summary.featuredImage}
+                alt={summary.heroImageAlt ?? summary.featuredTitle}
+                className="h-[320px] w-full object-cover md:h-[360px]"
               />
             ) : (
-              <div className="h-full min-h-[360px] bg-[linear-gradient(145deg,#734C24,#10140F_65%,#182015)]" />
+              <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#10140F_65%,#182015)] md:min-h-[360px]" />
             )}
+            <div className="border-t border-white/10 p-8">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
+                Featured Creator Kit
+              </p>
+              <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
+              <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
+              <p className="mt-5 text-white/70">{summary.featuredText}</p>
+            </div>
           </div>
         </div>
 
