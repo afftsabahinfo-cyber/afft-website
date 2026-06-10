@@ -257,7 +257,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 text-center text-sm text-white/40">
-          © 2026 AFFT.CLUB. All Rights Reserved.
+          Â© 2026 AFFT.CLUB. All Rights Reserved.
         </div>
       </footer>
 
@@ -288,7 +288,7 @@ function Card({ title, text }: { title: string; text: string }) {
       <h3 className="text-2xl font-bold">{title}</h3>
       <p className="mt-4 text-white/70">{text}</p>
       <a href={whatsapp} className="mt-6 inline-block font-bold text-[#F3922B]">
-        Contact AFFT ->
+        Contact AFFT &rarr;
       </a>
     </div>
   );
@@ -327,7 +327,7 @@ function RentItSeriesCard({ series }: { series: MainSeries }) {
       <p className="mt-4 text-white/70">{series.hook}</p>
       <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
       <span className="mt-6 inline-block font-bold text-[#F3922B]">
-        Open Series ->
+        Open Series &rarr;
       </span>
     </a>
   );
@@ -357,11 +357,9 @@ function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
         <p className="mt-2 text-sm font-bold text-[#F3922B]">{pick.price}</p>
         <p className="mt-3 text-sm leading-6 text-white/65">{pick.description}</p>
         <span className="mt-4 inline-block text-sm font-bold text-[#F3922B]">
-          View Details ->
+          View Details &rarr;
         </span>
       </div>
     </a>
   );
 }
-
-// Cloud flareredeploytrigger2026-06-10
