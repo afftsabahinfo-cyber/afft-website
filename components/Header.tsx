@@ -13,7 +13,7 @@ export function Header() {
             <a key={item.href} href={item.href} className="transition hover:text-white">{item.label}</a>
           ))}
         </nav>
-        <a href="https://wa.me/60100000000" className="rounded-full bg-afft-orange px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:scale-105">
+        <a href="https://wa.me/601111598920" className="rounded-full bg-afft-orange px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:scale-105">
           WhatsApp
         </a>
       </div>

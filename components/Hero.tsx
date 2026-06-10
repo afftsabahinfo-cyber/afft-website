@@ -8,13 +8,13 @@ export function Hero() {
       <div className="container-afft relative grid min-h-[calc(100vh-64px)] items-center gap-10 py-20 md:grid-cols-[1.05fr_0.95fr]">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm backdrop-blur">
-            <MapPin size={16} /> Mount Kinabalu · Sabah Outdoor Base
+            <MapPin size={16} /> Mount Kinabalu / Sabah Outdoor Base
           </div>
           <h1 className="font-serif text-5xl font-semibold leading-[0.98] md:text-7xl">
             Explore Sabah Beyond The Tourist Trail
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/78 md:text-xl">
-            Premium outdoor experiences, camping packages, gear rentals and private travel services built around Sabah’s mountain, river and stargazing routes.
+            Premium outdoor experiences, camping packages, gear rentals and private travel services built around Sabah's mountain, river and stargazing routes.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#experiences" className="inline-flex items-center justify-center gap-2 rounded-full bg-afft-orange px-6 py-3 font-bold text-white shadow-soft">
@@ -34,7 +34,7 @@ export function Hero() {
                 <ol className="space-y-3 text-2xl font-bold">
                   <li>01 Sabah Experiences</li>
                   <li>02 Camping Packages</li>
-                  <li>03 Rentals</li>
+                  <li>03 Rent It Series</li>
                   <li>04 Travel Services</li>
                 </ol>
               </div>
