@@ -141,7 +141,7 @@ export function RentItTentGrid({
             rel="noreferrer"
             className="mt-8 inline-block font-bold text-[#F3922B]"
           >
-            Ask About This Tent ->
+            Ask About This Tent &rarr;
           </a>
         </article>
       ))}
