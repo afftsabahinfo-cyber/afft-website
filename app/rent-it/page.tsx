@@ -74,17 +74,24 @@ export default function RentItLandingPage() {
               <a
                 key={series.slug}
                 href={series.route}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+                className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
               >
-                <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-                  {series.startingFrom}
-                </p>
-                <h2 className="mt-4 text-3xl font-bold">{series.title}</h2>
-                <p className="mt-4 text-white/70">{series.hook}</p>
-                <p className="mt-4 text-sm text-white/55">{series.bestFor}</p>
-                <span className="mt-6 inline-block font-bold text-[#F3922B]">
-                  Open Series &rarr;
-                </span>
+                <img
+                  src={series.image}
+                  alt={series.imageAlt}
+                  className="h-44 w-full object-cover"
+                />
+                <div className="p-6">
+                  <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                    {series.startingFrom}
+                  </p>
+                  <h2 className="mt-4 text-3xl font-bold">{series.title}</h2>
+                  <p className="mt-4 text-white/70">{series.hook}</p>
+                  <p className="mt-4 text-sm text-white/55">{series.bestFor}</p>
+                  <span className="mt-6 inline-block font-bold text-[#F3922B]">
+                    Open Series &rarr;
+                  </span>
+                </div>
               </a>
             ))}
           </div>
