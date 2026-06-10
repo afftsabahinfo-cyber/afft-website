@@ -1,7 +1,7 @@
 export const navItems = [
   { label: 'Experiences', href: '#experiences' },
   { label: 'Camping', href: '#camping' },
-  { label: 'Rentals', href: '#rentals' },
+  { label: 'Rent It Series', href: '#rent-it' },
   { label: 'Travel', href: '#travel' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -19,7 +19,7 @@ export const experienceCards = [
   },
   {
     title: 'Gear Rentals',
-    text: 'Practical rental kits: tents, tables, chairs, cooking setup, camera gear and outdoor essentials.',
+    text: 'Experience-led rental kits: creator tools, premium camp gear, tent systems and outdoor essentials.',
     tag: 'Priority 03',
   },
   {
