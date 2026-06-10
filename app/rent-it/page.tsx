@@ -83,7 +83,7 @@ export default function RentItLandingPage() {
                 <p className="mt-4 text-white/70">{series.hook}</p>
                 <p className="mt-4 text-sm text-white/55">{series.bestFor}</p>
                 <span className="mt-6 inline-block font-bold text-[#F3922B]">
-                  Open Series ->
+                  Open Series &rarr;
                 </span>
               </a>
             ))}
@@ -133,7 +133,7 @@ export default function RentItLandingPage() {
                     {pick.description}
                   </p>
                   <span className="mt-5 inline-block text-sm font-bold text-[#F3922B]">
-                    View Product Context ->
+                    View Product Context &rarr;
                   </span>
                 </div>
               </a>
