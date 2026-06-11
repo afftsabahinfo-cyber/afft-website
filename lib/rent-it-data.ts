@@ -290,28 +290,28 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     bestFor: ["Group Camp", "Family Gathering", "Event Camp"],
   },
   {
-    title: "Black Dog 星宿 5.9",
-    capacity: "1-2 adults or 2 adults + child",
-    route: "/rent-it/tent-experience-series",
-    day1: "RM399",
-    day2: "RM729",
-    day3: "RM999",
-    description:
-      "A luxury couple glamping tent with softer visual appeal for romantic stays and premium overnight content.",
-    bestFor: ["Couple Glamping", "Luxury Camp"],
-    image: "/images/blackdog-xingsu59.webp",
-  },
+  title: "Black Dog 星宿 5.9",
+  capacity: "1-2 adults or 2 adults + child",
+  route: "/rent-it/tent-experience-series",
+  day1: "RM159",
+  day2: "RM279",
+  day3: "RM379",
+  description:
+    "A luxury couple glamping tent with softer visual appeal for romantic stays and premium overnight content.",
+  bestFor: ["Couple Glamping", "Luxury Camp"],
+  image: "/images/blackdog-xingsu59.webp",
+},
   {
-    title: "Mobi Garden 指挥官245",
-    capacity: "2-4 pax",
-    route: "/rent-it/tent-experience-series",
-    day1: "RM159",
-    day2: "RM279",
-    day3: "RM379",
-    description:
-      "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
-    bestFor: ["Family Camp", "Entry Level"],
-  },
+  title: "Mobi Garden 指挥官245",
+  capacity: "2-4 pax",
+  route: "/rent-it/tent-experience-series",
+  day1: "RM399",
+  day2: "RM729",
+  day3: "RM999",
+  description:
+    "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
+  bestFor: ["Family Camp", "Entry Level"],
+},
 ];
 
 export const featuredPicks: FeaturedPick[] = [
@@ -339,7 +339,7 @@ export const featuredPicks: FeaturedPick[] = [
   {
     title: "Black Dog 星宿 5.9",
     route: "/rent-it/tent-experience-series",
-    price: "From RM399 / day",
+    price: "From RM159 / day",
     description: "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
     image: "/images/blackdog-xingsu59.webp",
   },
