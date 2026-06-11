@@ -14,21 +14,25 @@ const images = {
 
 const socialLinks = [
   {
+    platform: "tiktok",
     title: "TikTok",
     href: "https://www.tiktok.com/@afft.club?r=1&_t=ZS-97kWi9U9yr",
     text: "Short Sabah outdoor moments, campsite mood and gear highlights.",
   },
   {
+    platform: "rednote",
     title: "Rednote / Xiaohongshu",
     href: "https://xhslink.com/m/7CrxZ1jRF6",
     text: "Travel notes, visual updates and slower outdoor lifestyle stories.",
   },
   {
+    platform: "instagram",
     title: "Instagram",
     href: "https://www.instagram.com/rentalcar.kk.afftservice?igsh=NG5laGxzMHJ3eWEy",
     text: "Photos from camping, private tours and Sabah scenery.",
   },
   {
+    platform: "facebook",
     title: "Facebook",
     href: "https://www.facebook.com/share/1KkSZKDoSM/",
     text: "General updates, contact points and broader AFFT activity.",
@@ -443,10 +447,12 @@ function AboutCard({ title, text }: { title: string; text: string }) {
 }
 
 function SocialCard({
+  platform,
   title,
   href,
   text,
 }: {
+  platform: "tiktok" | "rednote" | "instagram" | "facebook";
   title: string;
   href: string;
   text: string;
@@ -456,17 +462,112 @@ function SocialCard({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="rounded-[2rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+      className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
     >
-      <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-        Social
-      </p>
-      <h4 className="mt-4 text-2xl font-bold">{title}</h4>
-      <p className="mt-4 text-white/70">{text}</p>
-      <span className="mt-6 inline-block font-bold text-[#F3922B]">
-        Open {title} &rarr;
-      </span>
+      <div className="pointer-events-none absolute right-4 top-3 text-white/[0.08] transition group-hover:text-[#F3922B]/[0.16]">
+        <SocialLogo platform={platform} />
+      </div>
+
+      <div className="relative z-10">
+        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+          Social
+        </p>
+        <h4 className="mt-4 pr-20 text-2xl font-bold">{title}</h4>
+        <p className="mt-4 text-white/70">{text}</p>
+        <span className="mt-6 inline-block font-bold text-[#F3922B]">
+          Open {title} &rarr;
+        </span>
+      </div>
     </a>
+  );
+}
+
+function SocialLogo({
+  platform,
+}: {
+  platform: "tiktok" | "rednote" | "instagram" | "facebook";
+}) {
+  if (platform === "instagram") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-16 w-16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4.1" />
+        <circle cx="17.1" cy="6.9" r="1.1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+
+  if (platform === "facebook") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-16 w-16"
+        fill="none"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="8.8"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        />
+        <path
+          d="M13.2 19V13.2H15.4L15.8 10.8H13.2V9.2C13.2 8.4 13.4 7.9 14.5 7.9H16V5.7C15.7 5.7 14.9 5.6 14.1 5.6C11.7 5.6 10.4 7 10.4 9.6V10.8H8.2V13.2H10.4V19H13.2Z"
+          fill="currentColor"
+        />
+      </svg>
+    );
+  }
+
+  if (platform === "tiktok") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-16 w-16"
+        fill="currentColor"
+      >
+        <path d="M14.4 4.1C15.2 5.3 16.4 6.2 18 6.6V9C16.9 8.9 15.6 8.5 14.4 7.8V14A4.8 4.8 0 1 1 9.6 9.2C10 9.2 10.4 9.3 10.8 9.4V12C10.5 11.8 10.1 11.7 9.7 11.7A2.4 2.4 0 1 0 12.1 14V3.6H14C14.1 3.8 14.2 4 14.4 4.1Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 64 64"
+      className="h-16 w-16"
+      fill="none"
+    >
+      <rect
+        x="8"
+        y="12"
+        width="48"
+        height="40"
+        rx="14"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+      <text
+        x="32"
+        y="39"
+        textAnchor="middle"
+        fontSize="16"
+        fontWeight="700"
+        fill="currentColor"
+        fontFamily="Arial, sans-serif"
+      >
+        RED
+      </text>
+    </svg>
   );
 }
 
