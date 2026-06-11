@@ -1,11 +1,39 @@
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
-import { featuredPicks, rentItMainSeries, whatsapp } from "@/lib/rent-it-data";
+import {
+  featuredPicks,
+  makeWhatsappLink,
+  rentItMainSeries,
+  whatsapp,
+} from "@/lib/rent-it-data";
 
 const images = {
   hero: "/images/kinabalu-hero.webp",
   kiulu: "/images/kiulu-campsite.webp",
   milkyway: "/images/milky-way-sabah.webp",
 };
+
+const socialLinks = [
+  {
+    title: "TikTok",
+    href: "https://www.tiktok.com/@afft.club?r=1&_t=ZS-97kWi9U9yr",
+    text: "Short Sabah outdoor moments, campsite mood and gear highlights.",
+  },
+  {
+    title: "Rednote / Xiaohongshu",
+    href: "https://xhslink.com/m/7CrxZ1jRF6",
+    text: "Travel notes, visual updates and slower outdoor lifestyle stories.",
+  },
+  {
+    title: "Instagram",
+    href: "https://www.instagram.com/rentalcar.kk.afftservice?igsh=NG5laGxzMHJ3eWEy",
+    text: "Photos from camping, private tours and Sabah scenery.",
+  },
+  {
+    title: "Facebook",
+    href: "https://www.facebook.com/share/1KkSZKDoSM/",
+    text: "General updates, contact points and broader AFFT activity.",
+  },
+];
 
 export default function Home() {
   return (
@@ -23,6 +51,7 @@ export default function Home() {
             <a href="#camping">Camping</a>
             <a href="#rent-it">Rent It Series</a>
             <a href="#travel">Travel</a>
+            <a href="#about">About AFFT</a>
           </div>
           <a
             href={whatsapp}
@@ -211,6 +240,94 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="about" className="px-6 py-20 md:px-16">
+        <Title
+          small="About AFFT"
+          big="Sabah outdoor travel should feel personal, practical and easy to start."
+        />
+
+        <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+          <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+            <img
+              src={images.kiulu}
+              alt="AFFT campsite in Sabah"
+              className="h-72 w-full object-cover"
+            />
+            <div className="p-8">
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                Our Story
+              </p>
+              <h3 className="mt-4 text-3xl font-bold md:text-4xl">
+                AFFT is built for travellers who want to feel Sabah, not only see it.
+              </h3>
+              <p className="mt-5 max-w-2xl text-white/72">
+                AFFT is not a traditional travel agency. We focus on camping
+                experiences, private tours, car rental and Rent It support so
+                guests can enjoy mountain mornings, countryside drives and real
+                outdoor time without owning the whole setup.
+              </p>
+            </div>
+          </article>
+
+          <div className="grid gap-6">
+            <AboutCard
+              title="Why AFFT"
+              text="One WhatsApp contact for camping, travel support and gear planning. Simple, flexible and practical for couples, families, small groups and creators."
+            />
+            <AboutCard
+              title="Why Sabah"
+              text="Sabah gives guests cooler highlands, rivers, countryside roads and stargazing spots in one trip. The journey feels wider, calmer and more personal."
+            />
+            <AboutCard
+              title="Why Camping"
+              text="Camping helps people slow down, wake up with the view and enjoy real time outdoors. AFFT can make it easier with ready packages and rental support."
+            />
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h3 className="text-3xl font-bold md:text-4xl">Follow AFFT</h3>
+              <p className="mt-3 max-w-3xl text-white/70">
+                See real updates, outdoor moments and Sabah trip ideas across
+                AFFT&apos;s social platforms.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {socialLinks.map((link) => (
+              <SocialCard key={link.title} {...link} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#182015] p-8 md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <h3 className="text-2xl font-bold md:text-3xl">
+              Want to plan your Sabah trip with AFFT?
+            </h3>
+            <p className="mt-3 max-w-2xl text-white/70">
+              Tell us your travel dates, group size and whether you want
+              camping, a private tour, car rental or Rent It support.
+            </p>
+          </div>
+          <div className="mt-6 md:mt-0">
+            <a
+              href={makeWhatsappLink(
+                "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
+            >
+              WhatsApp AFFT
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="px-6 py-20 md:px-16">
         <div className="rounded-[2rem] bg-[#F3922B] p-10 text-black md:p-16">
           <h2 className="text-4xl font-bold md:text-6xl">
@@ -311,6 +428,45 @@ function ImageCard({
         <p className="mt-4 text-white/70">{text}</p>
       </div>
     </div>
+  );
+}
+
+function AboutCard({ title, text }: { title: string; text: string }) {
+  return (
+    <article className="rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-7">
+      <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+        {title}
+      </p>
+      <p className="mt-4 text-lg leading-8 text-white/72">{text}</p>
+    </article>
+  );
+}
+
+function SocialCard({
+  title,
+  href,
+  text,
+}: {
+  title: string;
+  href: string;
+  text: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="rounded-[2rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+    >
+      <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+        Social
+      </p>
+      <h4 className="mt-4 text-2xl font-bold">{title}</h4>
+      <p className="mt-4 text-white/70">{text}</p>
+      <span className="mt-6 inline-block font-bold text-[#F3922B]">
+        Open {title} &rarr;
+      </span>
+    </a>
   );
 }
 
