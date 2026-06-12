@@ -5,6 +5,7 @@ import {
   helinoxNotes,
   helinoxTiers,
   makeWhatsappLink,
+  normalizeRentItTitle,
   rentItMainSeries,
   rentItStats,
   tentShowcaseItems,
@@ -31,10 +32,10 @@ export default function RentItLandingPage() {
               Use the best. Do not own the whole setup.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-white/72 md:text-xl">
-              AFFT Rent It Series is built as a premium outdoor rental system for
-              Sabah road trips, creator weekends, glamping stays and group camp
-              plans. The page leads with experience first, then category, then
-              featured products, then the full price guide.
+              Rent the gear you need for Sabah road trips, creator weekends,
+              glamping stays and campsite plans. Browse by series, compare
+              prices and WhatsApp AFFT for availability, trip fit and setup
+              advice.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -46,7 +47,7 @@ export default function RentItLandingPage() {
                 rel="noreferrer"
                 className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
               >
-                WhatsApp Booking
+                WhatsApp AFFT
               </a>
               <a
                 href="#price-guide"
@@ -104,47 +105,51 @@ export default function RentItLandingPage() {
                 Featured Rent It Picks
               </p>
               <h2 className="mt-3 text-4xl font-bold md:text-5xl">
-                Lead the page with the products that sell the idea fastest.
+                Start with the setups guests understand fastest.
               </h2>
             </div>
             <p className="max-w-xl text-white/65">
-              The strongest products should be seen before the full catalog so
-              the page feels premium instead of reading like a crowded list.
+              These picks help first-time visitors see what AFFT actually rents
+              before they compare the full list.
             </p>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {featuredPicks.map((pick) => (
-              <a
-                key={pick.title}
-                href={pick.route}
-                className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
-              >
-                {pick.image ? (
-                  <img
-                    src={pick.image}
-                    alt={pick.title}
-                    className="h-52 w-full object-cover bg-white"
-                  />
-                ) : (
-                  <div className="flex h-52 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">
-                    <p className="max-w-[12rem] text-2xl font-bold leading-tight">
-                      {pick.title}
+            {featuredPicks.map((pick) => {
+              const displayTitle = normalizeRentItTitle(pick.title);
+
+              return (
+                <a
+                  key={pick.title}
+                  href={pick.route}
+                  className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+                >
+                  {pick.image ? (
+                    <img
+                      src={pick.image}
+                      alt={displayTitle}
+                      className="h-52 w-full object-cover bg-white"
+                    />
+                  ) : (
+                    <div className="flex h-52 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">
+                      <p className="max-w-[12rem] text-2xl font-bold leading-tight">
+                        {displayTitle}
+                      </p>
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold">{displayTitle}</h3>
+                    <p className="mt-2 font-bold text-[#F3922B]">{pick.price}</p>
+                    <p className="mt-3 text-sm leading-6 text-white/65">
+                      {pick.description}
                     </p>
+                    <span className="mt-5 inline-block text-sm font-bold text-[#F3922B]">
+                      View Product Context &rarr;
+                    </span>
                   </div>
-                )}
-                <div className="p-5">
-                  <h3 className="text-xl font-bold">{pick.title}</h3>
-                  <p className="mt-2 font-bold text-[#F3922B]">{pick.price}</p>
-                  <p className="mt-3 text-sm leading-6 text-white/65">
-                    {pick.description}
-                  </p>
-                  <span className="mt-5 inline-block text-sm font-bold text-[#F3922B]">
-                    View Product Context &rarr;
-                  </span>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </section>
 
@@ -162,13 +167,13 @@ export default function RentItLandingPage() {
               Full Price Guide
             </p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">
-              Keep the full catalog in the back half of the page.
+              Compare prices after you know your trip style.
             </h2>
             <p className="mt-5 text-white/70">
-              This is where customers compare details after the page has already
-              sold the overall experience. The 4 main series link onward to
-              their own detail pages, while Experience Set stays as a bundle
-              section inside the main Rent It page.
+              Once you know whether the trip is for content, coffee, comfort or
+              tents, use the tables below to compare prices and shortlist what
+              to ask about on WhatsApp. The 4 main series also open into their
+              own focused pages.
             </p>
           </div>
 
@@ -207,12 +212,12 @@ export default function RentItLandingPage() {
                 Helinox Spotlight
               </p>
               <h2 className="mt-3 text-4xl font-bold md:text-5xl">
-                Premium camp value should be explained, not hidden in a table.
+                Helinox is for comfort, lighter packing and a cleaner camp look.
               </h2>
               <p className="mt-5 text-white/70">
-                Helinox is not ordinary camp furniture. Guests are paying for a
-                lighter, cleaner and more premium solo outdoor experience, so
-                the system deserves its own spotlight before customers decide.
+                Guests are not just renting a chair. They are choosing a
+                lighter, more comfortable and more premium outdoor setup for
+                solo trips, glamping and slower camp time.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -254,12 +259,12 @@ export default function RentItLandingPage() {
               Tent Experience Series
             </p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">
-              Tents should feel like premium stays, not just another table row.
+              Choose tents by trip type, group size and campsite mood.
             </h2>
             <p className="mt-5 text-white/70">
-              Tent products carry higher value and a stronger booking decision,
-              so they are displayed as larger cards with capacity, use case and
-              pricing visible at a glance.
+              Tent bookings carry more value than small gear, so this section
+              makes capacity, use case and pricing easier to understand at a
+              glance.
             </p>
           </div>
 
@@ -284,11 +289,11 @@ export default function RentItLandingPage() {
               Coming Soon
             </p>
             <h2 className="mt-3 text-4xl font-bold md:text-5xl">
-              Keep future additions at the bottom so the current catalog stays clean.
+              More gear is being added to the lineup.
             </h2>
             <p className="mt-5 text-white/70">
-              These are planned V3 additions that show the system is growing
-              without confusing the current rental catalog.
+              These are the next items AFFT plans to add. Ask on WhatsApp if
+              you want to check timing or future availability.
             </p>
           </div>
 
