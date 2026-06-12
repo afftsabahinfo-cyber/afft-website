@@ -1,6 +1,6 @@
 import { AfftLogoMark } from "@/components/AfftBrand";
 import type { CatalogItem, TentShowcaseItem } from "@/lib/rent-it-data";
-import { makeWhatsappLink } from "@/lib/rent-it-data";
+import { makeWhatsappLink, normalizeRentItTitle } from "@/lib/rent-it-data";
 
 export function RentItBackLink({
   href = "/",
@@ -118,38 +118,52 @@ export function RentItTentGrid({
 }) {
   return (
     <div className="grid gap-6 xl:grid-cols-3">
-      {tents.map((tent, index) => (
-        <article
-          key={tent.title}
-          className={`rounded-[2rem] border p-6 ${
-            index === 1
-              ? "border-[#F3922B]/40 bg-[#1F2B1A]"
-              : "border-white/10 bg-white/5"
-          }`}
-        >
-          <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-            {tent.bestFor.join(" / ")}
-          </p>
-          <h3 className="mt-4 text-3xl font-bold">{tent.title}</h3>
-          <p className="mt-3 text-white/80">{tent.capacity}</p>
-          <p className="mt-5 text-white/70">{tent.description}</p>
+      {tents.map((tent, index) => {
+        const displayTitle = normalizeRentItTitle(tent.title);
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <PriceBox label="1 Day" value={tent.day1} />
-            <PriceBox label="2 Days" value={tent.day2} />
-            <PriceBox label="3 Days" value={tent.day3} />
-          </div>
-
-          <a
-            href={makeWhatsappLink(`Hi AFFT, I want details for ${tent.title}.`)}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-block font-bold text-[#F3922B]"
+        return (
+          <article
+            key={tent.title}
+            className={`overflow-hidden rounded-[2rem] border ${
+              index === 1
+                ? "border-[#F3922B]/40 bg-[#1F2B1A]"
+                : "border-white/10 bg-white/5"
+            }`}
           >
-            Ask About This Tent &rarr;
-          </a>
-        </article>
-      ))}
+            {tent.image ? (
+              <img
+                src={tent.image}
+                alt={displayTitle}
+                className="h-56 w-full object-cover bg-white"
+              />
+            ) : null}
+
+            <div className="p-6">
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                {tent.bestFor.join(" / ")}
+              </p>
+              <h3 className="mt-4 text-3xl font-bold">{displayTitle}</h3>
+              <p className="mt-3 text-white/80">{tent.capacity}</p>
+              <p className="mt-5 text-white/70">{tent.description}</p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                <PriceBox label="1 Day" value={tent.day1} />
+                <PriceBox label="2 Days" value={tent.day2} />
+                <PriceBox label="3 Days" value={tent.day3} />
+              </div>
+
+              <a
+                href={makeWhatsappLink(`Hi AFFT, I want details for ${displayTitle}.`)}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-block font-bold text-[#F3922B]"
+              >
+                Ask About This Tent &rarr;
+              </a>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
