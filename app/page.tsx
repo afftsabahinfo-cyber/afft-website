@@ -67,7 +67,7 @@ const campingPackages = [
     cta: "View Package",
   },
   {
-    href: "/packages/astro-hunter",
+    href: "/packages/couple-camp-milky-way",
     image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
     imageAlt: "AFFT Couple Camp Milky Way package poster",
     watermark: "/images/astro-hunter-watermark.svg",
