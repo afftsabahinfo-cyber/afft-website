@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AfftBrand } from "@/components/AfftBrand";
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
@@ -118,7 +119,12 @@ export default function Home() {
         }}
       >
         <nav className="flex items-center justify-between gap-4">
-          <div className="text-xl font-bold tracking-[0.35em]">AFFT.CLUB</div>
+          <AfftBrand
+            href="/"
+            className="shrink-0"
+            markClassName="h-10 w-10 md:h-12 md:w-12"
+            labelClassName="hidden text-sm tracking-[0.22em] sm:block md:text-base"
+          />
           <div className="hidden gap-8 text-sm md:flex">
             <a href="#experiences">Experiences</a>
             <a href="#camping">Camping</a>
@@ -413,7 +419,12 @@ export default function Home() {
       <footer className="border-t border-white/10 bg-black/30 py-12">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
           <div>
-            <h3 className="text-lg font-bold text-white">AFFT.CLUB</h3>
+            <AfftBrand
+              href="/"
+              className="gap-4"
+              markClassName="h-14 w-14"
+              labelClassName="text-lg tracking-[0.26em] md:text-xl"
+            />
             <p className="mt-3 text-white/70">
               Premium Outdoor Experiences, Camping Packages, Rent It Series and
               Private Travel Services in Sabah.
