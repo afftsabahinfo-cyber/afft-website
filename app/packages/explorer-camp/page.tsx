@@ -9,7 +9,7 @@ export default function ExplorerCampPackage() {
           href="/"
           className="text-sm font-bold text-[#F3922B] hover:opacity-80"
         >
-          ← Back to AFFT.CLUB
+          &larr; Back to AFFT.CLUB
         </a>
 
         <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:items-start">
@@ -23,20 +23,22 @@ export default function ExplorerCampPackage() {
             </h1>
 
             <p className="mt-6 text-2xl text-white/80">
-              RM599 · AFFT Signature Camp
+              RM599 / AFFT Signature Camp
             </p>
 
             <p className="mt-6 max-w-xl text-lg text-white/70">
-              AFFT signature camping experience for couples, friends and
-              first-time campers who want a ready-made outdoor setup in Sabah.
+              AFFT&apos;s signature 2D1N setup for couples, friends and
+              first-time campers who want a comfortable outdoor stay without
+              handling the hard part themselves.
             </p>
 
             <a
               href={whatsapp}
               target="_blank"
+              rel="noreferrer"
               className="mt-8 inline-block rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
-              WhatsApp AFFT
+              Ask About Explorer Camp
             </a>
           </div>
 
@@ -50,9 +52,9 @@ export default function ExplorerCampPackage() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          <Info title="Package Type" text="AFFT Signature Camp" />
+          <Info title="Package Type" text="AFFT signature camp" />
           <Info title="Duration" text="2 Days 1 Night" />
-          <Info title="Suitable For" text="Couples • Friends • First Time Campers" />
+          <Info title="Suitable For" text="Couples / friends / first-time campers" />
         </div>
 
         <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
@@ -72,24 +74,48 @@ export default function ExplorerCampPackage() {
           <h2 className="text-3xl font-bold">What This Package Is About</h2>
 
           <p className="mt-5 max-w-4xl text-white/70">
-            Explorer Camp is AFFT&apos;s signature outdoor package for guests who
-            want a simple, comfortable and photo-friendly camping experience in
-            Sabah. It is designed for people who want to enjoy nature without
-            owning camping equipment or handling complicated setup work.
+            Explorer Camp is the easiest way to step into AFFT camping. It
+            gives guests a more complete tent, furniture and lifestyle setup,
+            so the trip feels intentional, comfortable and photo-ready instead
+            of rough or overly technical.
           </p>
+        </section>
+
+        <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
+          <h2 className="text-3xl font-bold">FAQ</h2>
+
+          <div className="mt-8 grid gap-4">
+            <FaqItem
+              question="Who is Explorer Camp best for?"
+              answer="Explorer Camp works best for couples, friends and first-time campers who want a more complete AFFT setup and a comfortable 2D1N experience."
+            />
+            <FaqItem
+              question="Do we need to set up the tent ourselves?"
+              answer="No. The package is designed around a ready-made AFFT setup so the trip feels easier and less technical."
+            />
+            <FaqItem
+              question="How many people can join this package?"
+              answer="The best arrangement depends on your group size and campsite plan. AFFT can confirm the right setup through WhatsApp."
+            />
+            <FaqItem
+              question="Can we add transport or extra gear?"
+              answer="Yes. AFFT can help with transport, campsite planning and additional gear if your group needs a more complete setup."
+            />
+          </div>
         </section>
 
         <section className="mt-16">
           <h2 className="text-3xl font-bold">Need More Details?</h2>
 
           <p className="mt-4 max-w-3xl text-white/70">
-            Contact AFFT directly for campsite availability, weather advice,
-            transport arrangement, add-on equipment and available dates.
+            Ask AFFT about campsite options, weather, transport and extra gear
+            for your group size before you lock in a date.
           </p>
 
           <a
             href={whatsapp}
             target="_blank"
+            rel="noreferrer"
             className="mt-8 inline-block rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
           >
             Ask About Explorer Camp
@@ -119,6 +145,21 @@ function Item({ text }: { text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
       {text}
+    </div>
+  );
+}
+
+function FaqItem({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <h3 className="text-xl font-bold">{question}</h3>
+      <p className="mt-3 text-white/70">{answer}</p>
     </div>
   );
 }
