@@ -4,6 +4,7 @@ import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
   makeWhatsappLink,
+  normalizeRentItTitle,
   rentItMainSeries,
   whatsapp,
 } from "@/lib/rent-it-data";
@@ -226,9 +227,9 @@ export default function Home() {
               Use the best. Do not own it.
             </p>
             <p className="mt-3">
-              Rent It should feel experience-led, not like a crowded product
-              list. Guests start with the main series, see the strongest hero
-              products, then move into the full catalog on the dedicated page.
+              Choose the series that fits your trip, then shortlist the gear
+              you want to ask about on WhatsApp. The strongest picks are shown
+              first so the page stays easy to browse.
             </p>
           </div>
         </div>
@@ -640,6 +641,8 @@ function RentItSeriesCard({ series }: { series: MainSeries }) {
 }
 
 function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
+  const displayTitle = normalizeRentItTitle(pick.title);
+
   return (
     <a
       href={pick.route}
@@ -648,18 +651,18 @@ function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
       {pick.image ? (
         <img
           src={pick.image}
-          alt={pick.title}
+          alt={displayTitle}
           className="h-56 w-full object-cover bg-white"
         />
       ) : (
         <div className="flex h-56 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">
           <p className="max-w-[12rem] text-2xl font-bold leading-tight">
-            {pick.title}
+            {displayTitle}
           </p>
         </div>
       )}
       <div className="p-5">
-        <h4 className="font-bold">{pick.title}</h4>
+        <h4 className="font-bold">{displayTitle}</h4>
         <p className="mt-2 text-sm font-bold text-[#F3922B]">{pick.price}</p>
         <p className="mt-3 text-sm leading-6 text-white/65">{pick.description}</p>
         <span className="mt-4 inline-block text-sm font-bold text-[#F3922B]">
