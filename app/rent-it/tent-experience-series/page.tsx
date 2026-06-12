@@ -67,7 +67,7 @@ export default function TentExperienceSeriesPage() {
           <RentItInfoCard title="Best For" text={summary.bestFor} />
           <RentItInfoCard
             title="Featured Tent"
-            text={`${summary.featuredTitle} · ${summary.featuredPrice}`}
+            text={`${summary.featuredTitle} / ${summary.featuredPrice}`}
           />
           <RentItInfoCard title="Price Range" text={summary.priceRange} />
         </div>
@@ -90,11 +90,11 @@ export default function TentExperienceSeriesPage() {
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <RentItInfoCard
             title="Couple Bookings"
-            text="Black Dog 星宿 5.9 is the stronger fit for visual glamping and quieter luxury stays."
+            text="Black Dog XingSu 5.9 is the stronger fit for visual glamping and quieter luxury stays."
           />
           <RentItInfoCard
             title="Family and Groups"
-            text="Black Dog Modular Tent System or Mobi Garden should be matched to group size and campsite layout."
+            text="Black Dog Modular Tent System or Mobi Garden Commander 245 should be matched to group size and campsite layout."
           />
           <RentItInfoCard
             title="Before Booking"
