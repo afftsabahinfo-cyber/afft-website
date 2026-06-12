@@ -1,3 +1,4 @@
+import { AfftLogoMark } from "@/components/AfftBrand";
 import type { CatalogItem, TentShowcaseItem } from "@/lib/rent-it-data";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
@@ -9,8 +10,12 @@ export function RentItBackLink({
   label?: string;
 }) {
   return (
-    <a href={href} className="text-sm font-bold text-[#F3922B] hover:opacity-80">
-      {"<"} {label}
+    <a
+      href={href}
+      className="inline-flex items-center gap-3 text-sm font-bold text-[#F3922B] hover:opacity-80"
+    >
+      <AfftLogoMark className="h-8 w-8 shrink-0" decorative />
+      <span>{label}</span>
     </a>
   );
 }
