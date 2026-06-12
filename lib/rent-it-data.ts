@@ -3,6 +3,18 @@ export const whatsapp = "https://wa.me/601111598920";
 export const makeWhatsappLink = (text: string) =>
   `${whatsapp}?text=${encodeURIComponent(text)}`;
 
+export const normalizeRentItTitle = (title: string) => {
+  if (title.includes("5.9")) {
+    return "Black Dog XingSu 5.9";
+  }
+
+  if (title.includes("245")) {
+    return "Mobi Garden Commander 245";
+  }
+
+  return title;
+};
+
 export type MainSeriesSlug =
   | "creator-series"
   | "camp-lifestyle-series"
@@ -70,9 +82,9 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "24", label: "current products and bundles" },
-  { value: "4", label: "main series pages" },
-  { value: "5", label: "featured picks before the catalog" },
+  { value: "24", label: "gear items and bundle options" },
+  { value: "4", label: "rental series to browse" },
+  { value: "1", label: "WhatsApp contact for booking help" },
 ];
 
 export const rentItMainSeries: MainSeries[] = [
@@ -290,28 +302,28 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     bestFor: ["Group Camp", "Family Gathering", "Event Camp"],
   },
   {
-  title: "Black Dog 星宿 5.9",
-  capacity: "1-2 adults or 2 adults + child",
-  route: "/rent-it/tent-experience-series",
-  day1: "RM159",
-  day2: "RM279",
-  day3: "RM379",
-  description:
-    "A luxury couple glamping tent with softer visual appeal for romantic stays and premium overnight content.",
-  bestFor: ["Couple Glamping", "Luxury Camp"],
-  image: "/images/blackdog-xingsu59.webp",
-},
+    title: "Black Dog 星宿 5.9",
+    capacity: "1-2 adults or 2 adults + child",
+    route: "/rent-it/tent-experience-series",
+    day1: "RM399",
+    day2: "RM729",
+    day3: "RM999",
+    description:
+      "A luxury couple glamping tent with softer visual appeal for romantic stays and premium overnight content.",
+    bestFor: ["Couple Glamping", "Luxury Camp"],
+    image: "/images/blackdog-xingsu59.webp",
+  },
   {
-  title: "Mobi Garden 指挥官245",
-  capacity: "2-4 pax",
-  route: "/rent-it/tent-experience-series",
-  day1: "RM399",
-  day2: "RM729",
-  day3: "RM999",
-  description:
-    "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
-  bestFor: ["Family Camp", "Entry Level"],
-},
+    title: "Mobi Garden 指挥官245",
+    capacity: "2-4 pax",
+    route: "/rent-it/tent-experience-series",
+    day1: "RM159",
+    day2: "RM279",
+    day3: "RM379",
+    description:
+      "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
+    bestFor: ["Family Camp", "Entry Level"],
+  },
 ];
 
 export const featuredPicks: FeaturedPick[] = [
@@ -339,7 +351,7 @@ export const featuredPicks: FeaturedPick[] = [
   {
     title: "Black Dog 星宿 5.9",
     route: "/rent-it/tent-experience-series",
-    price: "From RM159 / day",
+    price: "From RM399 / day",
     description: "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
     image: "/images/blackdog-xingsu59.webp",
   },
@@ -370,9 +382,9 @@ export const helinoxTiers: HelinoxTier[] = [
 ];
 
 export const helinoxNotes = [
-  "This is not a basic chair rental. Guests are renting a premium Helinox experience.",
-  "Best fit for Kundasang, Kiulu, glamping, solo slow trips and creator stays.",
-  "Contact AFFT for availability, condition notes and any deposit guidance before confirming.",
+  "This is a premium Helinox experience, not a basic chair rental.",
+  "A strong fit for Kundasang, Kiulu, glamping, solo slow trips and creator stays.",
+  "Ask AFFT about availability, condition notes and any deposit guidance before confirming.",
 ];
 
 export const comingSoonItems = [
