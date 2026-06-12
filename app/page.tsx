@@ -43,6 +43,53 @@ const socialLinks = [
   },
 ];
 
+const campingPackages = [
+  {
+    href: "/packages/solo-explorer",
+    image: "/images/solo-explorer-poster.webp",
+    imageAlt: "AFFT Solo Explorer package poster",
+    watermark: "/images/solo-explorer-watermark.svg",
+    price: "From RM399 / PG-1 Mobility Camp",
+    title: "Solo Explorer",
+    hook: "Easy camping for solo travellers who want a simple Sabah outdoor reset.",
+    bestFor: "Best for: 1 person / light setup / short getaway",
+    cta: "View Package",
+  },
+  {
+    href: "/packages/explorer-camp",
+    image: "/images/afft-explorer-camp-rm599-sabah.webp",
+    imageAlt: "AFFT Explorer Camp package poster",
+    watermark: "/images/explorer-camp-watermark.svg",
+    price: "From RM599 / AFFT Signature Camp",
+    title: "Explorer Camp",
+    hook: "AFFT's signature setup for couples or small groups who want comfort without hassle.",
+    bestFor: "Best for: 2-4 pax / first-time campers / comfortable stay",
+    cta: "View Package",
+  },
+  {
+    href: "/packages/astro-hunter",
+    image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
+    imageAlt: "AFFT Astro Hunter package poster",
+    watermark: "/images/astro-hunter-watermark.svg",
+    price: "From RM799 / Milky Way Experience",
+    title: "Astro Hunter",
+    hook: "A night camp built around cooler air, star views and a photo-friendly setup.",
+    bestFor: "Best for: stargazing / content shooting / special nights",
+    cta: "View Package",
+  },
+  {
+    href: "/packages/family-camp",
+    image: "/images/afft-family-camp-series-sabah.webp",
+    imageAlt: "AFFT Family Camp Series package poster",
+    watermark: "/images/family-camp-watermark.svg",
+    price: "Custom quote / Family outdoor setup",
+    title: "Family Camp Series",
+    hook: "Custom family camping with easier planning, gear support and more space to relax.",
+    bestFor: "Best for: parents / kids / family outdoor trips",
+    cta: "View Package",
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -124,28 +171,13 @@ export default function Home() {
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
         <Title
           small="Camping Packages"
-          big="Simple outdoor packages for couples, families and explorers."
+          big="Camping packages built for Sabah weekends, first-time campers and family trips."
         />
 
-        <div className="grid gap-6 md:grid-cols-4">
-          <a href="/packages/solo-explorer" className="block">
-            <Card title="Solo Explorer" text="RM399 / PG-1 Mobility Camp" />
-          </a>
-
-          <a href="/packages/explorer-camp" className="block">
-            <Card title="Explorer Camp" text="RM599 / AFFT Signature Camp" />
-          </a>
-
-          <a href="/packages/astro-hunter" className="block">
-            <Card title="Astro Hunter" text="RM799 / Milky Way Experience" />
-          </a>
-
-          <a href="/packages/family-camp" className="block">
-            <Card
-              title="Family Camp Series"
-              text="Custom package for family outdoor trips."
-            />
-          </a>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {campingPackages.map((pkg) => (
+            <CampingPackageCard key={pkg.href} {...pkg} />
+          ))}
         </div>
       </section>
 
@@ -416,6 +448,61 @@ function Card({ title, text }: { title: string; text: string }) {
         Contact AFFT &rarr;
       </a>
     </div>
+  );
+}
+
+function CampingPackageCard({
+  href,
+  image,
+  imageAlt,
+  watermark,
+  price,
+  title,
+  hook,
+  bestFor,
+  cta,
+}: {
+  href: string;
+  image: string;
+  imageAlt: string;
+  watermark: string;
+  price: string;
+  title: string;
+  hook: string;
+  bestFor: string;
+  cta: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+    >
+      <div className="relative overflow-hidden">
+        <img
+          src={image}
+          alt={imageAlt}
+          className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10140F]/85 via-[#10140F]/15 to-transparent" />
+        <img
+          src={watermark}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute right-5 top-5 h-16 w-16 opacity-20 md:h-20 md:w-20"
+        />
+      </div>
+      <div className="p-6">
+        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+          {price}
+        </p>
+        <h3 className="mt-4 text-2xl font-bold">{title}</h3>
+        <p className="mt-4 text-white/72">{hook}</p>
+        <p className="mt-4 text-sm leading-6 text-white/55">{bestFor}</p>
+        <span className="mt-6 inline-block font-bold text-[#F3922B]">
+          {cta} -&gt;
+        </span>
+      </div>
+    </a>
   );
 }
 
