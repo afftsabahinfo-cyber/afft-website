@@ -6,6 +6,7 @@ const urbanist = Urbanist({ subsets: ['latin'], variable: '--font-urbanist', dis
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://afft.club'),
   title: 'AFFT Club | Sabah Outdoor Experiences',
   description: 'Premium Sabah outdoor experiences, camping packages, gear rentals and private travel services around Mount Kinabalu.',
 };
