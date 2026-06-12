@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
@@ -5,6 +6,19 @@ import {
   rentItMainSeries,
   whatsapp,
 } from "@/lib/rent-it-data";
+
+export const metadata: Metadata = {
+  title: "AFFT Club | Sabah Outdoor Experiences",
+  description:
+    "Private Sabah outdoor experiences, camping packages, Rent It gear rentals and travel support around Mount Kinabalu.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      "zh-Hans": "/zh",
+    },
+  },
+};
 
 const images = {
   hero: "/images/kinabalu-hero.webp",
@@ -90,6 +104,10 @@ const campingPackages = [
   },
 ] as const;
 
+const sabahTripWhatsapp = makeWhatsappLink(
+  "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
+);
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -99,7 +117,7 @@ export default function Home() {
           backgroundImage: `linear-gradient(90deg, rgba(16,20,15,.95), rgba(16,20,15,.65), rgba(16,20,15,.25)), url(${images.hero})`,
         }}
       >
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between gap-4">
           <div className="text-xl font-bold tracking-[0.35em]">AFFT.CLUB</div>
           <div className="hidden gap-8 text-sm md:flex">
             <a href="#experiences">Experiences</a>
@@ -108,12 +126,20 @@ export default function Home() {
             <a href="#travel">Travel</a>
             <a href="#about">About AFFT</a>
           </div>
-          <a
-            href={whatsapp}
-            className="rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
-          >
-            WhatsApp
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="/zh"
+              className="rounded-full border border-white/25 px-4 py-2 text-sm font-bold text-white"
+            >
+              简体中文
+            </a>
+            <a
+              href={whatsapp}
+              className="rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
+            >
+              WhatsApp
+            </a>
+          </div>
         </nav>
 
         <div className="max-w-4xl pt-28 md:pt-40">
@@ -355,9 +381,7 @@ export default function Home() {
           </div>
           <div className="mt-6 md:mt-0">
             <a
-              href={makeWhatsappLink(
-                "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
-              )}
+              href={sabahTripWhatsapp}
               target="_blank"
               rel="noreferrer"
               className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
@@ -414,7 +438,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 text-center text-sm text-white/40">
-          © 2026 AFFT.CLUB. All Rights Reserved.
+          Copyright 2026 AFFT.CLUB. All Rights Reserved.
         </div>
       </footer>
 
