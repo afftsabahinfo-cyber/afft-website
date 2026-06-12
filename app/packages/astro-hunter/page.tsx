@@ -1,5 +1,5 @@
 const whatsapp =
-  "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM799%20Astro%20Hunter%20Package.";
+  "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM799%20Couple%20Camp%20Milky%20Way%20Package.";
 
 export default function AstroHunterPackage() {
   return (
@@ -16,7 +16,7 @@ export default function AstroHunterPackage() {
             </p>
 
             <h1 className="text-5xl font-bold leading-tight md:text-7xl">
-              Astro Hunter
+              Couple Camp Milky Way
             </h1>
 
             <p className="mt-6 text-2xl text-white/80">
@@ -35,14 +35,14 @@ export default function AstroHunterPackage() {
               rel="noreferrer"
               className="mt-8 inline-block rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
-              Ask About Astro Hunter
+              Ask About Couple Camp Milky Way
             </a>
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4">
             <img
               src="/images/afft-astro-hunter-rm799-milky-way-sabah.webp"
-              alt="AFFT Astro Hunter RM799 Milky Way Camping Experience Sabah"
+              alt="AFFT Couple Camp Milky Way RM799 camping experience Sabah"
               className="w-full rounded-[1.5rem]"
             />
           </div>
@@ -71,10 +71,10 @@ export default function AstroHunterPackage() {
           <h2 className="text-3xl font-bold">What This Package Is About</h2>
 
           <p className="mt-5 max-w-4xl text-white/70">
-            Astro Hunter is built around the night experience. It suits guests
-            who want a calmer premium camp, a photo-friendly layout and better
-            conditions for star watching, content shooting and slow outdoor
-            conversation.
+            Couple Camp Milky Way is built around the night experience. It
+            suits guests who want a calmer premium camp, a photo-friendly
+            layout and better conditions for star watching, content shooting
+            and slow outdoor conversation.
           </p>
         </section>
 
@@ -83,7 +83,7 @@ export default function AstroHunterPackage() {
 
           <div className="mt-8 grid gap-4">
             <FaqItem
-              question="When is the best time for Astro Hunter?"
+              question="When is the best time for Couple Camp Milky Way?"
               answer="Usually on darker nights with better weather. AFFT can suggest more suitable dates based on moon phase and forecast."
             />
             <FaqItem
@@ -91,7 +91,7 @@ export default function AstroHunterPackage() {
               answer="No. Night sky conditions always depend on weather and cloud cover, but AFFT can help you choose better dates and campsites."
             />
             <FaqItem
-              question="Is Astro Hunter only for photographers?"
+              question="Is Couple Camp Milky Way only for photographers?"
               answer="No. It also suits couples, creators and guests who simply want a slower night camp with a stronger stargazing mood."
             />
             <FaqItem
@@ -115,7 +115,7 @@ export default function AstroHunterPackage() {
             rel="noreferrer"
             className="mt-8 inline-block rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
           >
-            Ask About Astro Hunter
+            Ask About Couple Camp Milky Way
           </a>
         </section>
       </section>
