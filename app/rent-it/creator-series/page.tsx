@@ -67,7 +67,7 @@ export default function CreatorSeriesPage() {
           <RentItInfoCard title="Best For" text={summary.bestFor} />
           <RentItInfoCard
             title="Featured Kit"
-            text={`${summary.featuredTitle} · ${summary.featuredPrice}`}
+            text={`${summary.featuredTitle} / ${summary.featuredPrice}`}
           />
           <RentItInfoCard title="Price Range" text={summary.priceRange} />
         </div>
