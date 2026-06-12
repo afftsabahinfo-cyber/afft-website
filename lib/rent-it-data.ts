@@ -300,9 +300,10 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A modular statement tent system for family gatherings, group camp weekends and event-style outdoor setups.",
     bestFor: ["Group Camp", "Family Gathering", "Event Camp"],
+    image: "/images/blackdog-modular-tent-system.webp",
   },
   {
-    title: "Black Dog 星宿 5.9",
+    title: "Black Dog XingSu 5.9",
     capacity: "1-2 adults or 2 adults + child",
     route: "/rent-it/tent-experience-series",
     day1: "RM159",
@@ -314,7 +315,7 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     image: "/images/blackdog-xingsu59.webp",
   },
   {
-    title: "Mobi Garden 指挥官245",
+    title: "Mobi Garden Commander 245",
     capacity: "2-4 pax",
     route: "/rent-it/tent-experience-series",
     day1: "RM399",
@@ -323,6 +324,7 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
     bestFor: ["Family Camp", "Entry Level"],
+    image: "/images/mobi-garden-commander-245.webp",
   },
 ];
 
@@ -331,35 +333,41 @@ export const featuredPicks: FeaturedPick[] = [
     title: "DJI Pocket 4 Creator Combo",
     route: "/rent-it/creator-series",
     price: "From RM99 / day",
-    description: "Travel-ready storytelling for smooth motion, beach reels and quick Sabah vlogs.",
+    description:
+      "Travel-ready storytelling for smooth motion, beach reels and quick Sabah vlogs.",
     image: "/images/dji-pocket4-creator-combo.webp",
   },
   {
     title: "DJI Avata 360 Fly More Combo",
     route: "/rent-it/creator-series",
     price: "From RM199 / day",
-    description: "Immersive FPV shots for mountain roads, coastlines and dramatic travel edits.",
+    description:
+      "Immersive FPV shots for mountain roads, coastlines and dramatic travel edits.",
     image: "/images/dji-avata-360.webp",
   },
   {
     title: "Helinox Solo Full Set",
     route: "/rent-it/premium-camp-series",
     price: "From RM199 / day",
-    description: "A premium solo sleep-and-chill setup built for comfort, style and lighter packing.",
+    description:
+      "A premium solo sleep-and-chill setup built for comfort, style and lighter packing.",
     image: "/images/helinox-chair.webp",
   },
   {
-    title: "Black Dog 星宿 5.9",
+    title: "Black Dog XingSu 5.9",
     route: "/rent-it/tent-experience-series",
     price: "From RM159 / day",
-    description: "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
+    description:
+      "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
     image: "/images/blackdog-xingsu59.webp",
   },
   {
     title: "Black Dog Modular Tent System",
     route: "/rent-it/tent-experience-series",
     price: "From RM499 / day",
-    description: "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
+    description:
+      "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
+    image: "/images/blackdog-modular-tent-system.webp",
   },
 ];
 
@@ -367,17 +375,20 @@ export const helinoxTiers: HelinoxTier[] = [
   {
     title: "Helinox Solo Base Set",
     price: "RM79 / day",
-    includes: "Chair, hard top table, cup holder and stool for a lighter chill setup.",
+    includes:
+      "Chair, hard top table, cup holder and stool for a lighter chill setup.",
   },
   {
     title: "Helinox Solo Sleep Set",
     price: "RM149 / day",
-    includes: "Tac cot convertible, cot legs and solo inner tent for sleep-focused bookings.",
+    includes:
+      "Tac cot convertible, cot legs and solo inner tent for sleep-focused bookings.",
   },
   {
     title: "Helinox Tactical Solo Full Set",
     price: "RM199 / day",
-    includes: "The full flagship sleep-and-chill package with stronger premium lifestyle appeal.",
+    includes:
+      "The full flagship sleep-and-chill package with stronger premium lifestyle appeal.",
   },
 ];
 
@@ -454,7 +465,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredPrice: "From RM499 / day",
     featuredText:
       "The standout large-format tent option for group camp, gatherings and event-style outdoor plans.",
-    featuredImage: "/images/blackdog-xingsu59.webp",
+    featuredImage: "/images/blackdog-modular-tent-system.webp",
     heroImage: "/images/rent-it-tent-experience-series-cover.webp",
     heroImageAlt: "AFFT Tent Experience Series hero cover",
     bestFor: "Couple glamping, family camp, group camp and event-style stays.",
