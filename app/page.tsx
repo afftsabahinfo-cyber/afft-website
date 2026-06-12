@@ -69,10 +69,10 @@ const campingPackages = [
   {
     href: "/packages/astro-hunter",
     image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
-    imageAlt: "AFFT Astro Hunter package poster",
+    imageAlt: "AFFT Couple Camp Milky Way package poster",
     watermark: "/images/astro-hunter-watermark.svg",
     price: "From RM799 / Milky Way Experience",
-    title: "Astro Hunter",
+    title: "Couple Camp Milky Way",
     hook: "A night camp built around cooler air, star views and a photo-friendly setup.",
     bestFor: "Best for: stargazing / content shooting / special nights",
     cta: "View Package",
