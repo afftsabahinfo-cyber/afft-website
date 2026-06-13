@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { AfftBrand } from "@/components/AfftBrand";
-import type { MainSeries } from "@/lib/rent-it-data";
+import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
+  featuredPicks,
   makeWhatsappLink,
+  normalizeRentItTitle,
   rentItMainSeries,
   whatsapp,
 } from "@/lib/rent-it-data";
@@ -28,26 +30,26 @@ const images = {
 
 const socialLinks = [
   {
-    title: "TikTok",
     icon: "/images/social/tiktok.svg",
+    title: "TikTok",
     href: "https://www.tiktok.com/@afft.club?r=1&_t=ZS-97kWi9U9yr",
     text: "看 AFFT 的沙巴户外短视频、露营氛围和装备亮点。",
   },
   {
-    title: "小红书 / Rednote",
     icon: "/images/social/rednote.svg",
+    title: "小红书 / Rednote",
     href: "https://xhslink.com/m/7CrxZ1jRF6",
     text: "看沙巴旅行笔记、露营风格和真实更新。",
   },
   {
-    title: "Instagram",
     icon: "/images/social/instagram.svg",
-    href: "https://www.instagram.com/rentalcar.kk.afftservice?igsh=NG5laGxzMHJ3eWEy",
-    text: "看露营、私人行程和沙巴风景照片。",
+    title: "Instagram",
+    href: "https://www.instagram.com/afft.club.kk.car.service/",
+    text: "看露营、私人行程、包车服务和沙巴风景照片。",
   },
   {
-    title: "Facebook",
     icon: "/images/social/facebook.svg",
+    title: "Facebook",
     href: "https://www.facebook.com/share/1KkSZKDoSM/",
     text: "看 AFFT 的一般更新、联系方式和活动内容。",
   },
@@ -160,6 +162,10 @@ const generalWhatsapp = makeWhatsappLink(
   "你好，我想了解 AFFT 的沙巴露营套餐、私人行程、包车或 Rent It 装备租借。"
 );
 
+const sabahTripWhatsapp = makeWhatsappLink(
+  "你好，我想规划沙巴行程，想了解露营套餐、私人行程、包车或 Rent It 装备租借。"
+);
+
 export default function ChineseHomePage() {
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
@@ -177,7 +183,7 @@ export default function ChineseHomePage() {
             labelClassName="hidden text-sm tracking-[0.22em] sm:block md:text-base"
           />
           <div className="hidden gap-8 text-sm md:flex">
-            <a href="#services">服务</a>
+            <a href="#experiences">体验</a>
             <a href="#camping">露营套餐</a>
             <a href="#rent-it">Rent It 租借</a>
             <a href="#travel">行程支持</a>
@@ -214,10 +220,10 @@ export default function ChineseHomePage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#camping"
+              href="#experiences"
               className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
-              看露营套餐
+              先看体验内容
             </a>
             <a
               href={generalWhatsapp}
@@ -229,26 +235,26 @@ export default function ChineseHomePage() {
         </div>
       </section>
 
-      <section id="services" className="px-6 py-20 md:px-16">
+      <section id="experiences" className="px-6 py-20 md:px-16">
         <Title
-          small="AFFT 可以安排什么"
-          big="给想要更简单、更舒服体验沙巴的中文旅客。"
+          small="沙巴户外体验"
+          big="山景、河流、森林和星空，适合想更真实感受沙巴的旅客。"
         />
         <div className="grid gap-6 md:grid-cols-3">
           <ImageCard
             img={images.milkyway}
-            title="私人户外体验"
-            text="适合想看山景、星空、乡村风景和更慢节奏沙巴生活的旅客。"
+            title="星空体验"
+            text="适合喜欢观星、夜景和更安静户外节奏的旅客。"
           />
           <ImageCard
             img={images.hero}
-            title="露营套餐"
-            text="适合第一次露营、不想自己准备装备，或想更舒服露营的人。"
+            title="神山与高地风景"
+            text="适合想看昆达山、凉爽高地和山景路线的旅客。"
           />
           <ImageCard
             img={images.kiulu}
-            title="Rent It 装备租借"
-            text="适合想体验高质感露营装备或创作者器材，但不想马上购买的人。"
+            title="Kiulu 自然体验"
+            text="适合想看河流、乡村和更轻松自然风景的人。"
           />
         </div>
       </section>
@@ -279,16 +285,60 @@ export default function ChineseHomePage() {
               先体验，再决定。
             </p>
             <p className="mt-3">
-              对中文访客来说，最简单的方法不是先看很长的英文目录，
-              而是直接告诉 AFFT 你的旅行类型、人数和想要的风格，我们再推荐合适的装备系列。
+              先选适合你旅程的系列，再把你真正想问的装备通过 WhatsApp 发给 AFFT。
+              首页先把最容易理解的重点产品放出来，浏览会更轻松。
             </p>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-4">
           {rentItSeries.map((series) => (
             <RentItSeriesCard key={series.slug} series={series} />
           ))}
+        </div>
+
+        <div className="mt-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h3 className="text-3xl font-bold md:text-4xl">精选 Rent It 推荐</h3>
+            <p className="mt-3 max-w-3xl text-white/70">
+              先看最容易让人理解的重点产品：创作者设备、Helinox 舒适配置和帐篷体验系列。
+            </p>
+          </div>
+          <a
+            href="/rent-it"
+            className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+          >
+            查看完整 Rent It 系列
+          </a>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+          {featuredPicks.map((pick) => (
+            <RentItFeaturedCard key={pick.title} pick={pick} />
+          ))}
+        </div>
+
+        <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#182015] p-8 md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <h3 className="text-2xl font-bold md:text-3xl">不知道怎么选装备？</h3>
+            <p className="mt-3 max-w-2xl text-white/70">
+              AFFT 可以根据你的行程类型、人数、拍摄需求或露营氛围，推荐更合适的组合。
+            </p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3 md:mt-0">
+            <a
+              href={generalWhatsapp}
+              className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
+            >
+              WhatsApp 联系 AFFT
+            </a>
+            <a
+              href="/rent-it"
+              className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+            >
+              打开完整目录
+            </a>
+          </div>
         </div>
       </section>
 
@@ -297,7 +347,7 @@ export default function ChineseHomePage() {
           small="Travel Support"
           big="从机场、山路到露营地，AFFT 都可以先帮你安排顺一点。"
         />
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-4">
           {travelServices.map((service) => (
             <TravelCard key={service.title} {...service} />
           ))}
@@ -319,14 +369,14 @@ export default function ChineseHomePage() {
             />
             <div className="p-8">
               <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-                Why AFFT
+                我们的方式
               </p>
               <h3 className="mt-4 text-3xl font-bold md:text-4xl">
                 一个人、情侣、家庭或小团队，都可以先从一条 WhatsApp 开始。
               </h3>
               <p className="mt-5 max-w-2xl text-white/72">
-                AFFT 重点不是复杂系统，而是帮旅客更快进入沙巴真实的山景、
-                露营、乡村公路和户外节奏。你可以先告诉我们日期、人数和想要的感觉，
+                AFFT 重点不是复杂系统，而是帮旅客更快进入沙巴真实的山景、露营、
+                乡村公路和户外节奏。你可以先告诉我们日期、人数和想要的感觉，
                 AFFT 再帮你组合合适的露营套餐、私人行程、包车或 Rent It 支持。
               </p>
             </div>
@@ -367,16 +417,14 @@ export default function ChineseHomePage() {
 
         <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#182015] p-8 md:flex md:items-center md:justify-between md:gap-8">
           <div>
-            <h3 className="text-2xl font-bold md:text-3xl">
-              想开始规划你的沙巴旅程？
-            </h3>
+            <h3 className="text-2xl font-bold md:text-3xl">想开始规划你的沙巴旅程？</h3>
             <p className="mt-3 max-w-2xl text-white/70">
               直接告诉 AFFT 你的旅行日期、人数，以及你比较想要露营、私人行程、包车还是 Rent It 装备租借。
             </p>
           </div>
           <div className="mt-6 md:mt-0">
             <a
-              href={generalWhatsapp}
+              href={sabahTripWhatsapp}
               target="_blank"
               rel="noreferrer"
               className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
@@ -389,9 +437,7 @@ export default function ChineseHomePage() {
 
       <section className="px-6 py-20 md:px-16">
         <div className="rounded-[2rem] bg-[#F3922B] p-10 text-black md:p-16">
-          <h2 className="text-4xl font-bold md:text-6xl">
-            准备好开始你的沙巴体验了吗？
-          </h2>
+          <h2 className="text-4xl font-bold md:text-6xl">准备好开始你的沙巴体验了吗？</h2>
           <p className="mt-4 max-w-2xl text-lg">
             先联系 AFFT，再决定最适合你的露营套餐、包车或装备租借方式。
           </p>
@@ -433,7 +479,7 @@ export default function ChineseHomePage() {
             <p className="text-white/70">(202401014720 (1560570-W))</p>
             <p className="text-white/70">KPL/LN: 12014</p>
             <a href="/" className="mt-4 inline-block font-bold text-[#F3922B]">
-              View English Page
+              查看英文版
             </a>
           </div>
         </div>
@@ -539,36 +585,6 @@ function CampingPackageCard({
   );
 }
 
-function RentItSeriesCard({
-  series,
-}: {
-  series: MainSeries & { cta: string; whatsappText: string };
-}) {
-  return (
-    <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-      <img
-        src={series.image}
-        alt={series.imageAlt}
-        className="h-52 w-full object-cover"
-      />
-      <div className="p-6">
-        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-          {series.startingFrom}
-        </p>
-        <h3 className="mt-4 text-2xl font-bold">{series.title}</h3>
-        <p className="mt-4 text-white/70">{series.hook}</p>
-        <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
-        <a
-          href={makeWhatsappLink(series.whatsappText)}
-          className="mt-6 inline-block font-bold text-[#F3922B]"
-        >
-          {series.cta} -&gt;
-        </a>
-      </div>
-    </div>
-  );
-}
-
 function TravelCard({
   title,
   text,
@@ -638,6 +654,69 @@ function SocialCard({
         <p className="mt-4 text-white/70">{text}</p>
         <span className="mt-6 inline-block font-bold text-[#F3922B]">
           打开 {title} &rarr;
+        </span>
+      </div>
+    </a>
+  );
+}
+
+function RentItSeriesCard({
+  series,
+}: {
+  series: MainSeries & { cta: string; whatsappText: string };
+}) {
+  return (
+    <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40">
+      <img
+        src={series.image}
+        alt={series.imageAlt}
+        className="h-52 w-full object-cover"
+      />
+      <div className="p-6">
+        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+          {series.startingFrom}
+        </p>
+        <h3 className="mt-4 text-2xl font-bold">{series.title}</h3>
+        <p className="mt-4 text-white/70">{series.hook}</p>
+        <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
+        <a
+          href={makeWhatsappLink(series.whatsappText)}
+          className="mt-6 inline-block font-bold text-[#F3922B]"
+        >
+          {series.cta} -&gt;
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
+  const displayTitle = normalizeRentItTitle(pick.title);
+
+  return (
+    <a
+      href={pick.route}
+      className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
+    >
+      {pick.image ? (
+        <img
+          src={pick.image}
+          alt={displayTitle}
+          className="h-56 w-full object-cover bg-white"
+        />
+      ) : (
+        <div className="flex h-56 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">
+          <p className="max-w-[12rem] text-2xl font-bold leading-tight">
+            {displayTitle}
+          </p>
+        </div>
+      )}
+      <div className="p-5">
+        <h4 className="font-bold">{displayTitle}</h4>
+        <p className="mt-2 text-sm font-bold text-[#F3922B]">{pick.price}</p>
+        <p className="mt-3 text-sm leading-6 text-white/65">{pick.description}</p>
+        <span className="mt-4 inline-block text-sm font-bold text-[#F3922B]">
+          查看详情 &rarr;
         </span>
       </div>
     </a>
