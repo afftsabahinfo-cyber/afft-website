@@ -2,6 +2,37 @@
 
 AFFT Website V1 built with Next.js App Router + Tailwind CSS.
 
+## Local CRM Lite
+
+The repo now includes a local-only CRM route at `/crm` for AFFT guest enquiries and partner outreach.
+
+### What it does
+
+- Stores guest leads and partner targets in one place
+- Keeps the data in a local JSON file on your own computer
+- Uses a password from `.env.local`
+- Does not add any database or SaaS dependency
+- Opens prefilled WhatsApp and Email drafts from each CRM record
+
+### Files used by the CRM
+
+- Route: `app/crm/page.tsx`
+- Server actions: `app/crm/actions.ts`
+- Local store helper: `lib/crm-store.ts`
+- JSON template: `data/crm-template.json`
+- Live local data file: `data/crm-data.json`
+
+### Enable it locally
+
+1. Copy `.env.example` to `.env.local`
+2. Change `AFFT_CRM_PASSWORD`
+3. Start the site locally
+4. Open `http://localhost:3000/crm`
+
+### Important data note
+
+`data/crm-data.json` is ignored by Git so real customer data does not get pushed by accident. Back up that JSON file regularly.
+
 ## Website directory structure
 
 ```txt
