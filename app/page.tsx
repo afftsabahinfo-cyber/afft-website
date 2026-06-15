@@ -113,11 +113,42 @@ const sabahTripWhatsapp = makeWhatsappLink(
 const explorerCampRm599Story = {
   image:
     "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-group-01-blur.webp",
+  imageAlt: "Real Explorer Camp setup from a recent AFFT RM599 camping stay",
+  eyebrow: "Real Camping Story",
+  title:
+    "A recent Explorer Camp stay showed how the RM599 setup feels beyond the poster.",
+  description:
+    "This recent Explorer Camp booking shows the real side of the RM599 package: a ready-made shelter, tent, table setup and a slower 2D1N Sabah outdoor rhythm.",
+  detail:
+    "Guests get a more complete AFFT base before adding transport, extra gear or a bigger route plan. That is why Explorer Camp works well for people who want a simple but comfortable first stay outdoors.",
   href: "/packages/explorer-camp",
+  hrefLabel: "View Explorer Camp",
   whatsapp: makeWhatsappLink(
     "Hi AFFT, I want details for the RM599 Explorer Camp package."
   ),
+  whatsappLabel: "Ask About RM599 Explorer Camp",
 };
+
+const tiggo8ProCharterStory = {
+  image:
+    "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
+  imageAlt: "A private group with AFFT Tiggo 8 Pro charter support in Sabah",
+  eyebrow: "Private Car Story",
+  title:
+    "A private group used AFFT Tiggo 8 Pro Charter for a smoother Sabah mountain trip.",
+  description:
+    "This trip used AFFT Tiggo 8 Pro Charter with private car and VIP travel support for a cooler Sabah mountain route. It was a transport service story, not a camping package.",
+  detail:
+    "The setup fits small groups, families and visitors who want more comfortable movement between airport, town and highland stops with flexible Sabah timing.",
+  href: "#travel",
+  hrefLabel: "View Travel Services",
+  whatsapp: makeWhatsappLink(
+    "Hi AFFT, I want details for the Tiggo 8 Pro charter and private car service in Sabah."
+  ),
+  whatsappLabel: "Ask About Tiggo 8 Pro Charter",
+};
+
+const customerStories = [explorerCampRm599Story, tiggo8ProCharterStory] as const;
 
 export default function Home() {
   return (
@@ -385,59 +416,18 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12">
+        <section className="mt-12">
           <Title
-            small="Customer Story"
-            big="A recent Explorer Camp stay showed how the RM599 setup feels beyond the poster."
+            small="Customer Stories"
+            big="More real AFFT stories help guests trust what they are booking."
           />
 
-          <div className="grid gap-8 xl:grid-cols-[0.72fr_1.28fr] xl:items-center">
-            <div className="mx-auto w-full max-w-[42rem] overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 xl:max-w-[36rem]">
-              <img
-                src={explorerCampRm599Story.image}
-                alt="Real Explorer Camp setup from a recent AFFT RM599 camping stay"
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10">
-              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-                Real Camping Story
-              </p>
-              <h3 className="mt-4 text-3xl font-bold md:text-4xl">
-                A better fit for couples, friends and first-time campers who want comfort without building everything themselves.
-              </h3>
-              <p className="mt-5 text-white/72">
-                This recent Explorer Camp booking shows the real side of the
-                RM599 package: a ready-made shelter, tent, table setup and a
-                slower 2D1N Sabah outdoor rhythm.
-              </p>
-              <p className="mt-4 text-white/60">
-                Guests get a more complete AFFT base before adding transport,
-                extra gear or a bigger route plan. That is why Explorer Camp
-                works well for people who want a simple but comfortable first
-                stay outdoors.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={explorerCampRm599Story.href}
-                  className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
-                >
-                  View Explorer Camp
-                </a>
-                <a
-                  href={explorerCampRm599Story.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
-                >
-                  Ask About RM599 Explorer Camp
-                </a>
-              </div>
-            </div>
+          <div className="grid gap-8 xl:grid-cols-2">
+            {customerStories.map((story) => (
+              <CustomerStoryCard key={story.title} story={story} />
+            ))}
           </div>
-        </div>
+        </section>
 
         <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#182015] p-8 md:flex md:items-center md:justify-between md:gap-8">
           <div>
@@ -632,6 +622,59 @@ function AboutCard({ title, text }: { title: string; text: string }) {
         {title}
       </p>
       <p className="mt-4 text-lg leading-8 text-white/72">{text}</p>
+    </article>
+  );
+}
+
+function CustomerStoryCard({
+  story,
+}: {
+  story: {
+    image: string;
+    imageAlt: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    detail: string;
+    href: string;
+    hrefLabel: string;
+    whatsapp: string;
+    whatsappLabel: string;
+  };
+}) {
+  return (
+    <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+      <img
+        src={story.image}
+        alt={story.imageAlt}
+        className="h-[22rem] w-full object-cover"
+      />
+
+      <div className="p-8 md:p-10">
+        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+          {story.eyebrow}
+        </p>
+        <h3 className="mt-4 text-3xl font-bold md:text-4xl">{story.title}</h3>
+        <p className="mt-5 text-white/72">{story.description}</p>
+        <p className="mt-4 text-white/60">{story.detail}</p>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href={story.href}
+            className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
+          >
+            {story.hrefLabel}
+          </a>
+          <a
+            href={story.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+          >
+            {story.whatsappLabel}
+          </a>
+        </div>
+      </div>
     </article>
   );
 }
