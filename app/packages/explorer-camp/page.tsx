@@ -3,17 +3,6 @@ import { RentItBackLink } from "@/components/rent-it-shared";
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM599%20Explorer%20Camp%20Package.";
 
-const wendyStoryImages = {
-  group:
-    "/images/customer-stories/wendy-explorer-camp/wendy-explorer-camp-group-01-blur.webp",
-  arrival:
-    "/images/customer-stories/wendy-explorer-camp/wendy-explorer-camp-arrival-01.webp",
-  support:
-    "/images/customer-stories/wendy-explorer-camp/wendy-explorer-camp-support-01.webp",
-  road:
-    "/images/customer-stories/wendy-explorer-camp/wendy-explorer-camp-road-01.webp",
-};
-
 export default function ExplorerCampPackage() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -90,64 +79,6 @@ export default function ExplorerCampPackage() {
         </section>
 
         <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/20">
-              <img
-                src={wendyStoryImages.group}
-                alt="Wendy and her group during their Explorer Camp trip in Sabah"
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-bold">Wendy&apos;s Explorer Camp Story</h2>
-
-              <p className="mt-5 text-white/70">
-                Wendy&apos;s group chose Explorer Camp for a cooler Sabah outdoor
-                trip with less setup stress. The RM599 package gave them an
-                easier starting point, while AFFT handled the support around the
-                journey so the group could focus on the weather, scenery and the
-                shared outdoor mood.
-              </p>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <StoryPoint text="A simple group-friendly plan for friends who want comfort without overcomplicating the trip." />
-                <StoryPoint text="Cool-weather mountain arrival before moving into the outdoor part of the experience." />
-                <StoryPoint text="AFFT vehicle support and easier coordination for a small-group Sabah weekend." />
-                <StoryPoint text="A good fit for guests who want a ready-made package instead of planning every detail alone." />
-              </div>
-
-              <a
-                href={whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-block rounded-full border border-white/15 px-6 py-3 font-bold text-white"
-              >
-                Ask About A Similar Group Trip
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <StoryPhotoCard
-              image={wendyStoryImages.arrival}
-              alt="Misty mountain arrival during Wendy's Explorer Camp trip"
-              caption="Cooler mountain weather before the outdoor stay."
-            />
-            <StoryPhotoCard
-              image={wendyStoryImages.support}
-              alt="AFFT vehicle support during Wendy's Explorer Camp trip"
-              caption="Real AFFT trip support around the group journey."
-            />
-            <StoryPhotoCard
-              image={wendyStoryImages.road}
-              alt="Road support detail from Wendy's Explorer Camp trip"
-              caption="A simple, practical setup for small-group movement in Sabah."
-            />
-          </div>
-        </section>
-
-        <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
           <h2 className="text-3xl font-bold">FAQ</h2>
 
           <div className="mt-8 grid gap-4">
@@ -211,31 +142,6 @@ function Item({ text }: { text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
       {text}
-    </div>
-  );
-}
-
-function StoryPoint({ text }: { text: string }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
-      {text}
-    </div>
-  );
-}
-
-function StoryPhotoCard({
-  image,
-  alt,
-  caption,
-}: {
-  image: string;
-  alt: string;
-  caption: string;
-}) {
-  return (
-    <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5">
-      <img src={image} alt={alt} className="h-64 w-full object-cover" />
-      <p className="p-4 text-sm text-white/70">{caption}</p>
     </div>
   );
 }

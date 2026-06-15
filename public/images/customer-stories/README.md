@@ -3,10 +3,10 @@ Customer story photos live here.
 Folder structure
 - `_incoming/`
   Use this for new photos that have not been sorted yet.
-- `wendy-explorer-camp/`
-  Use this for Wendy's real Explorer Camp photos.
+- `tiggo-8-pro-charter/`
+  Public-safe story folder for the Tiggo 8 Pro charter case.
 - Add more folders with the same pattern:
-  `<guest-name>-<story-slug>/`
+  `<story-slug>/`
 
 Naming rules
 - Use lowercase only.
@@ -14,27 +14,30 @@ Naming rules
 - Do not use spaces.
 - Do not use Chinese characters in filenames.
 - Do not use brackets, commas or apostrophes.
+- Do not use real guest names in public folder names or filenames.
 - Do not use double extensions like `.jpg.jpg`.
 - Do not use `.heic` for final website images.
 - Keep one customer story in one folder.
 - Final website images should become `.webp` when ready.
 - Temporary uploads can be `.jpg`, `.jpeg` or `.png`.
+- Public images with visible faces should use an anonymized version.
 
 Recommended filename pattern
-- `<guest-name>-<story-slug>-cover.jpg`
-- `<guest-name>-<story-slug>-01.jpg`
-- `<guest-name>-<story-slug>-02.jpg`
-- `<guest-name>-<story-slug>-03.jpg`
-- `<guest-name>-<story-slug>-detail-01.jpg`
-- `<guest-name>-<story-slug>-group-01.jpg`
-- `<guest-name>-<story-slug>-night-01.jpg`
+- `<story-slug>-cover.jpg`
+- `<story-slug>-01.jpg`
+- `<story-slug>-02.jpg`
+- `<story-slug>-03.jpg`
+- `<story-slug>-detail-01.jpg`
+- `<story-slug>-group-01.jpg`
+- `<story-slug>-night-01.jpg`
+- `<story-slug>-group-01-blur.webp`
 
 Examples
-- `wendy-explorer-camp-cover.jpg`
-- `wendy-explorer-camp-01.jpg`
-- `wendy-explorer-camp-02.jpg`
-- `wendy-explorer-camp-group-01.jpg`
-- `wendy-explorer-camp-detail-01.jpg`
+- `tiggo-8-pro-charter-cover.jpg`
+- `tiggo-8-pro-charter-01.jpg`
+- `tiggo-8-pro-charter-02.jpg`
+- `tiggo-8-pro-charter-group-01.jpg`
+- `tiggo-8-pro-charter-group-01-blur.webp`
 
 Selection guide
 - `cover`
