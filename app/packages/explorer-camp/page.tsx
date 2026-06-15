@@ -3,6 +3,19 @@ import { RentItBackLink } from "@/components/rent-it-shared";
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM599%20Explorer%20Camp%20Package.";
 
+const storyImages = {
+  group:
+    "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-group-01-blur.webp",
+  setup:
+    "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+  detail:
+    "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-detail-01.webp",
+  morning:
+    "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-cover.webp",
+  night:
+    "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-night-01.webp",
+};
+
 export default function ExplorerCampPackage() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -79,6 +92,72 @@ export default function ExplorerCampPackage() {
         </section>
 
         <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
+          <div className="grid gap-10 xl:grid-cols-[1.02fr_0.98fr] xl:items-center">
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/20">
+              <img
+                src={storyImages.group}
+                alt="Real Explorer Camp setup during a recent AFFT RM599 camping stay"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                Real Customer Story
+              </p>
+              <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+                How a recent RM599 Explorer Camp stay looked on the ground.
+              </h2>
+
+              <p className="mt-5 text-white/70">
+                These photos show Explorer Camp in real use, not only as a
+                poster. The setup gave guests a ready-made shelter, table area
+                and a more relaxed 2D1N Sabah outdoor stay.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <StoryPoint text="Ready-made shelter, sleeping area and table setup before guests settled in." />
+                <StoryPoint text="A calmer first-camp pace for guests who want comfort without overcomplicating the trip." />
+                <StoryPoint text="Practical tent layout with enough shade, gear space and slower daytime use." />
+                <StoryPoint text="Night camp atmosphere that makes the stay feel complete after sunset." />
+              </div>
+
+              <a
+                href={whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-block rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+              >
+                Ask About This Setup
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <StoryPhotoCard
+              image={storyImages.setup}
+              alt="Full Explorer Camp tent setup in daylight"
+              caption="Full real-life setup from a recent Explorer Camp booking."
+            />
+            <StoryPhotoCard
+              image={storyImages.detail}
+              alt="Explorer Camp tent entrance and covered gear layout"
+              caption="A practical covered area for slower outdoor time and easier movement."
+            />
+            <StoryPhotoCard
+              image={storyImages.morning}
+              alt="Morning light inside the Explorer Camp tent"
+              caption="Wake up inside the tent instead of rushing through setup from zero."
+            />
+            <StoryPhotoCard
+              image={storyImages.night}
+              alt="Night fire during a recent Explorer Camp stay"
+              caption="Night camp mood that turns the 2D1N stay into more than just gear."
+            />
+          </div>
+        </section>
+
+        <section className="mt-16 rounded-[2rem] bg-[#182015] p-8 md:p-10">
           <h2 className="text-3xl font-bold">FAQ</h2>
 
           <div className="mt-8 grid gap-4">
@@ -142,6 +221,31 @@ function Item({ text }: { text: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
       {text}
+    </div>
+  );
+}
+
+function StoryPoint({ text }: { text: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-white/70">
+      {text}
+    </div>
+  );
+}
+
+function StoryPhotoCard({
+  image,
+  alt,
+  caption,
+}: {
+  image: string;
+  alt: string;
+  caption: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5">
+      <img src={image} alt={alt} className="h-72 w-full object-cover" />
+      <p className="p-4 text-sm text-white/70">{caption}</p>
     </div>
   );
 }
