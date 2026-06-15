@@ -110,6 +110,15 @@ const sabahTripWhatsapp = makeWhatsappLink(
   "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
 );
 
+const wendyExplorerCampStory = {
+  image:
+    "/images/customer-stories/wendy-explorer-camp/wendy-explorer-camp-group-01-blur.webp",
+  href: "/packages/explorer-camp",
+  whatsapp: makeWhatsappLink(
+    "Hi AFFT, I want details for the Explorer Camp package like Wendy's group trip."
+  ),
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -211,6 +220,60 @@ export default function Home() {
           {campingPackages.map((pkg) => (
             <CampingPackageCard key={pkg.href} {...pkg} />
           ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-16">
+        <Title
+          small="Customer Story"
+          big="Wendy's group used Explorer Camp for a simpler Sabah outdoor weekend."
+        />
+
+        <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+            <img
+              src={wendyExplorerCampStory.image}
+              alt="Wendy and her group during their Explorer Camp trip"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10">
+            <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+              Real Group Experience
+            </p>
+            <h3 className="mt-4 text-3xl font-bold md:text-4xl">
+              A better fit for friends who want comfort without overplanning.
+            </h3>
+            <p className="mt-5 text-white/72">
+              Wendy&apos;s group chose Explorer Camp for a cooler mountain trip
+              with less setup stress. The package made it easier to enjoy the
+              group moment, while AFFT supported the journey around the outdoor
+              experience.
+            </p>
+            <p className="mt-4 text-white/60">
+              This is the kind of trip Explorer Camp suits well: small groups,
+              first-time campers and guests who want a more ready-made Sabah
+              outdoor plan.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={wendyExplorerCampStory.href}
+                className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
+              >
+                View Explorer Camp
+              </a>
+              <a
+                href={wendyExplorerCampStory.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+              >
+                Ask About A Similar Trip
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
