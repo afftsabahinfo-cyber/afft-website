@@ -3,6 +3,8 @@ Customer story photos live here.
 Folder structure
 - `_incoming/`
   Use this for new photos that have not been sorted yet.
+- `explorer-camp-rm599/`
+  Drop the RM599 Explorer Camp customer story photos here.
 - `tiggo-8-pro-charter/`
   Public-safe story folder for the Tiggo 8 Pro charter case.
 - Add more folders with the same pattern:
@@ -33,6 +35,11 @@ Recommended filename pattern
 - `<story-slug>-group-01-blur.webp`
 
 Examples
+- `explorer-camp-rm599-cover.jpg`
+- `explorer-camp-rm599-01.jpg`
+- `explorer-camp-rm599-02.jpg`
+- `explorer-camp-rm599-03.jpg`
+- `explorer-camp-rm599-detail-01.jpg`
 - `tiggo-8-pro-charter-cover.jpg`
 - `tiggo-8-pro-charter-01.jpg`
 - `tiggo-8-pro-charter-02.jpg`
