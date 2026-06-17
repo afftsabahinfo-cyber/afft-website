@@ -47,7 +47,7 @@ const socialLinks = [
     platform: "instagram",
     icon: "/images/social/instagram.svg",
     title: "Instagram",
-    href: "https://www.instagram.com/rentalcar.kk.afftservice?igsh=NG5laGxzMHJ3eWEy",
+    href: "https://www.instagram.com/afft.club.kk.car.service?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     text: "Photos from camping, private tours and Sabah scenery.",
   },
   {
