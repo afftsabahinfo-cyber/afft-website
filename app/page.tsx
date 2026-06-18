@@ -54,7 +54,7 @@ const socialLinks = [
     platform: "facebook",
     icon: "/images/social/facebook.svg",
     title: "Facebook",
-    href: "https://www.facebook.com/share/1KkSZKDoSM/",
+    href: "https://www.facebook.com/share/17tRoTFe1x/",
     text: "General updates, contact points and broader AFFT activity.",
   },
 ];

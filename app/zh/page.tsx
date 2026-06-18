@@ -54,7 +54,7 @@ const socialLinks = [
     platform: "facebook",
     icon: "/images/social/facebook.svg",
     title: "Facebook",
-    href: "https://www.facebook.com/share/1KkSZKDoSM/",
+    href: "https://www.facebook.com/share/17tRoTFe1x/",
     text: "看 AFFT 的一般更新、联系方式和活动内容。",
   },
 ];
