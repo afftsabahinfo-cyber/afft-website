@@ -82,7 +82,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "24", label: "gear items and bundle options" },
+  { value: "25", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -102,8 +102,8 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "camp-lifestyle-series",
     title: "Camp Lifestyle Series",
     route: "/rent-it/camp-lifestyle-series",
-    hook: "Coffee / Snow Peak / KZM",
-    bestFor: "Coffee corners, light cooking, slow mornings and campsite mood.",
+    hook: "Coffee / Heater / Snow Peak",
+    bestFor: "Coffee corners, compact warmth, light cooking and slower campsite mood.",
     startingFrom: "From RM19 / day",
     image: "/images/rent-it-camp-lifestyle-series-cover.webp",
     imageAlt: "AFFT Camp Lifestyle Series cover",
@@ -190,6 +190,13 @@ export const creatorSeriesItems: CatalogItem[] = [
 ];
 
 export const campLifestyleItems: CatalogItem[] = [
+  {
+    title: "Mobi Garden Grandburn Heater",
+    day1: "RM39",
+    day2: "RM69",
+    day3: "RM89",
+    bestFor: "Cooler nights, warm drinks and slower campsite comfort.",
+  },
   {
     title: "Bialetti Coffee Set",
     day1: "RM39",
@@ -300,10 +307,9 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A modular statement tent system for family gatherings, group camp weekends and event-style outdoor setups.",
     bestFor: ["Group Camp", "Family Gathering", "Event Camp"],
-    image: "/images/blackdog-modular-tent-system.webp",
   },
   {
-    title: "Black Dog XingSu 5.9",
+    title: "Black Dog 星宿 5.9",
     capacity: "1-2 adults or 2 adults + child",
     route: "/rent-it/tent-experience-series",
     day1: "RM159",
@@ -315,7 +321,7 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     image: "/images/blackdog-xingsu59.webp",
   },
   {
-    title: "Mobi Garden Commander 245",
+    title: "Mobi Garden 指挥官245",
     capacity: "2-4 pax",
     route: "/rent-it/tent-experience-series",
     day1: "RM399",
@@ -324,7 +330,6 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
     bestFor: ["Family Camp", "Entry Level"],
-    image: "/images/mobi-garden-commander-245.webp",
   },
 ];
 
@@ -333,41 +338,42 @@ export const featuredPicks: FeaturedPick[] = [
     title: "DJI Pocket 4 Creator Combo",
     route: "/rent-it/creator-series",
     price: "From RM99 / day",
-    description:
-      "Travel-ready storytelling for smooth motion, beach reels and quick Sabah vlogs.",
+    description: "Travel-ready storytelling for smooth motion, beach reels and quick Sabah vlogs.",
     image: "/images/dji-pocket4-creator-combo.webp",
   },
   {
     title: "DJI Avata 360 Fly More Combo",
     route: "/rent-it/creator-series",
     price: "From RM199 / day",
-    description:
-      "Immersive FPV shots for mountain roads, coastlines and dramatic travel edits.",
+    description: "Immersive FPV shots for mountain roads, coastlines and dramatic travel edits.",
     image: "/images/dji-avata-360.webp",
+  },
+  {
+    title: "Mobi Garden Grandburn Heater",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM39 / day",
+    description: "Compact camp warmth for cooler nights, hot drinks and a more memorable campsite mood.",
+    image: "/images/mobi-garden-grandburn-heater.webp",
   },
   {
     title: "Helinox Solo Full Set",
     route: "/rent-it/premium-camp-series",
     price: "From RM199 / day",
-    description:
-      "A premium solo sleep-and-chill setup built for comfort, style and lighter packing.",
+    description: "A premium solo sleep-and-chill setup built for comfort, style and lighter packing.",
     image: "/images/helinox-chair.webp",
   },
   {
-    title: "Black Dog XingSu 5.9",
+    title: "Black Dog 星宿 5.9",
     route: "/rent-it/tent-experience-series",
     price: "From RM159 / day",
-    description:
-      "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
+    description: "A couple glamping tent with real atmosphere for Sabah luxury camp stays.",
     image: "/images/blackdog-xingsu59.webp",
   },
   {
     title: "Black Dog Modular Tent System",
     route: "/rent-it/tent-experience-series",
     price: "From RM499 / day",
-    description:
-      "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
-    image: "/images/blackdog-modular-tent-system.webp",
+    description: "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
   },
 ];
 
@@ -375,20 +381,17 @@ export const helinoxTiers: HelinoxTier[] = [
   {
     title: "Helinox Solo Base Set",
     price: "RM79 / day",
-    includes:
-      "Chair, hard top table, cup holder and stool for a lighter chill setup.",
+    includes: "Chair, hard top table, cup holder and stool for a lighter chill setup.",
   },
   {
     title: "Helinox Solo Sleep Set",
     price: "RM149 / day",
-    includes:
-      "Tac cot convertible, cot legs and solo inner tent for sleep-focused bookings.",
+    includes: "Tac cot convertible, cot legs and solo inner tent for sleep-focused bookings.",
   },
   {
     title: "Helinox Tactical Solo Full Set",
     price: "RM199 / day",
-    includes:
-      "The full flagship sleep-and-chill package with stronger premium lifestyle appeal.",
+    includes: "The full flagship sleep-and-chill package with stronger premium lifestyle appeal.",
   },
 ];
 
@@ -429,14 +432,15 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay.",
-    featuredTitle: "Snow Peak Flat Burner",
-    featuredPrice: "From RM49 / day",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking and compact warmth.",
+    featuredTitle: "Mobi Garden Grandburn Heater",
+    featuredPrice: "From RM39 / day",
     featuredText:
-      "A strong lifestyle anchor for cleaner cooking moments, better visuals and more premium campsite use.",
-    heroImage: "/images/rent-it-camp-lifestyle-series-cover.webp",
-    heroImageAlt: "AFFT Camp Lifestyle Series hero cover",
-    bestFor: "Coffee rituals, simple meals, lifestyle glamping and visual campsite mood.",
+      "A compact lifestyle heater for cooler Sabah nights, warm drinks and slower campsite moments without carrying a bulky setup.",
+    featuredImage: "/images/mobi-garden-grandburn-heater.webp",
+    heroImage: "/images/mobi-garden-grandburn-heater.webp",
+    heroImageAlt: "Mobi Garden Grandburn Heater in a campsite setup",
+    bestFor: "Coffee rituals, compact heating, simple meals, lifestyle glamping and visual campsite mood.",
     priceRange: "RM19 to RM119 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },
@@ -465,7 +469,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredPrice: "From RM499 / day",
     featuredText:
       "The standout large-format tent option for group camp, gatherings and event-style outdoor plans.",
-    featuredImage: "/images/blackdog-modular-tent-system.webp",
+    featuredImage: "/images/blackdog-xingsu59.webp",
     heroImage: "/images/rent-it-tent-experience-series-cover.webp",
     heroImageAlt: "AFFT Tent Experience Series hero cover",
     bestFor: "Couple glamping, family camp, group camp and event-style stays.",

@@ -62,13 +62,13 @@ export default function CampLifestyleSeriesPage() {
 
               <div className="mt-8 grid gap-3">
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Coffee rituals that make the campsite feel more intentional.
+                  Compact warmth for cooler nights and slower morning camp time.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Cooking pieces that add more premium visual identity.
+                  Coffee and cooking pieces that make the setup feel more complete.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Lighting and tools that improve comfort without overbuilding the setup.
+                  Lifestyle upgrades that improve comfort without overbuilding the setup.
                 </div>
               </div>
             </div>
@@ -99,12 +99,12 @@ export default function CampLifestyleSeriesPage() {
 
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <RentItInfoCard
-            title="Coffee First"
-            text="Bialetti and the Outdoor Coffee Set are good entry points for guests who want a slower camp mood."
+            title="Warmth First"
+            text="Grandburn Heater is a strong first add-on for guests who expect colder air, warm drinks or more night comfort."
           />
           <RentItInfoCard
-            title="Cooking Upgrade"
-            text="The Flat Burner and Setsuen Pot help the campsite feel cleaner, more premium and easier to share."
+            title="Coffee & Meals"
+            text="The Flat Burner, Setsuen Pot and Bialetti set build around the heater for a more complete lifestyle setup."
           />
           <RentItInfoCard
             title="Best Pairing"

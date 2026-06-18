@@ -298,7 +298,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
           {featuredPicks.map((pick) => (
             <RentItFeaturedCard key={pick.title} pick={pick} />
           ))}
