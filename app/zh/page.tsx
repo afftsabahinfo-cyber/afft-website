@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AfftBrand } from "@/components/AfftBrand";
+import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
@@ -109,6 +109,42 @@ const campingPackages = [
 const sabahTripWhatsapp = makeWhatsappLink(
   "你好，我想规划沙巴行程，想了解露营套餐、私人行程、包车或 Rent It 装备租借。"
 );
+
+const travelServices = [
+  {
+    eyebrow: "机场",
+    title: "机场接送",
+    image: "/images/airport-transfer-cover.webp",
+    imageAlt: "AFFT 机场接送 cover，Tiggo 车辆与车厢重点",
+    text: "适合抵达沙巴后，更顺地衔接酒店、露营地或下一段行程。",
+    whatsappText: "你好，我想了解 AFFT 的机场接送服务。",
+  },
+  {
+    eyebrow: "高地",
+    title: "昆达山私人行程",
+    image: "/images/kundasang-private-tour-cover.webp",
+    imageAlt: "AFFT 昆达山私人行程 cover，神山、高地风景和羊驼体验",
+    text: "适合想看神山、凉爽高地和乡村路线的旅客。",
+    whatsappText: "你好，我想了解 AFFT 的昆达山私人行程。",
+  },
+  {
+    eyebrow: "山打根",
+    title: "山打根私人行程",
+    image: "/images/sandakan-private-tour-cover.webp",
+    imageAlt: "AFFT 山打根私人行程 cover，市区、海景、野生动物和文化建筑",
+    text: "适合山打根市区、海景、文化建筑和野生动物路线。",
+    whatsappText: "你好，我想了解 AFFT 的山打根私人行程。",
+  },
+  {
+    eyebrow: "包车",
+    title: "Tiggo 8 Pro / Alphard 包车",
+    image: "/images/tiggo-alphard-charter-cover.webp",
+    imageAlt: "AFFT Tiggo 与 Alphard 私人包车 cover",
+    text: "适合家庭、小团队、机场接送和想要更舒适移动体验的访客。",
+    whatsappText:
+      "你好，我想了解 AFFT 的 Tiggo 8 Pro、Alphard 包车或 VIP 出行服务。",
+  },
+] as const;
 
 const rentItSeries: Array<
   MainSeries & { hook: string; bestFor: string; buttonLabel: string; message: string }
@@ -367,26 +403,9 @@ export default function ChineseHomePage() {
           big="从机场到露营地，AFFT 可以先把你的沙巴移动安排得更顺。"
         />
         <div className="grid gap-6 md:grid-cols-4">
-          <Card
-            title="机场接送"
-            text="适合抵达沙巴后，想更顺地衔接酒店、露营地或下一段行程。"
-            whatsappText="你好，我想了解 AFFT 的机场接送服务。"
-          />
-          <Card
-            title="昆达山私人行程"
-            text="适合想看神山、凉爽高地和乡村路线的旅客。"
-            whatsappText="你好，我想了解 AFFT 的昆达山私人行程。"
-          />
-          <Card
-            title="仙本那海岛安排"
-            text="适合想把沙巴高地和海岛体验排进同一趟旅程的人。"
-            whatsappText="你好，我想了解 AFFT 的仙本那相关安排。"
-          />
-          <Card
-            title="Tiggo 8 Pro / Alphard 包车"
-            text="适合家庭、小团队和想要更舒适移动体验的访客。"
-            whatsappText="你好，我想了解 AFFT 的 Tiggo 8 Pro、Alphard 包车或 VIP 出行服务。"
-          />
+          {travelServices.map((service) => (
+            <TravelServiceCard key={service.title} service={service} />
+          ))}
         </div>
       </section>
 
@@ -560,26 +579,41 @@ function Title({ small, big }: { small: string; big: string }) {
   );
 }
 
-function Card({
-  title,
-  text,
-  whatsappText,
+function TravelServiceCard({
+  service,
 }: {
-  title: string;
-  text: string;
-  whatsappText: string;
+  service: (typeof travelServices)[number];
 }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/40">
-      <h3 className="text-2xl font-bold">{title}</h3>
-      <p className="mt-4 text-white/70">{text}</p>
-      <a
-        href={makeWhatsappLink(whatsappText)}
-        className="mt-6 inline-block font-bold text-[#F3922B]"
-      >
-        联系 AFFT &rarr;
-      </a>
-    </div>
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40">
+      <div className="relative h-48 overflow-hidden bg-[#10140F]">
+        <img
+          src={service.image}
+          alt={service.imageAlt}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10140F]/95 via-[#10140F]/30 to-black/10" />
+        <div className="absolute left-4 top-4 rounded-full border border-[#F3922B]/35 bg-[#10140F]/80 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#F3922B]">
+          {service.eyebrow}
+        </div>
+        <AfftLogoMark
+          decorative
+          className="pointer-events-none absolute right-4 top-4 h-12 w-12 opacity-85 drop-shadow-[0_8px_18px_rgba(0,0,0,0.35)]"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-2xl font-bold">{service.title}</h3>
+        <p className="mt-4 flex-1 text-white/70">{service.text}</p>
+        <a
+          href={makeWhatsappLink(service.whatsappText)}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 inline-block font-bold text-[#F3922B]"
+        >
+          联系 AFFT &rarr;
+        </a>
+      </div>
+    </article>
   );
 }
 
