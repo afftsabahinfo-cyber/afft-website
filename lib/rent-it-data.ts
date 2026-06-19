@@ -307,6 +307,7 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A modular statement tent system for family gatherings, group camp weekends and event-style outdoor setups.",
     bestFor: ["Group Camp", "Family Gathering", "Event Camp"],
+    image: "/images/blackdog-modular-tent-system.webp",
   },
   {
     title: "Black Dog 星宿 5.9",
@@ -330,6 +331,7 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     description:
       "A more accessible family camp tent for guests who want comfort without stepping into a huge tent system.",
     bestFor: ["Family Camp", "Entry Level"],
+    image: "/images/mobi-garden-commander-245.webp",
   },
 ];
 
@@ -374,6 +376,7 @@ export const featuredPicks: FeaturedPick[] = [
     route: "/rent-it/tent-experience-series",
     price: "From RM499 / day",
     description: "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
+    image: "/images/blackdog-modular-tent-system.webp",
   },
 ];
 
@@ -469,7 +472,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredPrice: "From RM499 / day",
     featuredText:
       "The standout large-format tent option for group camp, gatherings and event-style outdoor plans.",
-    featuredImage: "/images/blackdog-xingsu59.webp",
+    featuredImage: "/images/blackdog-modular-tent-system.webp",
     heroImage: "/images/rent-it-tent-experience-series-cover.webp",
     heroImageAlt: "AFFT Tent Experience Series hero cover",
     bestFor: "Couple glamping, family camp, group camp and event-style stays.",
