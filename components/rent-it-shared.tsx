@@ -134,7 +134,7 @@ export function RentItTentGrid({
               <img
                 src={tent.image}
                 alt={displayTitle}
-                className="h-56 w-full object-cover bg-white"
+                className="h-56 w-full bg-white object-contain p-2"
               />
             ) : null}
 

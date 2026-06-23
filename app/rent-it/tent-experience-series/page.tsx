@@ -47,7 +47,7 @@ export default function TentExperienceSeriesPage() {
               <img
                 src={summary.heroImage ?? summary.featuredImage}
                 alt={summary.heroImageAlt ?? summary.featuredTitle}
-                className="h-[320px] w-full object-cover bg-white md:h-[360px]"
+                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
               />
             ) : (
               <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#10140F_65%,#182015)] md:min-h-[360px]" />

@@ -80,7 +80,7 @@ export default function RentItLandingPage() {
                 <img
                   src={series.image}
                   alt={series.imageAlt}
-                  className="h-44 w-full object-cover"
+                  className="h-44 w-full bg-white object-contain p-2"
                 />
                 <div className="p-6">
                   <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
@@ -128,7 +128,7 @@ export default function RentItLandingPage() {
                     <img
                       src={pick.image}
                       alt={displayTitle}
-                      className="h-52 w-full object-cover bg-white"
+                      className="h-52 w-full bg-white object-contain p-2"
                     />
                   ) : (
                     <div className="flex h-52 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">

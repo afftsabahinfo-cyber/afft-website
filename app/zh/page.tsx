@@ -647,7 +647,7 @@ function CampingPackageCard({
         <img
           src={image}
           alt={imageAlt}
-          className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          className="h-56 w-full bg-white object-contain p-2 transition duration-500"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10140F]/85 via-[#10140F]/15 to-transparent" />
         <img
@@ -810,7 +810,7 @@ function RentItSeriesCard({
       <img
         src={series.image}
         alt={series.imageAlt}
-        className="h-52 w-full object-cover"
+        className="h-52 w-full bg-white object-contain p-2"
       />
       <div className="p-6">
         <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
@@ -839,7 +839,7 @@ function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
         <img
           src={pick.image}
           alt={displayTitle}
-          className="h-56 w-full object-cover bg-white"
+          className="h-56 w-full bg-white object-contain p-2"
         />
       ) : (
         <div className="flex h-56 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">

@@ -47,7 +47,7 @@ export default function CampLifestyleSeriesPage() {
               <img
                 src={summary.heroImage}
                 alt={summary.heroImageAlt ?? summary.featuredTitle}
-                className="h-[320px] w-full object-cover md:h-[360px]"
+                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
               />
             ) : (
               <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] md:min-h-[360px]" />
