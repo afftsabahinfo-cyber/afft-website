@@ -62,10 +62,10 @@ export default function CampLifestyleSeriesPage() {
 
               <div className="mt-8 grid gap-3">
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Compact warmth for cooler nights and slower morning camp time.
+                  Projector nights for glamping stays, family downtime and slower campsite entertainment.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Coffee and cooking pieces that make the setup feel more complete.
+                  Compact warmth, coffee and simple meals that make the setup feel more complete.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
                   Lifestyle upgrades that improve comfort without overbuilding the setup.
@@ -99,12 +99,12 @@ export default function CampLifestyleSeriesPage() {
 
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <RentItInfoCard
-            title="Warmth First"
-            text="Grandburn Heater is a strong first add-on for guests who expect colder air, warm drinks or more night comfort."
+            title="Movie Setup"
+            text="Yaber T2 Plus Projector is a stronger add-on for guests who want movie nights, family downtime or glamping entertainment."
           />
           <RentItInfoCard
-            title="Coffee & Meals"
-            text="The Flat Burner, Setsuen Pot and Bialetti set build around the heater for a more complete lifestyle setup."
+            title="Warmth & Coffee"
+            text="Grandburn Heater, Bialetti and the cooking pieces build around the projector for a more complete lifestyle setup."
           />
           <RentItInfoCard
             title="Best Pairing"

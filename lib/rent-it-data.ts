@@ -82,7 +82,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "25", label: "gear items and bundle options" },
+  { value: "26", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -102,8 +102,8 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "camp-lifestyle-series",
     title: "Camp Lifestyle Series",
     route: "/rent-it/camp-lifestyle-series",
-    hook: "Coffee / Heater / Snow Peak",
-    bestFor: "Coffee corners, compact warmth, light cooking and slower campsite mood.",
+    hook: "Coffee / Heater / Projector",
+    bestFor: "Coffee corners, projector nights, compact warmth and slower campsite mood.",
     startingFrom: "From RM19 / day",
     image: "/images/rent-it-camp-lifestyle-series-cover.webp",
     imageAlt: "AFFT Camp Lifestyle Series cover",
@@ -196,6 +196,13 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM69",
     day3: "RM89",
     bestFor: "Cooler nights, warm drinks and slower campsite comfort.",
+  },
+  {
+    title: "Yaber T2 Plus Projector",
+    day1: "RM99",
+    day2: "RM179",
+    day3: "RM249",
+    bestFor: "Movie nights, family chill time and visual glamping setups.",
   },
   {
     title: "Bialetti Coffee Set",
@@ -358,6 +365,13 @@ export const featuredPicks: FeaturedPick[] = [
     image: "/images/mobi-garden-grandburn-heater.webp",
   },
   {
+    title: "Yaber T2 Plus Projector",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM99 / day",
+    description: "Portable projector nights for glamping stays, family downtime and slower campsite entertainment.",
+    image: "/images/yaber-t2-plus-projector.webp",
+  },
+  {
     title: "Helinox Solo Full Set",
     route: "/rent-it/premium-camp-series",
     price: "From RM199 / day",
@@ -435,16 +449,16 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking and compact warmth.",
-    featuredTitle: "Mobi Garden Grandburn Heater",
-    featuredPrice: "From RM39 / day",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, projector nights and compact warmth.",
+    featuredTitle: "Yaber T2 Plus Projector",
+    featuredPrice: "From RM99 / day",
     featuredText:
-      "A compact lifestyle heater for cooler Sabah nights, warm drinks and slower campsite moments without carrying a bulky setup.",
-    featuredImage: "/images/mobi-garden-grandburn-heater.webp",
-    heroImage: "/images/mobi-garden-grandburn-heater.webp",
-    heroImageAlt: "Mobi Garden Grandburn Heater in a campsite setup",
-    bestFor: "Coffee rituals, compact heating, simple meals, lifestyle glamping and visual campsite mood.",
-    priceRange: "RM19 to RM119 across practical camp lifestyle pieces.",
+      "A simple projector add-on for movie nights, family downtime and slower glamping stays without carrying a full entertainment setup.",
+    featuredImage: "/images/yaber-t2-plus-projector.webp",
+    heroImage: "/images/yaber-t2-plus-projector.webp",
+    heroImageAlt: "Yaber T2 Plus Projector product image",
+    bestFor: "Coffee rituals, projector nights, compact heating, simple meals and visual campsite mood.",
+    priceRange: "RM19 to RM249 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },
   "premium-camp-series": {
