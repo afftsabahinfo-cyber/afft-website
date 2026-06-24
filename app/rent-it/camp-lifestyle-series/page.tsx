@@ -71,6 +71,9 @@ export default function CampLifestyleSeriesPage() {
                   Walkie talkies for long standby and far connection between guests.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Binoculars for nature view checking, bird seeking and campsite spotting.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
                   Compact warmth, coffee and simple meals that make the setup feel more complete.
                 </div>
               </div>
@@ -92,9 +95,9 @@ export default function CampLifestyleSeriesPage() {
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
             more styled campsite, with portable power for simple outdoor device
-            support and walkie talkies for group coordination. It works
-            especially well when paired with Premium Camp or Tent Experience
-            bookings.
+            support, walkie talkies for group coordination and binoculars for
+            nature viewing. It works especially well when paired with Premium
+            Camp or Tent Experience bookings.
           </p>
 
           <div className="mt-8">
@@ -102,7 +105,7 @@ export default function CampLifestyleSeriesPage() {
           </div>
         </section>
 
-        <section className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <section className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
           <RentItInfoCard
             title="Power Support"
             text="Anker Solix C300 DC Power Station is useful for charging phones, cameras, lights and small campsite devices."
@@ -110,6 +113,10 @@ export default function CampLifestyleSeriesPage() {
           <RentItInfoCard
             title="Group Communication"
             text="Xiao Mi Walkie Talkies help guests stay connected with long standby and far connection support."
+          />
+          <RentItInfoCard
+            title="Nature View"
+            text="Celestron Outland X is useful for nature view checking, bird seeking and quick outdoor spotting."
           />
           <RentItInfoCard
             title="Movie Setup"
