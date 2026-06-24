@@ -82,7 +82,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "27", label: "gear items and bundle options" },
+  { value: "28", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -102,8 +102,8 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "camp-lifestyle-series",
     title: "Camp Lifestyle Series",
     route: "/rent-it/camp-lifestyle-series",
-    hook: "Power / Projector / Heater",
-    bestFor: "Power support, projector nights, compact warmth and slower campsite mood.",
+    hook: "Power / Walkie Talkies / Projector",
+    bestFor: "Power support, group communication, projector nights and slower campsite mood.",
     startingFrom: "From RM19 / day",
     image: "/images/rent-it-camp-lifestyle-series-cover.webp",
     imageAlt: "AFFT Camp Lifestyle Series cover",
@@ -210,6 +210,13 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM109",
     day3: "RM149",
     bestFor: "Camera charging, light campsite power and outdoor device support.",
+  },
+  {
+    title: "Xiao Mi Walkie Talkies",
+    day1: "RM29",
+    day2: "RM49",
+    day3: "RM69",
+    bestFor: "Long standby, far connection and group campsite communication.",
   },
   {
     title: "Bialetti Coffee Set",
@@ -386,6 +393,13 @@ export const featuredPicks: FeaturedPick[] = [
     image: "/images/anker-solix-c300-dc-power-station.webp",
   },
   {
+    title: "Xiao Mi Walkie Talkies",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM29 / day",
+    description: "Long standby and far connection support for group camps, convoys and campsite coordination.",
+    image: "/images/xiao-mi-walkie-talkies.webp",
+  },
+  {
     title: "Helinox Solo Full Set",
     route: "/rent-it/premium-camp-series",
     price: "From RM199 / day",
@@ -463,7 +477,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, power support, projector nights and compact warmth.",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, power support, walkie talkies, projector nights and compact warmth.",
     featuredTitle: "Yaber T2 Plus Projector",
     featuredPrice: "From RM99 / day",
     featuredText:
@@ -471,7 +485,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/yaber-t2-plus-projector.webp",
     heroImage: "/images/yaber-t2-plus-projector.webp",
     heroImageAlt: "Yaber T2 Plus Projector product image",
-    bestFor: "Coffee rituals, power support, projector nights, compact heating, simple meals and visual campsite mood.",
+    bestFor: "Coffee rituals, power support, walkie talkies, projector nights, compact heating, simple meals and visual campsite mood.",
     priceRange: "RM19 to RM249 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },
