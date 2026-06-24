@@ -65,10 +65,10 @@ export default function CampLifestyleSeriesPage() {
                   Projector nights for glamping stays, family downtime and slower campsite entertainment.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Compact warmth, coffee and simple meals that make the setup feel more complete.
+                  Power support for phones, cameras, lights and small outdoor devices.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Lifestyle upgrades that improve comfort without overbuilding the setup.
+                  Compact warmth, coffee and simple meals that make the setup feel more complete.
                 </div>
               </div>
             </div>
@@ -88,8 +88,9 @@ export default function CampLifestyleSeriesPage() {
           <h2 className="text-3xl font-bold">Camp Lifestyle Price Guide</h2>
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
-            more styled campsite. It works especially well when paired with
-            Premium Camp or Tent Experience bookings.
+            more styled campsite, with portable power for simple outdoor device
+            support. It works especially well when paired with Premium Camp or
+            Tent Experience bookings.
           </p>
 
           <div className="mt-8">
@@ -99,16 +100,16 @@ export default function CampLifestyleSeriesPage() {
 
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <RentItInfoCard
+            title="Power Support"
+            text="Anker Solix C300 DC Power Station is useful for charging phones, cameras, lights and small campsite devices."
+          />
+          <RentItInfoCard
             title="Movie Setup"
             text="Yaber T2 Plus Projector is a stronger add-on for guests who want movie nights, family downtime or glamping entertainment."
           />
           <RentItInfoCard
             title="Warmth & Coffee"
             text="Grandburn Heater, Bialetti and the cooking pieces build around the projector for a more complete lifestyle setup."
-          />
-          <RentItInfoCard
-            title="Best Pairing"
-            text="This series pairs naturally with Premium Camp furniture or Tent Experience bookings."
           />
         </section>
 
