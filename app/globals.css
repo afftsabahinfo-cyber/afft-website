@@ -18,6 +18,29 @@ body {
   color: #1F1B16;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: url("/images/cursors/afft-lantern-cursor.svg") 16 9, auto;
+  }
+
+  a,
+  button,
+  summary,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: url("/images/cursors/afft-lantern-cursor-glow.svg") 16 9, pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+}
+
 ::selection {
   background: #F28C28;
   color: white;
