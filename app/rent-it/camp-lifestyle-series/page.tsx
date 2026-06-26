@@ -68,7 +68,7 @@ export default function CampLifestyleSeriesPage() {
                   Power support for phones, cameras, lights and small outdoor devices.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Adventure light for campsite glow, night movement and premium outdoor mood.
+                  Adventure lights for campsite glow, night movement and premium outdoor mood.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
                   Walkie talkies for long standby and far connection between guests.
@@ -98,7 +98,7 @@ export default function CampLifestyleSeriesPage() {
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
             more styled campsite, with portable power for simple outdoor device
-            support, adventure lighting for night mood, walkie talkies for
+            support, premium adventure lighting for night mood, walkie talkies for
             group coordination and binoculars for nature viewing. It works
             especially well when paired with Premium Camp or Tent Experience
             bookings.
@@ -116,7 +116,7 @@ export default function CampLifestyleSeriesPage() {
           />
           <RentItInfoCard
             title="Adventure Lighting"
-            text="Outask TD-2 Adventure Light gives a stronger campsite glow for night movement, setup photos and premium outdoor mood."
+            text="Outask TD-2 and Finel N7 give stronger campsite glow for night movement, setup photos and premium outdoor mood."
           />
           <RentItInfoCard
             title="Group Communication"
