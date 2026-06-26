@@ -8,6 +8,7 @@ import {
   rentItMainSeries,
   whatsapp,
 } from "@/lib/rent-it-data";
+import { travelServices, type TravelService } from "@/lib/travel-services";
 
 export const metadata: Metadata = {
   title: "AFFT Club | Sabah Outdoor Experiences",
@@ -109,46 +110,6 @@ const campingPackages = [
 const sabahTripWhatsapp = makeWhatsappLink(
   "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
 );
-
-const travelServices = [
-  {
-    eyebrow: "Airport",
-    title: "Airport Transfer",
-    image: "/images/airport-transfer-cover.webp",
-    imageAlt: "AFFT private airport transfer and car support in Sabah",
-    text: "Private arrival and departure support for airport, hotel and campsite movement.",
-    whatsappText:
-      "Hi AFFT, I want details for the Airport Transfer service in Sabah.",
-  },
-  {
-    eyebrow: "Mountain",
-    title: "Kundasang Private Tour",
-    image: "/images/kundasang-private-tour-cover.webp",
-    imageAlt: "Mount Kinabalu and Kundasang mountain view in Sabah",
-    text: "Flexible mountain day trip and overnight journey around Kundasang.",
-    whatsappText:
-      "Hi AFFT, I want details for the Kundasang Private Tour.",
-  },
-  {
-    eyebrow: "Sandakan",
-    title: "Sandakan Private Tour",
-    image: "/images/sandakan-private-tour-cover.webp",
-    imageAlt:
-      "AFFT Sandakan private tour cover with city, sea, wildlife and heritage highlights",
-    text: "Private east coast route for Sandakan city, nature, wildlife and heritage stops.",
-    whatsappText:
-      "Hi AFFT, I want details for the Sandakan Private Tour.",
-  },
-  {
-    eyebrow: "Private Car",
-    title: "Tiggo 8 Pro / Alphard Charter",
-    image: "/images/tiggo-alphard-charter-cover.webp",
-    imageAlt: "AFFT Tiggo and Alphard private charter cover",
-    text: "Private car charter for airport transfer, flexible Sabah routes and comfortable group movement.",
-    whatsappText:
-      "Hi AFFT, I want details for the Tiggo 8 Pro, Alphard charter or VIP travel service.",
-  },
-] as const;
 
 const explorerCampRm599Story = {
   image:
@@ -378,7 +339,7 @@ export default function Home() {
         />
         <div className="grid gap-6 md:grid-cols-4">
           {travelServices.map((service) => (
-            <TravelServiceCard key={service.title} service={service} />
+            <TravelServiceCard key={service.slug} service={service} />
           ))}
         </div>
       </section>
@@ -561,11 +522,15 @@ function Title({ small, big }: { small: string; big: string }) {
 function TravelServiceCard({
   service,
 }: {
-  service: (typeof travelServices)[number];
+  service: TravelService;
 }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40">
-      <div className="relative h-48 overflow-hidden bg-[#10140F]">
+      <a
+        href={service.href}
+        aria-label={`View ${service.title}`}
+        className="relative block h-48 overflow-hidden bg-[#10140F]"
+      >
         <img
           src={service.image}
           alt={service.imageAlt}
@@ -579,18 +544,25 @@ function TravelServiceCard({
           decorative
           className="pointer-events-none absolute right-4 top-4 h-12 w-12 opacity-85 drop-shadow-[0_8px_18px_rgba(0,0,0,0.35)]"
         />
-      </div>
+      </a>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-2xl font-bold">{service.title}</h3>
+        <h3 className="text-2xl font-bold">
+          <a href={service.href}>{service.title}</a>
+        </h3>
         <p className="mt-4 flex-1 text-white/70">{service.text}</p>
-        <a
-          href={makeWhatsappLink(service.whatsappText)}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-block font-bold text-[#F3922B]"
-        >
-          Contact AFFT &rarr;
-        </a>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href={service.href} className="font-bold text-[#F3922B]">
+            View Service &rarr;
+          </a>
+          <a
+            href={makeWhatsappLink(service.whatsappText)}
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold text-white/80 hover:text-[#F3922B]"
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
     </article>
   );

@@ -114,6 +114,7 @@ const travelServices = [
   {
     eyebrow: "机场",
     title: "机场接送",
+    href: "/travel-services/airport-transfer",
     image: "/images/airport-transfer-cover.webp",
     imageAlt: "AFFT 机场接送 cover，Tiggo 车辆与车厢重点",
     text: "适合抵达沙巴后，更顺地衔接酒店、露营地或下一段行程。",
@@ -122,6 +123,7 @@ const travelServices = [
   {
     eyebrow: "高地",
     title: "昆达山私人行程",
+    href: "/travel-services/kundasang-private-tour",
     image: "/images/kundasang-private-tour-cover.webp",
     imageAlt: "AFFT 昆达山私人行程 cover，神山、高地风景和羊驼体验",
     text: "适合想看神山、凉爽高地和乡村路线的旅客。",
@@ -130,6 +132,7 @@ const travelServices = [
   {
     eyebrow: "山打根",
     title: "山打根私人行程",
+    href: "/travel-services/sandakan-private-tour",
     image: "/images/sandakan-private-tour-cover.webp",
     imageAlt: "AFFT 山打根私人行程 cover，市区、海景、野生动物和文化建筑",
     text: "适合山打根市区、海景、文化建筑和野生动物路线。",
@@ -138,6 +141,7 @@ const travelServices = [
   {
     eyebrow: "包车",
     title: "Tiggo 8 Pro / Alphard 包车",
+    href: "/travel-services/tiggo-alphard-charter",
     image: "/images/tiggo-alphard-charter-cover.webp",
     imageAlt: "AFFT Tiggo 与 Alphard 私人包车 cover",
     text: "适合家庭、小团队、机场接送和想要更舒适移动体验的访客。",
@@ -586,7 +590,11 @@ function TravelServiceCard({
 }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40">
-      <div className="relative h-48 overflow-hidden bg-[#10140F]">
+      <a
+        href={service.href}
+        aria-label={`查看 ${service.title}`}
+        className="relative block h-48 overflow-hidden bg-[#10140F]"
+      >
         <img
           src={service.image}
           alt={service.imageAlt}
@@ -600,18 +608,25 @@ function TravelServiceCard({
           decorative
           className="pointer-events-none absolute right-4 top-4 h-12 w-12 opacity-85 drop-shadow-[0_8px_18px_rgba(0,0,0,0.35)]"
         />
-      </div>
+      </a>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-2xl font-bold">{service.title}</h3>
+        <h3 className="text-2xl font-bold">
+          <a href={service.href}>{service.title}</a>
+        </h3>
         <p className="mt-4 flex-1 text-white/70">{service.text}</p>
-        <a
-          href={makeWhatsappLink(service.whatsappText)}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-block font-bold text-[#F3922B]"
-        >
-          联系 AFFT &rarr;
-        </a>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href={service.href} className="font-bold text-[#F3922B]">
+            查看服务 &rarr;
+          </a>
+          <a
+            href={makeWhatsappLink(service.whatsappText)}
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold text-white/80 hover:text-[#F3922B]"
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
     </article>
   );
