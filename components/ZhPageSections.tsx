@@ -1,0 +1,163 @@
+import { AfftBrand } from "@/components/AfftBrand";
+import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
+import { zhNavLinks } from "@/lib/zh-site-data";
+
+export function ZhSiteTopNav() {
+  return (
+    <nav className="flex flex-wrap items-center justify-between gap-4">
+      <AfftBrand
+        href="/zh"
+        className="shrink-0"
+        markClassName="h-10 w-10 md:h-12 md:w-12"
+        labelClassName="hidden text-sm tracking-[0.22em] sm:block md:text-base"
+      />
+
+      <div className="hidden flex-wrap gap-5 text-sm text-white/80 lg:flex">
+        {zhNavLinks.map((link) => (
+          <a key={link.href} href={link.href} className="hover:text-white">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-3">
+        <a
+          href="/"
+          className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
+        >
+          EN
+        </a>
+        <a
+          href={whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full bg-[#F3922B] px-5 py-3 text-sm font-bold text-black"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </nav>
+  );
+}
+
+export function ZhSectionHeading({
+  small,
+  big,
+  text,
+}: {
+  small: string;
+  big: string;
+  text?: string;
+}) {
+  return (
+    <div className="mb-10 max-w-4xl">
+      <p className="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
+        {small}
+      </p>
+      <h2 className="text-4xl font-bold md:text-5xl">{big}</h2>
+      {text ? <p className="mt-4 text-lg leading-8 text-white/70">{text}</p> : null}
+    </div>
+  );
+}
+
+export function ZhInfoCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <h3 className="text-xl font-bold">{title}</h3>
+      <p className="mt-3 leading-7 text-white/70">{text}</p>
+    </div>
+  );
+}
+
+export function ZhFaqCard({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  return (
+    <article className="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <h3 className="text-xl font-bold">{question}</h3>
+      <p className="mt-3 leading-7 text-white/70">{answer}</p>
+    </article>
+  );
+}
+
+export function ZhPageFinalCta({
+  title,
+  text,
+  message,
+  buttonLabel = "WhatsApp 联系 AFFT",
+}: {
+  title: string;
+  text: string;
+  message: string;
+  buttonLabel?: string;
+}) {
+  return (
+    <section className="rounded-[2rem] bg-[#F3922B] p-8 text-black md:p-12">
+      <h2 className="text-4xl font-bold md:text-5xl">{title}</h2>
+      <p className="mt-4 max-w-3xl text-lg leading-8">{text}</p>
+      <a
+        href={makeWhatsappLink(message)}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-8 inline-flex rounded-full bg-black px-8 py-4 font-bold text-white"
+      >
+        {buttonLabel}
+      </a>
+    </section>
+  );
+}
+
+export function ZhSiteFooter() {
+  return (
+    <footer className="border-t border-white/10 bg-black/30 py-12">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
+        <div>
+          <AfftBrand
+            href="/zh"
+            className="gap-4"
+            markClassName="h-14 w-14"
+            labelClassName="text-lg tracking-[0.26em] md:text-xl"
+          />
+          <p className="mt-3 text-white/70">
+            沙巴户外体验、露营套餐、Rent It 装备租借和私人旅行支持。
+          </p>
+        </div>
+
+        <div>
+          <h4 className="mb-3 font-semibold text-white">浏览</h4>
+          <div className="grid gap-2 text-white/70">
+            {zhNavLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-white">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h4 className="mb-3 font-semibold text-white">联系方式</h4>
+          <p className="text-white/70">WhatsApp</p>
+          <a href={whatsapp} className="text-[#F3922B]">
+            +60 11-1159 8920
+          </a>
+          <p className="mt-3 text-white/70">afft.sabah.info@gmail.com</p>
+        </div>
+
+        <div>
+          <h4 className="mb-3 font-semibold text-white">公司资料</h4>
+          <p className="text-white/70">ADVENTURE FRONTIER FREEDOM TRAVEL</p>
+          <p className="text-white/70">(202401014720 (1560570-W))</p>
+          <p className="text-white/70">KPL/LN: 12014</p>
+        </div>
+      </div>
+
+      <div className="mt-10 text-center text-sm text-white/40">
+        Copyright 2026 AFFT.CLUB. All Rights Reserved.
+      </div>
+    </footer>
+  );
+}

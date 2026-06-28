@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
-import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
-import {
-  featuredPicks,
-  makeWhatsappLink,
-  normalizeRentItTitle,
-  rentItMainSeries,
-  whatsapp,
-} from "@/lib/rent-it-data";
+import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
+import { zhRentSeries, type ZhRentSeries } from "@/lib/zh-site-data";
 
 export const metadata: Metadata = {
   title: "AFFT Club | 沙巴户外体验与露营套餐",
@@ -61,7 +55,7 @@ const socialLinks = [
 
 const campingPackages = [
   {
-    href: "/packages/solo-explorer",
+    href: "/zh/packages/solo-explorer",
     image: "/images/solo-explorer-poster.webp",
     imageAlt: "AFFT Solo Explorer package poster",
     watermark: "/images/solo-explorer-watermark.svg",
@@ -72,7 +66,7 @@ const campingPackages = [
     cta: "查看套餐",
   },
   {
-    href: "/packages/explorer-camp",
+    href: "/zh/packages/explorer-camp",
     image: "/images/afft-explorer-camp-rm599-sabah.webp",
     imageAlt: "AFFT Explorer Camp package poster",
     watermark: "/images/explorer-camp-watermark.svg",
@@ -83,7 +77,7 @@ const campingPackages = [
     cta: "查看套餐",
   },
   {
-    href: "/packages/couple-camp-milky-way",
+    href: "/zh/packages/couple-camp-milky-way",
     image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
     imageAlt: "AFFT Couple Camp Milky Way package poster",
     watermark: "/images/astro-hunter-watermark.svg",
@@ -94,7 +88,7 @@ const campingPackages = [
     cta: "查看套餐",
   },
   {
-    href: "/packages/family-camp",
+    href: "/zh/packages/family-camp",
     image: "/images/afft-family-camp-series-sabah.webp",
     imageAlt: "AFFT Family Camp Series package poster",
     watermark: "/images/family-camp-watermark.svg",
@@ -114,7 +108,7 @@ const travelServices = [
   {
     eyebrow: "机场",
     title: "机场接送",
-    href: "/travel-services/airport-transfer",
+    href: "/zh/travel-services/airport-transfer",
     image: "/images/airport-transfer-cover.webp",
     imageAlt: "AFFT 机场接送 cover，Tiggo 车辆与车厢重点",
     text: "适合抵达沙巴后，更顺地衔接酒店、露营地或下一段行程。",
@@ -123,7 +117,7 @@ const travelServices = [
   {
     eyebrow: "高地",
     title: "昆达山私人行程",
-    href: "/travel-services/kundasang-private-tour",
+    href: "/zh/travel-services/kundasang-private-tour",
     image: "/images/kundasang-private-tour-cover.webp",
     imageAlt: "AFFT 昆达山私人行程 cover，神山、高地风景和羊驼体验",
     text: "适合想看神山、凉爽高地和乡村路线的旅客。",
@@ -132,7 +126,7 @@ const travelServices = [
   {
     eyebrow: "山打根",
     title: "山打根私人行程",
-    href: "/travel-services/sandakan-private-tour",
+    href: "/zh/travel-services/sandakan-private-tour",
     image: "/images/sandakan-private-tour-cover.webp",
     imageAlt: "AFFT 山打根私人行程 cover，市区、海景、野生动物和文化建筑",
     text: "适合山打根市区、海景、文化建筑和野生动物路线。",
@@ -141,7 +135,7 @@ const travelServices = [
   {
     eyebrow: "包车",
     title: "Tiggo 8 Pro / Alphard 包车",
-    href: "/travel-services/tiggo-alphard-charter",
+    href: "/zh/travel-services/tiggo-alphard-charter",
     image: "/images/tiggo-alphard-charter-cover.webp",
     imageAlt: "AFFT Tiggo 与 Alphard 私人包车 cover",
     text: "适合家庭、小团队、机场接送和想要更舒适移动体验的访客。",
@@ -150,38 +144,7 @@ const travelServices = [
   },
 ] as const;
 
-const rentItSeries: Array<
-  MainSeries & { hook: string; bestFor: string; buttonLabel: string; message: string }
-> = [
-  {
-    ...rentItMainSeries[0],
-    hook: "DJI Pocket 4、Action 6、Mic 3、Avata 等创作者设备。",
-    bestFor: "适合：Vlog / 旅行拍摄 / 公路内容 / 夜景内容",
-    buttonLabel: "查看系列",
-    message: "你好，我想了解 AFFT 的 Creator Series 租借。",
-  },
-  {
-    ...rentItMainSeries[1],
-    hook: "咖啡、Snow Peak、KZM 等露营生活感装备。",
-    bestFor: "适合：慢节奏露营 / 咖啡角 / 轻料理 / 氛围布置",
-    buttonLabel: "查看系列",
-    message: "你好，我想了解 AFFT 的 Camp Lifestyle Series。",
-  },
-  {
-    ...rentItMainSeries[2],
-    hook: "Helinox、Snow Peak 家具和更舒服的露营配置。",
-    bestFor: "适合：想坐得舒服 / 想睡得更好 / 质感露营",
-    buttonLabel: "查看系列",
-    message: "你好，我想了解 AFFT 的 Premium Camp Series。",
-  },
-  {
-    ...rentItMainSeries[3],
-    hook: "Black Dog、Mobi Garden 等更有存在感的帐篷体验。",
-    bestFor: "适合：情侣轻奢露营 / 家庭露营 / 小团队",
-    buttonLabel: "查看系列",
-    message: "你好，我想了解 AFFT 的 Tent Experience Series。",
-  },
-];
+const rentItSeries = zhRentSeries;
 
 const explorerCampRm599Story = {
   image:
@@ -193,7 +156,7 @@ const explorerCampRm599Story = {
     "这次 Explorer Camp 真实案例，让客人看到 RM599 套餐落地后的样子：现成遮棚、帐篷、桌椅布置，以及更慢节奏的 2 天 1 夜沙巴户外体验。",
   detail:
     "客人可以先拥有一个完整的 AFFT 露营基础，再根据需要加上交通、额外装备或更完整的路线安排。这也是 Explorer Camp 很适合第一次想舒服体验户外的人。",
-  href: "/packages/explorer-camp",
+  href: "/zh/packages/explorer-camp",
   hrefLabel: "查看 Explorer Camp",
   whatsapp: makeWhatsappLink(
     "你好，我想了解 RM599 Explorer Camp 套餐。"
@@ -239,10 +202,11 @@ export default function ChineseHomePage() {
           />
           <div className="hidden gap-8 text-sm md:flex">
             <a href="#experiences">体验</a>
-            <a href="#camping">露营套餐</a>
-            <a href="#rent-it">Rent It 系列</a>
-            <a href="#travel">行程支持</a>
-            <a href="#about">关于 AFFT</a>
+            <a href="/zh/camping">露营套餐</a>
+            <a href="/zh/rent-it">Rent It 系列</a>
+            <a href="/zh/private-tours">私人行程</a>
+            <a href="/zh/car-rental">包车</a>
+            <a href="/zh/about">关于 AFFT</a>
           </div>
           <div className="flex items-center gap-3">
             <a
@@ -362,7 +326,7 @@ export default function ChineseHomePage() {
             </p>
           </div>
           <a
-            href="/rent-it"
+            href="/zh/rent-it"
             className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
           >
             查看完整 Rent It 系列
@@ -370,8 +334,8 @@ export default function ChineseHomePage() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-          {featuredPicks.map((pick) => (
-            <RentItFeaturedCard key={pick.title} pick={pick} />
+          {rentItSeries.map((series) => (
+            <RentItFeaturedCard key={series.slug} series={series} />
           ))}
         </div>
 
@@ -392,7 +356,7 @@ export default function ChineseHomePage() {
               WhatsApp 联系 AFFT
             </a>
             <a
-              href="/rent-it"
+              href="/zh/rent-it"
               className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
             >
               打开完整目录
@@ -815,11 +779,11 @@ function SocialCard({
 function RentItSeriesCard({
   series,
 }: {
-  series: MainSeries & { buttonLabel: string; message: string };
+  series: ZhRentSeries;
 }) {
   return (
     <a
-      href={series.route}
+      href={series.href}
       className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
     >
       <img
@@ -831,42 +795,36 @@ function RentItSeriesCard({
         <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
           {series.startingFrom}
         </p>
-        <h3 className="mt-4 text-2xl font-bold">{series.title}</h3>
+        <h3 className="mt-4 text-2xl font-bold">{series.eyebrow}</h3>
         <p className="mt-4 text-white/70">{series.hook}</p>
         <p className="mt-4 text-sm leading-6 text-white/55">{series.bestFor}</p>
         <span className="mt-6 inline-block font-bold text-[#F3922B]">
-          {series.buttonLabel} -&gt;
+          查看系列 -&gt;
         </span>
       </div>
     </a>
   );
 }
 
-function RentItFeaturedCard({ pick }: { pick: FeaturedPick }) {
-  const displayTitle = normalizeRentItTitle(pick.title);
-
+function RentItFeaturedCard({ series }: { series: ZhRentSeries }) {
   return (
     <a
-      href={pick.route}
+      href={series.href}
       className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
     >
-      {pick.image ? (
-        <img
-          src={pick.image}
-          alt={displayTitle}
-          className="h-56 w-full bg-white object-contain p-2"
-        />
-      ) : (
-        <div className="flex h-56 items-end bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] p-6">
-          <p className="max-w-[12rem] text-2xl font-bold leading-tight">
-            {displayTitle}
-          </p>
-        </div>
-      )}
+      <img
+        src={series.image}
+        alt={series.imageAlt}
+        className="h-56 w-full bg-white object-contain p-2"
+      />
       <div className="p-5">
-        <h4 className="font-bold">{displayTitle}</h4>
-        <p className="mt-2 text-sm font-bold text-[#F3922B]">{pick.price}</p>
-        <p className="mt-3 text-sm leading-6 text-white/65">{pick.description}</p>
+        <h4 className="font-bold">{series.featuredTitle}</h4>
+        <p className="mt-2 text-sm font-bold text-[#F3922B]">
+          {series.featuredPrice}
+        </p>
+        <p className="mt-3 text-sm leading-6 text-white/65">
+          {series.featuredText}
+        </p>
         <span className="mt-4 inline-block text-sm font-bold text-[#F3922B]">
           查看详情 &rarr;
         </span>
