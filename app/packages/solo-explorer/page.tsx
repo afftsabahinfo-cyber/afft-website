@@ -1,3 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Solo Explorer RM399 | AFFT Sabah Camping Package",
+  description:
+    "AFFT Solo Explorer is a light Sabah camping package for solo travellers, creators and first-time campers. WhatsApp AFFT to plan the setup.",
+  alternates: {
+    canonical: "/packages/solo-explorer",
+  },
+  openGraph: {
+    title: "Solo Explorer RM399 | AFFT Sabah Camping Package",
+    description:
+      "Light outdoor reset for solo travellers and creators who want an easier Sabah camping start.",
+    images: [
+      {
+        url: "/images/solo-explorer-poster.webp",
+        alt: "AFFT Solo Explorer package poster",
+      },
+    ],
+  },
+};
+
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM399%20Solo%20Explorer%20Package.";
 

@@ -167,12 +167,13 @@ export default function Home() {
             markClassName="h-10 w-10 md:h-12 md:w-12"
             labelClassName="hidden text-sm tracking-[0.22em] sm:block md:text-base"
           />
-          <div className="hidden gap-8 text-sm md:flex">
-            <a href="#experiences">Experiences</a>
-            <a href="#camping">Camping</a>
-            <a href="#rent-it">Rent It Series</a>
-            <a href="#travel">Travel</a>
-            <a href="#about">About AFFT</a>
+          <div className="hidden gap-5 text-sm lg:flex">
+            <a href="/camping">Camping</a>
+            <a href="/rent-it">Rent It</a>
+            <a href="/private-tours">Private Tours</a>
+            <a href="/car-rental">Car Rental</a>
+            <a href="/customer-stories">Stories</a>
+            <a href="/about">About</a>
           </div>
           <div className="flex items-center gap-3">
             <a
@@ -418,6 +419,13 @@ export default function Home() {
               <CustomerStoryCard key={story.title} story={story} />
             ))}
           </div>
+
+          <a
+            href="/customer-stories"
+            className="mt-8 inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
+          >
+            View All Customer Stories
+          </a>
         </section>
 
         <div className="mt-12 rounded-[2rem] border border-white/10 bg-[#182015] p-8 md:flex md:items-center md:justify-between md:gap-8">
@@ -462,7 +470,7 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-white/10 bg-black/30 py-12">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-4">
           <div>
             <AfftBrand
               href="/"
@@ -483,6 +491,18 @@ export default function Home() {
               +60 11-1159 8920
             </a>
             <p className="mt-3 text-white/70">afft.sabah.info@gmail.com</p>
+          </div>
+
+          <div>
+            <h4 className="mb-3 font-semibold text-white">Explore</h4>
+            <div className="grid gap-2 text-white/70">
+              <a href="/camping">Camping</a>
+              <a href="/rent-it">Rent It</a>
+              <a href="/private-tours">Private Tours</a>
+              <a href="/car-rental">Car Rental</a>
+              <a href="/customer-stories">Customer Stories</a>
+              <a href="/faq">FAQ</a>
+            </div>
           </div>
 
           <div>

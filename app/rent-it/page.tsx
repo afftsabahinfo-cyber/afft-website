@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   catalogSections,
   comingSoonItems,
@@ -16,6 +17,26 @@ import {
   RentItInlineCta,
   RentItTentGrid,
 } from "@/components/rent-it-shared";
+
+export const metadata: Metadata = {
+  title: "AFFT Rent It Series | Sabah Gear Rental",
+  description:
+    "Rent creator gear, camp lifestyle gear, premium camp furniture and tent systems for Sabah trips. WhatsApp AFFT for availability and setup advice.",
+  alternates: {
+    canonical: "/rent-it",
+  },
+  openGraph: {
+    title: "AFFT Rent It Series | Sabah Gear Rental",
+    description:
+      "Premium outdoor gear, creator tools and tent experiences without owning the whole setup.",
+    images: [
+      {
+        url: "/images/rent-it-creator-series-cover.webp",
+        alt: "AFFT Rent It Creator Series cover",
+      },
+    ],
+  },
+};
 
 export default function RentItLandingPage() {
   return (

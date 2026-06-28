@@ -1,3 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Family Camp Series | AFFT Sabah Camping Package",
+  description:
+    "AFFT Family Camp Series is a custom Sabah family camping package for parents, children and easier outdoor planning.",
+  alternates: {
+    canonical: "/packages/family-camp",
+  },
+  openGraph: {
+    title: "Family Camp Series | AFFT Sabah Camping Package",
+    description:
+      "Family-friendly camping shaped around children, comfort, campsite fit and WhatsApp planning.",
+    images: [
+      {
+        url: "/images/afft-family-camp-series-sabah.webp",
+        alt: "AFFT Family Camp Series Sabah",
+      },
+    ],
+  },
+};
+
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20Family%20Camp%20Series.";
 

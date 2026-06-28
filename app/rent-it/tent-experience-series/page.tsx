@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   makeWhatsappLink,
   seriesPageSummaries,
@@ -11,6 +12,26 @@ import {
 } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["tent-experience-series"];
+
+export const metadata: Metadata = {
+  title: "Tent Rental Sabah | AFFT Rent It",
+  description:
+    "Rent Black Dog, Mobi Garden and tent experience systems for Sabah camping, glamping and group outdoor stays. WhatsApp AFFT for fit and availability.",
+  alternates: {
+    canonical: "/rent-it/tent-experience-series",
+  },
+  openGraph: {
+    title: "Tent Rental Sabah | AFFT Rent It",
+    description:
+      "Tent systems that feel like outdoor stays, not just shelter.",
+    images: [
+      {
+        url: "/images/rent-it-tent-experience-series-cover.webp",
+        alt: "AFFT Tent Experience Series cover",
+      },
+    ],
+  },
+};
 
 export default function TentExperienceSeriesPage() {
   return (

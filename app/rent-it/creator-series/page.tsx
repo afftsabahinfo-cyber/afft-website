@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   creatorSeriesItems,
   makeWhatsappLink,
@@ -11,6 +12,26 @@ import {
 } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["creator-series"];
+
+export const metadata: Metadata = {
+  title: "Creator Gear Rental Sabah | AFFT Rent It",
+  description:
+    "Rent DJI Pocket 4, DJI Action 6, Mic 3 and creator kits for Sabah travel content. WhatsApp AFFT for availability and setup advice.",
+  alternates: {
+    canonical: "/rent-it/creator-series",
+  },
+  openGraph: {
+    title: "Creator Gear Rental Sabah | AFFT Rent It",
+    description:
+      "Travel-ready creator tools for Sabah vlogs, road trips and outdoor stories.",
+    images: [
+      {
+        url: "/images/rent-it-creator-series-cover.webp",
+        alt: "AFFT Creator Series cover",
+      },
+    ],
+  },
+};
 
 export default function CreatorSeriesPage() {
   return (

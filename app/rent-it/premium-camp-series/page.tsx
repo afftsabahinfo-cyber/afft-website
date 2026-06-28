@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   helinoxNotes,
   helinoxTiers,
@@ -13,6 +14,26 @@ import {
 } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["premium-camp-series"];
+
+export const metadata: Metadata = {
+  title: "Premium Camp Gear Rental Sabah | AFFT Rent It",
+  description:
+    "Rent Helinox, Snow Peak and premium camp furniture for cleaner Sabah camping comfort. WhatsApp AFFT to choose the right setup.",
+  alternates: {
+    canonical: "/rent-it/premium-camp-series",
+  },
+  openGraph: {
+    title: "Premium Camp Gear Rental Sabah | AFFT Rent It",
+    description:
+      "Premium camp furniture and comfort systems for Sabah glamping and outdoor stays.",
+    images: [
+      {
+        url: "/images/rent-it-premium-camp-series-cover.webp",
+        alt: "AFFT Premium Camp Series cover",
+      },
+    ],
+  },
+};
 
 export default function PremiumCampSeriesPage() {
   return (

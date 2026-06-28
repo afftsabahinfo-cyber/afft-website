@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   campLifestyleItems,
   makeWhatsappLink,
@@ -11,6 +12,26 @@ import {
 } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["camp-lifestyle-series"];
+
+export const metadata: Metadata = {
+  title: "Camp Lifestyle Gear Rental Sabah | AFFT Rent It",
+  description:
+    "Rent camp lifestyle gear for Sabah camping, coffee, lights, projector nights and outdoor comfort. WhatsApp AFFT for the right setup.",
+  alternates: {
+    canonical: "/rent-it/camp-lifestyle-series",
+  },
+  openGraph: {
+    title: "Camp Lifestyle Gear Rental Sabah | AFFT Rent It",
+    description:
+      "Coffee, lighting, projector and campsite lifestyle gear for slower Sabah outdoor trips.",
+    images: [
+      {
+        url: "/images/rent-it-camp-lifestyle-series-cover.webp",
+        alt: "AFFT Camp Lifestyle Series cover",
+      },
+    ],
+  },
+};
 
 export default function CampLifestyleSeriesPage() {
   return (

@@ -1,3 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Couple Camp Milky Way RM799 | AFFT Sabah Camping",
+  description:
+    "AFFT Couple Camp Milky Way is a Sabah night camping package for couples, creators and stargazing lovers. WhatsApp AFFT for dates and setup.",
+  alternates: {
+    canonical: "/packages/couple-camp-milky-way",
+  },
+  openGraph: {
+    title: "Couple Camp Milky Way RM799 | AFFT Sabah Camping",
+    description:
+      "Night-focused camping setup for cooler air, star views and photo-friendly Sabah outdoor moments.",
+    images: [
+      {
+        url: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
+        alt: "AFFT Couple Camp Milky Way Sabah camping package",
+      },
+    ],
+  },
+};
+
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM799%20Couple%20Camp%20Milky%20Way%20Package.";
 

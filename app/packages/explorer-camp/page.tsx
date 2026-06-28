@@ -1,4 +1,25 @@
+import type { Metadata } from "next";
 import { RentItBackLink } from "@/components/rent-it-shared";
+
+export const metadata: Metadata = {
+  title: "Explorer Camp RM599 | AFFT Sabah Camping Package",
+  description:
+    "AFFT Explorer Camp is a 2D1N Sabah camping package for couples, friends and first-time campers who want a ready setup and WhatsApp support.",
+  alternates: {
+    canonical: "/packages/explorer-camp",
+  },
+  openGraph: {
+    title: "Explorer Camp RM599 | AFFT Sabah Camping Package",
+    description:
+      "AFFT signature 2D1N camping setup with real customer story photos and WhatsApp-first planning.",
+    images: [
+      {
+        url: "/images/afft-explorer-camp-rm599-sabah.webp",
+        alt: "AFFT Explorer Camp RM599 Sabah Camping Package",
+      },
+    ],
+  },
+};
 
 const whatsapp =
   "https://wa.me/601111598920?text=Hi%20AFFT%2C%20I%20am%20interested%20in%20the%20RM599%20Explorer%20Camp%20Package.";
