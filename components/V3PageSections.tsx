@@ -157,13 +157,14 @@ export function SiteFooter() {
         <div>
           <h4 className="mb-3 font-semibold text-white">Company Information</h4>
           <p className="text-white/70">ADVENTURE FRONTIER FREEDOM TRAVEL</p>
+          <p className="text-white/70">Registered 2024</p>
           <p className="text-white/70">(202401014720 (1560570-W))</p>
           <p className="text-white/70">KPL/LN: 12014</p>
         </div>
       </div>
 
       <div className="mt-10 text-center text-sm text-white/40">
-        Copyright 2026 AFFT.CLUB. All Rights Reserved.
+        Registered 2024 · Copyright 2024-2026 AFFT.CLUB. All Rights Reserved.
       </div>
     </footer>
   );
