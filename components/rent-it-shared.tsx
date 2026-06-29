@@ -1,6 +1,10 @@
 import { AfftLogoMark } from "@/components/AfftBrand";
 import type { CatalogItem, TentShowcaseItem } from "@/lib/rent-it-data";
-import { makeWhatsappLink, normalizeRentItTitle } from "@/lib/rent-it-data";
+import {
+  getRentItItemImage,
+  makeWhatsappLink,
+  normalizeRentItTitle,
+} from "@/lib/rent-it-data";
 
 export function RentItBackLink({
   href = "/",
@@ -84,7 +88,7 @@ export function RentItCatalogTable({
   items: CatalogItem[];
 }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto pb-44">
       <table className="min-w-full text-left text-sm">
         <thead className="border-b border-white/10 text-white/70">
           <tr>
@@ -98,7 +102,12 @@ export function RentItCatalogTable({
         <tbody>
           {items.map((item) => (
             <tr key={item.title} className="border-b border-white/5 align-top">
-              <td className="px-4 py-4 font-semibold text-white">{item.title}</td>
+              <td className="px-4 py-4 font-semibold text-white">
+                <div className="flex items-center gap-3">
+                  <RentItProductImagePreview title={item.title} />
+                  <span>{item.title}</span>
+                </div>
+              </td>
               <td className="px-4 py-4 text-white/75">{item.day1}</td>
               <td className="px-4 py-4 text-white/75">{item.day2}</td>
               <td className="px-4 py-4 text-white/75">{item.day3}</td>
@@ -108,6 +117,41 @@ export function RentItCatalogTable({
         </tbody>
       </table>
     </div>
+  );
+}
+
+export function RentItProductImagePreview({
+  title,
+  ariaLabel = `View image for ${title}`,
+}: {
+  title: string;
+  ariaLabel?: string;
+}) {
+  const image = getRentItItemImage(title);
+
+  return (
+    <span
+      tabIndex={0}
+      aria-label={ariaLabel}
+      className="group/preview relative inline-flex h-11 w-11 shrink-0 cursor-zoom-in items-center justify-center overflow-visible rounded-xl border border-white/10 bg-white p-1 outline-none ring-[#F3922B] transition hover:border-[#F3922B]/50 focus:ring-2"
+    >
+      <img
+        src={image}
+        alt=""
+        aria-hidden="true"
+        className="h-full w-full object-contain"
+      />
+      <span className="pointer-events-none invisible absolute left-0 top-12 z-50 w-44 rounded-2xl border border-white/15 bg-[#10140F] p-2 opacity-0 shadow-2xl shadow-black/50 transition group-hover/preview:visible group-hover/preview:opacity-100 group-focus/preview:visible group-focus/preview:opacity-100">
+        <img
+          src={image}
+          alt={title}
+          className="h-32 w-full rounded-xl bg-white object-contain p-2"
+        />
+        <span className="mt-2 block px-1 pb-1 text-xs font-semibold leading-5 text-white/80">
+          {title}
+        </span>
+      </span>
+    </span>
   );
 }
 

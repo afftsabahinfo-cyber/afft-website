@@ -15,6 +15,116 @@ export const normalizeRentItTitle = (title: string) => {
   return title;
 };
 
+export const getRentItItemImage = (title: string) => {
+  const normalized = normalizeRentItTitle(title).toLowerCase();
+
+  if (normalized.includes("pocket 4")) {
+    return "/images/dji-pocket4-creator-combo.webp";
+  }
+
+  if (normalized.includes("avata")) {
+    return "/images/dji-avata-360.webp";
+  }
+
+  if (normalized.includes("goggles") || normalized.includes("motion 3")) {
+    return "/images/dji-goggles-3.png";
+  }
+
+  if (normalized.includes("action 6")) {
+    return "/images/dji-osmo-action-6.png";
+  }
+
+  if (normalized.includes("mic 3")) {
+    return "/images/dji-mic-3.png";
+  }
+
+  if (normalized.includes("creator full set") || normalized.includes("creator chill")) {
+    return "/images/rent-it-creator-series-cover.webp";
+  }
+
+  if (normalized.includes("mobi garden grandburn")) {
+    return "/images/mobi-garden-grandburn-heater.webp";
+  }
+
+  if (normalized.includes("yaber")) {
+    return "/images/yaber-t2-plus-projector.webp";
+  }
+
+  if (normalized.includes("anker")) {
+    return "/images/anker-solix-c300-dc-power-station.webp";
+  }
+
+  if (normalized.includes("outask")) {
+    return "/images/outask-td-2-adventure-light.webp";
+  }
+
+  if (normalized.includes("finel")) {
+    return "/images/finel-n7-carbon-adventure-light.webp";
+  }
+
+  if (normalized.includes("walkie")) {
+    return "/images/xiao-mi-walkie-talkies.webp";
+  }
+
+  if (normalized.includes("celestron")) {
+    return "/images/celestron-outland-x.webp";
+  }
+
+  if (normalized.includes("bialetti") || normalized.includes("outdoor coffee")) {
+    return "/images/bialetti-moka-express.jpg";
+  }
+
+  if (normalized.includes("kzm")) {
+    return "/images/rent-it-camp-lifestyle-series-cover.webp";
+  }
+
+  if (normalized.includes("helinox chair") || normalized.includes("helinox solo")) {
+    return "/images/helinox-chair.webp";
+  }
+
+  if (normalized.includes("flat burner")) {
+    return "/images/snow-peak-flat-burner.png";
+  }
+
+  if (normalized.includes("setsuen") || normalized.includes("snow peak table")) {
+    return "/images/snow-peak-igt-camp-kitchen.png";
+  }
+
+  if (normalized.includes("snow peak director chair")) {
+    return "/images/snow-peak-reclining-chair-wide.jpg";
+  }
+
+  if (normalized.includes("snow peak chill set")) {
+    return "/images/snow-peak-igt-camp-kitchen.png";
+  }
+
+  if (normalized.includes("helinox cot")) {
+    return "/images/helinox-cot-one-convertible.png";
+  }
+
+  if (normalized.includes("combination light")) {
+    return "/images/rent-it-premium-camp-series-cover.webp";
+  }
+
+  if (normalized.includes("snow peak") || normalized.includes("chill set")) {
+    return "/images/snow-peak-igt-camp-kitchen.png";
+  }
+
+  if (normalized.includes("black dog modular")) {
+    return "/images/blackdog-modular-tent-system.webp";
+  }
+
+  if (normalized.includes("black dog xingsu")) {
+    return "/images/blackdog-xingsu59.webp";
+  }
+
+  if (normalized.includes("mobi garden commander")) {
+    return "/images/mobi-garden-commander-245.webp";
+  }
+
+  return "/images/rent-it-camp-lifestyle-series-cover.webp";
+};
+
 export type MainSeriesSlug =
   | "creator-series"
   | "camp-lifestyle-series"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RentItProductImagePreview } from "@/components/rent-it-shared";
 import { ZhWhatsAppEnquiryBuilder } from "@/components/ZhWhatsAppEnquiryBuilder";
 import {
   ZhInfoCard,
@@ -187,9 +188,9 @@ export default function ZhRentItPage() {
 
 function ZhCatalogTable({ items }: { items: ZhCatalogItem[] }) {
   return (
-    <div className="overflow-x-auto rounded-3xl border border-white/10">
-      <div className="min-w-[760px]">
-        <div className="grid grid-cols-[1.2fr_0.6fr_0.6fr_0.6fr_1.3fr] bg-black/25 px-4 py-3 text-sm font-bold text-white/70">
+    <div className="overflow-x-auto rounded-3xl border border-white/10 pb-44">
+      <div className="min-w-[820px]">
+        <div className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] bg-black/25 px-4 py-3 text-sm font-bold text-white/70">
           <span>装备</span>
           <span>1 天</span>
           <span>2 天</span>
@@ -199,9 +200,15 @@ function ZhCatalogTable({ items }: { items: ZhCatalogItem[] }) {
         {items.map((item) => (
           <div
             key={item.title}
-            className="grid grid-cols-[1.2fr_0.6fr_0.6fr_0.6fr_1.3fr] gap-2 border-t border-white/10 px-4 py-4 text-sm text-white/72"
+            className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] gap-2 border-t border-white/10 px-4 py-4 text-sm text-white/72"
           >
-            <strong className="text-white">{item.title}</strong>
+            <div className="flex items-center gap-3">
+              <RentItProductImagePreview
+                title={item.title}
+                ariaLabel={`查看 ${item.title} 图片`}
+              />
+              <strong className="text-white">{item.title}</strong>
+            </div>
             <span>{item.day1}</span>
             <span>{item.day2}</span>
             <span>{item.day3}</span>
