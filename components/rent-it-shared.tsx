@@ -129,6 +129,10 @@ export function RentItProductImagePreview({
 }) {
   const image = getRentItItemImage(title);
 
+  if (!image) {
+    return null;
+  }
+
   return (
     <span
       tabIndex={0}

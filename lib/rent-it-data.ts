@@ -15,8 +15,32 @@ export const normalizeRentItTitle = (title: string) => {
   return title;
 };
 
+export const rentItItemsNeedingPhotos = [
+  "DJI Goggles 3 + Motion 3",
+  "Pocket 4 + Mic 3",
+  "Pocket 4 + Action 6",
+  "Creator Full Set",
+  "KZM Kitchen Tool Set",
+  "Snow Peak Setsuen Pot",
+  "Black Dog Combination Light",
+  "Helinox Solo Full Set",
+  "Snow Peak Director Chair",
+  "Snow Peak Table",
+  "Snow Peak Chill Set (2 chairs + 1 table)",
+  "Outdoor Coffee Set",
+  "Creator Chill Set",
+];
+
+const rentItItemsNeedingPhotosSet = new Set(
+  rentItItemsNeedingPhotos.map((title) => normalizeRentItTitle(title).toLowerCase()),
+);
+
 export const getRentItItemImage = (title: string) => {
   const normalized = normalizeRentItTitle(title).toLowerCase();
+
+  if (rentItItemsNeedingPhotosSet.has(normalized)) {
+    return null;
+  }
 
   if (normalized.includes("pocket 4")) {
     return "/images/dji-pocket4-creator-combo.webp";
@@ -26,20 +50,12 @@ export const getRentItItemImage = (title: string) => {
     return "/images/dji-avata-360.webp";
   }
 
-  if (normalized.includes("goggles") || normalized.includes("motion 3")) {
-    return "/images/dji-goggles-3.png";
-  }
-
   if (normalized.includes("action 6")) {
     return "/images/dji-osmo-action-6.png";
   }
 
   if (normalized.includes("mic 3")) {
     return "/images/dji-mic-3.png";
-  }
-
-  if (normalized.includes("creator full set") || normalized.includes("creator chill")) {
-    return "/images/rent-it-creator-series-cover.webp";
   }
 
   if (normalized.includes("mobi garden grandburn")) {
@@ -70,15 +86,11 @@ export const getRentItItemImage = (title: string) => {
     return "/images/celestron-outland-x.webp";
   }
 
-  if (normalized.includes("bialetti") || normalized.includes("outdoor coffee")) {
+  if (normalized.includes("bialetti")) {
     return "/images/bialetti-moka-express.jpg";
   }
 
-  if (normalized.includes("kzm")) {
-    return "/images/rent-it-camp-lifestyle-series-cover.webp";
-  }
-
-  if (normalized.includes("helinox chair") || normalized.includes("helinox solo")) {
+  if (normalized.includes("helinox chair")) {
     return "/images/helinox-chair.webp";
   }
 
@@ -86,28 +98,8 @@ export const getRentItItemImage = (title: string) => {
     return "/images/snow-peak-flat-burner.png";
   }
 
-  if (normalized.includes("setsuen") || normalized.includes("snow peak table")) {
-    return "/images/snow-peak-igt-camp-kitchen.png";
-  }
-
-  if (normalized.includes("snow peak director chair")) {
-    return "/images/snow-peak-reclining-chair-wide.jpg";
-  }
-
-  if (normalized.includes("snow peak chill set")) {
-    return "/images/snow-peak-igt-camp-kitchen.png";
-  }
-
   if (normalized.includes("helinox cot")) {
     return "/images/helinox-cot-one-convertible.png";
-  }
-
-  if (normalized.includes("combination light")) {
-    return "/images/rent-it-premium-camp-series-cover.webp";
-  }
-
-  if (normalized.includes("snow peak") || normalized.includes("chill set")) {
-    return "/images/snow-peak-igt-camp-kitchen.png";
   }
 
   if (normalized.includes("black dog modular")) {
@@ -122,7 +114,7 @@ export const getRentItItemImage = (title: string) => {
     return "/images/mobi-garden-commander-245.webp";
   }
 
-  return "/images/rent-it-camp-lifestyle-series-cover.webp";
+  return null;
 };
 
 export type MainSeriesSlug =
