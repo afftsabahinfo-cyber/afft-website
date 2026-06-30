@@ -20,7 +20,6 @@ export const rentItItemsNeedingPhotos = [
   "Helinox Solo Full Set",
   "Snow Peak Director Chair",
   "Snow Peak Table",
-  "Snow Peak Chill Set (2 chairs + 1 table)",
   "Outdoor Coffee Set",
   "Creator Chill Set",
 ];
@@ -110,6 +109,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("setsuen")) {
     return "/images/snow-peak-setsuen-pot.jpg";
+  }
+
+  if (normalized.includes("snow peak chill set")) {
+    return "/images/snow-peak-chill-set.jpg";
   }
 
   if (normalized.includes("helinox cot")) {
