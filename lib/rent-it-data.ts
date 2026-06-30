@@ -17,8 +17,6 @@ export const normalizeRentItTitle = (title: string) => {
 
 export const rentItItemsNeedingPhotos = [
   "Creator Full Set",
-  "Helinox Solo Full Set",
-  "Snow Peak Director Chair",
   "Snow Peak Table",
   "Outdoor Coffee Set",
   "Creator Chill Set",
@@ -92,11 +90,15 @@ export const getRentItItemImage = (title: string) => {
   }
 
   if (normalized.includes("bialetti")) {
-    return "/images/bialetti-moka-express.jpg";
+    return "/images/bialetti-coffee-set.jpg";
   }
 
   if (normalized.includes("kzm")) {
     return "/images/kzm-kitchen-tool-set.jpg";
+  }
+
+  if (normalized.includes("helinox solo full set")) {
+    return "/images/helinox-solo-full-set.jpg";
   }
 
   if (normalized.includes("helinox chair")) {
@@ -109,6 +111,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("setsuen")) {
     return "/images/snow-peak-setsuen-pot.jpg";
+  }
+
+  if (normalized.includes("snow peak director chair")) {
+    return "/images/snow-peak-director-chair.jpg";
   }
 
   if (normalized.includes("snow peak chill set")) {
@@ -569,7 +575,7 @@ export const featuredPicks: FeaturedPick[] = [
     route: "/rent-it/premium-camp-series",
     price: "From RM199 / day",
     description: "A premium solo sleep-and-chill setup built for comfort, style and lighter packing.",
-    image: "/images/helinox-chair.webp",
+    image: "/images/helinox-solo-full-set.jpg",
   },
   {
     title: "Black Dog 星宿 5.9",
@@ -663,7 +669,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredPrice: "From RM199 / day",
     featuredText:
       "The flagship premium-camp booking for guests who want a stronger lifestyle look and a more complete solo camp experience.",
-    featuredImage: "/images/helinox-chair.webp",
+    featuredImage: "/images/helinox-solo-full-set.jpg",
     heroImage: "/images/rent-it-premium-camp-series-cover.webp",
     heroImageAlt: "AFFT Premium Camp Series hero cover",
     bestFor: "Comfort-led camp setups, glamping feel and upgraded rest.",
