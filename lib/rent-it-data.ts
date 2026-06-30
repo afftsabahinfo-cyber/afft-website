@@ -17,7 +17,6 @@ export const normalizeRentItTitle = (title: string) => {
 
 export const rentItItemsNeedingPhotos = [
   "Creator Full Set",
-  "Black Dog Combination Light",
   "Helinox Solo Full Set",
   "Snow Peak Director Chair",
   "Snow Peak Table",
@@ -119,6 +118,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("black dog modular")) {
     return "/images/blackdog-modular-tent-system.webp";
+  }
+
+  if (normalized.includes("black dog combination light")) {
+    return "/images/black-dog-combination-light.jpg";
   }
 
   if (normalized.includes("black dog xingsu")) {
