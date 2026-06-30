@@ -20,7 +20,6 @@ export const rentItItemsNeedingPhotos = [
   "Pocket 4 + Mic 3",
   "Pocket 4 + Action 6",
   "Creator Full Set",
-  "KZM Kitchen Tool Set",
   "Snow Peak Setsuen Pot",
   "Black Dog Combination Light",
   "Helinox Solo Full Set",
@@ -88,6 +87,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("bialetti")) {
     return "/images/bialetti-moka-express.jpg";
+  }
+
+  if (normalized.includes("kzm")) {
+    return "/images/kzm-kitchen-tool-set.jpg";
   }
 
   if (normalized.includes("helinox chair")) {
