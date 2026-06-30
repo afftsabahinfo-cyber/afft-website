@@ -16,9 +16,6 @@ export const normalizeRentItTitle = (title: string) => {
 };
 
 export const rentItItemsNeedingPhotos = [
-  "DJI Goggles 3 + Motion 3",
-  "Pocket 4 + Mic 3",
-  "Pocket 4 + Action 6",
   "Creator Full Set",
   "Black Dog Combination Light",
   "Helinox Solo Full Set",
@@ -40,12 +37,24 @@ export const getRentItItemImage = (title: string) => {
     return null;
   }
 
+  if (normalized === "pocket 4 + mic 3") {
+    return "/images/dji-pocket4-mic3.jpg";
+  }
+
+  if (normalized === "pocket 4 + action 6") {
+    return "/images/dji-pocket4-action6.jpg";
+  }
+
   if (normalized.includes("pocket 4")) {
     return "/images/dji-pocket4-creator-combo.webp";
   }
 
   if (normalized.includes("avata")) {
     return "/images/dji-avata-360.webp";
+  }
+
+  if (normalized.includes("goggles") || normalized.includes("motion 3")) {
+    return "/images/dji-goggles-3-motion-3.jpg";
   }
 
   if (normalized.includes("action 6")) {
