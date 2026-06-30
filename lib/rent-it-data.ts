@@ -20,7 +20,6 @@ export const rentItItemsNeedingPhotos = [
   "Pocket 4 + Mic 3",
   "Pocket 4 + Action 6",
   "Creator Full Set",
-  "Snow Peak Setsuen Pot",
   "Black Dog Combination Light",
   "Helinox Solo Full Set",
   "Snow Peak Director Chair",
@@ -99,6 +98,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("flat burner")) {
     return "/images/snow-peak-flat-burner.png";
+  }
+
+  if (normalized.includes("setsuen")) {
+    return "/images/snow-peak-setsuen-pot.jpg";
   }
 
   if (normalized.includes("helinox cot")) {
