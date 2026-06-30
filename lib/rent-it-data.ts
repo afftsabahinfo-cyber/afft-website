@@ -15,21 +15,20 @@ export const normalizeRentItTitle = (title: string) => {
   return title;
 };
 
-export const rentItItemsNeedingPhotos = [
+export const rentItItemsWithoutPhotos = [
   "Creator Full Set",
-  "Snow Peak Table",
   "Outdoor Coffee Set",
   "Creator Chill Set",
 ];
 
-const rentItItemsNeedingPhotosSet = new Set(
-  rentItItemsNeedingPhotos.map((title) => normalizeRentItTitle(title).toLowerCase()),
+const rentItItemsWithoutPhotosSet = new Set(
+  rentItItemsWithoutPhotos.map((title) => normalizeRentItTitle(title).toLowerCase()),
 );
 
 export const getRentItItemImage = (title: string) => {
   const normalized = normalizeRentItTitle(title).toLowerCase();
 
-  if (rentItItemsNeedingPhotosSet.has(normalized)) {
+  if (rentItItemsWithoutPhotosSet.has(normalized)) {
     return null;
   }
 
@@ -115,6 +114,10 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("snow peak director chair")) {
     return "/images/snow-peak-director-chair.jpg";
+  }
+
+  if (normalized.includes("snow peak table")) {
+    return "/images/snow-peak-table.jpg";
   }
 
   if (normalized.includes("snow peak chill set")) {
