@@ -1,10 +1,21 @@
-import { AfftLogoMark } from "@/components/AfftBrand";
+import { AfftBrand } from "@/components/AfftBrand";
 import type { CatalogItem, TentShowcaseItem } from "@/lib/rent-it-data";
 import {
   getRentItItemImage,
   makeWhatsappLink,
   normalizeRentItTitle,
+  whatsapp,
 } from "@/lib/rent-it-data";
+
+const rentItNavLinks = [
+  { label: "Camping", href: "/camping" },
+  { label: "Rent It", href: "/rent-it" },
+  { label: "Private Tours", href: "/private-tours" },
+  { label: "Car Rental", href: "/car-rental" },
+  { label: "About", href: "/about" },
+  { label: "Stories", href: "/customer-stories" },
+  { label: "FAQ", href: "/faq" },
+];
 
 export function RentItBackLink({
   href = "/",
@@ -14,13 +25,41 @@ export function RentItBackLink({
   label?: string;
 }) {
   return (
-    <a
-      href={href}
-      className="inline-flex items-center gap-3 text-sm font-bold text-[#F3922B] hover:opacity-80"
-    >
-      <AfftLogoMark className="h-8 w-8 shrink-0" decorative />
-      <span>{label}</span>
-    </a>
+    <nav className="relative z-50 flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-[#10140F]/88 px-4 py-3 shadow-2xl shadow-black/20 backdrop-blur md:px-5">
+      <AfftBrand
+        href={href}
+        className="shrink-0"
+        markClassName="h-10 w-10 md:h-12 md:w-12"
+        ariaLabel={label}
+        label="AFFT.CLUB"
+        labelClassName="hidden text-sm tracking-[0.18em] sm:block md:text-base"
+      />
+
+      <div className="hidden flex-wrap gap-5 text-sm text-white/80 lg:flex">
+        {rentItNavLinks.map((link) => (
+          <a key={link.href} href={link.href} className="hover:text-white">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-3">
+        <a
+          href="/zh/rent-it"
+          className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
+        >
+          ZH
+        </a>
+        <a
+          href={whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full bg-[#F3922B] px-5 py-3 text-sm font-bold text-black"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </nav>
   );
 }
 

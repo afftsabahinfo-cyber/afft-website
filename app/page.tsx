@@ -9,6 +9,7 @@ import {
   whatsapp,
 } from "@/lib/rent-it-data";
 import { travelServices, type TravelService } from "@/lib/travel-services";
+import { SiteTopNav } from "@/components/V3PageSections";
 
 export const metadata: Metadata = {
   title: "AFFT Club | Sabah Outdoor Experiences",
@@ -160,36 +161,7 @@ export default function Home() {
           backgroundImage: `linear-gradient(90deg, rgba(16,20,15,.95), rgba(16,20,15,.65), rgba(16,20,15,.25)), url(${images.hero})`,
         }}
       >
-        <nav className="flex items-center justify-between gap-4">
-          <AfftBrand
-            href="/"
-            className="shrink-0"
-            markClassName="h-10 w-10 md:h-12 md:w-12"
-            labelClassName="hidden text-sm tracking-[0.22em] sm:block md:text-base"
-          />
-          <div className="hidden gap-5 text-sm lg:flex">
-            <a href="/camping">Camping</a>
-            <a href="/rent-it">Rent It</a>
-            <a href="/private-tours">Private Tours</a>
-            <a href="/car-rental">Car Rental</a>
-            <a href="/customer-stories">Stories</a>
-            <a href="/about">About</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="/zh"
-              className="rounded-full border border-white/25 px-4 py-2 text-sm font-bold text-white"
-            >
-              简体中文
-            </a>
-            <a
-              href={whatsapp}
-              className="rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </nav>
+        <SiteTopNav />
 
         <div className="max-w-4xl pt-28 md:pt-40">
           <p className="mb-6 inline-block rounded-full border border-white/30 bg-black/30 px-5 py-2 text-sm">
