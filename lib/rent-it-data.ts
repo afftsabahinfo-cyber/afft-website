@@ -125,7 +125,7 @@ export const getRentItItemImage = (title: string) => {
   }
 
   if (normalized.includes("helinox cot")) {
-    return "/images/helinox-cot-one-convertible.png";
+    return "/images/helinox-cot-set.jpg";
   }
 
   if (normalized.includes("black dog modular")) {
