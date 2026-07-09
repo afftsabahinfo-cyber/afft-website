@@ -62,7 +62,7 @@ export default function CampingSpotsPage() {
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
                 A practical AFFT guide for campsites around KK-Kokol, Kota Belud,
                 Kundasang, Ranau, Kiulu and Papar. Use it to compare drive time,
-                guest fit and what to ask on WhatsApp.
+                guest fit and what to ask AFFT before you open any external page.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
@@ -126,16 +126,16 @@ export default function CampingSpotsPage() {
 
           <div className="grid gap-4 md:grid-cols-3">
             <InfoBlock
-              title="Photos"
-              text="External photos are treated as reference only unless the campsite or owner gives permission. AFFT photos should replace them later."
+              title="AFFT view first"
+              text="The page should guide visitors through AFFT's judgement: area, comfort level, drive time, weather risk, gear fit and WhatsApp planning."
             />
             <InfoBlock
-              title="Gear Fit"
-              text="Each region is connected to camping packages, Rent It gear and private transport so the page can generate WhatsApp enquiries."
+              title="Services"
+              text="Each region connects back to AFFT camping packages, Rent It gear and private transport so visitors ask us before deciding."
             />
             <InfoBlock
-              title="Fees"
-              text="CSV fees are treated as guidance from March 2025. Visitors should ask AFFT to confirm current charges before travel."
+              title="External pages"
+              text="Facebook pages are secondary references only. They help verify current photos or rules after AFFT has already shaped the recommendation."
             />
           </div>
         </div>
@@ -181,8 +181,22 @@ export default function CampingSpotsPage() {
 }
 
 function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
+  const previewImageUrl = getFacebookPreviewImage(spot.facebookUrl);
+
   return (
     <article className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+      {previewImageUrl ? (
+        <div className="mb-5 overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+          <img
+            src={previewImageUrl}
+            alt={`${spot.name} public Facebook page photo`}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            className="h-44 w-full object-cover transition duration-300 hover:scale-[1.03]"
+          />
+        </div>
+      ) : null}
+
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2">
@@ -212,6 +226,12 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="rounded-2xl border border-[#F3922B]/25 bg-[#F3922B]/10 p-4 md:col-span-2">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
+            AFFT View
+          </p>
+          <p className="mt-2 leading-7 text-white/76">{getAfftView(spot)}</p>
+        </div>
         <DetailItem label="Best for" value={spot.bestFor} />
         <DetailItem label="Highlight" value={spot.highlight} />
         <DetailItem label="Watch out" value={spot.watchOut} />
@@ -247,23 +267,55 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       {spot.facebookUrl ? (
-        <div className="mt-3 rounded-2xl border border-[#F3922B]/20 bg-black/20 p-4 text-sm leading-7 text-white/65">
-          <p>
-            <span className="font-bold text-white">Facebook public info:</span>{" "}
-            {spot.facebookSummary}
-          </p>
+        <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-4 text-xs leading-6 text-white/42 sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            External reference only. Stay with AFFT first; we confirm current
+            photos, access and rules before advising.
+          </span>
           <a
             href={spot.facebookUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-2 inline-flex font-bold text-[#F3922B] hover:text-white"
+            className="font-bold text-white/55 underline underline-offset-4 hover:text-[#F3922B]"
           >
-            Open Facebook Page
+            Campsite Facebook reference
           </a>
         </div>
       ) : null}
     </article>
   );
+}
+
+function getAfftView(spot: CampsiteSpot) {
+  return `${spot.name} is treated as a ${spot.driveFromKK} campsite direction. AFFT checks route comfort, guest fit, weather risk and gear setup before recommending it for your group.`;
+}
+
+function getFacebookPreviewImage(facebookUrl?: string) {
+  if (!facebookUrl) {
+    return null;
+  }
+
+  try {
+    const url = new URL(facebookUrl);
+
+    if (!url.hostname.includes("facebook.com") || url.pathname.startsWith("/search")) {
+      return null;
+    }
+
+    const directId = url.searchParams.get("id");
+    const pageSlug = url.pathname.split("/").filter(Boolean)[0];
+    const pageIdentifier = directId ?? pageSlug;
+
+    if (!pageIdentifier || pageIdentifier === "profile.php") {
+      return null;
+    }
+
+    return `https://graph.facebook.com/${encodeURIComponent(
+      pageIdentifier
+    )}/picture?type=large`;
+  } catch {
+    return null;
+  }
 }
 
 function StatCard({ value, label }: { value: string; label: string }) {

@@ -431,9 +431,6 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
-    facebookUrl: facebookSources.doubleView,
-    facebookSummary:
-      "Facebook page lists Double View Campsite-DVC in Kg Tambatuon, Kota Belud.",
     ...csvSource,
   },
   {
@@ -442,6 +439,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.doubleView,
+    facebookSummary:
+      "Facebook page lists Double View Campsite-DVC in Kg Tambatuon, Kota Belud.",
     ...csvSource,
   },
   {
@@ -568,9 +568,6 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
-    facebookUrl: facebookSources.olumaag,
-    facebookSummary:
-      "Facebook page lists Olumaag Campsite at Kg Tiang Lama, Ranau.",
     ...csvSource,
   },
   {
@@ -595,6 +592,9 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.olumaag,
+    facebookSummary:
+      "Facebook page lists Olumaag Campsite at Kg Tiang Lama, Ranau.",
     ...csvSource,
   },
   {

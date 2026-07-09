@@ -18,7 +18,7 @@ import { makeWhatsappLink } from "@/lib/rent-it-data";
 export const metadata: Metadata = {
   title: "沙巴营地指南 | AFFT",
   description:
-    "AFFT 沙巴营地指南，按 KK-Kokol、Kota Belud、Kundasang、Ranau、Kiulu 和 Papar 分类，方便通过 WhatsApp 询问营地、装备和交通。",
+    "AFFT 沙巴营地指南，按 KK-Kokol、Kota Belud、Kundasang、Ranau、Kiulu 和 Papar 分类，帮助访客通过 WhatsApp 询问营地、装备和交通。",
   alternates: {
     canonical: "/zh/camping-spots",
     languages: {
@@ -47,15 +47,18 @@ export default function ZhCampingSpotsPage() {
                 沙巴营地指南
               </p>
               <h1 className="mt-4 text-5xl font-bold leading-tight md:text-7xl">
-                先选营地区域，再决定装备和交通。
+                先看 AFFT 的判断，再决定营地、装备和交通。
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
-                这是 AFFT 给客人使用的实用营地指南。按 KK-Kokol、Kota Belud、
-                Kundasang、Ranau、Kiulu 和 Papar 分类，方便比较车程、适合对象和装备方向。
+                这份指南按 KK-Kokol、Kota Belud、Kundasang、Ranau、Kiulu 和
+                Papar 分类。访客先在 AFFT 网站比较车程、适合对象、装备方向和风险点，
+                再通过 WhatsApp 让 AFFT 协助确认。
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
-                  href={makeWhatsappLink("你好 AFFT，我想请你帮我选择 Kota Kinabalu 附近的营地。")}
+                  href={makeWhatsappLink(
+                    "你好 AFFT，我想请你帮我选择 Kota Kinabalu 附近的营地。"
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
@@ -74,7 +77,10 @@ export default function ZhCampingSpotsPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               <StatCard value={String(campsiteStats.total)} label="个营地资料" />
               <StatCard value={String(campsiteStats.regions)} label="个区域分类" />
-              <StatCard value={String(campsiteStats.webBacked)} label="个网络确认重点" />
+              <StatCard
+                value={String(campsiteStats.webBacked)}
+                label="个网络确认重点"
+              />
             </div>
           </div>
         </div>
@@ -83,8 +89,8 @@ export default function ZhCampingSpotsPage() {
       <section id="regions" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <ZhSectionHeading
           small="区域分类"
-          big="排法会跟 Rent It Series 一样，先看分类，再看每一项。"
-          text="每个营地卡片都会提供车程方向、适合对象、装备建议、照片状态和 WhatsApp 询问入口。"
+          big="页面主角是 AFFT 的筛选观点，不是外部 Page。"
+          text="每个营地卡片先显示照片、AFFT 观点、车程、适合对象、装备建议和 WhatsApp 入口。Facebook 只放在底部作为外部来源参考。"
         />
 
         <div className="flex flex-wrap gap-3">
@@ -104,22 +110,22 @@ export default function ZhCampingSpotsPage() {
         <div className="mx-auto max-w-7xl">
           <ZhSectionHeading
             small="使用方式"
-            big="这是营地方向工具，不是固定预订系统。"
-            text="费用、路况、规则和营位状态会变化。客人看完后应该通过 WhatsApp 让 AFFT 确认日期、路线、装备和天气适合度。"
+            big="这不是单纯的营地目录，而是帮客人开口询问 AFFT 的工具。"
+            text="营地费用、路况、规则和营位状态会变。访客看完后，应该把日期、人数、舒适度和装备需求发给 AFFT，让我们协助判断。"
           />
 
           <div className="grid gap-4 md:grid-cols-3">
             <InfoBlock
               title="照片"
-              text="外部照片只作为参考，不直接复制到 AFFT 商业网站。之后优先换成 AFFT 自己照片或营地方授权照片。"
+              text="照片会直接显示在卡片顶部，优先帮助访客快速判断感觉；来源链接放在底部，不让访客太早离开 AFFT 网站。"
             />
             <InfoBlock
-              title="装备"
-              text="每个区域都会接到 Camping Package、Rent It 装备和交通建议，让页面可以带来 WhatsApp 询问。"
+              title="AFFT 观点"
+              text="每个卡片都会先呈现 AFFT 对区域、路程、适合对象、天气风险和装备的判断。"
             />
             <InfoBlock
-              title="费用"
-              text="CSV 费用只当成 2025 年 3 月参考。出发前必须确认最新收费和规则。"
+              title="WhatsApp 转化"
+              text="主要动作永远是问 AFFT。Facebook 只是外部参考，不是页面的核心转化入口。"
             />
           </div>
         </div>
@@ -170,9 +176,22 @@ export default function ZhCampingSpotsPage() {
 
 function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
   const profile = campsiteRegionProfiles[spot.region];
+  const previewImageUrl = getFacebookPreviewImage(spot.facebookUrl);
 
   return (
     <article className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+      {previewImageUrl ? (
+        <div className="mb-5 overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+          <img
+            src={previewImageUrl}
+            alt={`${spot.name} Facebook 公开照片`}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            className="h-44 w-full object-cover transition duration-300 hover:scale-[1.03]"
+          />
+        </div>
+      ) : null}
+
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2">
@@ -183,7 +202,7 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
               {spot.sourceStatus === "web"
                 ? "网络确认"
                 : spot.sourceStatus === "community"
-                  ? "照片参考"
+                  ? "公开照片参考"
                   : "CSV 基础资料"}
             </span>
           </div>
@@ -202,6 +221,12 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="rounded-2xl border border-[#F3922B]/25 bg-[#F3922B]/10 p-4 md:col-span-2">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
+            AFFT 观点
+          </p>
+          <p className="mt-2 leading-7 text-white/76">{getZhAfftView(spot)}</p>
+        </div>
         <DetailItem label="适合对象" value={profile.zhBestFor} />
         <DetailItem label="亮点" value={profile.zhHighlight} />
         <DetailItem label="注意" value={profile.zhWatchOut} />
@@ -240,18 +265,15 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       {spot.facebookUrl ? (
-        <div className="mt-3 rounded-2xl border border-[#F3922B]/20 bg-black/20 p-4 text-sm leading-7 text-white/65">
-          <p>
-            <span className="font-bold text-white">Facebook 公开资料：</span>
-            {translateFacebookSummary(spot)}
-          </p>
+        <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-4 text-xs leading-6 text-white/42 sm:flex-row sm:items-center sm:justify-between">
+          <span>Facebook 是外部参考；AFFT 观点和 WhatsApp 咨询才是主线。</span>
           <a
             href={spot.facebookUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-2 inline-flex font-bold text-[#F3922B] hover:text-white"
+            className="font-bold text-white/55 underline underline-offset-4 hover:text-[#F3922B]"
           >
-            打开 Facebook Page
+            营地 Facebook 参考
           </a>
         </div>
       ) : null}
@@ -259,14 +281,36 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
   );
 }
 
-function translateFacebookSummary(spot: CampsiteSpot) {
-  const profile = campsiteRegionProfiles[spot.region];
+function getZhAfftView(spot: CampsiteSpot) {
+  return `${spot.name} 会先以 ${spot.driveFromKK} 的营地方向来判断。AFFT 会先看路程舒适度、客人类型、天气风险和装备组合，再建议是否适合你的团队。`;
+}
 
-  if (!spot.facebookSummary) {
-    return `${spot.name} 的公开 Facebook Page 可作为照片和最新资料参考。`;
+function getFacebookPreviewImage(facebookUrl?: string) {
+  if (!facebookUrl) {
+    return null;
   }
 
-  return `${spot.name} 的 Facebook Page 可作为照片和最新资料参考；区域建议：${profile.zhBestFor}`;
+  try {
+    const url = new URL(facebookUrl);
+
+    if (!url.hostname.includes("facebook.com") || url.pathname.startsWith("/search")) {
+      return null;
+    }
+
+    const directId = url.searchParams.get("id");
+    const pageSlug = url.pathname.split("/").filter(Boolean)[0];
+    const pageIdentifier = directId ?? pageSlug;
+
+    if (!pageIdentifier || pageIdentifier === "profile.php") {
+      return null;
+    }
+
+    return `https://graph.facebook.com/${encodeURIComponent(
+      pageIdentifier
+    )}/picture?type=large`;
+  } catch {
+    return null;
+  }
 }
 
 function translateSourceLabel(status: CampsiteSpot["sourceStatus"]) {
@@ -275,7 +319,7 @@ function translateSourceLabel(status: CampsiteSpot["sourceStatus"]) {
   }
 
   if (status === "community") {
-    return "公开照片参考，需确认授权";
+    return "公开照片参考";
   }
 
   return "AFFT 2025 年 3 月 CSV";
