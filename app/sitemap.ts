@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { campsiteRegions, campsiteSpots } from "@/lib/campsite-guide-data";
 
 const baseUrl = "https://afft.club";
 
@@ -51,7 +52,15 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
+  const campsiteRoutes = [
+    ...campsiteRegions.flatMap((region) => [
+      `/camping-spots/${region.id}`,
+      `/zh/camping-spots/${region.id}`,
+    ]),
+    ...campsiteSpots.flatMap((spot) => [spot.href, spot.zhHref]),
+  ];
+
+  return [...routes, ...campsiteRoutes].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: "2026-07-09",
     changeFrequency: route === "" ? "weekly" : "monthly",

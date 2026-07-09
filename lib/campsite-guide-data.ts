@@ -11,9 +11,12 @@ export type CampsiteRegionId =
 export type CampsiteSourceStatus = "web" | "community" | "csv";
 
 export type CampsiteSpot = {
+  slug: string;
   name: string;
   region: CampsiteRegionId;
   location: string;
+  href: string;
+  zhHref: string;
   driveFromKK: string;
   feeNote: string;
   entranceNote: string;
@@ -27,6 +30,7 @@ export type CampsiteSpot = {
   sourceUrl?: string;
   facebookUrl?: string;
   facebookSummary?: string;
+  photoUrl?: string;
 };
 
 export const campsiteRegionTabs: Array<{
@@ -654,17 +658,58 @@ const rawSpots: Array<
   },
 ];
 
+export function slugifyCampsiteName(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getCampsiteImageUrl(facebookUrl?: string) {
+  if (!facebookUrl) {
+    return undefined;
+  }
+
+  try {
+    const url = new URL(facebookUrl);
+
+    if (!url.hostname.includes("facebook.com") || url.pathname.startsWith("/search")) {
+      return undefined;
+    }
+
+    const directId = url.searchParams.get("id");
+    const pageSlug = url.pathname.split("/").filter(Boolean)[0];
+    const pageIdentifier = directId ?? pageSlug;
+
+    if (!pageIdentifier || pageIdentifier === "profile.php") {
+      return undefined;
+    }
+
+    return `https://graph.facebook.com/${encodeURIComponent(
+      pageIdentifier
+    )}/picture?type=large`;
+  } catch {
+    return undefined;
+  }
+}
+
 export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
   const profile = campsiteRegionProfiles[spot.region];
+  const slug = slugifyCampsiteName(spot.name);
 
   return {
     ...spot,
+    slug,
+    href: `/camping-spots/${spot.region}/${slug}`,
+    zhHref: `/zh/camping-spots/${spot.region}/${slug}`,
     driveFromKK: profile.driveFromKK,
     bestFor: profile.bestFor,
     highlight: profile.highlight,
     watchOut: profile.watchOut,
     gearSuggestion: profile.gearSuggestion,
     photoNote: profile.photoNote,
+    photoUrl: getCampsiteImageUrl(spot.facebookUrl),
   };
 });
 
@@ -683,6 +728,16 @@ export const campsiteStats = {
   webBacked: campsiteSpots.filter((spot) => spot.sourceStatus === "web").length,
   regions: campsiteRegions.length,
 };
+
+export function getCampsiteRegion(regionId: string) {
+  return campsiteRegions.find((region) => region.id === regionId);
+}
+
+export function getCampsiteSpot(regionId: string, spotSlug: string) {
+  return campsiteSpots.find(
+    (spot) => spot.region === regionId && spot.slug === spotSlug
+  );
+}
 
 export const makeCampsiteWhatsappLink = (spotName: string) =>
   makeWhatsappLink(
