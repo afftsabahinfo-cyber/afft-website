@@ -62,7 +62,7 @@ export default function CampingSpotsPage() {
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
                 A practical AFFT guide for campsites around KK-Kokol, Kota Belud,
                 Kundasang, Ranau, Kiulu and Papar. Use it to compare drive time,
-                guest fit and what to ask AFFT before you open any external page.
+                scenery, comfort level and what gear or transport you may need.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
@@ -86,10 +86,10 @@ export default function CampingSpotsPage() {
 
             <div className="grid gap-4 sm:grid-cols-3">
               <StatCard value={String(campsiteStats.total)} label="spots in guide" />
-              <StatCard value={String(campsiteStats.regions)} label="AFFT area filters" />
+              <StatCard value={String(campsiteStats.regions)} label="area filters" />
               <StatCard
                 value={String(campsiteStats.webBacked)}
-                label="source-backed highlights"
+                label="checked highlights"
               />
             </div>
           </div>
@@ -98,9 +98,9 @@ export default function CampingSpotsPage() {
 
       <section id="regions" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <SectionHeading
-          small="Area Filters"
-          big="Use the same simple browsing logic as Rent It Series."
-          text="The guide is arranged by area first, then each campsite card gives drive time, guest fit, gear advice and a WhatsApp enquiry path."
+          small="Browse By Area"
+          big="Find a campsite that fits your group and comfort level."
+          text="Start with the area, drive time and outdoor setting. Then send your date and group size to AFFT so we can help match the campsite, gear and transport."
         />
 
         <div className="flex flex-wrap gap-3">
@@ -119,23 +119,23 @@ export default function CampingSpotsPage() {
       <section id="all" className="bg-[#182015] px-6 py-16 md:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            small="How To Read This Guide"
-            big="It is a campsite direction tool, not a fixed booking engine."
-            text="Fees, access rules and campsite conditions can change. AFFT should confirm the date, route, gear and weather fit before guests decide."
+            small="Before You Go"
+            big="Different campsite areas need different planning."
+            text="Highland, river, beach and hill camps all feel different. Use this guide to shortlist an area, then ask AFFT to confirm access, fees, weather and gear needs."
           />
 
           <div className="grid gap-4 md:grid-cols-3">
             <InfoBlock
-              title="AFFT view first"
-              text="The page should guide visitors through AFFT's judgement: area, comfort level, drive time, weather risk, gear fit and WhatsApp planning."
+              title="Choose by mood"
+              text="Compare mountain views, cool highlands, riverside spaces, beach sunsets and easy overnight options near Kota Kinabalu."
             />
             <InfoBlock
-              title="Services"
-              text="Each region connects back to AFFT camping packages, Rent It gear and private transport so visitors ask us before deciding."
+              title="Plan the setup"
+              text="Tell us if you need tents, chairs, lights, cooking gear, creator gear or private transport for the campsite you like."
             />
             <InfoBlock
-              title="External pages"
-              text="Facebook pages are secondary references only. They help verify current photos or rules after AFFT has already shaped the recommendation."
+              title="Ask before travel"
+              text="Campsite rules and conditions can change. Send us your date and group size so we can help you check the practical details."
             />
           </div>
         </div>
@@ -205,10 +205,10 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
             </span>
             <span className="rounded-full border border-white/15 px-3 py-1 text-xs font-bold text-white/70">
               {spot.sourceStatus === "web"
-                ? "Web checked"
+                ? "Public info"
                 : spot.sourceStatus === "community"
-                  ? "Photo reference"
-                  : "CSV base"}
+                  ? "Photo available"
+                  : "Listed spot"}
             </span>
           </div>
           <h3 className="mt-4 text-2xl font-bold">{spot.name}</h3>
@@ -228,7 +228,7 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         <div className="rounded-2xl border border-[#F3922B]/25 bg-[#F3922B]/10 p-4 md:col-span-2">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
-            AFFT View
+            Travel Fit
           </p>
           <p className="mt-2 leading-7 text-white/76">{getAfftView(spot)}</p>
         </div>
@@ -251,7 +251,7 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       <div className="mt-4 text-sm text-white/50">
-        Source:{" "}
+        More info:{" "}
         {spot.sourceUrl ? (
           <a
             href={spot.sourceUrl}
@@ -268,17 +268,14 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
 
       {spot.facebookUrl ? (
         <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-4 text-xs leading-6 text-white/42 sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            External reference only. Stay with AFFT first; we confirm current
-            photos, access and rules before advising.
-          </span>
+          <span>Public campsite updates may change from time to time.</span>
           <a
             href={spot.facebookUrl}
             target="_blank"
             rel="noreferrer"
             className="font-bold text-white/55 underline underline-offset-4 hover:text-[#F3922B]"
           >
-            Campsite Facebook reference
+            View public campsite page
           </a>
         </div>
       ) : null}
@@ -287,7 +284,7 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
 }
 
 function getAfftView(spot: CampsiteSpot) {
-  return `${spot.name} is treated as a ${spot.driveFromKK} campsite direction. AFFT checks route comfort, guest fit, weather risk and gear setup before recommending it for your group.`;
+  return `${spot.name} is about ${spot.driveFromKK}. It is best to confirm the route, weather, group comfort and gear setup before you lock in the plan.`;
 }
 
 function getFacebookPreviewImage(facebookUrl?: string) {

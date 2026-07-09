@@ -47,12 +47,12 @@ export default function ZhCampingSpotsPage() {
                 沙巴营地指南
               </p>
               <h1 className="mt-4 text-5xl font-bold leading-tight md:text-7xl">
-                先看 AFFT 的判断，再决定营地、装备和交通。
+                先选适合的营地区域，再安排装备和交通。
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
                 这份指南按 KK-Kokol、Kota Belud、Kundasang、Ranau、Kiulu 和
-                Papar 分类。访客先在 AFFT 网站比较车程、适合对象、装备方向和风险点，
-                再通过 WhatsApp 让 AFFT 协助确认。
+                Papar 分类。你可以先比较车程、风景、适合对象和装备方向，
+                再通过 WhatsApp 让 AFFT 协助确认实际安排。
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
@@ -89,8 +89,8 @@ export default function ZhCampingSpotsPage() {
       <section id="regions" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <ZhSectionHeading
           small="区域分类"
-          big="页面主角是 AFFT 的筛选观点，不是外部 Page。"
-          text="每个营地卡片先显示照片、AFFT 观点、车程、适合对象、装备建议和 WhatsApp 入口。Facebook 只放在底部作为外部来源参考。"
+          big="按区域快速找到适合你的露营地点。"
+          text="先看车程、环境感觉和适合对象，再把日期、人数和舒适度要求发给 AFFT，我们会协助你配营地、装备和交通。"
         />
 
         <div className="flex flex-wrap gap-3">
@@ -110,22 +110,22 @@ export default function ZhCampingSpotsPage() {
         <div className="mx-auto max-w-7xl">
           <ZhSectionHeading
             small="使用方式"
-            big="这不是单纯的营地目录，而是帮客人开口询问 AFFT 的工具。"
-            text="营地费用、路况、规则和营位状态会变。访客看完后，应该把日期、人数、舒适度和装备需求发给 AFFT，让我们协助判断。"
+            big="不同营地，适合不同的旅行方式。"
+            text="高地、河边、海边和山坡营地的天气、路况和舒适度都不一样。出发前可以让 AFFT 帮你确认当前费用、路况、营位和装备需求。"
           />
 
           <div className="grid gap-4 md:grid-cols-3">
             <InfoBlock
-              title="照片"
-              text="照片会直接显示在卡片顶部，优先帮助访客快速判断感觉；来源链接放在底部，不让访客太早离开 AFFT 网站。"
+              title="看感觉"
+              text="先用照片和区域说明判断你想要山景、河边、海边、凉爽高地，还是比较轻松的近郊过夜。"
             />
             <InfoBlock
-              title="AFFT 观点"
-              text="每个卡片都会先呈现 AFFT 对区域、路程、适合对象、天气风险和装备的判断。"
+              title="配装备"
+              text="告诉我们你需要帐篷、营椅、灯、厨房组、拍摄设备或包车，我们会按营地环境建议组合。"
             />
             <InfoBlock
-              title="WhatsApp 转化"
-              text="主要动作永远是问 AFFT。Facebook 只是外部参考，不是页面的核心转化入口。"
+              title="出发前确认"
+              text="营地规则、天气和收费可能会变。把日期和人数发给 AFFT，我们帮你确认比较稳妥。"
             />
           </div>
         </div>
@@ -200,10 +200,10 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
             </span>
             <span className="rounded-full border border-white/15 px-3 py-1 text-xs font-bold text-white/70">
               {spot.sourceStatus === "web"
-                ? "网络确认"
+                ? "公开资料"
                 : spot.sourceStatus === "community"
-                  ? "公开照片参考"
-                  : "CSV 基础资料"}
+                  ? "有照片"
+                  : "营地名单"}
             </span>
           </div>
           <h3 className="mt-4 text-2xl font-bold">{spot.name}</h3>
@@ -223,7 +223,7 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         <div className="rounded-2xl border border-[#F3922B]/25 bg-[#F3922B]/10 p-4 md:col-span-2">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
-            AFFT 观点
+            适合这样安排
           </p>
           <p className="mt-2 leading-7 text-white/76">{getZhAfftView(spot)}</p>
         </div>
@@ -249,7 +249,7 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
       </div>
 
       <div className="mt-4 text-sm text-white/50">
-        来源：
+        更多资料：
         {spot.sourceUrl ? (
           <a
             href={spot.sourceUrl}
@@ -266,14 +266,14 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
 
       {spot.facebookUrl ? (
         <div className="mt-4 flex flex-col gap-2 border-t border-white/10 pt-4 text-xs leading-6 text-white/42 sm:flex-row sm:items-center sm:justify-between">
-          <span>Facebook 是外部参考；AFFT 观点和 WhatsApp 咨询才是主线。</span>
+          <span>营地公开资料可能会不定期更新。</span>
           <a
             href={spot.facebookUrl}
             target="_blank"
             rel="noreferrer"
             className="font-bold text-white/55 underline underline-offset-4 hover:text-[#F3922B]"
           >
-            营地 Facebook 参考
+            查看营地公开页面
           </a>
         </div>
       ) : null}
@@ -282,7 +282,7 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
 }
 
 function getZhAfftView(spot: CampsiteSpot) {
-  return `${spot.name} 会先以 ${spot.driveFromKK} 的营地方向来判断。AFFT 会先看路程舒适度、客人类型、天气风险和装备组合，再建议是否适合你的团队。`;
+  return `${spot.name} 从 KK 出发大约是 ${spot.driveFromKK}。建议先确认路况、天气、团队舒适度和装备组合，再决定是否安排这个营地。`;
 }
 
 function getFacebookPreviewImage(facebookUrl?: string) {
