@@ -9,6 +9,7 @@ import {
 
 const rentItNavLinks = [
   { label: "Camping", href: "/camping" },
+  { label: "Camp Spots", href: "/camping-spots" },
   { label: "Rent It", href: "/rent-it" },
   { label: "Private Tours", href: "/private-tours" },
   { label: "Car Rental", href: "/car-rental" },

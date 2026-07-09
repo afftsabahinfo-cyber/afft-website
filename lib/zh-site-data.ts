@@ -72,6 +72,7 @@ export type ZhRentSeries = {
 
 export const zhNavLinks = [
   { label: "露营套餐", href: "/zh/camping" },
+  { label: "营地指南", href: "/zh/camping-spots" },
   { label: "Rent It", href: "/zh/rent-it" },
   { label: "私人行程", href: "/zh/private-tours" },
   { label: "包车", href: "/zh/car-rental" },

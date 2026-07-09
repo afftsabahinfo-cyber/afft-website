@@ -80,6 +80,12 @@ export default function ZhCampingPage() {
               >
                 查看套餐
               </a>
+              <a
+                href="/zh/camping-spots"
+                className="rounded-full border border-white/35 bg-black/25 px-8 py-4 font-bold text-white"
+              >
+                查看营地指南
+              </a>
             </div>
           </div>
         </div>

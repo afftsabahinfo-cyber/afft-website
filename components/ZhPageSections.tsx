@@ -2,7 +2,7 @@ import { AfftBrand } from "@/components/AfftBrand";
 import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
 import { zhNavLinks } from "@/lib/zh-site-data";
 
-export function ZhSiteTopNav() {
+export function ZhSiteTopNav({ enHref = "/" }: { enHref?: string } = {}) {
   return (
     <nav className="flex flex-wrap items-center justify-between gap-4">
       <AfftBrand
@@ -22,7 +22,7 @@ export function ZhSiteTopNav() {
 
       <div className="flex items-center gap-3">
         <a
-          href="/"
+          href={enHref}
           className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
         >
           EN

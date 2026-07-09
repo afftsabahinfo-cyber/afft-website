@@ -3,6 +3,7 @@ import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
 
 const navLinks = [
   { label: "Camping", href: "/camping" },
+  { label: "Camp Spots", href: "/camping-spots" },
   { label: "Rent It", href: "/rent-it" },
   { label: "Private Tours", href: "/private-tours" },
   { label: "Car Rental", href: "/car-rental" },
@@ -11,7 +12,7 @@ const navLinks = [
   { label: "FAQ", href: "/faq" },
 ];
 
-export function SiteTopNav() {
+export function SiteTopNav({ zhHref = "/zh" }: { zhHref?: string } = {}) {
   return (
     <nav className="relative z-50 flex flex-wrap items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-[#10140F]/88 px-4 py-3 shadow-2xl shadow-black/20 backdrop-blur md:px-5">
       <AfftBrand
@@ -31,7 +32,7 @@ export function SiteTopNav() {
 
       <div className="flex items-center gap-3">
         <a
-          href="/zh"
+          href={zhHref}
           className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
         >
           ZH

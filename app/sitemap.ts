@@ -8,6 +8,7 @@ const routes = [
   "",
   "/zh",
   "/zh/camping",
+  "/zh/camping-spots",
   "/zh/rent-it",
   "/zh/rent-it/creator-series",
   "/zh/rent-it/camp-lifestyle-series",
@@ -46,12 +47,13 @@ const routes = [
   "/about",
   "/faq",
   "/customer-stories",
+  "/camping-spots",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: "2026-06-28",
+    lastModified: "2026-07-09",
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.8,
   }));

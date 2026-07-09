@@ -143,6 +143,12 @@ export default function CampingPage() {
               >
                 View Packages
               </a>
+              <a
+                href="/camping-spots"
+                className="rounded-full border border-white/35 bg-black/25 px-8 py-4 font-bold text-white"
+              >
+                View Campsite Guide
+              </a>
             </div>
           </div>
         </div>
