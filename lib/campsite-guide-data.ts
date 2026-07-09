@@ -232,6 +232,7 @@ const facebookSources = {
   kokolHill: "https://www.facebook.com/kokolhillcampsite",
   kokolMamaHill: "https://www.facebook.com/KokolMamaHill",
   yunHai: "https://www.facebook.com/yunhaicampandstay",
+  backyardKokol: "https://www.facebook.com/people/Backyard-Kokol/100077997461341/",
   tegudon: "https://www.facebook.com/tegudontourismvillage",
   polumpung: "https://www.facebook.com/pmvcs",
   sondot: "https://www.facebook.com/CampingsitekgstylekotabeludSabah",
@@ -253,6 +254,7 @@ const facebookSources = {
   pokdi: "https://www.facebook.com/profile.php?id=61566503069171",
   kiuluFarmstay: "https://www.facebook.com/kiulufarmstay/",
   mandalipau: "https://www.facebook.com/picnic.camping.fishingpond/",
+  aaBolotikon: "https://www.facebook.com/100063910121150/",
 };
 
 const photoUrls = {
@@ -351,8 +353,9 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.backyardKokol,
     facebookSummary:
-      "Public campsite roundup lists Backyard Kokol under Kota Kinabalu hilltop camping spots.",
+      "Public Facebook and Instagram results identify Backyard Kokol as an official campsite and eco-tourism page around Kokol.",
     ...publicMapResearchSource,
   },
   {
@@ -1452,8 +1455,9 @@ const rawSpots: Array<
     location: "Kg Bolotikon, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.aaBolotikon,
     facebookSummary:
-      "Google Maps screenshot shows AA Campsite Kg Bolotikon as a camping ground in Papar with strong public review count.",
+      "Public Facebook and Instagram results identify AA Campsite kg Bolotikon Papar as an operator page; Google Maps screenshot also shows it as a Papar camping ground.",
     ...googleMapsSource,
   },
   {
@@ -1628,11 +1632,25 @@ export function getCampsiteImageUrl(facebookUrl?: string) {
       return undefined;
     }
 
+    const pathParts = url.pathname.split("/").filter(Boolean);
     const directId = url.searchParams.get("id");
-    const pageSlug = url.pathname.split("/").filter(Boolean)[0];
-    const pageIdentifier = directId ?? pageSlug;
+    const peopleId =
+      pathParts[0] === "people" && pathParts.length >= 3
+        ? pathParts[2]
+        : undefined;
+    const publicPageId =
+      pathParts[0] === "p" && pathParts.length >= 2
+        ? pathParts[1].match(/(\d+)$/)?.[1]
+        : undefined;
+    const pageSlug = pathParts[0];
+    const pageIdentifier = directId ?? peopleId ?? publicPageId ?? pageSlug;
 
-    if (!pageIdentifier || pageIdentifier === "profile.php") {
+    if (
+      !pageIdentifier ||
+      pageIdentifier === "profile.php" ||
+      pageIdentifier === "people" ||
+      pageIdentifier === "p"
+    ) {
       return undefined;
     }
 

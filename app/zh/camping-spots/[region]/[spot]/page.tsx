@@ -213,9 +213,10 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                   className="h-[360px] w-full object-cover md:h-[460px]"
                 />
               ) : (
-                <div className="flex h-[360px] items-center justify-center bg-[#182015] text-6xl font-bold text-white/20 md:h-[460px]">
-                  {spot.name.slice(0, 2)}
-                </div>
+                <MissingPhotoFrame
+                  label={spot.name}
+                  className="h-[360px] text-6xl md:h-[460px]"
+                />
               )}
             </div>
           </div>
@@ -306,7 +307,9 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                     referrerPolicy="no-referrer"
                     className="h-36 w-full object-cover"
                   />
-                ) : null}
+                ) : (
+                  <MissingPhotoFrame label={item.name} className="h-36 text-3xl" />
+                )}
                 <div className="p-5">
                   <h3 className="text-xl font-bold">{item.name}</h3>
                   <p className="mt-2 text-sm text-white/55">{item.location}</p>
@@ -328,6 +331,25 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
 
       <ZhSiteFooter />
     </main>
+  );
+}
+
+function MissingPhotoFrame({
+  label,
+  className,
+}: {
+  label: string;
+  className: string;
+}) {
+  return (
+    <div
+      className={`relative flex items-center justify-center bg-[#182015] font-bold text-white/20 ${className}`}
+    >
+      <span>{label.slice(0, 2)}</span>
+      <span className="absolute bottom-4 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold tracking-[0.16em] text-white/55">
+        照片待补
+      </span>
+    </div>
   );
 }
 

@@ -188,9 +188,7 @@ function CampsiteTile({
             className="h-52 w-full bg-black/25 object-cover"
           />
         ) : (
-          <div className="flex h-52 items-center justify-center bg-[#182015] text-5xl font-bold text-white/20">
-            {spot.name.slice(0, 2)}
-          </div>
+          <MissingPhotoFrame label={spot.name} />
         )}
 
         <div className="p-5">
@@ -230,6 +228,17 @@ function CampsiteTile({
         </a>
       </div>
     </article>
+  );
+}
+
+function MissingPhotoFrame({ label }: { label: string }) {
+  return (
+    <div className="relative flex h-52 items-center justify-center bg-[#182015] text-5xl font-bold text-white/20">
+      <span>{label.slice(0, 2)}</span>
+      <span className="absolute bottom-4 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">
+        Photo pending
+      </span>
+    </div>
   );
 }
 
