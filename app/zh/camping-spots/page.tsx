@@ -11,6 +11,59 @@ import {
 } from "@/components/ZhPageSections";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
+const siteUrl = "https://afft.club";
+
+const campsiteFaqs = [
+  {
+    question: "第一次露营，应该先看 Sabah West Coast Division 哪个 district？",
+    answer:
+      "如果想车程短，可以先看 Kota Kinabalu / Kokol 或 Tuaran / Kiulu。Kokol 比较像近郊山上营地，Kiulu 比较偏山谷和河边感觉。",
+  },
+  {
+    question: "为什么 Kundasang 的营地放在 Ranau？",
+    answer:
+      "因为 Kundasang 属于 Ranau district。为了符合 West Coast Division 的分组，Kundasang 和 Mesilau 一带的营地会放在 Ranau 页面。",
+  },
+  {
+    question: "Kota Belud、Ranau、Papar 应该怎么选？",
+    answer:
+      "Kota Belud 适合河边和神山景；Ranau 适合 Kundasang 高地、凉爽天气和 Glamping；Papar 适合海边日落、河边家庭活动和往南短途路线。",
+  },
+  {
+    question: "这个页面是营地预订系统吗？",
+    answer:
+      "不是。这个页面是 AFFT 的营地筛选和建议入口，帮助客人先了解区域、照片、车程、适合对象和装备方向，最后通过 WhatsApp 询问 AFFT。",
+  },
+];
+
+const districtGuides = [
+  {
+    regionId: "kota-kinabalu",
+    title: "Kota Kinabalu 与 Kokol 近郊营地",
+    text: "适合短车程、第一次露营、山上空气和快速过夜安排。",
+  },
+  {
+    regionId: "tuaran",
+    title: "Tuaran 与 Kiulu 河边营地",
+    text: "适合山谷、河边活动、乡村感和不想跑太远的轻露营。",
+  },
+  {
+    regionId: "kota-belud",
+    title: "Kota Belud 河边与神山景营地",
+    text: "适合更强户外感、朋友家庭、清澈河流和 Mount Kinabalu 景色。",
+  },
+  {
+    regionId: "ranau",
+    title: "Ranau、Kundasang 与 Mesilau 高地营地",
+    text: "适合凉爽天气、Glamping、日出、神山景和高地慢旅行。",
+  },
+  {
+    regionId: "papar",
+    title: "Papar 海边与河边营地",
+    text: "适合海边日落、南向短途路线、家庭河边活动和低地露营。",
+  },
+] as const;
+
 export const metadata: Metadata = {
   title: "沙巴西海岸省营地指南 | AFFT",
   description:
@@ -25,8 +78,58 @@ export const metadata: Metadata = {
 };
 
 export default function ZhCampingSpotsPage() {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "沙巴西海岸省营地指南 | AFFT",
+      url: `${siteUrl}/zh/camping-spots`,
+      description: metadata.description,
+      inLanguage: "zh-Hans",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: [
+        "沙巴露营",
+        "Sabah West Coast Division campsites",
+        "Kota Kinabalu campsite",
+        "Kundasang campsite",
+        "Kiulu campsite",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Sabah West Coast Division 营地 district",
+      itemListElement: campsiteRegions.map((region, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${region.profile.zhLabel} 营地`,
+        url: `${siteUrl}/zh/camping-spots/${region.id}`,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: campsiteFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section
         className="relative bg-cover bg-center px-6 py-8 md:px-10"
         style={{
@@ -71,11 +174,45 @@ export default function ZhCampingSpotsPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
-              <StatCard value={String(campsiteStats.regions)} label="个区域" />
+              <StatCard value={String(campsiteStats.regions)} label="个 district" />
               <StatCard value={String(campsiteStats.total)} label="个营地" />
               <StatCard value="WhatsApp" label="协助安排" />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-8 pt-2 md:px-10">
+        <ZhSectionHeading
+          small="营地搜索指南"
+          big="用 district、车程和露营感觉来找营地。"
+          text="这个页面是给搜索 Kota Kinabalu、Kokol、Kiulu、Kota Belud、Kundasang、Ranau 和 Papar 营地的客人使用。先选对 district，再继续看营地卡片。"
+        />
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {districtGuides.map((guide) => {
+            const region = campsiteRegions.find(
+              (item) => item.id === guide.regionId
+            );
+
+            if (!region) {
+              return null;
+            }
+
+            return (
+              <a
+                key={guide.regionId}
+                href={`/zh/camping-spots/${region.id}`}
+                className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-[#F3922B]/45"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
+                  {region.spots.length} 个营地
+                </p>
+                <h2 className="mt-3 text-xl font-bold">{guide.title}</h2>
+                <p className="mt-3 leading-7 text-white/68">{guide.text}</p>
+              </a>
+            );
+          })}
         </div>
       </section>
 
@@ -89,6 +226,25 @@ export default function ZhCampingSpotsPage() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {campsiteRegions.map((region) => (
             <RegionCard key={region.id} region={region} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-8 md:px-10">
+        <ZhSectionHeading
+          small="常见问题"
+          big="先看答案，再进入营地卡片。"
+          text="这些答案帮助客人更快决定要继续浏览哪个 district，再通过 WhatsApp 询问 AFFT。"
+        />
+        <div className="grid gap-4 md:grid-cols-2">
+          {campsiteFaqs.map((item) => (
+            <article
+              key={item.question}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6"
+            >
+              <h2 className="text-xl font-bold">{item.question}</h2>
+              <p className="mt-3 leading-7 text-white/70">{item.answer}</p>
+            </article>
           ))}
         </div>
       </section>
@@ -173,7 +329,7 @@ function RegionCard({ region }: { region: (typeof campsiteRegions)[number] }) {
           {region.profile.zhSummary}
         </p>
         <span className="mt-5 inline-flex font-bold text-[#F3922B] group-hover:text-white">
-          查看这个区域
+          查看这个 district
         </span>
       </div>
     </a>

@@ -12,6 +12,60 @@ import {
 } from "@/components/V3PageSections";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
+const siteUrl = "https://afft.club";
+
+const campsiteFaqs = [
+  {
+    question:
+      "Which Sabah West Coast Division district is best for first-time camping near Kota Kinabalu?",
+    answer:
+      "Kota Kinabalu and Tuaran are usually the easiest starting points because the drive is shorter from central KK. Kokol gives a hill-camp feel, while Kiulu gives a valley and river direction.",
+  },
+  {
+    question: "Where are Kundasang campsites listed on AFFT?",
+    answer:
+      "Kundasang and Mesilau campsites are grouped under Ranau because Kundasang sits inside Ranau district in Sabah's West Coast Division.",
+  },
+  {
+    question: "Can AFFT help choose between Kota Belud, Ranau and Papar campsites?",
+    answer:
+      "Yes. AFFT can compare the campsite fit by drive time, weather, river or mountain setting, comfort level, equipment needs and private transport plan.",
+  },
+  {
+    question: "Does AFFT replace the campsite operator's booking page?",
+    answer:
+      "No. This guide helps guests shortlist campsites and ask AFFT for practical planning. Campsite rules, fees and availability should still be confirmed before travel.",
+  },
+];
+
+const districtGuides = [
+  {
+    regionId: "kota-kinabalu",
+    title: "Camping near Kota Kinabalu and Kokol",
+    text: "Start here for shorter drives, hill air, quick overnights and first-time camping close to KK.",
+  },
+  {
+    regionId: "tuaran",
+    title: "Kiulu and Tuaran river camps",
+    text: "Use this district for valley scenery, river activities and a countryside camping feel without going too far inland.",
+  },
+  {
+    regionId: "kota-belud",
+    title: "Kota Belud river and mountain-view camps",
+    text: "Best for bigger outdoor mood, village settings, clear rivers and Mount Kinabalu view trips.",
+  },
+  {
+    regionId: "ranau",
+    title: "Kundasang, Mesilau and Ranau highland camps",
+    text: "Choose this direction for cooler weather, glamping stays, sunrise mood and Mount Kinabalu scenery.",
+  },
+  {
+    regionId: "papar",
+    title: "Papar beach and river camps",
+    text: "Useful for south-bound road trips, beach sunsets, lower-land camping and family river activities.",
+  },
+] as const;
+
 export const metadata: Metadata = {
   title: "West Coast Division Campsite Guide | AFFT Sabah",
   description:
@@ -37,8 +91,58 @@ export const metadata: Metadata = {
 };
 
 export default function CampingSpotsPage() {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "West Coast Division Campsite Guide | AFFT Sabah",
+      url: `${siteUrl}/camping-spots`,
+      description: metadata.description,
+      inLanguage: "en",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: [
+        "Sabah camping",
+        "West Coast Division campsites",
+        "Kota Kinabalu campsite",
+        "Kundasang campsite",
+        "Kiulu campsite",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Sabah West Coast Division campsite districts",
+      itemListElement: campsiteRegions.map((region, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${region.profile.label} campsites`,
+        url: `${siteUrl}/camping-spots/${region.id}`,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: campsiteFaqs.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section
         className="relative bg-cover bg-center px-6 py-8 md:px-10"
         style={{
@@ -83,11 +187,45 @@ export default function CampingSpotsPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
-              <StatCard value={String(campsiteStats.regions)} label="areas" />
+              <StatCard value={String(campsiteStats.regions)} label="districts" />
               <StatCard value={String(campsiteStats.total)} label="campsites" />
               <StatCard value="WhatsApp" label="planning support" />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-8 pt-2 md:px-10">
+        <SectionHeading
+          small="Campsite Search Guide"
+          big="Find a campsite by district, drive time and camping style."
+          text="This page is built for visitors searching for campsites near Kota Kinabalu, Kokol, Kiulu, Kota Belud, Kundasang, Ranau and Papar. Start with the district that matches your road trip."
+        />
+
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          {districtGuides.map((guide) => {
+            const region = campsiteRegions.find(
+              (item) => item.id === guide.regionId
+            );
+
+            if (!region) {
+              return null;
+            }
+
+            return (
+              <a
+                key={guide.regionId}
+                href={`/camping-spots/${region.id}`}
+                className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-[#F3922B]/45"
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#F3922B]">
+                  {region.spots.length} campsites
+                </p>
+                <h2 className="mt-3 text-xl font-bold">{guide.title}</h2>
+                <p className="mt-3 leading-7 text-white/68">{guide.text}</p>
+              </a>
+            );
+          })}
         </div>
       </section>
 
@@ -101,6 +239,25 @@ export default function CampingSpotsPage() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {campsiteRegions.map((region) => (
             <RegionCard key={region.id} region={region} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-8 md:px-10">
+        <SectionHeading
+          small="Common Questions"
+          big="Answers before you open a campsite card."
+          text="These short answers help guests decide where to continue browsing before sending AFFT a WhatsApp enquiry."
+        />
+        <div className="grid gap-4 md:grid-cols-2">
+          {campsiteFaqs.map((item) => (
+            <article
+              key={item.question}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6"
+            >
+              <h2 className="text-xl font-bold">{item.question}</h2>
+              <p className="mt-3 leading-7 text-white/70">{item.answer}</p>
+            </article>
           ))}
         </div>
       </section>

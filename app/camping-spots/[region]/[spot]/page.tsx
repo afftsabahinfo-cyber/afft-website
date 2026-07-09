@@ -14,6 +14,8 @@ import {
   SiteTopNav,
 } from "@/components/V3PageSections";
 
+const siteUrl = "https://afft.club";
+
 type PageProps = {
   params: Promise<{
     region: string;
@@ -78,8 +80,88 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
     .filter((item) => item.slug !== spot.slug)
     .slice(0, 3);
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${spot.name} | AFFT Sabah Campsite Guide`,
+      url: `${siteUrl}${spot.href}`,
+      description: `${spot.name} campsite fit, drive time, gear suggestion and AFFT WhatsApp planning advice.`,
+      inLanguage: "en",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: ["Sabah camping", `${spot.name} campsite`, `${region.profile.label} campsite`],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Camp Spots",
+          item: `${siteUrl}/camping-spots`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: `${region.profile.label} Campsites`,
+          item: `${siteUrl}/camping-spots/${region.id}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: spot.name,
+          item: `${siteUrl}${spot.href}`,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Campground",
+      name: spot.name,
+      url: `${siteUrl}${spot.href}`,
+      image: spot.photoUrl,
+      description: spot.highlight,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: spot.location,
+        addressRegion: "Sabah",
+        addressCountry: "MY",
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: `${region.profile.label}, Sabah West Coast Division`,
+      },
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "Drive from Kota Kinabalu",
+          value: spot.driveFromKK,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Best for",
+          value: spot.bestFor,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "AFFT gear suggestion",
+          value: spot.gearSuggestion,
+        },
+      ],
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="px-6 py-8 md:px-10">
         <div className="mx-auto max-w-7xl">
           <SiteTopNav zhHref={spot.zhHref} />

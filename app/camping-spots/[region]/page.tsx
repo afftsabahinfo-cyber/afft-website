@@ -11,6 +11,8 @@ import {
   SiteTopNav,
 } from "@/components/V3PageSections";
 
+const siteUrl = "https://afft.club";
+
 type PageProps = {
   params: Promise<{
     region: string;
@@ -37,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${region.profile.label} Campsites | AFFT Sabah Guide`,
-    description: region.profile.summary,
+    description: `${region.profile.summary} Compare campsite photos, drive time, best fit, gear advice and WhatsApp planning with AFFT.`,
     alternates: {
       canonical: `/camping-spots/${region.id}`,
       languages: {
@@ -56,8 +58,62 @@ export default async function CampsiteRegionPage({ params }: PageProps) {
     notFound();
   }
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${region.profile.label} Campsites | AFFT Sabah Guide`,
+      url: `${siteUrl}/camping-spots/${region.id}`,
+      description: `${region.profile.summary} Compare campsite photos, drive time, best fit, gear advice and WhatsApp planning with AFFT.`,
+      inLanguage: "en",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: [
+        `${region.profile.label} campsite`,
+        "Sabah camping",
+        "West Coast Division campsites",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Camp Spots",
+          item: `${siteUrl}/camping-spots`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: `${region.profile.label} Campsites`,
+          item: `${siteUrl}/camping-spots/${region.id}`,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${region.profile.label} campsite list`,
+      itemListElement: region.spots.map((spot, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: spot.name,
+        url: `${siteUrl}${spot.href}`,
+      })),
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="px-6 py-8 md:px-10">
         <div className="mx-auto max-w-7xl">
           <SiteTopNav zhHref={`/zh/camping-spots/${region.id}`} />

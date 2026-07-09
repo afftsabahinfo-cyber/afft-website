@@ -11,6 +11,8 @@ import {
   ZhSiteTopNav,
 } from "@/components/ZhPageSections";
 
+const siteUrl = "https://afft.club";
+
 type PageProps = {
   params: Promise<{
     region: string;
@@ -37,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${region.profile.zhLabel} 营地 | AFFT 沙巴指南`,
-    description: region.profile.zhSummary,
+    description: `${region.profile.zhSummary} 查看营地照片、车程、适合对象、装备建议和 AFFT WhatsApp 咨询入口。`,
     alternates: {
       canonical: `/zh/camping-spots/${region.id}`,
       languages: {
@@ -56,8 +58,62 @@ export default async function ZhCampsiteRegionPage({ params }: PageProps) {
     notFound();
   }
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${region.profile.zhLabel} 营地 | AFFT 沙巴指南`,
+      url: `${siteUrl}/zh/camping-spots/${region.id}`,
+      description: `${region.profile.zhSummary} 查看营地照片、车程、适合对象、装备建议和 AFFT WhatsApp 咨询入口。`,
+      inLanguage: "zh-Hans",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: [
+        `${region.profile.zhLabel} 营地`,
+        "沙巴露营",
+        "West Coast Division campsites",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Camp Spots",
+          item: `${siteUrl}/zh/camping-spots`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: `${region.profile.zhLabel} 营地`,
+          item: `${siteUrl}/zh/camping-spots/${region.id}`,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${region.profile.zhLabel} 营地列表`,
+      itemListElement: region.spots.map((spot, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: spot.name,
+        url: `${siteUrl}${spot.zhHref}`,
+      })),
+    },
+  ];
+
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="px-6 py-8 md:px-10">
         <div className="mx-auto max-w-7xl">
           <ZhSiteTopNav enHref={`/camping-spots/${region.id}`} />

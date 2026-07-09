@@ -15,6 +15,8 @@ import {
   ZhSiteTopNav,
 } from "@/components/ZhPageSections";
 
+const siteUrl = "https://afft.club";
+
 type PageProps = {
   params: Promise<{
     region: string;
@@ -80,8 +82,88 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
     .filter((item) => item.slug !== spot.slug)
     .slice(0, 3);
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${spot.name} | AFFT 沙巴营地指南`,
+      url: `${siteUrl}${spot.zhHref}`,
+      description: `${spot.name} 的车程、适合对象、装备建议和 AFFT WhatsApp 咨询建议。`,
+      inLanguage: "zh-Hans",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "AFFT",
+        url: siteUrl,
+      },
+      about: ["沙巴露营", `${spot.name} 营地`, `${profile.zhLabel} 营地`],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Camp Spots",
+          item: `${siteUrl}/zh/camping-spots`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: `${profile.zhLabel} 营地`,
+          item: `${siteUrl}/zh/camping-spots/${region.id}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: spot.name,
+          item: `${siteUrl}${spot.zhHref}`,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Campground",
+      name: spot.name,
+      url: `${siteUrl}${spot.zhHref}`,
+      image: spot.photoUrl,
+      description: profile.zhHighlight,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: spot.location,
+        addressRegion: "Sabah",
+        addressCountry: "MY",
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: `${profile.zhLabel}, Sabah West Coast Division`,
+      },
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "从 Kota Kinabalu 出发",
+          value: spot.driveFromKK,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "适合对象",
+          value: profile.zhBestFor,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "AFFT 装备建议",
+          value: profile.zhGearSuggestion,
+        },
+      ],
+    },
+  ];
+
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="px-6 py-8 md:px-10">
         <div className="mx-auto max-w-7xl">
           <ZhSiteTopNav enHref={spot.href} />
