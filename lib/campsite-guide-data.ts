@@ -188,10 +188,18 @@ const googleMapsSource = {
   sourceLabel: "Google Maps public listing screenshot supplied by AFFT",
 };
 
+const googleMapsLiveSource = {
+  sourceStatus: "map" as const,
+  sourceLabel: "Google Maps public search result, to confirm with operator",
+};
+
 const publicMapResearchSource = {
   sourceStatus: "map" as const,
   sourceLabel: "Public map and campsite listing research, to confirm with operator",
 };
+
+const makeGoogleMapsSearchUrl = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 const sourceUrls = {
   tegudon: "https://www.mysabah.com/wordpress/tegudon-tourism-village/",
@@ -403,6 +411,52 @@ const rawSpots: Array<
     ...publicMapResearchSource,
   },
   {
+    name: "Papas Eco Camp & Homestay Id Kalangadan",
+    region: "kota-kinabalu",
+    location: "Jalan Kokol - Tombongon, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Papas Eco Camp & Homestay Id Kalangadan Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Papas Eco Camp & Homestay Id Kalangadan as a camping ground on Jalan Kokol - Tombongon.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Manoria Village",
+    region: "kota-kinabalu",
+    location: "Jalan Kionsom, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Manoria village Sabah campsite"),
+    facebookSummary:
+      "Google Maps public search lists Manoria Village as a camping ground around the Kionsom side of Kota Kinabalu.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Mode View Campsite Kokol Hill",
+    region: "kota-kinabalu",
+    location: "Kokol Hill, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Mode View Campsite Kokol Hill Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Mode View Campsite Kokol Hill as a Kokol-area camping ground.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "VV Land",
+    region: "kota-kinabalu",
+    location: "Kota Kinabalu / Kokol side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("VV Land Kota Kinabalu campsite"),
+    facebookSummary:
+      "Google Maps public search lists VV Land as a Kota Kinabalu camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
     name: "Tegudon Tourism Village",
     region: "kota-belud",
     location: "Kota Belud",
@@ -604,6 +658,113 @@ const rawSpots: Array<
     facebookSummary:
       "Public campsite roundup lists DRB Nanamun Beach under Kota Belud coastal campsites.",
     ...publicMapResearchSource,
+  },
+  {
+    name: "Nahandang Melangkap Homestay and Campsite",
+    region: "kota-belud",
+    location: "Melangkap, Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Nahandang Melangkap Homestay and Campsite Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Nahandang Melangkap Homestay and Campsite as a Melangkap camping ground.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Murog Purog Camp Site Kg Tambatuon",
+    region: "kota-belud",
+    location: "Kg Tambatuon, Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Murog Purog Camp Site Kg Tambatuon Kota Belud Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Murog Purog Camp Site in Kg Tambatuon, Kota Belud.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Nolobuh Base Camp Eko Pelancongan Kg Terintidon",
+    region: "kota-belud",
+    location: "Kg Terintidon, Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Nolobuh Base Camp Eko Pelancongan Kg Terintidon Kota Belud Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Nolobuh Base Camp Eko Pelancongan Kg Terintidon as a Kota Belud camping ground.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Binombon Campsite",
+    region: "kota-belud",
+    location: "Tambatuon / Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Binombon Campsite Kota Belud Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Binombon Campsite on the Tambatuon side of Kota Belud.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Kalangadan Hill Campsite",
+    region: "kota-belud",
+    location: "Kota Belud / Ranau Bypass side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Kalangadan Hill Campsite Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Kalangadan Hill Campsite around the Kota Belud to Ranau route.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "GreenHouse Camping Site",
+    region: "kota-belud",
+    location: "Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("GreenHouse Camping site Kota Belud Sabah"),
+    facebookSummary:
+      "Google Maps public search lists GreenHouse Camping Site as a Kota Belud camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Supu'an Purakogis Campsite",
+    region: "kota-belud",
+    location: "Kota Belud / Ranau Bypass side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Supu'an Purakogis Campsite Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Supu'an Purakogis Campsite around the Kota Belud highland route.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Birds & Cherry Mini Campsite",
+    region: "kota-belud",
+    location: "Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Birds & Cherry Mini Campsite Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Birds & Cherry Mini Campsite as a Kota Belud camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Piras Kadamaian Campsite & Roomstay",
+    region: "kota-belud",
+    location: "Kampung Tambatuon, Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Piras Kadamaian Campsite Roomstay Kampung Tambatuon Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Piras Kadamaian Campsite & Roomstay around Kampung Tambatuon.",
+    ...googleMapsLiveSource,
   },
   {
     name: "Discovery Maragang Hill",
@@ -808,6 +969,206 @@ const rawSpots: Array<
     ...publicMapResearchSource,
   },
   {
+    name: "Dolungan Campsite",
+    region: "ranau",
+    location: "Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Dolungan Campsite Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Dolungan Campsite as a Ranau camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "The Mountain Camp @ Mt. Kinabalu by PrimaStay",
+    region: "ranau",
+    location: "Mount Kinabalu / Kundasang side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "The Mountain Camp Mt Kinabalu by PrimaStay Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists The Mountain Camp @ Mt. Kinabalu by PrimaStay as a camping cabin or camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Alley Stay and Mini Campsite",
+    region: "ranau",
+    location: "Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Alley Stay and Mini Campsite Kundasang"),
+    facebookSummary:
+      "Google Maps public search lists Alley Stay and Mini Campsite as a Kundasang camping ground.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Sinaran Kinabalu Campsite",
+    region: "ranau",
+    location: "Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Sinaran Kinabalu Campsite Kundasang"),
+    facebookSummary:
+      "Google Maps public search lists Sinaran Kinabalu Campsite as a Kundasang camping ground.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Lohan Mini Camp",
+    region: "ranau",
+    location: "Jalan Lohan Bongkud, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Lohan Mini Camp Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Lohan Mini Camp as a Ranau camping ground on Jalan Lohan Bongkud.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "ECOCADO Ranch Campsites",
+    region: "ranau",
+    location: "Kg Kinarasan, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("ECOCADO Ranch Campsites Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists ECOCADO Ranch Campsites around Kg Kinarasan, Ranau.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Batu Payung Campsite",
+    region: "ranau",
+    location: "Kampung Kepuakan Ulu Sugut, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Batu Payung Campsite Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Batu Payung Campsite as a Ranau-side recreation and camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Twin's Cottage & Campsite Ranau",
+    region: "ranau",
+    location: "Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Twin's Cottage & Campsite Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Twin's Cottage & Campsite as a Ranau camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Malambun Campsite",
+    region: "ranau",
+    location: "Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Malambun Campsite Ranau Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Malambun Campsite as a Ranau tourist and camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "AZ-Zummar Campsite",
+    region: "ranau",
+    location: "Kampung Himbaan, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("AZ-Zummar Campsite Kampung Himbaan Sabah"),
+    facebookSummary:
+      "Google Maps public search lists AZ-Zummar Campsite around Kampung Himbaan.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Downhill Campsite",
+    region: "ranau",
+    location: "Jalan Sosodikon, Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Downhill Campsite Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Downhill Campsite as a Kundasang camping ground near Jalan Sosodikon.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Wild Camping Mesilou",
+    region: "ranau",
+    location: "Mesilou, Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Wild Camping Mesilou Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Wild Camping Mesilou as a Mesilou camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Malim Gunung Campsite",
+    region: "ranau",
+    location: "Kundasang / Mount Kinabalu side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Malim Gunung Campsite Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Malim Gunung Campsite as a Kundasang tourist and camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Hout Bush Campsite",
+    region: "ranau",
+    location: "Bundu Tuhan, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Hout Bush Campsite Bundu Tuhan Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Hout Bush Campsite around Bundu Tuhan.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Dodon Land Campsite Kundasang",
+    region: "ranau",
+    location: "Jalan Kem Bina Negara, Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Dodon Land Campsite Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Dodon Land Campsite Kundasang around Jalan Kem Bina Negara.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Daparak Campsite",
+    region: "ranau",
+    location: "Kundasang / Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Daparak Campsite Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Daparak Campsite as a Kundasang or Ranau camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Sense Mount Residence Kundasang",
+    region: "ranau",
+    location: "Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Sense Mount Residence Kundasang campsite"),
+    facebookSummary:
+      "Google Maps public search lists Sense Mount Residence Kundasang as a camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "C.R.K. Campsite",
+    region: "ranau",
+    location: "Jalan Semuruh Kinaundusan, Kundasang",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("C.R.K. Campsite Kundasang Sabah"),
+    facebookSummary:
+      "Google Maps public search lists C.R.K. Campsite around Jalan Semuruh Kinaundusan.",
+    ...googleMapsLiveSource,
+  },
+  {
     name: "Hawun Valley Kiulu Camping",
     region: "tuaran",
     location: "Kiulu",
@@ -933,6 +1294,118 @@ const rawSpots: Array<
     facebookSummary:
       "Public campsite roundup lists Kiulu River Park under Tuaran and Kiulu camping spots.",
     ...publicMapResearchSource,
+  },
+  {
+    name: "D'Idiama Campsite",
+    region: "tuaran",
+    location: "Kiulu / Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("D'Idiama Campsite Kiulu Sabah"),
+    facebookSummary:
+      "Google Maps public search lists D'Idiama Campsite as a Tuaran and Kiulu camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Tongkoluson Campsite",
+    region: "tuaran",
+    location: "Kiulu / Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Tongkoluson Campsite Kiulu Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Tongkoluson Campsite as a Kiulu-side outdoor and camping candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Ratau Campsite",
+    region: "tuaran",
+    location: "Kg Ratau, Kiulu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Ratau Campsite Kiulu Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Ratau Campsite around Kg Ratau Kiulu.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Ponompuhuyan Sinompuruan Campsite",
+    region: "tuaran",
+    location: "Kg Pahu Sogo Sogo, Kiulu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl(
+      "Ponompuhuyan Sinompuruan Campsite Kiulu Sabah"
+    ),
+    facebookSummary:
+      "Google Maps public search lists Ponompuhuyan Sinompuruan Campsite around Kg Pahu Sogo Sogo, Kiulu.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "7'D Kisonit Campsite",
+    region: "tuaran",
+    location: "Tobobon / Tuaran side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("7'D Kisonit Campsite Sabah"),
+    facebookSummary:
+      "Google Maps public search lists 7'D Kisonit Campsite around Jalan Gonipis, Tobobon.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Sinopian Campsite",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Sinopian Campsite Kiulu Tuaran Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Sinopian Campsite as a Kiulu camping cabin candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Dayangku Borneo Campstay",
+    region: "tuaran",
+    location: "Kiulu / Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Dayangku Borneo Campstay Kiulu Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Dayangku Borneo Campstay as a Kiulu and Tuaran camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Kipumpun Riverside Campsite",
+    region: "tuaran",
+    location: "Tuaran / Kiulu river side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Kipumpun Riverside Campsite Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Kipumpun Riverside Campsite as a Tuaran river-side camping ground candidate.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Dumbio Campsite",
+    region: "tuaran",
+    location: "Kg Kayangat Tenghilan, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Dumbio Campsite Tenghilan Tuaran Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Dumbio Campsite around Kg Kayangat Tenghilan.",
+    ...googleMapsLiveSource,
+  },
+  {
+    name: "Ground Camp Kiulu (KNC)",
+    region: "tuaran",
+    location: "Kg Bayag, Kiulu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: makeGoogleMapsSearchUrl("Ground Camp Kiulu KNC Sabah"),
+    facebookSummary:
+      "Google Maps public search lists Ground Camp Kiulu (KNC) around Kg Bayag, Kiulu.",
+    ...googleMapsLiveSource,
   },
   {
     name: "Pasakon Beach Camping",
