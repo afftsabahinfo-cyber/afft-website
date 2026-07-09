@@ -238,8 +238,35 @@ function ZhCampsiteCard({ spot }: { spot: CampsiteSpot }) {
           translateSourceLabel(spot.sourceStatus)
         )}
       </div>
+
+      {spot.facebookUrl ? (
+        <div className="mt-3 rounded-2xl border border-[#F3922B]/20 bg-black/20 p-4 text-sm leading-7 text-white/65">
+          <p>
+            <span className="font-bold text-white">Facebook 公开资料：</span>
+            {translateFacebookSummary(spot)}
+          </p>
+          <a
+            href={spot.facebookUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex font-bold text-[#F3922B] hover:text-white"
+          >
+            打开 Facebook Page
+          </a>
+        </div>
+      ) : null}
     </article>
   );
+}
+
+function translateFacebookSummary(spot: CampsiteSpot) {
+  const profile = campsiteRegionProfiles[spot.region];
+
+  if (!spot.facebookSummary) {
+    return `${spot.name} 的公开 Facebook Page 可作为照片和最新资料参考。`;
+  }
+
+  return `${spot.name} 的 Facebook Page 可作为照片和最新资料参考；区域建议：${profile.zhBestFor}`;
 }
 
 function translateSourceLabel(status: CampsiteSpot["sourceStatus"]) {

@@ -245,6 +245,23 @@ function CampsiteCard({ spot }: { spot: CampsiteSpot }) {
           spot.sourceLabel
         )}
       </div>
+
+      {spot.facebookUrl ? (
+        <div className="mt-3 rounded-2xl border border-[#F3922B]/20 bg-black/20 p-4 text-sm leading-7 text-white/65">
+          <p>
+            <span className="font-bold text-white">Facebook public info:</span>{" "}
+            {spot.facebookSummary}
+          </p>
+          <a
+            href={spot.facebookUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex font-bold text-[#F3922B] hover:text-white"
+          >
+            Open Facebook Page
+          </a>
+        </div>
+      ) : null}
     </article>
   );
 }

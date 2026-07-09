@@ -25,6 +25,8 @@ export type CampsiteSpot = {
   sourceStatus: CampsiteSourceStatus;
   sourceLabel: string;
   sourceUrl?: string;
+  facebookUrl?: string;
+  facebookSummary?: string;
 };
 
 export const campsiteRegionTabs: Array<{
@@ -212,6 +214,31 @@ const sourceUrls = {
     "https://www.lemon8-app.com/%40vglyjaaaaa/7527886551570039304?region=my",
 };
 
+const facebookSources = {
+  kokolHill: "https://www.facebook.com/kokolhillcampsite",
+  kokolMamaHill: "https://www.facebook.com/KokolMamaHill",
+  yunHai: "https://www.facebook.com/yunhaicampandstay",
+  tegudon: "https://www.facebook.com/tegudontourismvillage",
+  polumpung: "https://www.facebook.com/pmvcs",
+  sondot: "https://www.facebook.com/CampingsitekgstylekotabeludSabah",
+  nulinau: "https://www.facebook.com/profile.php?id=100075881679921",
+  kisakot: "https://www.facebook.com/kisakotcampsite",
+  ecoBayayat: "https://www.facebook.com/ecocampbayayatkadamaian",
+  paramat: "https://www.facebook.com/profile.php?id=100057138234613",
+  nohutu: "https://www.facebook.com/nohutuecotourism",
+  daradaat: "https://www.facebook.com/daradaatcampsite",
+  doubleView: "https://www.facebook.com/profile.php?id=61556553215663",
+  komfy: "https://www.facebook.com/KomfyKundasang",
+  nuluhon: "https://www.facebook.com/nuluhongroupstories",
+  mentoki: "https://www.facebook.com/search/pages/?q=Mentoki%20Hideout%20Campsite%20Sabah%20campsite",
+  himbaan: "https://www.facebook.com/himbaan",
+  tambiau: "https://www.facebook.com/TambiauForestHouseRanauSabah",
+  olumaag: "https://www.facebook.com/profile.php?id=61550438752478",
+  hawun: "https://www.facebook.com/hawunvalley.kiulu",
+  pasakon: "https://www.facebook.com/profile.php?id=100063505363715",
+  pokdi: "https://www.facebook.com/profile.php?id=61566503069171",
+};
+
 const rawSpots: Array<
   Pick<
     CampsiteSpot,
@@ -223,6 +250,8 @@ const rawSpots: Array<
     | "sourceStatus"
     | "sourceLabel"
     | "sourceUrl"
+    | "facebookUrl"
+    | "facebookSummary"
   >
 > = [
   {
@@ -231,6 +260,9 @@ const rawSpots: Array<
     location: "Kokol Hill, Kota Kinabalu",
     feeNote: "CSV: RM50 front / RM30 back",
     entranceNote: "CSV: RM10 adult, RM5 child below 10",
+    facebookUrl: facebookSources.kokolHill,
+    facebookSummary:
+      "Facebook page lists Kampung Kokol Menggatal, open status and a campsite booking contact.",
     ...csvSource,
   },
   {
@@ -239,6 +271,9 @@ const rawSpots: Array<
     location: "Kokol Hill, Kota Kinabalu",
     feeNote: "CSV: RM10 per camp",
     entranceNote: "CSV: RM10 adult, RM5 child below 12",
+    facebookUrl: facebookSources.kokolMamaHill,
+    facebookSummary:
+      "Facebook page describes sunset and sunrise views at Mamahill Campsite, Kokol.",
     ...csvSource,
   },
   {
@@ -255,6 +290,9 @@ const rawSpots: Array<
     location: "Kokol - Tombongon",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.yunHai,
+    facebookSummary:
+      "Facebook page describes camping and culvert tube room stays with mountain range scenery.",
     ...csvSource,
   },
   {
@@ -271,6 +309,9 @@ const rawSpots: Array<
     location: "Kota Kinabalu",
     feeNote: "CSV: RM30 per site",
     entranceNote: "CSV: RM3 per person",
+    facebookUrl: facebookSources.nuluhon,
+    facebookSummary:
+      "Facebook page describes a village-style homestay and campsite with privacy.",
     ...csvSource,
   },
   {
@@ -282,6 +323,9 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "MySabah public guide + AFFT CSV",
     sourceUrl: sourceUrls.tegudon,
+    facebookUrl: facebookSources.tegudon,
+    facebookSummary:
+      "Facebook page positions Tegudon Tourism Village as a nature campsite.",
   },
   {
     name: "Melangkap Recreation Centre",
@@ -300,6 +344,9 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "SAYS public feature + AFFT CSV",
     sourceUrl: sourceUrls.polumpung,
+    facebookUrl: facebookSources.polumpung,
+    facebookSummary:
+      "Facebook page describes a riverside campsite facing Mount Kinabalu beside Panataran River.",
   },
   {
     name: "Sondot View Camp",
@@ -307,6 +354,9 @@ const rawSpots: Array<
     location: "Kg Kebayau, Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.sondot,
+    facebookSummary:
+      "Facebook page lists Sondot View Camp in Kota Belud as a sport and recreation campsite.",
     ...csvSource,
   },
   {
@@ -315,6 +365,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.nulinau,
+    facebookSummary:
+      "Facebook page describes glamping, homestay, camping and river picnic use.",
     ...csvSource,
   },
   {
@@ -323,6 +376,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.kisakot,
+    facebookSummary:
+      "Facebook search results point to Kisakot Campsite in Melangkap Tiong, Kota Belud.",
     ...csvSource,
   },
   {
@@ -331,6 +387,9 @@ const rawSpots: Array<
     location: "Kadamaian, Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.ecoBayayat,
+    facebookSummary:
+      "Facebook page mentions hiking, camping, rafting, BBQ and river activities.",
     ...csvSource,
   },
   {
@@ -339,6 +398,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.paramat,
+    facebookSummary:
+      "Facebook page positions Paramat Garden Kota Belud as a quiet tourist spot.",
     ...csvSource,
   },
   {
@@ -347,6 +409,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.nohutu,
+    facebookSummary:
+      "Facebook page lists Nohutu Eco Tourism in Kg Melangkap Tiong as outdoor recreation.",
     ...csvSource,
   },
   {
@@ -355,6 +420,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.daradaat,
+    facebookSummary:
+      "Facebook page describes camping beside Kadamaian River near the foot of Mount Kinabalu.",
     ...csvSource,
   },
   {
@@ -363,6 +431,9 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.doubleView,
+    facebookSummary:
+      "Facebook page lists Double View Campsite-DVC in Kg Tambatuon, Kota Belud.",
     ...csvSource,
   },
   {
@@ -438,6 +509,9 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "Komfy official site + AFFT CSV",
     sourceUrl: sourceUrls.komfyOfficial,
+    facebookUrl: facebookSources.komfy,
+    facebookSummary:
+      "Facebook page describes Komfy Kabins and Komfy Kamping in Mesilau, Kundasang.",
   },
   {
     name: "Mentoki Hideout Campsite",
@@ -445,6 +519,9 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.mentoki,
+    facebookSummary:
+      "Facebook search result lists Mentoki Hideout Campsite in Mentoki, Kundasang.",
     ...csvSource,
   },
   {
@@ -453,6 +530,9 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.himbaan,
+    facebookSummary:
+      "Facebook page points to Himbaan Gardenstay as a homestay reference.",
     ...csvSource,
   },
   {
@@ -477,6 +557,9 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.tambiau,
+    facebookSummary:
+      "Facebook page describes Tambiau Forest Ranau for forest life, trekking and camping.",
     ...csvSource,
   },
   {
@@ -485,6 +568,9 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.olumaag,
+    facebookSummary:
+      "Facebook page lists Olumaag Campsite at Kg Tiang Lama, Ranau.",
     ...csvSource,
   },
   {
@@ -536,6 +622,9 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "SabahTravel public listing",
     sourceUrl: sourceUrls.hawun,
+    facebookUrl: facebookSources.hawun,
+    facebookSummary:
+      "Facebook page describes Hawun Valley Kiulu for camping, chalets, stargazing, hiking and sunrise or sunset viewing.",
   },
   {
     name: "Pasakon Beach Camping",
@@ -546,6 +635,9 @@ const rawSpots: Array<
     sourceStatus: "community",
     sourceLabel: "Public travel photo reference",
     sourceUrl: sourceUrls.pasakon,
+    facebookUrl: facebookSources.pasakon,
+    facebookSummary:
+      "Facebook page describes Pasakon Beach Camp Site as a sunset camping and event space.",
   },
   {
     name: "Pokdi Mandalipau Campsite",
@@ -556,6 +648,9 @@ const rawSpots: Array<
     sourceStatus: "community",
     sourceLabel: "Public community photo reference",
     sourceUrl: sourceUrls.pokdi,
+    facebookUrl: facebookSources.pokdi,
+    facebookSummary:
+      "Facebook page describes Pokdi Campsite Mandalipau with forest, river and quiet nature atmosphere.",
   },
 ];
 
