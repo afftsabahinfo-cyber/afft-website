@@ -188,6 +188,11 @@ const googleMapsSource = {
   sourceLabel: "Google Maps public listing screenshot supplied by AFFT",
 };
 
+const publicMapResearchSource = {
+  sourceStatus: "map" as const,
+  sourceLabel: "Public map and campsite listing research, to confirm with operator",
+};
+
 const sourceUrls = {
   tegudon: "https://www.mysabah.com/wordpress/tegudon-tourism-village/",
   polumpung:
@@ -208,6 +213,11 @@ const sourceUrls = {
   minurod: "https://booktapak.com/property/minurod-campsite",
   taralamas: "https://booktapak.com/property/taralamas-campsite",
   umea: "https://booktapak.com/property/umea-glam-kundasang-by-leafy-t",
+  sabahTravelCamping:
+    "https://www.sabahtravel.com/articles/post/10-best-camping-sites-in-sabah",
+  helloSabahCamping:
+    "https://hellosabah.com/top-camping-spots-in-sabah-for-nature-lovers-weekend-adventurers/",
+  disanBaang: "https://disanbaang.com/",
 };
 
 const facebookSources = {
@@ -325,6 +335,72 @@ const rawSpots: Array<
     facebookSummary:
       "Facebook page describes a village-style homestay and campsite with privacy.",
     ...csvSource,
+  },
+  {
+    name: "Backyard Kokol",
+    region: "kota-kinabalu",
+    location: "Kokol / Kota Kinabalu hill side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Backyard Kokol under Kota Kinabalu hilltop camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "N.G Kokol Camping Site",
+    region: "kota-kinabalu",
+    location: "Kokol, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookSummary:
+      "SabahTravel public camping guide lists N.G Kokol Camping Site as a Kokol campsite near Kota Kinabalu with city and sea views.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Tamaza ACV Telipok",
+    region: "kota-kinabalu",
+    location: "Telipok, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Tamaza ACV in Telipok under Kota Kinabalu camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Shalom Valley Park",
+    region: "kota-kinabalu",
+    location: "Kota Kinabalu hill or countryside side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Shalom Valley Park under Kota Kinabalu camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "JP's Campsite Santai2",
+    region: "kota-kinabalu",
+    location: "Kota Kinabalu / Kokol side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists JP's Campsite Santai2 together with Pogun Jo under Kota Kinabalu camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Kokol Hobbiton Forest",
+    region: "kota-kinabalu",
+    location: "Kokol, Kota Kinabalu",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Kokol Hobbiton Forest as a Kota Kinabalu hilltop camping spot.",
+    ...publicMapResearchSource,
   },
   {
     name: "Tegudon Tourism Village",
@@ -497,6 +573,39 @@ const rawSpots: Array<
     ...csvSource,
   },
   {
+    name: "Aura Montoria",
+    region: "kota-belud",
+    location: "Kota Belud",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookSummary:
+      "SabahTravel public camping guide lists Aura Montoria in Kota Belud for nature trekking, cave exploration, river dip and camping-style adventure.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Dragon Pearl Beach Resort",
+    region: "kota-belud",
+    location: "Kota Belud coast",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookSummary:
+      "SabahTravel public camping guide lists Dragon Pearl Beach Resort in Kota Belud as a beachside camping and resort-style seaside option.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "DRB Nanamun Beach",
+    region: "kota-belud",
+    location: "Nanamun / Kota Belud coast",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists DRB Nanamun Beach under Kota Belud coastal campsites.",
+    ...publicMapResearchSource,
+  },
+  {
     name: "Discovery Maragang Hill",
     region: "ranau",
     location: "Kundasang",
@@ -666,6 +775,39 @@ const rawSpots: Array<
     ...csvSource,
   },
   {
+    name: "Tiwung Escape Kundasang",
+    region: "ranau",
+    location: "Kundasang, Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Tiwung Escape in Kundasang under Ranau highland camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Langanan Campground",
+    region: "ranau",
+    location: "Kundasang / Ranau highland side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Langanan Campground under Kundasang and Ranau camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Titimpakon Campsite & Staycation",
+    region: "ranau",
+    location: "Kundasang / Ranau",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Titimpakon Campsite & Staycation under Kundasang and Ranau camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
     name: "Hawun Valley Kiulu Camping",
     region: "tuaran",
     location: "Kiulu",
@@ -703,6 +845,94 @@ const rawSpots: Array<
     photoUrl: photoUrls.minurod,
     facebookSummary:
       "Booktapak describes Minurod Campsite as a Tuaran riverside campsite for camping, picnicking, water activities and riverside BBQ.",
+  },
+  {
+    name: "Kuriou Lodge & Campsite",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public search results identify Kuriou Lodge & Campsite in Kiulu as a homestay and campsite in the Kiulu valley.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Disan Baang Campsite",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.disanBaang,
+    facebookSummary:
+      "Public search results identify Disan Baang Campsite as a Kiulu riverside campsite and family outdoor point.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "River Bay Beach",
+    region: "tuaran",
+    location: "Kampung Laya-Laya, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists River Bay Beach, Kampung Laya-Laya under Tuaran camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Cape Rhino Centre",
+    region: "tuaran",
+    location: "Tuaran / coastal side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Cape Rhino Centre under Tuaran camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Kondis Point",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Kondis Point in Kiulu under Tuaran and Kiulu camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Outreach Borneo Camp",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Outreach Borneo Camp in Kiulu under Tuaran and Kiulu camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Boribi Campsite",
+    region: "tuaran",
+    location: "Tamparuli, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Boribi Campsite in Tamparuli under Tuaran camping spots.",
+    ...publicMapResearchSource,
+  },
+  {
+    name: "Kiulu River Park",
+    region: "tuaran",
+    location: "Kiulu, Tuaran",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    sourceUrl: sourceUrls.helloSabahCamping,
+    facebookSummary:
+      "Public campsite roundup lists Kiulu River Park under Tuaran and Kiulu camping spots.",
+    ...publicMapResearchSource,
   },
   {
     name: "Pasakon Beach Camping",
