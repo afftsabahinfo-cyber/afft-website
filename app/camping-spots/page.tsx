@@ -13,9 +13,9 @@ import {
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
 export const metadata: Metadata = {
-  title: "Sabah Campsite Guide Near Kota Kinabalu | AFFT",
+  title: "West Coast Division Campsite Guide | AFFT Sabah",
   description:
-    "Browse Sabah campsite areas near Kota Kinabalu, then ask AFFT to match the campsite, camping gear and transport for your group.",
+    "Browse West Coast Division campsite districts around Kota Kinabalu, Tuaran, Kota Belud, Ranau and Papar, then ask AFFT to match the campsite, gear and transport.",
   alternates: {
     canonical: "/camping-spots",
     languages: {
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Sabah Campsite Guide Near Kota Kinabalu | AFFT",
+    title: "West Coast Division Campsite Guide | AFFT Sabah",
     description:
-      "Start with campsite areas, then open each area to compare campsite photos, fit and AFFT planning advice.",
+      "Start with West Coast districts, then open each district to compare campsite photos, fit and AFFT planning advice.",
     images: [
       {
         url: "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-cover.webp",
@@ -52,20 +52,20 @@ export default function CampingSpotsPage() {
           <div className="grid gap-10 py-18 lg:grid-cols-[1.05fr_0.95fr] lg:items-end md:py-24">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
-                Sabah Campsite Guide
+                West Coast Division Campsite Guide
               </p>
               <h1 className="mt-4 text-5xl font-bold leading-tight md:text-7xl">
-                Pick an area first, then choose the campsite.
+                Pick a West Coast district, then choose the campsite.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
-                Browse nearby campsite areas around KK-Kokol, Kota Belud,
-                Kundasang, Ranau, Kiulu and Papar. Open an area to see campsite
-                photos, then ask AFFT to match the right gear and transport.
+                Browse campsites inside Sabah&apos;s West Coast Division: Kota
+                Kinabalu, Tuaran, Kota Belud, Ranau and Papar. Kokol sits under
+                Kota Kinabalu, Kiulu under Tuaran, and Kundasang under Ranau.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href={makeWhatsappLink(
-                    "Hi AFFT, I want help choosing a campsite area near Kota Kinabalu."
+                    "Hi AFFT, I want help choosing a campsite in Sabah West Coast Division."
                   )}
                   target="_blank"
                   rel="noreferrer"
@@ -77,7 +77,7 @@ export default function CampingSpotsPage() {
                   href="#areas"
                   className="rounded-full border border-white/30 bg-black/25 px-8 py-4 font-bold text-white"
                 >
-                  View Areas
+                  View Districts
                 </a>
               </div>
             </div>
@@ -93,9 +93,9 @@ export default function CampingSpotsPage() {
 
       <section id="areas" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <SectionHeading
-          small="Choose Your Area"
-          big="Each area has a different camping feel."
-          text="Tap an area card to see the campsites inside. The next page shows campsite photos first, then each campsite opens into AFFT's practical advice."
+          small="Choose Your District"
+          big="Grouped by West Coast Division districts."
+          text="Tap a district card to see the campsites inside. The next page shows campsite photos first, then each campsite opens into AFFT's practical advice."
         />
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -112,12 +112,12 @@ export default function CampingSpotsPage() {
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <InfoBlock
-              title="Shortlist the area"
-              text="Choose by drive time, mountain view, river setting, beach sunset or cooler highland weather."
+              title="Shortlist the district"
+              text="Choose by West Coast district first, then compare drive time, mountain view, river setting, beach sunset or cooler highland weather."
             />
             <InfoBlock
               title="Open campsite cards"
-              text="Each area page shows campsite photos and basic fit so you can compare quickly."
+              text="Each district page shows campsite photos and basic fit so you can compare quickly."
             />
             <InfoBlock
               title="Ask AFFT"
@@ -129,9 +129,9 @@ export default function CampingSpotsPage() {
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10">
         <PageFinalCta
-          title="Need help choosing the right campsite area?"
-          text="Send your date, group size and comfort level. AFFT can suggest which area to open first and what gear to prepare."
-          message="Hi AFFT, I want help choosing the right campsite area for my Sabah camping trip."
+          title="Need help choosing the right campsite district?"
+          text="Send your date, group size and comfort level. AFFT can suggest which West Coast district to open first and what gear to prepare."
+          message="Hi AFFT, I want help choosing the right West Coast Division campsite for my Sabah camping trip."
           buttonLabel="WhatsApp AFFT About Campsites"
         />
       </section>

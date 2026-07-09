@@ -12,9 +12,9 @@ import {
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
 export const metadata: Metadata = {
-  title: "沙巴营地指南 | AFFT",
+  title: "沙巴西海岸省营地指南 | AFFT",
   description:
-    "AFFT 沙巴营地指南，先按区域选择，再查看每个营地照片、适合对象、装备建议和 WhatsApp 咨询入口。",
+    "AFFT 沙巴 West Coast Division 营地指南，先按 district 选择，再查看每个营地照片、适合对象、装备建议和 WhatsApp 咨询入口。",
   alternates: {
     canonical: "/zh/camping-spots",
     languages: {
@@ -40,20 +40,20 @@ export default function ZhCampingSpotsPage() {
           <div className="grid gap-10 py-18 lg:grid-cols-[1.05fr_0.95fr] lg:items-end md:py-24">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
-                沙巴营地指南
+                沙巴西海岸省营地指南
               </p>
               <h1 className="mt-4 text-5xl font-bold leading-tight md:text-7xl">
-                先选区域，再看营地照片和建议。
+                先选 West Coast district，再看营地照片和建议。
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/76 md:text-xl">
-                先从 KK-Kokol、Kota Belud、Kundasang、Ranau、Kiulu 和 Papar
-                这些区域开始。进入区域后，再看每个营地的照片、感觉、车程和 AFFT
-                建议。
+                Camp Spots 只整理 Sabah West Coast Division 的营地。Kokol 归在 Kota
+                Kinabalu，Kiulu 归在 Tuaran，Kundasang 归在 Ranau，另外还有 Kota
+                Belud 和 Papar。
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href={makeWhatsappLink(
-                    "你好 AFFT，我想请你帮我选择 Kota Kinabalu 附近适合的营地区域。"
+                    "你好 AFFT，我想请你帮我选择 Sabah West Coast Division 适合的营地。"
                   )}
                   target="_blank"
                   rel="noreferrer"
@@ -65,7 +65,7 @@ export default function ZhCampingSpotsPage() {
                   href="#areas"
                   className="rounded-full border border-white/30 bg-black/25 px-8 py-4 font-bold text-white"
                 >
-                  查看区域
+                  查看 District
                 </a>
               </div>
             </div>
@@ -81,9 +81,9 @@ export default function ZhCampingSpotsPage() {
 
       <section id="areas" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <ZhSectionHeading
-          small="选择区域"
-          big="每个区域都有不同的露营感觉。"
-          text="点进区域后，会先看到该区域的营地照片和卡片。再点单个营地，才进入 AFFT 的实用建议和更多资料。"
+          small="选择 District"
+          big="按 West Coast Division 的 district 来分组。"
+          text="点进 district 后，会先看到该区的营地照片和卡片。再点单个营地，才进入 AFFT 的实用建议和更多资料。"
         />
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -100,12 +100,12 @@ export default function ZhCampingSpotsPage() {
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <InfoBlock
-              title="先选区域"
-              text="用车程、山景、河边、海边、凉爽高地或近郊过夜来快速缩小选择。"
+              title="先选 District"
+              text="先按 West Coast district 缩小范围，再用车程、山景、河边、海边、凉爽高地或近郊过夜来比较。"
             />
             <InfoBlock
               title="再看营地"
-              text="每个区域页会用照片卡片展示营地，方便你快速比较感觉和适合对象。"
+              text="每个 district 页面会用照片卡片展示营地，方便你快速比较感觉和适合对象。"
             />
             <InfoBlock
               title="最后问 AFFT"
@@ -117,9 +117,9 @@ export default function ZhCampingSpotsPage() {
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-8 md:px-10">
         <ZhPageFinalCta
-          title="还不确定哪个区域适合？"
-          text="发送日期、人数和舒适度要求给 AFFT，我们会先帮你判断应该从哪个区域开始看。"
-          message="你好 AFFT，我想请你帮我选择适合的沙巴营地区域。"
+          title="还不确定哪个 District 适合？"
+          text="发送日期、人数和舒适度要求给 AFFT，我们会先帮你判断应该从哪个 West Coast district 开始看。"
+          message="你好 AFFT，我想请你帮我选择适合的 Sabah West Coast Division 营地。"
           buttonLabel="WhatsApp 询问营地"
         />
       </section>

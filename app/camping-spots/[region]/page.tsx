@@ -65,7 +65,7 @@ export default async function CampsiteRegionPage({ params }: PageProps) {
           <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <a href="/camping-spots" className="text-sm font-bold text-[#F3922B]">
-                Back to campsite areas
+                Back to West Coast districts
               </a>
               <p className="mt-8 text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
                 {region.profile.eyebrow}
@@ -89,7 +89,7 @@ export default async function CampsiteRegionPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
         <SectionHeading
-          small="Campsites In This Area"
+          small="Campsites In This District"
           big="Open a campsite card to see AFFT's advice."
           text="Photos and names are shown first for quick browsing. The detail page gives fit, watch-outs, gear ideas, fees and WhatsApp enquiry."
         />
@@ -104,9 +104,9 @@ export default async function CampsiteRegionPage({ params }: PageProps) {
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-4 md:px-10">
         <PageFinalCta
           title={`Need help choosing within ${region.profile.label}?`}
-          text="Send AFFT your date, group size and comfort level. We can help shortlist a campsite and suggest what gear to bring or rent."
+          text="Send AFFT your date, group size and comfort level. We can help shortlist a West Coast campsite and suggest what gear to bring or rent."
           message={`Hi AFFT, I want help choosing a campsite in ${region.profile.label}.`}
-          buttonLabel="WhatsApp AFFT About This Area"
+          buttonLabel="WhatsApp AFFT About This District"
         />
       </section>
 

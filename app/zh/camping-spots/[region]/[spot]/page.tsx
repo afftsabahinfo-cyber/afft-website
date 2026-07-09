@@ -117,7 +117,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                   href={`/zh/camping-spots/${region.id}`}
                   className="rounded-full border border-white/15 px-7 py-4 font-bold text-white"
                 >
-                  返回区域列表
+                  返回 district 列表
                 </a>
               </div>
             </div>
@@ -206,7 +206,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
       {nearbySpots.length > 0 ? (
         <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
           <ZhSectionHeading
-            small="同一区域"
+            small="同一 district"
             big={`${profile.zhLabel} 的其他营地`}
           />
           <div className="grid gap-5 md:grid-cols-3">

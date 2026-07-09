@@ -65,7 +65,7 @@ export default async function ZhCampsiteRegionPage({ params }: PageProps) {
           <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <a href="/zh/camping-spots" className="text-sm font-bold text-[#F3922B]">
-                返回营地区域
+                返回 West Coast district
               </a>
               <p className="mt-8 text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
                 {region.profile.eyebrow}
@@ -89,7 +89,7 @@ export default async function ZhCampsiteRegionPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
         <ZhSectionHeading
-          small="这个区域的营地"
+          small="这个 district 的营地"
           big="点进营地卡片，查看 AFFT 的实用建议。"
           text="这里先显示照片和营地名称，方便快速浏览。单个营地页会再说明适合对象、注意事项、装备建议、费用和 WhatsApp 咨询入口。"
         />
@@ -104,9 +104,9 @@ export default async function ZhCampsiteRegionPage({ params }: PageProps) {
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-4 md:px-10">
         <ZhPageFinalCta
           title={`想在 ${region.profile.zhLabel} 里面选一个营地？`}
-          text="发送日期、人数和舒适度要求给 AFFT，我们可以帮你缩小选择，并建议需要准备什么装备。"
+          text="发送日期、人数和舒适度要求给 AFFT，我们可以帮你缩小 West Coast 营地选择，并建议需要准备什么装备。"
           message={`你好 AFFT，我想请你帮我选择 ${region.profile.zhLabel} 的营地。`}
-          buttonLabel="WhatsApp 问这个区域"
+          buttonLabel="WhatsApp 问这个 District"
         />
       </section>
 

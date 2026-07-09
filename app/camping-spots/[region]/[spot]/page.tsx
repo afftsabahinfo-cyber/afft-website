@@ -115,7 +115,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
                   href={`/camping-spots/${region.id}`}
                   className="rounded-full border border-white/15 px-7 py-4 font-bold text-white"
                 >
-                  View Area List
+                  View District List
                 </a>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
       {nearbySpots.length > 0 ? (
         <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
           <SectionHeading
-            small="Same Area"
+            small="Same District"
             big={`Other ${region.profile.label} campsites`}
           />
           <div className="grid gap-5 md:grid-cols-3">

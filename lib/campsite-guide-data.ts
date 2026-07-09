@@ -1,11 +1,10 @@
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
 export type CampsiteRegionId =
-  | "kk-kokol"
+  | "kota-kinabalu"
+  | "tuaran"
   | "kota-belud"
-  | "kundasang"
   | "ranau"
-  | "kiulu"
   | "papar";
 
 export type CampsiteSourceStatus = "web" | "community" | "csv";
@@ -39,11 +38,10 @@ export const campsiteRegionTabs: Array<{
   zhLabel: string;
 }> = [
   { id: "all", label: "All", zhLabel: "全部" },
-  { id: "kk-kokol", label: "KK-Kokol", zhLabel: "KK-Kokol" },
+  { id: "kota-kinabalu", label: "Kota Kinabalu", zhLabel: "Kota Kinabalu" },
+  { id: "tuaran", label: "Tuaran", zhLabel: "Tuaran" },
   { id: "kota-belud", label: "Kota Belud", zhLabel: "Kota Belud" },
-  { id: "kundasang", label: "Kundasang", zhLabel: "昆达山" },
   { id: "ranau", label: "Ranau", zhLabel: "兰瑙" },
-  { id: "kiulu", label: "Kiulu", zhLabel: "Kiulu" },
   { id: "papar", label: "Papar", zhLabel: "吧巴" },
 ];
 
@@ -68,14 +66,14 @@ export const campsiteRegionProfiles: Record<
     zhPhotoNote: string;
   }
 > = {
-  "kk-kokol": {
-    label: "KK-Kokol",
-    zhLabel: "KK-Kokol",
-    eyebrow: "Closest hill and city-edge camps",
+  "kota-kinabalu": {
+    label: "Kota Kinabalu",
+    zhLabel: "Kota Kinabalu",
+    eyebrow: "City-edge hill camps in West Coast Division",
     summary:
-      "Shorter drives from Kota Kinabalu, useful for first-time campers, quick overnights and guests who do not want a long road transfer.",
+      "Shorter drives from central Kota Kinabalu, including Kokol and nearby hill or city-edge camps for quick overnights.",
     zhSummary:
-      "离 Kota Kinabalu 比较近，适合第一次露营、短途过夜和不想坐太久车的客人。",
+      "以 Kota Kinabalu 周边为主，包括 Kokol 和近郊山上营地，适合短途过夜和第一次露营。",
     driveFromKK: "About 35-70 min from central KK",
     bestFor: "First-time campers, couples, small groups and quick overnight plans.",
     highlight: "Hill air, easier access, shorter setup window and city backup nearby.",
@@ -112,58 +110,36 @@ export const campsiteRegionProfiles: Record<
     zhGearSuggestion: "适合天幕、营椅、防水灯、电源、干袋和 DJI 创作者设备。",
     zhPhotoNote: "优先使用河边和神山景照片；外部照片要先确认授权。",
   },
-  kundasang: {
-    label: "Kundasang",
-    zhLabel: "Kundasang",
-    eyebrow: "Cool highland and Mount Kinabalu mood",
-    summary:
-      "Useful for cooler weather, mountain views, glamping-style stays and visitors who want a more premium camp feeling.",
-    zhSummary:
-      "适合凉爽天气、神山景、Glamping 感和比较高级的露营体验。",
-    driveFromKK: "About 2-2.5 hr from central KK",
-    bestFor: "Couples, families, glamping guests, sunrise views and cool-weather stays.",
-    highlight: "Cooler air, mountain backdrop, sunrise mood and nearby highland attractions.",
-    watchOut: "Cold nights, wind, rain, fog, steep access and earlier booking needs.",
-    gearSuggestion:
-      "Warm sleep setup, Helinox or Snow Peak furniture, camp lighting and power support.",
-    photoNote:
-      "Use real mountain-view or campsite lot photos. Do not use generic mountain stock.",
-    zhBestFor: "适合情侣、家庭、Glamping、高地日出和喜欢冷天气的旅客。",
-    zhHighlight: "天气凉、神山背景强、日出氛围好，也能连接高地景点。",
-    zhWatchOut: "注意夜晚冷、风、雨、雾、斜路和热门日期预订。",
-    zhGearSuggestion: "适合保暖睡眠配置、Helinox / Snow Peak 家具、营灯和电源。",
-    zhPhotoNote: "使用真实营位或神山景照片，不用普通山景图库图。",
-  },
   ranau: {
     label: "Ranau",
     zhLabel: "Ranau",
-    eyebrow: "Deeper highland and slower nature routes",
+    eyebrow: "Kundasang, Mesilau and deeper highland camps",
     summary:
-      "Better for guests who accept a longer drive and want a quieter highland or nature-led camping direction.",
+      "Covers Kundasang, Mesilau and Ranau highland camps for cooler weather, Mount Kinabalu views, glamping stays and quieter nature routes.",
     zhSummary:
-      "比较适合能接受较长车程、想要更安静高地或自然路线的客人。",
-    driveFromKK: "About 2.5-3.5 hr from central KK",
-    bestFor: "Repeat campers, small groups, nature stays and slower road-trip plans.",
-    highlight: "More remote highland feel, quieter landscapes and longer route value.",
-    watchOut: "Longer transfer time, weather changes, road fatigue and limited last-minute supplies.",
+      "包括 Kundasang、Mesilau 和 Ranau 高地营地，适合凉爽天气、神山景、Glamping 和更安静的自然路线。",
+    driveFromKK: "About 2-3.5 hr from central KK",
+    bestFor: "Couples, families, glamping guests, sunrise views, repeat campers and cool-weather stays.",
+    highlight: "Cooler air, mountain backdrop, sunrise mood, highland farms and slower nature routes.",
+    watchOut: "Cold nights, wind, rain, fog, steep access, road fatigue and earlier booking needs.",
     gearSuggestion:
-      "Stronger shelter, lighting, power station, warmer bedding and backup rain protection.",
+      "Warm sleep setup, stronger shelter, Helinox or Snow Peak furniture, lighting, power station and backup rain protection.",
     photoNote:
-      "Use AFFT field photos when available because public photos are harder to verify.",
-    zhBestFor: "适合有露营经验的小团队、自然路线和慢旅行。",
-    zhHighlight: "高地感更深、较安静，也适合做更完整的路线。",
-    zhWatchOut: "注意车程更长、天气变化、驾驶疲劳和补给限制。",
-    zhGearSuggestion: "适合更稳的遮蔽、灯光、电源、保暖睡眠和备用防雨。",
-    zhPhotoNote: "建议优先用 AFFT 现场照片，因为公开照片比较难确认授权。",
+      "Use real mountain-view, glamping or campsite lot photos. Do not use generic mountain stock.",
+    zhBestFor: "适合情侣、家庭、Glamping、高地日出、冷天气和有露营经验的小团队。",
+    zhHighlight: "天气凉、神山背景强、日出氛围好，也能连接高地农场和更安静的自然路线。",
+    zhWatchOut: "注意夜晚冷、风、雨、雾、斜路、热门日期预订和驾驶疲劳。",
+    zhGearSuggestion: "适合保暖睡眠、更稳的遮蔽、Helinox / Snow Peak 家具、营灯、电源和备用防雨。",
+    zhPhotoNote: "使用真实营位、Glamping 或神山景照片，不用普通山景图库图。",
   },
-  kiulu: {
-    label: "Kiulu",
-    zhLabel: "Kiulu",
-    eyebrow: "Valley, river and easy outdoor reset",
+  tuaran: {
+    label: "Tuaran",
+    zhLabel: "Tuaran",
+    eyebrow: "Kiulu valley, rivers and Tuaran countryside",
     summary:
-      "Good for guests who want a valley or riverside feel without going as far as Kundasang or Ranau.",
+      "Covers Kiulu and Tuaran-side countryside camps for guests who want a valley, river or easy outdoor reset without going as far as Ranau.",
     zhSummary:
-      "适合想要山谷、河边感觉，但不想跑到 Kundasang 或 Ranau 那么远的客人。",
+      "包括 Kiulu 和 Tuaran 一带的山谷、河边与乡村营地，适合不想跑到 Ranau 那么远的客人。",
     driveFromKK: "About 1-1.5 hr from central KK",
     bestFor: "Friends, families, valley views, river activities and beginner outdoor stays.",
     highlight: "Green valley, river mood, fresh air and easier day-to-overnight planning.",
@@ -171,12 +147,12 @@ export const campsiteRegionProfiles: Record<
     gearSuggestion:
       "Tarp, camp chairs, simple kitchen kit, warm lights, power station and dry storage.",
     photoNote:
-      "Hawun Valley has strong public visuals, but use only authorised photos on the AFFT site.",
+      "Use authorised campsite photos from Kiulu and Tuaran operators, or AFFT field photos when available.",
     zhBestFor: "适合朋友、家庭、山谷景、河边活动和新手户外体验。",
     zhHighlight: "有山谷、河边、空气好，比较容易做一日到过夜安排。",
     zhWatchOut: "注意水位、下雨、安静时段、无人机规则和平台可用性。",
     zhGearSuggestion: "适合天幕、营椅、简单厨房组、暖灯、电源和干燥收纳。",
-    zhPhotoNote: "Hawun Valley 公开照片很多，但 AFFT 网站只用授权照片。",
+    zhPhotoNote: "优先使用 Kiulu / Tuaran 营地授权照片，或 AFFT 自己拍摄的现场照片。",
   },
   papar: {
     label: "Papar",
@@ -216,6 +192,17 @@ const sourceUrls = {
   pasakon: "https://vn.trip.com/moments/detail/papar-14900-119138061",
   pokdi:
     "https://www.lemon8-app.com/%40vglyjaaaaa/7527886551570039304?region=my",
+  kiuluFarmstay: "https://www.kiulufarmstay.com/",
+  mandalipau: "https://sites.google.com/view/mandalipau/about-us",
+  mandalipauGuide:
+    "https://mypapar.com/2022/09/08/eko-pelancongan-mandalipau-white-water-view-fishpond/",
+  hooga:
+    "https://www.melancong.com.my/tempat-menarik-di-kundasang-sabah/#Hooga_Glamping_Area",
+  awanAwan: "https://booktapak.com/property/awan-awan-kundasang",
+  kundasangFarmhouse: "https://booktapak.com/property/kundasangfarmhouse",
+  minurod: "https://booktapak.com/property/minurod-campsite",
+  taralamas: "https://booktapak.com/property/taralamas-campsite",
+  umea: "https://booktapak.com/property/umea-glam-kundasang-by-leafy-t",
 };
 
 const facebookSources = {
@@ -241,6 +228,21 @@ const facebookSources = {
   hawun: "https://www.facebook.com/hawunvalley.kiulu",
   pasakon: "https://www.facebook.com/profile.php?id=100063505363715",
   pokdi: "https://www.facebook.com/profile.php?id=61566503069171",
+  kiuluFarmstay: "https://www.facebook.com/kiulufarmstay/",
+  mandalipau: "https://www.facebook.com/picnic.camping.fishingpond/",
+};
+
+const photoUrls = {
+  awanAwan:
+    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7284/minified/50090efefad37695562b260c3ca6b6b9.png",
+  kundasangFarmhouse:
+    "https://production-hotel-media.s3.us-west-2.amazonaws.com/6518/minified/7f4e5d154d4e6083935d0e54ecebe42f.png",
+  minurod:
+    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7306/minified/ae7d6fd8fad23dc3e9565569f2eb830a.png",
+  taralamas:
+    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7026/minified/25355ae2d6b464dd925267aebea7a599.png",
+  umea:
+    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7469/minified/e817d7666170a4964e832808c0b710c3.png",
 };
 
 const rawSpots: Array<
@@ -256,11 +258,12 @@ const rawSpots: Array<
     | "sourceUrl"
     | "facebookUrl"
     | "facebookSummary"
+    | "photoUrl"
   >
 > = [
   {
     name: "Kokol Hill Campsite",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Kokol Hill, Kota Kinabalu",
     feeNote: "CSV: RM50 front / RM30 back",
     entranceNote: "CSV: RM10 adult, RM5 child below 10",
@@ -271,7 +274,7 @@ const rawSpots: Array<
   },
   {
     name: "Kokol MamaHill Camping Site",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Kokol Hill, Kota Kinabalu",
     feeNote: "CSV: RM10 per camp",
     entranceNote: "CSV: RM10 adult, RM5 child below 12",
@@ -282,7 +285,7 @@ const rawSpots: Array<
   },
   {
     name: "Skyhill Kokol",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Menggatal / Kokol area",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -290,7 +293,7 @@ const rawSpots: Array<
   },
   {
     name: "Yun Hai Camp & Stay",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Kokol - Tombongon",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -301,7 +304,7 @@ const rawSpots: Array<
   },
   {
     name: "Pogum Jo Campsite",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Kokol - Tombongon",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -309,7 +312,7 @@ const rawSpots: Array<
   },
   {
     name: "Nuluhon Homestay & Campsite",
-    region: "kk-kokol",
+    region: "kota-kinabalu",
     location: "Kota Kinabalu",
     feeNote: "CSV: RM30 per site",
     entranceNote: "CSV: RM3 per person",
@@ -490,7 +493,7 @@ const rawSpots: Array<
   },
   {
     name: "Discovery Maragang Hill",
-    region: "kundasang",
+    region: "ranau",
     location: "Kundasang",
     feeNote: "CSV: RM350 longhouse / RM180 grass patch / RM450 top decks",
     entranceNote: "To confirm",
@@ -498,7 +501,7 @@ const rawSpots: Array<
   },
   {
     name: "Sosodikon Campsite",
-    region: "kundasang",
+    region: "ranau",
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -506,7 +509,7 @@ const rawSpots: Array<
   },
   {
     name: "Komfy Kundasang",
-    region: "kundasang",
+    region: "ranau",
     location: "Mesilau, Kundasang",
     feeNote: "CSV: RM55-RM70 per lot; public sources show rates may vary",
     entranceNote: "CSV: RM30 adult, RM15 child 4-7",
@@ -519,7 +522,7 @@ const rawSpots: Array<
   },
   {
     name: "Mentoki Hideout Campsite",
-    region: "kundasang",
+    region: "ranau",
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -530,7 +533,7 @@ const rawSpots: Array<
   },
   {
     name: "Himbaan Garden Stay & Camping",
-    region: "kundasang",
+    region: "ranau",
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
@@ -541,19 +544,49 @@ const rawSpots: Array<
   },
   {
     name: "Kundasang Farmhouse",
-    region: "kundasang",
+    region: "ranau",
+    location: "Kundasang",
+    feeNote: "Booktapak lists from RM30 per night; confirm latest rate",
+    entranceNote: "To confirm",
+    sourceStatus: "web",
+    sourceLabel: "Booktapak public listing + AFFT CSV",
+    sourceUrl: sourceUrls.kundasangFarmhouse,
+    photoUrl: photoUrls.kundasangFarmhouse,
+    facebookSummary:
+      "Booktapak describes Kundasang Farmhouse as a campsite in the scenic hills of Kundasang with Mount Kinabalu views.",
+  },
+  {
+    name: "NR Campsite",
+    region: "ranau",
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
     ...csvSource,
   },
   {
-    name: "NR Campsite",
-    region: "kundasang",
+    name: "Hooga Glamping Area",
+    region: "ranau",
+    location: "Jalan Golf Course Mesilou, Kundasang",
+    feeNote: "To confirm with operator",
+    entranceNote: "To confirm with operator",
+    sourceStatus: "web",
+    sourceLabel: "Melancong.my public Kundasang guide",
+    sourceUrl: sourceUrls.hooga,
+    facebookSummary:
+      "Public guide describes Hooga as a Kundasang glamping area with prepared tents, Scandinavian-style furniture and warm night lighting.",
+  },
+  {
+    name: "Umea Glam Kundasang By Leafy Thrive",
+    region: "ranau",
     location: "Kundasang",
-    feeNote: "To confirm",
+    feeNote: "Booktapak lists from RM330 per night; confirm latest rate",
     entranceNote: "To confirm",
-    ...csvSource,
+    sourceStatus: "web",
+    sourceLabel: "Booktapak public listing",
+    sourceUrl: sourceUrls.umea,
+    photoUrl: photoUrls.umea,
+    facebookSummary:
+      "Booktapak describes Umea Glam as a nature-led Kundasang dome glamping project run by Sabahan founders.",
   },
   {
     name: "Tambiau Forest",
@@ -578,17 +611,27 @@ const rawSpots: Array<
     name: "Taralamas Campsite",
     region: "ranau",
     location: "Ranau",
-    feeNote: "To confirm",
+    feeNote: "Booktapak lists from RM30 per night; confirm latest rate",
     entranceNote: "To confirm",
-    ...csvSource,
+    sourceStatus: "web",
+    sourceLabel: "Booktapak public listing + AFFT CSV",
+    sourceUrl: sourceUrls.taralamas,
+    photoUrl: photoUrls.taralamas,
+    facebookSummary:
+      "Booktapak describes Taralamas as a Ranau campsite with Mount Kinabalu views, BBQ pit, tent renting, river, hill side, farm, hiking and stargazing.",
   },
   {
-    name: "Awan Awan Campsite",
+    name: "Awan Awan Kundasang",
     region: "ranau",
-    location: "Ranau",
-    feeNote: "To confirm",
+    location: "Kundasang / Ranau district",
+    feeNote: "Booktapak lists from RM30 per night; confirm latest rate",
     entranceNote: "To confirm",
-    ...csvSource,
+    sourceStatus: "web",
+    sourceLabel: "Booktapak public listing + AFFT CSV",
+    sourceUrl: sourceUrls.awanAwan,
+    photoUrl: photoUrls.awanAwan,
+    facebookSummary:
+      "Booktapak describes Awan Awan Kundasang as a campsite with Mount Kinabalu views, tent spots, BBQ pits, cafe and stargazing.",
   },
   {
     name: "Olumaag Campsite",
@@ -619,7 +662,7 @@ const rawSpots: Array<
   },
   {
     name: "Hawun Valley Kiulu Camping",
-    region: "kiulu",
+    region: "tuaran",
     location: "Kiulu",
     feeNote: "Check package availability",
     entranceNote: "Check package availability",
@@ -629,6 +672,32 @@ const rawSpots: Array<
     facebookUrl: facebookSources.hawun,
     facebookSummary:
       "Facebook page describes Hawun Valley Kiulu for camping, chalets, stargazing, hiking and sunrise or sunset viewing.",
+  },
+  {
+    name: "Kiulu Farmstay",
+    region: "tuaran",
+    location: "Sungai Kiulu, Tuaran",
+    feeNote: "Official site notes RM5 adult Community Development Contribution; stay packages to confirm",
+    entranceNote: "Check package and activity access with operator",
+    sourceStatus: "web",
+    sourceLabel: "Kiulu Farmstay official site + public Kiulu guide",
+    sourceUrl: sourceUrls.kiuluFarmstay,
+    facebookUrl: facebookSources.kiuluFarmstay,
+    facebookSummary:
+      "Public guides describe Kiulu Farmstay as community-based ecotourism where guests can stay in rooms or tents and join river or village activities.",
+  },
+  {
+    name: "Minurod Campsite",
+    region: "tuaran",
+    location: "Tuaran",
+    feeNote: "Booktapak lists from RM5 per night; confirm latest rate",
+    entranceNote: "To confirm with operator",
+    sourceStatus: "web",
+    sourceLabel: "Booktapak public listing",
+    sourceUrl: sourceUrls.minurod,
+    photoUrl: photoUrls.minurod,
+    facebookSummary:
+      "Booktapak describes Minurod Campsite as a Tuaran riverside campsite for camping, picnicking, water activities and riverside BBQ.",
   },
   {
     name: "Pasakon Beach Camping",
@@ -655,6 +724,19 @@ const rawSpots: Array<
     facebookUrl: facebookSources.pokdi,
     facebookSummary:
       "Facebook page describes Pokdi Campsite Mandalipau with forest, river and quiet nature atmosphere.",
+  },
+  {
+    name: "Mandalipau White Water View & Fishpond",
+    region: "papar",
+    location: "Kampung Mandalipau, Papar",
+    feeNote: "Public guide notes RM3 entry for adults or children aged 7+; activities and overnight rates to confirm",
+    entranceNote: "Public guide notes 8:30am-5:00pm day access; confirm if camping overnight",
+    sourceStatus: "web",
+    sourceLabel: "Mandalipau public site + MyPapar guide",
+    sourceUrl: sourceUrls.mandalipau,
+    facebookUrl: facebookSources.mandalipau,
+    facebookSummary:
+      "Public sources describe Mandalipau as a Papar ecotourism area for swimming, picnic, fishing, camping, BBQ, rafting, zip line and family activities.",
   },
 ];
 
@@ -709,7 +791,7 @@ export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
     watchOut: profile.watchOut,
     gearSuggestion: profile.gearSuggestion,
     photoNote: profile.photoNote,
-    photoUrl: getCampsiteImageUrl(spot.facebookUrl),
+    photoUrl: spot.photoUrl ?? getCampsiteImageUrl(spot.facebookUrl),
   };
 });
 
