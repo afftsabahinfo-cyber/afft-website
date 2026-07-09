@@ -184,6 +184,45 @@ const tiggo8ProCharterStory = {
 
 const customerStories = [explorerCampRm599Story, tiggo8ProCharterStory] as const;
 
+const browsePaths = [
+  {
+    href: "/zh/camping",
+    label: "露营套餐",
+    title: "选择沙巴露营套餐",
+    text: "从 Explorer Camp、Solo Explorer、家庭露营或星空露营开始看。",
+  },
+  {
+    href: "/zh/rent-it",
+    label: "Rent It",
+    title: "租借户外装备和创作者设备",
+    text: "比较创作者设备、露营生活工具、高级营地家具和帐篷系列。",
+  },
+  {
+    href: "/zh/camping-spots",
+    label: "Camp Spots",
+    title: "浏览 West Coast Division 营地",
+    text: "按 Kota Kinabalu、Tuaran、Kota Belud、Ranau 和 Papar district 找营地。",
+  },
+  {
+    href: "/zh/private-tours",
+    label: "私人行程",
+    title: "规划沙巴私人路线",
+    text: "适合 Kundasang、Sandakan、神山、高地、自然路线或露营加行程。",
+  },
+  {
+    href: "/zh/car-rental",
+    label: "包车",
+    title: "安排沙巴私人交通",
+    text: "查看机场接送、Tiggo 8 Pro、Alphard 或私人路线交通支持。",
+  },
+  {
+    href: "/zh/customer-stories",
+    label: "真实案例",
+    title: "看 AFFT 真实服务案例",
+    text: "用真实露营和包车案例，先理解 AFFT 实际会提供什么。",
+  },
+] as const;
+
 export default function ChineseHomePage() {
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
@@ -251,6 +290,31 @@ export default function ChineseHomePage() {
               直接联系 AFFT
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 md:px-16">
+        <Title
+          small="从这里开始"
+          big="先选择你真正想询问 AFFT 的服务方向。"
+        />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {browsePaths.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/45"
+            >
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                {item.label}
+              </p>
+              <h2 className="mt-4 text-2xl font-bold">{item.title}</h2>
+              <p className="mt-3 leading-7 text-white/70">{item.text}</p>
+              <span className="mt-5 inline-block font-bold text-[#F3922B]">
+                打开页面 &rarr;
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

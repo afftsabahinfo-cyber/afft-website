@@ -203,7 +203,9 @@ function CampsiteTile({
                 ? "Public info"
                 : spot.sourceStatus === "community"
                   ? "Photo available"
-                  : "Listed spot"}
+                  : spot.sourceStatus === "map"
+                    ? "Map listed"
+                    : "Listed spot"}
             </span>
           </div>
           <h2 className="mt-4 text-2xl font-bold">{spot.name}</h2>

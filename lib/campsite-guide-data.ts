@@ -7,7 +7,7 @@ export type CampsiteRegionId =
   | "ranau"
   | "papar";
 
-export type CampsiteSourceStatus = "web" | "community" | "csv";
+export type CampsiteSourceStatus = "web" | "community" | "map" | "csv";
 
 export type CampsiteSpot = {
   slug: string;
@@ -157,21 +157,21 @@ export const campsiteRegionProfiles: Record<
   papar: {
     label: "Papar",
     zhLabel: "Papar",
-    eyebrow: "Beach, river and lower-land camps",
+    eyebrow: "Beach, river, Bongawan and Mandalipau camps",
     summary:
-      "Useful for beach sunsets, river-side family time and shorter south-bound road trips from KK.",
+      "Useful for beach sunsets, Mandalipau river camps, Bongawan-side camps, family time and shorter south-bound road trips from KK.",
     zhSummary:
-      "适合海边日落、河边家庭活动，以及从 KK 往南比较短的路线。",
+      "适合海边日落、Mandalipau 河边、Bongawan 一带、家庭活动，以及从 KK 往南比较短的路线。",
     driveFromKK: "About 45-90 min from central KK",
-    bestFor: "Families, beach sunsets, lower-land camps and easy weekend escapes.",
-    highlight: "Beach, river and rural lowland atmosphere with easier access from KK.",
+    bestFor: "Families, beach sunsets, riverside camps, Bongawan routes and easy weekend escapes.",
+    highlight: "Beach, Mandalipau river, Bongawan countryside and rural lowland atmosphere with easier access from KK.",
     watchOut: "Heat, shade, tide or river condition, insects and wet-weather comfort.",
     gearSuggestion:
       "Shade tarp, chairs, fan or ventilation plan, lighting, cooler box and mosquito control.",
     photoNote:
       "Use beach or riverside campsite photos only after permission from the campsite or owner.",
-    zhBestFor: "适合家庭、海边日落、低地露营和轻松周末出走。",
-    zhHighlight: "有海边、河边和乡村低地感觉，从 KK 过去比较容易。",
+    zhBestFor: "适合家庭、海边日落、河边露营、Bongawan 路线和轻松周末出走。",
+    zhHighlight: "有海边、Mandalipau 河边、Bongawan 乡村和低地感觉，从 KK 过去比较容易。",
     zhWatchOut: "注意热、遮荫、潮汐或水位、蚊虫和雨天舒适度。",
     zhGearSuggestion: "适合遮阳天幕、营椅、通风/风扇、灯光、冰箱和防蚊。",
     zhPhotoNote: "海边或河边营地照片必须先获得营地方或照片拥有者允许。",
@@ -181,6 +181,11 @@ export const campsiteRegionProfiles: Record<
 const csvSource = {
   sourceStatus: "csv" as const,
   sourceLabel: "AFFT campsite CSV list, March 2025",
+};
+
+const googleMapsSource = {
+  sourceStatus: "map" as const,
+  sourceLabel: "Google Maps public listing screenshot supplied by AFFT",
 };
 
 const sourceUrls = {
@@ -737,6 +742,166 @@ const rawSpots: Array<
     facebookUrl: facebookSources.mandalipau,
     facebookSummary:
       "Public sources describe Mandalipau as a Papar ecotourism area for swimming, picnic, fishing, camping, BBQ, rafting, zip line and family activities.",
+  },
+  {
+    name: "AA Campsite Kg Bolotikon",
+    region: "papar",
+    location: "Kg Bolotikon, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot shows AA Campsite Kg Bolotikon as a camping ground in Papar with strong public review count.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Bapa Sitam Campsite",
+    region: "papar",
+    location: "Papar coastal side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot shows Bapa Sitam Campsite as a Papar camping ground near Pasakon Beach Camp Site.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Sulap Pesorong Ka'am Dinakan",
+    region: "papar",
+    location: "Papar coastal side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot shows Sulap Pesorong Ka'am Dinakan as a camping ground on the Papar coast.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Pantai Pekurung",
+    region: "papar",
+    location: "Papar coast",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Pantai PEKURUNG as a Papar camping ground, useful for beach-side camping checks.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Kaiduan Homestay EBT Campsite",
+    region: "papar",
+    location: "Kaiduan / Papar highland side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Kaiduan homestay EBT campsite as a camping cabin with sunrise-view comments.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Mondikot Deer Camp",
+    region: "papar",
+    location: "Kg Mondikot, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Mondikot Deer Camp as a Papar farmstay and basic camping place.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Kigandang River View Camp",
+    region: "papar",
+    location: "Jalan Manggis Kaiduan Tampasak, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Kigandang River View Camp as a recreation and river-view camping point.",
+    ...googleMapsSource,
+  },
+  {
+    name: "3 Rivers Farm",
+    region: "papar",
+    location: "Mandalipau / Papar river side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot shows 3 Rivers Farm near Mandalipau, with public comments mentioning essential facilities.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Mondoringin Campsite",
+    region: "papar",
+    location: "Mandalipau / Papar river side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Mondoringin Campsite near the Mandalipau camp cluster.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Smart Campsite",
+    region: "papar",
+    location: "Mandalipau / Papar river side",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Smart Campsite as a Papar camping ground near the Mandalipau cluster.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Hidden Paradise Resort",
+    region: "papar",
+    location: "Kimanis / Papar inland route",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Hidden Paradise Resort in the Papar search area, with public comments mentioning hut stay, river and calming ambience.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Utan Paradise Jungle Camp",
+    region: "papar",
+    location: "Jalan Keningau Kimanis, Papar route",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Utan Paradise Jungle Camp as a camping ground on the Jalan Keningau Kimanis route.",
+    ...googleMapsSource,
+  },
+  {
+    name: "The Seaside by Syok Club",
+    region: "papar",
+    location: "Jalan Kg Gusi, Papar coast",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists The Seaside by Syok Club as a Papar coastal camping ground.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Kumpat River Campsite",
+    region: "papar",
+    location: "Bongawan, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Kumpat River Campsite in Bongawan, Sabah as a camping cabin with family-river facilities.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Sawatan Camp Site (SCS)",
+    region: "papar",
+    location: "Bongawan, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Sawatan Camp Site in Bongawan as a budget-friendly campsite.",
+    ...googleMapsSource,
+  },
+  {
+    name: "Tuhunon Bolotikon Riverside (TBR)",
+    region: "papar",
+    location: "Kampung Bolotikon, Papar",
+    feeNote: "To confirm",
+    entranceNote: "To confirm",
+    facebookSummary:
+      "Google Maps screenshot lists Tuhunon Bolotikon Riverside as a camping ground in Kampung Bolotikon.",
+    ...googleMapsSource,
   },
 ];
 

@@ -152,6 +152,45 @@ const tiggo8ProCharterStory = {
 
 const customerStories = [explorerCampRm599Story, tiggo8ProCharterStory] as const;
 
+const browsePaths = [
+  {
+    href: "/camping",
+    label: "Camping Packages",
+    title: "Plan a Sabah camping package",
+    text: "Start here for Explorer Camp, Solo Explorer, family camping or Milky Way camping.",
+  },
+  {
+    href: "/rent-it",
+    label: "Rent It",
+    title: "Rent outdoor and creator gear",
+    text: "Compare creator gear, camp lifestyle tools, premium camp furniture and tent systems.",
+  },
+  {
+    href: "/camping-spots",
+    label: "Camp Spots",
+    title: "Browse West Coast Division campsites",
+    text: "Find campsites by Kota Kinabalu, Tuaran, Kota Belud, Ranau and Papar districts.",
+  },
+  {
+    href: "/private-tours",
+    label: "Private Tours",
+    title: "Build a private Sabah route",
+    text: "Use AFFT for Kundasang, Sandakan, mountain, nature or camping add-on routes.",
+  },
+  {
+    href: "/car-rental",
+    label: "Car Rental",
+    title: "Arrange private car movement",
+    text: "Plan airport transfer, Tiggo 8 Pro, Alphard or private route support in Sabah.",
+  },
+  {
+    href: "/customer-stories",
+    label: "Customer Stories",
+    title: "See real AFFT trip examples",
+    text: "Use real camping and private car stories to understand what AFFT actually delivers.",
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#10140F] text-white">
@@ -188,6 +227,31 @@ export default function Home() {
               Chat With AFFT
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 md:px-16">
+        <Title
+          small="Start Here"
+          big="Choose the page that matches what you want to ask AFFT."
+        />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {browsePaths.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#F3922B]/45"
+            >
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
+                {item.label}
+              </p>
+              <h2 className="mt-4 text-2xl font-bold">{item.title}</h2>
+              <p className="mt-3 leading-7 text-white/70">{item.text}</p>
+              <span className="mt-5 inline-block font-bold text-[#F3922B]">
+                Open Page &rarr;
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

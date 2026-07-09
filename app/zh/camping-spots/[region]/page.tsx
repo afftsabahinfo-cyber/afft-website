@@ -203,7 +203,9 @@ function CampsiteTile({
                 ? "公开资料"
                 : spot.sourceStatus === "community"
                   ? "有照片"
-                  : "营地名单"}
+                  : spot.sourceStatus === "map"
+                    ? "地图列表"
+                    : "营地名单"}
             </span>
           </div>
           <h2 className="mt-4 text-2xl font-bold">{spot.name}</h2>
