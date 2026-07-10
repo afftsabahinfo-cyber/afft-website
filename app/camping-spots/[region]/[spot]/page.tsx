@@ -43,9 +43,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const isClosed = spot.status === "closed";
+
   return {
-    title: `${spot.name} | AFFT Sabah Campsite Guide`,
-    description: `${spot.name} campsite fit, drive time, gear suggestion and AFFT WhatsApp planning advice.`,
+    title: isClosed
+      ? `${spot.name} Closed | AFFT Sabah Campsite Guide`
+      : `${spot.name} | AFFT Sabah Campsite Guide`,
+    description: isClosed
+      ? `${spot.name} is marked closed. Ask AFFT for open Kokol and Kota Kinabalu hill campsite alternatives.`
+      : `${spot.name} campsite fit, drive time, gear suggestion and AFFT WhatsApp planning advice.`,
     alternates: {
       canonical: spot.href,
       languages: {
@@ -77,6 +83,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
     notFound();
   }
 
+  const isClosed = spot.status === "closed";
   const nearbySpots = region.spots
     .filter((item) => item.slug !== spot.slug)
     .slice(0, 3);
@@ -85,9 +92,13 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: `${spot.name} | AFFT Sabah Campsite Guide`,
+      name: isClosed
+        ? `${spot.name} Closed | AFFT Sabah Campsite Guide`
+        : `${spot.name} | AFFT Sabah Campsite Guide`,
       url: `${siteUrl}${spot.href}`,
-      description: `${spot.name} campsite fit, drive time, gear suggestion and AFFT WhatsApp planning advice.`,
+      description: isClosed
+        ? `${spot.name} is marked closed. Ask AFFT for open Kokol and Kota Kinabalu hill campsite alternatives.`
+        : `${spot.name} campsite fit, drive time, gear suggestion and AFFT WhatsApp planning advice.`,
       inLanguage: "en",
       isPartOf: {
         "@type": "WebSite",
@@ -140,6 +151,11 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
       additionalProperty: [
         {
           "@type": "PropertyValue",
+          name: "Current status",
+          value: isClosed ? "Permanently closed" : "To confirm with operator",
+        },
+        {
+          "@type": "PropertyValue",
           name: "Drive from Kota Kinabalu",
           value: spot.driveFromKK,
         },
@@ -182,17 +198,30 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
                 {spot.name}
               </h1>
               <p className="mt-4 text-white/55">{spot.location}</p>
+              {isClosed ? (
+                <div className="mt-5 inline-flex rounded-full border border-red-400/45 bg-red-500/12 px-4 py-2 text-sm font-bold text-red-100">
+                  Permanently closed
+                </div>
+              ) : null}
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-                {getAfftFitText(spot)}
+                {isClosed ? getClosedAfftFitText(spot, region.profile.label) : getAfftFitText(spot)}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={makeCampsiteWhatsappLink(spot.name)}
+                  href={
+                    isClosed
+                      ? makeCampsiteWhatsappLink(
+                          `${region.profile.label} open campsite alternatives`
+                        )
+                      : makeCampsiteWhatsappLink(spot.name)
+                  }
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-[#F3922B] px-7 py-4 font-bold text-black"
                 >
-                  WhatsApp AFFT About This Campsite
+                  {isClosed
+                    ? "WhatsApp AFFT For Open Alternatives"
+                    : "WhatsApp AFFT About This Campsite"}
                 </a>
                 <a
                   href={`/camping-spots/${region.id}`}
@@ -240,6 +269,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
           </article>
 
           <div className="grid gap-4">
+            {isClosed ? <InfoPill label="Status" value="Permanently closed" /> : null}
             <InfoPill label="From KK" value={spot.driveFromKK} />
             <InfoPill label="Best for" value={spot.bestFor} />
             <InfoPill label="Gear idea" value={spot.gearSuggestion} />
@@ -248,7 +278,14 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-5 px-6 py-10 md:grid-cols-2 md:px-10 xl:grid-cols-4">
-        <DetailBlock title="Highlight" text={spot.highlight} />
+        <DetailBlock
+          title={isClosed ? "Current status" : "Highlight"}
+          text={
+            isClosed
+              ? (spot.statusNote ?? "This campsite is marked closed.")
+              : spot.highlight
+          }
+        />
         <DetailBlock title="Watch out" text={spot.watchOut} />
         <DetailBlock title="Camp fee" text={spot.feeNote} />
         <DetailBlock title="Entrance" text={spot.entranceNote} />
@@ -260,8 +297,9 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
             Public Information
           </p>
           <p className="mt-4 leading-7 text-white/65">
-            Campsite rules, fees and available lots can change. Ask AFFT to help
-            confirm the practical details before you travel.
+            {isClosed
+              ? "This campsite is currently not treated as an available option on AFFT because it is marked closed. Ask AFFT for open alternatives before planning the route."
+              : "Campsite rules, fees and available lots can change. Ask AFFT to help confirm the practical details before you travel."}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             {spot.sourceUrl ? (
@@ -327,10 +365,26 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:px-10">
         <PageFinalCta
-          title={`Want to check ${spot.name}?`}
-          text="Send your date, group size, comfort level and gear needs. AFFT can help you check if this campsite fits your plan."
-          message={`Hi AFFT, I want to check whether ${spot.name} is suitable for my camping trip.`}
-          buttonLabel="WhatsApp AFFT About This Campsite"
+          title={
+            isClosed
+              ? `${spot.name} is marked closed.`
+              : `Want to check ${spot.name}?`
+          }
+          text={
+            isClosed
+              ? "Send AFFT your date, group size and comfort level. We can suggest open Kokol or Kota Kinabalu hill campsite alternatives."
+              : "Send your date, group size, comfort level and gear needs. AFFT can help you check if this campsite fits your plan."
+          }
+          message={
+            isClosed
+              ? `Hi AFFT, I saw ${spot.name} is closed. Can you suggest open Kokol or Kota Kinabalu hill campsite alternatives?`
+              : `Hi AFFT, I want to check whether ${spot.name} is suitable for my camping trip.`
+          }
+          buttonLabel={
+            isClosed
+              ? "WhatsApp AFFT For Alternatives"
+              : "WhatsApp AFFT About This Campsite"
+          }
         />
       </section>
 
@@ -382,6 +436,10 @@ function MissingPhotoFrame({
 
 function getAfftFitText(spot: CampsiteSpot) {
   return `${spot.name} is about ${spot.driveFromKK}. Open this page to see the practical fit, watch-outs and gear direction before you ask AFFT to confirm.`;
+}
+
+function getClosedAfftFitText(spot: CampsiteSpot, regionLabel: string) {
+  return `${spot.name} is marked as closed based on the latest AFFT check. This page is kept so visitors do not plan around an unavailable campsite. Ask AFFT for open ${regionLabel} alternatives instead.`;
 }
 
 function getAfftAdvice(spot: CampsiteSpot) {

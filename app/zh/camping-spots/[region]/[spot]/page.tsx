@@ -44,9 +44,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const isClosed = spot.status === "closed";
+
   return {
-    title: `${spot.name} | AFFT 沙巴营地指南`,
-    description: `${spot.name} 的车程、适合对象、装备建议和 AFFT WhatsApp 咨询建议。`,
+    title: isClosed
+      ? `${spot.name} 已关闭 | AFFT 沙巴营地指南`
+      : `${spot.name} | AFFT 沙巴营地指南`,
+    description: isClosed
+      ? `${spot.name} 已标记为关闭。可以询问 AFFT 推荐其他还在营业的 Kokol 或 Kota Kinabalu 山区营地。`
+      : `${spot.name} 的车程、适合对象、装备建议和 AFFT WhatsApp 咨询建议。`,
     alternates: {
       canonical: spot.zhHref,
       languages: {
@@ -79,6 +85,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
     notFound();
   }
 
+  const isClosed = spot.status === "closed";
   const nearbySpots = region.spots
     .filter((item) => item.slug !== spot.slug)
     .slice(0, 3);
@@ -87,9 +94,13 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: `${spot.name} | AFFT 沙巴营地指南`,
+      name: isClosed
+        ? `${spot.name} 已关闭 | AFFT 沙巴营地指南`
+        : `${spot.name} | AFFT 沙巴营地指南`,
       url: `${siteUrl}${spot.zhHref}`,
-      description: `${spot.name} 的车程、适合对象、装备建议和 AFFT WhatsApp 咨询建议。`,
+      description: isClosed
+        ? `${spot.name} 已标记为关闭。可以询问 AFFT 推荐其他还在营业的 Kokol 或 Kota Kinabalu 山区营地。`
+        : `${spot.name} 的车程、适合对象、装备建议和 AFFT WhatsApp 咨询建议。`,
       inLanguage: "zh-Hans",
       isPartOf: {
         "@type": "WebSite",
@@ -142,6 +153,11 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
       additionalProperty: [
         {
           "@type": "PropertyValue",
+          name: "目前状态",
+          value: isClosed ? "已关闭" : "出发前向营地方确认",
+        },
+        {
+          "@type": "PropertyValue",
           name: "从 Kota Kinabalu 出发",
           value: spot.driveFromKK,
         },
@@ -184,17 +200,30 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                 {spot.name}
               </h1>
               <p className="mt-4 text-white/55">{spot.location}</p>
+              {isClosed ? (
+                <div className="mt-5 inline-flex rounded-full border border-red-400/45 bg-red-500/12 px-4 py-2 text-sm font-bold text-red-100">
+                  已关闭
+                </div>
+              ) : null}
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
-                {getZhAfftFitText(spot)}
+                {isClosed
+                  ? getZhClosedAfftFitText(spot, profile.zhLabel)
+                  : getZhAfftFitText(spot)}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={makeZhCampsiteWhatsappLink(spot.name)}
+                  href={
+                    isClosed
+                      ? makeZhCampsiteWhatsappLink(
+                          `${profile.zhLabel} 还在营业的替代营地`
+                        )
+                      : makeZhCampsiteWhatsappLink(spot.name)
+                  }
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full bg-[#F3922B] px-7 py-4 font-bold text-black"
                 >
-                  WhatsApp 问这个营地
+                  {isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问这个营地"}
                 </a>
                 <a
                   href={`/zh/camping-spots/${region.id}`}
@@ -242,6 +271,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
           </article>
 
           <div className="grid gap-4">
+            {isClosed ? <InfoPill label="目前状态" value="已关闭" /> : null}
             <InfoPill label="从 KK 出发" value={spot.driveFromKK} />
             <InfoPill label="适合对象" value={profile.zhBestFor} />
             <InfoPill label="装备建议" value={profile.zhGearSuggestion} />
@@ -250,7 +280,14 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-5 px-6 py-10 md:grid-cols-2 md:px-10 xl:grid-cols-4">
-        <DetailBlock title="亮点" text={profile.zhHighlight} />
+        <DetailBlock
+          title={isClosed ? "目前状态" : "亮点"}
+          text={
+            isClosed
+              ? (spot.zhStatusNote ?? "这个营地目前已标记为关闭。")
+              : profile.zhHighlight
+          }
+        />
         <DetailBlock title="注意" text={profile.zhWatchOut} />
         <DetailBlock title="营地费" text={spot.feeNote} />
         <DetailBlock title="入场费" text={spot.entranceNote} />
@@ -262,8 +299,9 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
             公开资料
           </p>
           <p className="mt-4 leading-7 text-white/65">
-            营地规则、费用和营位状态可能会变。出发前建议先通过 WhatsApp
-            让 AFFT 协助确认实际细节。
+            {isClosed
+              ? "这个营地目前不再当成 AFFT 可推荐选项，因为公开资料显示已经关闭。出发前请先询问 AFFT 其他还在营业的替代营地。"
+              : "营地规则、费用和营位状态可能会变。出发前建议先通过 WhatsApp 让 AFFT 协助确认实际细节。"}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             {spot.sourceUrl ? (
@@ -329,10 +367,22 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:px-10">
         <ZhPageFinalCta
-          title={`想确认 ${spot.name} 适不适合？`}
-          text="发送日期、人数、舒适度要求和需要的装备给 AFFT，我们可以帮你判断这个营地是否适合你的计划。"
-          message={`你好 AFFT，我想确认 ${spot.name} 适不适合我的露营计划。`}
-          buttonLabel="WhatsApp 问这个营地"
+          title={
+            isClosed
+              ? `${spot.name} 已标记为关闭。`
+              : `想确认 ${spot.name} 适不适合？`
+          }
+          text={
+            isClosed
+              ? "发送日期、人数和舒适度要求给 AFFT，我们可以推荐其他还在营业的 Kokol 或 Kota Kinabalu 山区营地。"
+              : "发送日期、人数、舒适度要求和需要的装备给 AFFT，我们可以帮你判断这个营地是否适合你的计划。"
+          }
+          message={
+            isClosed
+              ? `你好 AFFT，我看到 ${spot.name} 已关闭。可以推荐其他还在营业的 Kokol 或 Kota Kinabalu 山区营地吗？`
+              : `你好 AFFT，我想确认 ${spot.name} 适不适合我的露营计划。`
+          }
+          buttonLabel={isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问这个营地"}
         />
       </section>
 
@@ -384,6 +434,10 @@ function MissingPhotoFrame({
 
 function getZhAfftFitText(spot: CampsiteSpot) {
   return `${spot.name} 从 KK 出发大约是 ${spot.driveFromKK}。进入这个页面后，可以先看适合对象、注意事项和装备方向，再让 AFFT 协助确认。`;
+}
+
+function getZhClosedAfftFitText(spot: CampsiteSpot, regionLabel: string) {
+  return `${spot.name} 已根据 AFFT 最新检查标记为关闭。保留这个页面，是为了避免客人继续安排一个已经不可用的营地。你可以询问 AFFT 其他还在营业的 ${regionLabel} 替代营地。`;
 }
 
 function getZhAfftAdvice(spot: CampsiteSpot) {

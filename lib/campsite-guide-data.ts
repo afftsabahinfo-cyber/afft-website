@@ -30,6 +30,9 @@ export type CampsiteSpot = {
   facebookUrl?: string;
   facebookSummary?: string;
   photoUrl?: string;
+  status?: "active" | "closed";
+  statusNote?: string;
+  zhStatusNote?: string;
 };
 
 export const campsiteRegionTabs: Array<{
@@ -233,6 +236,10 @@ const facebookSources = {
   kokolMamaHill: "https://www.facebook.com/KokolMamaHill",
   yunHai: "https://www.facebook.com/yunhaicampandstay",
   backyardKokol: "https://www.facebook.com/people/Backyard-Kokol/100077997461341/",
+  kokolHobbiton: "https://www.facebook.com/KokolHobbiton",
+  manoriaVillage: "https://www.facebook.com/manoriavillage",
+  ngKokol: "https://www.facebook.com/ngkokolcampingsite",
+  shalomValleyPark: "https://www.facebook.com/shalomvalleypark",
   tegudon: "https://www.facebook.com/tegudontourismvillage",
   polumpung: "https://www.facebook.com/pmvcs",
   sondot: "https://www.facebook.com/CampingsitekgstylekotabeludSabah",
@@ -243,21 +250,75 @@ const facebookSources = {
   nohutu: "https://www.facebook.com/nohutuecotourism",
   daradaat: "https://www.facebook.com/daradaatcampsite",
   doubleView: "https://www.facebook.com/profile.php?id=61556553215663",
+  auraMontoria: "https://www.facebook.com/auramontoria",
+  bayuKinabalu: "https://www.facebook.com/profile.php?id=61574868159007",
+  binombon: "https://www.facebook.com/profile.php?id=61575959492439",
+  damaiView: "https://www.facebook.com/profile.php?id=100083508813018",
+  dinginBatu: "https://www.facebook.com/florence7msevenhomestay",
+  dragonPearlBeach: "https://www.facebook.com/profile.php?id=61556971106425",
+  drbNanamun: "https://www.facebook.com/DRBNanamunBeach",
+  kiauPaka: "https://www.facebook.com/kiaufarmstay",
+  minakit: "https://www.facebook.com/profile.php?id=100076145143098",
+  nahandang: "https://www.facebook.com/nahandanghomestay",
+  pirasKadamaian: "https://www.facebook.com/profile.php?id=100090769778792",
+  supuanPurakogis: "https://www.facebook.com/profile.php?id=100089929681378",
+  tambatuonHomestead: "https://www.facebook.com/tambatuonhomesteadkb",
   komfy: "https://www.facebook.com/KomfyKundasang",
   nuluhon: "https://www.facebook.com/nuluhongroupstories",
-  mentoki: "https://www.facebook.com/search/pages/?q=Mentoki%20Hideout%20Campsite%20Sabah%20campsite",
+  discoveryMaragang: "https://www.facebook.com/discoverymaraganghill",
+  mentoki: "https://www.facebook.com/profile.php?id=100094440098251",
   himbaan: "https://www.facebook.com/himbaan",
+  hooga: "https://www.facebook.com/hoogaglamping",
   tambiau: "https://www.facebook.com/TambiauForestHouseRanauSabah",
+  konunukan: "https://www.facebook.com/profile.php?id=100063713734079",
+  titimpakon: "https://www.facebook.com/profile.php?id=61571449719298",
+  dolungan: "https://www.facebook.com/profile.php?id=61590364277361",
+  alleyStay: "https://www.facebook.com/profile.php?id=61560796890979",
+  sinaranKinabalu: "https://www.facebook.com/profile.php?id=61574066081296",
+  lohanMini: "https://www.facebook.com/profile.php?id=100066463973151",
+  batuPayung: "https://www.facebook.com/profile.php?id=100090843122616",
+  twinsCottage: "https://www.facebook.com/profile.php?id=100063456286193",
+  azZummar: "https://www.facebook.com/azzummarcampsite",
+  downhill: "https://www.facebook.com/profile.php?id=61570880141614",
+  malimGunung: "https://www.facebook.com/profile.php?id=61570414575315",
+  dodonLand: "https://www.facebook.com/dodonland",
   olumaag: "https://www.facebook.com/profile.php?id=61550438752478",
   hawun: "https://www.facebook.com/hawunvalley.kiulu",
+  kuriou: "https://www.facebook.com/kuriou.klc",
+  disanBaang: "https://www.facebook.com/disanbaang",
+  riverBayBeach: "https://www.facebook.com/riverbaybeachtuaran",
+  capeRhino: "https://www.facebook.com/caperhinocentre",
+  kondisPoint: "https://www.facebook.com/lasmenkondispoint",
+  boribi: "https://www.facebook.com/profile.php?id=61568383659929",
+  didiama: "https://www.facebook.com/d.idiamacampsite",
+  ratau: "https://www.facebook.com/RATAUCAMPSITE",
+  ponompuhuyan: "https://www.facebook.com/profile.php?id=100077580715265",
+  dayangkuBorneo: "https://www.facebook.com/profile.php?id=61564400136035",
+  kiuluRiverPark: "https://www.facebook.com/profile.php?id=100069076311350",
+  kipumpun: "https://www.facebook.com/profile.php?id=100094907739370",
+  outreachBorneo: "https://www.facebook.com/outreachborneo",
+  tongkoluson: "https://www.facebook.com/profile.php?id=100077270964796",
   pasakon: "https://www.facebook.com/profile.php?id=100063505363715",
   pokdi: "https://www.facebook.com/profile.php?id=61566503069171",
   kiuluFarmstay: "https://www.facebook.com/kiulufarmstay/",
   mandalipau: "https://www.facebook.com/picnic.camping.fishingpond/",
   aaBolotikon: "https://www.facebook.com/100063910121150/",
+  kaiduanEbt: "https://www.facebook.com/profile.php?id=61583253689852",
+  mondikotDeerCamp: "https://www.facebook.com/wemmogindol",
+  kigandangRiverView: "https://www.facebook.com/profile.php?id=100065455151012",
+  mondoringin: "https://www.facebook.com/profile.php?id=100066984062498",
+  hiddenParadisePapar: "https://www.facebook.com/profile.php?id=100085649717725",
+  utanParadise: "https://www.facebook.com/profile.php?id=100067395911643",
+  seasideSyokClub: "https://www.facebook.com/profile.php?id=61555435002705",
+  kumpatRiver: "https://www.facebook.com/kumpatrivercampsitemembakutsabah",
+  sawatan: "https://www.facebook.com/SawatanCampSite",
+  tuhunonBolotikon: "https://www.facebook.com/profile.php?id=100047989886219",
+  threeRiversFarm: "https://www.facebook.com/3riversfarm",
+  malambun: "https://www.facebook.com/malambun.campsite",
 };
 
 const photoUrls = {
+  pogumJo: "/images/pogum-jo-campsite-logo.jpg",
   awanAwan:
     "https://production-hotel-media.s3.us-west-2.amazonaws.com/7284/minified/50090efefad37695562b260c3ca6b6b9.png",
   kundasangFarmhouse:
@@ -284,6 +345,9 @@ const rawSpots: Array<
     | "facebookUrl"
     | "facebookSummary"
     | "photoUrl"
+    | "status"
+    | "statusNote"
+    | "zhStatusNote"
   >
 > = [
   {
@@ -314,6 +378,11 @@ const rawSpots: Array<
     location: "Menggatal / Kokol area",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    status: "closed",
+    statusNote:
+      "Google listing checked by AFFT shows Skyhill Kokol as permanently closed.",
+    zhStatusNote:
+      "AFFT 检查 Google 资料后，Skyhill Kokol 显示为 permanently closed。",
     ...csvSource,
   },
   {
@@ -333,6 +402,7 @@ const rawSpots: Array<
     location: "Kokol - Tombongon",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.pogumJo,
     ...csvSource,
   },
   {
@@ -365,6 +435,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookUrl: facebookSources.ngKokol,
     facebookSummary:
       "SabahTravel public camping guide lists N.G Kokol Camping Site as a Kokol campsite near Kota Kinabalu with city and sea views.",
     ...publicMapResearchSource,
@@ -387,6 +458,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.shalomValleyPark,
     facebookSummary:
       "Public campsite roundup lists Shalom Valley Park under Kota Kinabalu camping spots.",
     ...publicMapResearchSource,
@@ -409,6 +481,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.kokolHobbiton,
     facebookSummary:
       "Public campsite roundup lists Kokol Hobbiton Forest as a Kota Kinabalu hilltop camping spot.",
     ...publicMapResearchSource,
@@ -433,6 +506,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Manoria village Sabah campsite"),
+    facebookUrl: facebookSources.manoriaVillage,
     facebookSummary:
       "Google Maps public search lists Manoria Village as a camping ground around the Kionsom side of Kota Kinabalu.",
     ...googleMapsLiveSource,
@@ -576,6 +650,7 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.minakit,
     ...csvSource,
   },
   {
@@ -595,6 +670,7 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.tambatuonHomestead,
     ...csvSource,
   },
   {
@@ -603,6 +679,7 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.dinginBatu,
     ...csvSource,
   },
   {
@@ -611,6 +688,7 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.bayuKinabalu,
     ...csvSource,
   },
   {
@@ -619,6 +697,7 @@ const rawSpots: Array<
     location: "Kiau / Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.kiauPaka,
     ...csvSource,
   },
   {
@@ -627,6 +706,7 @@ const rawSpots: Array<
     location: "Kota Belud",
     feeNote: "CSV: RM20 adult, RM10 child below 12",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.damaiView,
     ...csvSource,
   },
   {
@@ -636,6 +716,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookUrl: facebookSources.auraMontoria,
     facebookSummary:
       "SabahTravel public camping guide lists Aura Montoria in Kota Belud for nature trekking, cave exploration, river dip and camping-style adventure.",
     ...publicMapResearchSource,
@@ -647,6 +728,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.sabahTravelCamping,
+    facebookUrl: facebookSources.dragonPearlBeach,
     facebookSummary:
       "SabahTravel public camping guide lists Dragon Pearl Beach Resort in Kota Belud as a beachside camping and resort-style seaside option.",
     ...publicMapResearchSource,
@@ -658,6 +740,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.drbNanamun,
     facebookSummary:
       "Public campsite roundup lists DRB Nanamun Beach under Kota Belud coastal campsites.",
     ...publicMapResearchSource,
@@ -671,6 +754,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Nahandang Melangkap Homestay and Campsite Sabah"
     ),
+    facebookUrl: facebookSources.nahandang,
     facebookSummary:
       "Google Maps public search lists Nahandang Melangkap Homestay and Campsite as a Melangkap camping ground.",
     ...googleMapsLiveSource,
@@ -708,6 +792,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Binombon Campsite Kota Belud Sabah"),
+    facebookUrl: facebookSources.binombon,
     facebookSummary:
       "Google Maps public search lists Binombon Campsite on the Tambatuon side of Kota Belud.",
     ...googleMapsLiveSource,
@@ -741,6 +826,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Supu'an Purakogis Campsite Sabah"),
+    facebookUrl: facebookSources.supuanPurakogis,
     facebookSummary:
       "Google Maps public search lists Supu'an Purakogis Campsite around the Kota Belud highland route.",
     ...googleMapsLiveSource,
@@ -765,6 +851,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Piras Kadamaian Campsite Roomstay Kampung Tambatuon Sabah"
     ),
+    facebookUrl: facebookSources.pirasKadamaian,
     facebookSummary:
       "Google Maps public search lists Piras Kadamaian Campsite & Roomstay around Kampung Tambatuon.",
     ...googleMapsLiveSource,
@@ -775,6 +862,7 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "CSV: RM350 longhouse / RM180 grass patch / RM450 top decks",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.discoveryMaragang,
     ...csvSource,
   },
   {
@@ -850,6 +938,7 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "Melancong.my public Kundasang guide",
     sourceUrl: sourceUrls.hooga,
+    facebookUrl: facebookSources.hooga,
     facebookSummary:
       "Public guide describes Hooga as a Kundasang glamping area with prepared tents, Scandinavian-style furniture and warm night lighting.",
   },
@@ -936,6 +1025,7 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.konunukan,
     ...csvSource,
   },
   {
@@ -967,6 +1057,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.titimpakon,
     facebookSummary:
       "Public campsite roundup lists Titimpakon Campsite & Staycation under Kundasang and Ranau camping spots.",
     ...publicMapResearchSource,
@@ -978,6 +1069,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Dolungan Campsite Ranau Sabah"),
+    facebookUrl: facebookSources.dolungan,
     facebookSummary:
       "Google Maps public search lists Dolungan Campsite as a Ranau camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1002,6 +1094,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Alley Stay and Mini Campsite Kundasang"),
+    facebookUrl: facebookSources.alleyStay,
     facebookSummary:
       "Google Maps public search lists Alley Stay and Mini Campsite as a Kundasang camping ground.",
     ...googleMapsLiveSource,
@@ -1013,6 +1106,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Sinaran Kinabalu Campsite Kundasang"),
+    facebookUrl: facebookSources.sinaranKinabalu,
     facebookSummary:
       "Google Maps public search lists Sinaran Kinabalu Campsite as a Kundasang camping ground.",
     ...googleMapsLiveSource,
@@ -1024,6 +1118,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Lohan Mini Camp Ranau Sabah"),
+    facebookUrl: facebookSources.lohanMini,
     facebookSummary:
       "Google Maps public search lists Lohan Mini Camp as a Ranau camping ground on Jalan Lohan Bongkud.",
     ...googleMapsLiveSource,
@@ -1046,6 +1141,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Batu Payung Campsite Ranau Sabah"),
+    facebookUrl: facebookSources.batuPayung,
     facebookSummary:
       "Google Maps public search lists Batu Payung Campsite as a Ranau-side recreation and camping candidate.",
     ...googleMapsLiveSource,
@@ -1057,6 +1153,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Twin's Cottage & Campsite Ranau Sabah"),
+    facebookUrl: facebookSources.twinsCottage,
     facebookSummary:
       "Google Maps public search lists Twin's Cottage & Campsite as a Ranau camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1068,6 +1165,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Malambun Campsite Ranau Sabah"),
+    facebookUrl: facebookSources.malambun,
     facebookSummary:
       "Google Maps public search lists Malambun Campsite as a Ranau tourist and camping candidate.",
     ...googleMapsLiveSource,
@@ -1079,6 +1177,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("AZ-Zummar Campsite Kampung Himbaan Sabah"),
+    facebookUrl: facebookSources.azZummar,
     facebookSummary:
       "Google Maps public search lists AZ-Zummar Campsite around Kampung Himbaan.",
     ...googleMapsLiveSource,
@@ -1090,6 +1189,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Downhill Campsite Kundasang Sabah"),
+    facebookUrl: facebookSources.downhill,
     facebookSummary:
       "Google Maps public search lists Downhill Campsite as a Kundasang camping ground near Jalan Sosodikon.",
     ...googleMapsLiveSource,
@@ -1112,6 +1212,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Malim Gunung Campsite Kundasang Sabah"),
+    facebookUrl: facebookSources.malimGunung,
     facebookSummary:
       "Google Maps public search lists Malim Gunung Campsite as a Kundasang tourist and camping candidate.",
     ...googleMapsLiveSource,
@@ -1134,6 +1235,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Dodon Land Campsite Kundasang Sabah"),
+    facebookUrl: facebookSources.dodonLand,
     facebookSummary:
       "Google Maps public search lists Dodon Land Campsite Kundasang around Jalan Kem Bina Negara.",
     ...googleMapsLiveSource,
@@ -1217,6 +1319,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.kuriou,
     facebookSummary:
       "Public search results identify Kuriou Lodge & Campsite in Kiulu as a homestay and campsite in the Kiulu valley.",
     ...publicMapResearchSource,
@@ -1228,6 +1331,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.disanBaang,
+    facebookUrl: facebookSources.disanBaang,
     facebookSummary:
       "Public search results identify Disan Baang Campsite as a Kiulu riverside campsite and family outdoor point.",
     ...publicMapResearchSource,
@@ -1239,6 +1343,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.riverBayBeach,
     facebookSummary:
       "Public campsite roundup lists River Bay Beach, Kampung Laya-Laya under Tuaran camping spots.",
     ...publicMapResearchSource,
@@ -1250,6 +1355,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.capeRhino,
     facebookSummary:
       "Public campsite roundup lists Cape Rhino Centre under Tuaran camping spots.",
     ...publicMapResearchSource,
@@ -1261,6 +1367,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.kondisPoint,
     facebookSummary:
       "Public campsite roundup lists Kondis Point in Kiulu under Tuaran and Kiulu camping spots.",
     ...publicMapResearchSource,
@@ -1272,6 +1379,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.outreachBorneo,
     facebookSummary:
       "Public campsite roundup lists Outreach Borneo Camp in Kiulu under Tuaran and Kiulu camping spots.",
     ...publicMapResearchSource,
@@ -1283,6 +1391,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.boribi,
     facebookSummary:
       "Public campsite roundup lists Boribi Campsite in Tamparuli under Tuaran camping spots.",
     ...publicMapResearchSource,
@@ -1294,6 +1403,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    facebookUrl: facebookSources.kiuluRiverPark,
     facebookSummary:
       "Public campsite roundup lists Kiulu River Park under Tuaran and Kiulu camping spots.",
     ...publicMapResearchSource,
@@ -1305,6 +1415,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("D'Idiama Campsite Kiulu Sabah"),
+    facebookUrl: facebookSources.didiama,
     facebookSummary:
       "Google Maps public search lists D'Idiama Campsite as a Tuaran and Kiulu camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1316,6 +1427,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Tongkoluson Campsite Kiulu Sabah"),
+    facebookUrl: facebookSources.tongkoluson,
     facebookSummary:
       "Google Maps public search lists Tongkoluson Campsite as a Kiulu-side outdoor and camping candidate.",
     ...googleMapsLiveSource,
@@ -1327,6 +1439,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Ratau Campsite Kiulu Sabah"),
+    facebookUrl: facebookSources.ratau,
     facebookSummary:
       "Google Maps public search lists Ratau Campsite around Kg Ratau Kiulu.",
     ...googleMapsLiveSource,
@@ -1340,6 +1453,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Ponompuhuyan Sinompuruan Campsite Kiulu Sabah"
     ),
+    facebookUrl: facebookSources.ponompuhuyan,
     facebookSummary:
       "Google Maps public search lists Ponompuhuyan Sinompuruan Campsite around Kg Pahu Sogo Sogo, Kiulu.",
     ...googleMapsLiveSource,
@@ -1373,6 +1487,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Dayangku Borneo Campstay Kiulu Sabah"),
+    facebookUrl: facebookSources.dayangkuBorneo,
     facebookSummary:
       "Google Maps public search lists Dayangku Borneo Campstay as a Kiulu and Tuaran camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1384,6 +1499,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Kipumpun Riverside Campsite Sabah"),
+    facebookUrl: facebookSources.kipumpun,
     facebookSummary:
       "Google Maps public search lists Kipumpun Riverside Campsite as a Tuaran river-side camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1496,6 +1612,7 @@ const rawSpots: Array<
     location: "Kaiduan / Papar highland side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.kaiduanEbt,
     facebookSummary:
       "Google Maps screenshot lists Kaiduan homestay EBT campsite as a camping cabin with sunrise-view comments.",
     ...googleMapsSource,
@@ -1506,6 +1623,7 @@ const rawSpots: Array<
     location: "Kg Mondikot, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.mondikotDeerCamp,
     facebookSummary:
       "Google Maps screenshot lists Mondikot Deer Camp as a Papar farmstay and basic camping place.",
     ...googleMapsSource,
@@ -1516,6 +1634,7 @@ const rawSpots: Array<
     location: "Jalan Manggis Kaiduan Tampasak, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.kigandangRiverView,
     facebookSummary:
       "Google Maps screenshot lists Kigandang River View Camp as a recreation and river-view camping point.",
     ...googleMapsSource,
@@ -1526,6 +1645,7 @@ const rawSpots: Array<
     location: "Mandalipau / Papar river side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.threeRiversFarm,
     facebookSummary:
       "Google Maps screenshot shows 3 Rivers Farm near Mandalipau, with public comments mentioning essential facilities.",
     ...googleMapsSource,
@@ -1536,6 +1656,7 @@ const rawSpots: Array<
     location: "Mandalipau / Papar river side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.mondoringin,
     facebookSummary:
       "Google Maps screenshot lists Mondoringin Campsite near the Mandalipau camp cluster.",
     ...googleMapsSource,
@@ -1556,6 +1677,7 @@ const rawSpots: Array<
     location: "Kimanis / Papar inland route",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.hiddenParadisePapar,
     facebookSummary:
       "Google Maps screenshot lists Hidden Paradise Resort in the Papar search area, with public comments mentioning hut stay, river and calming ambience.",
     ...googleMapsSource,
@@ -1566,6 +1688,7 @@ const rawSpots: Array<
     location: "Jalan Keningau Kimanis, Papar route",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.utanParadise,
     facebookSummary:
       "Google Maps screenshot lists Utan Paradise Jungle Camp as a camping ground on the Jalan Keningau Kimanis route.",
     ...googleMapsSource,
@@ -1576,6 +1699,7 @@ const rawSpots: Array<
     location: "Jalan Kg Gusi, Papar coast",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.seasideSyokClub,
     facebookSummary:
       "Google Maps screenshot lists The Seaside by Syok Club as a Papar coastal camping ground.",
     ...googleMapsSource,
@@ -1586,6 +1710,7 @@ const rawSpots: Array<
     location: "Bongawan, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.kumpatRiver,
     facebookSummary:
       "Google Maps screenshot lists Kumpat River Campsite in Bongawan, Sabah as a camping cabin with family-river facilities.",
     ...googleMapsSource,
@@ -1596,6 +1721,7 @@ const rawSpots: Array<
     location: "Bongawan, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.sawatan,
     facebookSummary:
       "Google Maps screenshot lists Sawatan Camp Site in Bongawan as a budget-friendly campsite.",
     ...googleMapsSource,
@@ -1606,6 +1732,7 @@ const rawSpots: Array<
     location: "Kampung Bolotikon, Papar",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    facebookUrl: facebookSources.tuhunonBolotikon,
     facebookSummary:
       "Google Maps screenshot lists Tuhunon Bolotikon Riverside as a camping ground in Kampung Bolotikon.",
     ...googleMapsSource,
@@ -1681,6 +1808,10 @@ export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
   };
 });
 
+export const activeCampsiteSpots = campsiteSpots.filter(
+  (spot) => spot.status !== "closed"
+);
+
 export const campsiteRegions = campsiteRegionTabs
   .filter((region): region is { id: CampsiteRegionId; label: string; zhLabel: string } =>
     region.id !== "all"
@@ -1688,7 +1819,7 @@ export const campsiteRegions = campsiteRegionTabs
   .map((region) => ({
     ...region,
     profile: campsiteRegionProfiles[region.id],
-    spots: campsiteSpots.filter((spot) => spot.region === region.id),
+    spots: activeCampsiteSpots.filter((spot) => spot.region === region.id),
   }));
 
 export const campsiteStats = {
@@ -1721,6 +1852,10 @@ export function getCampsitePhotoCredit(
     return "Photo: campsite Facebook";
   }
 
+  if (spot.photoUrl.startsWith("/images/")) {
+    return "Photo: AFFT supplied";
+  }
+
   if (spot.sourceUrl) {
     return `Photo: ${spot.sourceLabel}`;
   }
@@ -1740,6 +1875,10 @@ export function getZhCampsitePhotoCredit(
 
   if (spot.facebookUrl) {
     return "照片：营地 Facebook";
+  }
+
+  if (spot.photoUrl.startsWith("/images/")) {
+    return "照片：AFFT 提供";
   }
 
   if (spot.sourceUrl) {
