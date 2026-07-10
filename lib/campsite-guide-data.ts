@@ -1707,6 +1707,48 @@ export function getCampsiteSpot(regionId: string, spotSlug: string) {
   );
 }
 
+export function getCampsitePhotoCredit(
+  spot: Pick<
+    CampsiteSpot,
+    "photoUrl" | "facebookUrl" | "sourceUrl" | "sourceLabel"
+  >
+) {
+  if (!spot.photoUrl) {
+    return undefined;
+  }
+
+  if (spot.facebookUrl) {
+    return "Photo: campsite Facebook";
+  }
+
+  if (spot.sourceUrl) {
+    return `Photo: ${spot.sourceLabel}`;
+  }
+
+  return "Photo: public campsite listing";
+}
+
+export function getZhCampsitePhotoCredit(
+  spot: Pick<
+    CampsiteSpot,
+    "photoUrl" | "facebookUrl" | "sourceUrl" | "sourceLabel"
+  >
+) {
+  if (!spot.photoUrl) {
+    return undefined;
+  }
+
+  if (spot.facebookUrl) {
+    return "照片：营地 Facebook";
+  }
+
+  if (spot.sourceUrl) {
+    return `照片：${spot.sourceLabel}`;
+  }
+
+  return "照片：公开营地列表";
+}
+
 export const makeCampsiteWhatsappLink = (spotName: string) =>
   makeWhatsappLink(
     `Hi AFFT, I want to ask whether ${spotName} is suitable for my camping trip.`

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
   campsiteRegions,
+  getCampsitePhotoCredit,
   makeCampsiteWhatsappLink,
 } from "@/lib/campsite-guide-data";
 import {
@@ -180,13 +181,16 @@ function CampsiteTile({
     <article className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/45">
       <a href={spot.href} className="block">
         {spot.photoUrl ? (
-          <img
-            src={spot.photoUrl}
-            alt={`${spot.name} campsite photo`}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            className="h-52 w-full bg-black/25 object-cover"
-          />
+          <figure className="relative">
+            <img
+              src={spot.photoUrl}
+              alt={`${spot.name} campsite photo`}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              className="h-52 w-full bg-black/25 object-cover"
+            />
+            <PhotoCredit text={getCampsitePhotoCredit(spot)} />
+          </figure>
         ) : (
           <MissingPhotoFrame label={spot.name} />
         )}
@@ -228,6 +232,18 @@ function CampsiteTile({
         </a>
       </div>
     </article>
+  );
+}
+
+function PhotoCredit({ text }: { text?: string }) {
+  if (!text) {
+    return null;
+  }
+
+  return (
+    <figcaption className="absolute bottom-3 left-3 right-3 rounded-full bg-black/55 px-3 py-1 text-[10px] font-bold text-white/70 backdrop-blur">
+      {text}
+    </figcaption>
   );
 }
 

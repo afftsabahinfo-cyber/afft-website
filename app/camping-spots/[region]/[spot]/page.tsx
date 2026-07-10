@@ -4,6 +4,7 @@ import {
   campsiteRegions,
   campsiteSpots,
   getCampsiteSpot,
+  getCampsitePhotoCredit,
   makeCampsiteWhatsappLink,
   type CampsiteSpot,
 } from "@/lib/campsite-guide-data";
@@ -202,21 +203,24 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+            <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
               {spot.photoUrl ? (
-                <img
-                  src={spot.photoUrl}
-                  alt={`${spot.name} campsite photo`}
-                  referrerPolicy="no-referrer"
-                  className="h-[360px] w-full object-cover md:h-[460px]"
-                />
+                <>
+                  <img
+                    src={spot.photoUrl}
+                    alt={`${spot.name} campsite photo`}
+                    referrerPolicy="no-referrer"
+                    className="h-[360px] w-full object-cover md:h-[460px]"
+                  />
+                  <PhotoCredit text={getCampsitePhotoCredit(spot)} />
+                </>
               ) : (
                 <MissingPhotoFrame
                   label={spot.name}
                   className="h-[360px] text-6xl md:h-[460px]"
                 />
               )}
-            </div>
+            </figure>
           </div>
         </div>
       </section>
@@ -298,13 +302,16 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
                 className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/45"
               >
                 {item.photoUrl ? (
-                  <img
-                    src={item.photoUrl}
-                    alt={`${item.name} campsite photo`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    className="h-36 w-full object-cover"
-                  />
+                  <figure className="relative">
+                    <img
+                      src={item.photoUrl}
+                      alt={`${item.name} campsite photo`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="h-36 w-full object-cover"
+                    />
+                    <PhotoCredit text={getCampsitePhotoCredit(item)} compact />
+                  </figure>
                 ) : (
                   <MissingPhotoFrame label={item.name} className="h-36 text-3xl" />
                 )}
@@ -329,6 +336,28 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
 
       <SiteFooter />
     </main>
+  );
+}
+
+function PhotoCredit({
+  text,
+  compact = false,
+}: {
+  text?: string;
+  compact?: boolean;
+}) {
+  if (!text) {
+    return null;
+  }
+
+  return (
+    <figcaption
+      className={`absolute left-3 right-3 rounded-full bg-black/55 px-3 py-1 font-bold text-white/70 backdrop-blur ${
+        compact ? "bottom-3 text-[9px]" : "bottom-4 text-[11px]"
+      }`}
+    >
+      {text}
+    </figcaption>
   );
 }
 
