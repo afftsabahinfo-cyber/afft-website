@@ -1747,47 +1747,6 @@ export function slugifyCampsiteName(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
-export function getCampsiteImageUrl(facebookUrl?: string) {
-  if (!facebookUrl) {
-    return undefined;
-  }
-
-  try {
-    const url = new URL(facebookUrl);
-
-    if (!url.hostname.includes("facebook.com") || url.pathname.startsWith("/search")) {
-      return undefined;
-    }
-
-    const pathParts = url.pathname.split("/").filter(Boolean);
-    const directId = url.searchParams.get("id");
-    const peopleId =
-      pathParts[0] === "people" && pathParts.length >= 3
-        ? pathParts[2]
-        : undefined;
-    const publicPageId =
-      pathParts[0] === "p" && pathParts.length >= 2
-        ? pathParts[1].match(/(\d+)$/)?.[1]
-        : undefined;
-    const pageSlug = pathParts[0];
-    const pageIdentifier = directId ?? peopleId ?? publicPageId ?? pageSlug;
-
-    if (
-      !pageIdentifier ||
-      pageIdentifier === "profile.php" ||
-      pageIdentifier === "people" ||
-      pageIdentifier === "p"
-    ) {
-      return undefined;
-    }
-
-    return `https://graph.facebook.com/${encodeURIComponent(
-      pageIdentifier
-    )}/picture?type=large`;
-  } catch {
-    return undefined;
-  }
-}
 
 export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
   const profile = campsiteRegionProfiles[spot.region];
@@ -1804,7 +1763,7 @@ export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
     watchOut: profile.watchOut,
     gearSuggestion: profile.gearSuggestion,
     photoNote: profile.photoNote,
-    photoUrl: spot.photoUrl ?? getCampsiteImageUrl(spot.facebookUrl),
+    photoUrl: spot.photoUrl ?? (spot.facebookUrl ? `/images/campsites/${slug}.jpg` : undefined),
   };
 });
 
