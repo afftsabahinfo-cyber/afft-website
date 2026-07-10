@@ -284,8 +284,8 @@ export default function RentItLandingPage() {
             </h2>
             <p className="mt-5 text-white/70">
               Tent bookings carry more value than small gear, so this section
-              makes capacity, use case and pricing easier to understand at a
-              glance.
+              makes capacity, use case, vehicle fit and pricing easier to
+              understand at a glance.
             </p>
           </div>
 

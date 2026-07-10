@@ -98,7 +98,8 @@ export default function CreatorSeriesPage() {
           <p className="mt-4 max-w-4xl text-white/70">
             This series should feel practical and premium at the same time.
             Give guests quick entry points, then let them move up into bundles
-            when they want more coverage or more convenience.
+            when they want more coverage, more convenience or lighter
+            hands-free POV shooting.
           </p>
 
           <div className="mt-8">
@@ -109,7 +110,7 @@ export default function CreatorSeriesPage() {
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <RentItInfoCard
             title="Light Travel Setup"
-            text="Pocket 4 or Action 6 works for guests who want speed, small bag size and simple use."
+            text="Osmo Nano, Pocket 4 or Action 6 works for guests who want speed, small bag size and simple travel capture."
           />
           <RentItInfoCard
             title="Audio Upgrade"

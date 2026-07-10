@@ -108,6 +108,10 @@ export const getRentItItemImage = (title: string) => {
     return "/images/snow-peak-flat-burner.png";
   }
 
+  if (normalized.includes("osmo nano")) {
+    return "/images/dji-osmo-nano-128gb.webp";
+  }
+
   if (normalized.includes("setsuen")) {
     return "/images/snow-peak-setsuen-pot.jpg";
   }
@@ -134,6 +138,14 @@ export const getRentItItemImage = (title: string) => {
 
   if (normalized.includes("black dog combination light")) {
     return "/images/black-dog-combination-light.jpg";
+  }
+
+  if (normalized.includes("jbl go 5")) {
+    return "/images/jbl-go-5-waterproof-speaker.webp";
+  }
+
+  if (normalized.includes("jakelah")) {
+    return "/images/jakelah-j-pile-outdoor-pole.webp";
   }
 
   if (normalized.includes("black dog xingsu")) {
@@ -214,7 +226,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "31", label: "gear items and bundle options" },
+  { value: "35", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -224,7 +236,7 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "creator-series",
     title: "Creator Series",
     route: "/rent-it/creator-series",
-    hook: "Pocket 4 / Action 6 / Mic 3 / Avata",
+    hook: "Pocket 4 / Osmo Nano / Action 6 / Avata",
     bestFor: "Vlog, travel shooting, road trip edits and stargazing content.",
     startingFrom: "From RM49 / day",
     image: "/images/rent-it-creator-series-cover.webp",
@@ -234,8 +246,8 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "camp-lifestyle-series",
     title: "Camp Lifestyle Series",
     route: "/rent-it/camp-lifestyle-series",
-    hook: "Adventure Lights / Power / Binoculars",
-    bestFor: "Premium lighting, power support, nature viewing and group communication.",
+    hook: "Adventure Lights / Audio / Power",
+    bestFor: "Premium lighting, camp audio, tarp support, power support, nature viewing and group communication.",
     startingFrom: "From RM19 / day",
     image: "/images/rent-it-camp-lifestyle-series-cover.webp",
     imageAlt: "AFFT Camp Lifestyle Series cover",
@@ -254,8 +266,8 @@ export const rentItMainSeries: MainSeries[] = [
     slug: "tent-experience-series",
     title: "Tent Experience Series",
     route: "/rent-it/tent-experience-series",
-    hook: "Black Dog / Mobi Garden",
-    bestFor: "Couple glamping, family camp and group camping statements.",
+    hook: "Black Dog / Playdo / Mobi Garden",
+    bestFor: "Couple glamping, family camp, car-side stays and group camping statements.",
     startingFrom: "From RM159 / day",
     image: "/images/rent-it-tent-experience-series-cover.webp",
     imageAlt: "AFFT Tent Experience Series cover",
@@ -276,6 +288,13 @@ export const creatorSeriesItems: CatalogItem[] = [
     day2: "RM139",
     day3: "RM189",
     bestFor: "POV clips, trail action and water-side content.",
+  },
+  {
+    title: "DJI Osmo Nano 128GB",
+    day1: "RM69",
+    day2: "RM119",
+    day3: "RM159",
+    bestFor: "Wearable POV clips, day-trip capture and hands-free travel moments.",
   },
   {
     title: "DJI Mic 3",
@@ -356,6 +375,20 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM109",
     day3: "RM149",
     bestFor: "Carbon adventure lighting, night camp mood and setup photos.",
+  },
+  {
+    title: "JakeLah J.Pile Outdoor Pole",
+    day1: "RM39",
+    day2: "RM69",
+    day3: "RM89",
+    bestFor: "Tarp corners, light hanging and small shade setups with better campsite structure.",
+  },
+  {
+    title: "JBL GO 5 Waterproof Speaker",
+    day1: "RM39",
+    day2: "RM69",
+    day3: "RM89",
+    bestFor: "Campsite music, projector nights and relaxed outdoor social mood.",
   },
   {
     title: "Xiao Mi Walkie Talkies",
@@ -484,6 +517,18 @@ export const tentShowcaseItems: TentShowcaseItem[] = [
     image: "/images/blackdog-modular-tent-system.webp",
   },
   {
+    title: "Playdo Starry Sky 2nd Gen Rooftop Tent Set",
+    capacity: "2-4 pax setup",
+    route: "/rent-it/tent-experience-series",
+    day1: "RM429",
+    day2: "RM779",
+    day3: "RM1049",
+    description:
+      "A premium rooftop-and-ground-ready full set with 270 awning and electric pump for car camp stays, flexible glamping weekends and stronger visual presence.",
+    bestFor: ["Car Camp", "Ground Setup", "Premium Glamp"],
+    image: "/images/playdo-starry-sky-2nd-gen-rooftop-tent-set.webp",
+  },
+  {
     title: "Black Dog 星宿 5.9",
     capacity: "1-2 adults or 2 adults + child",
     route: "/rent-it/tent-experience-series",
@@ -516,6 +561,13 @@ export const featuredPicks: FeaturedPick[] = [
     price: "From RM99 / day",
     description: "Travel-ready storytelling for smooth motion, beach reels and quick Sabah vlogs.",
     image: "/images/dji-pocket4-creator-combo.webp",
+  },
+  {
+    title: "DJI Osmo Nano 128GB",
+    route: "/rent-it/creator-series",
+    price: "From RM69 / day",
+    description: "A lighter wearable DJI setup for hands-free POV, walking clips and day-trip travel coverage.",
+    image: "/images/dji-osmo-nano-128gb.webp",
   },
   {
     title: "DJI Avata 360 Fly More Combo",
@@ -560,6 +612,20 @@ export const featuredPicks: FeaturedPick[] = [
     image: "/images/finel-n7-carbon-adventure-light.webp",
   },
   {
+    title: "JakeLah J.Pile Outdoor Pole",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM39 / day",
+    description: "A clean support pole for tarp corners, light hanging and small shade setups with better campsite structure.",
+    image: "/images/jakelah-j-pile-outdoor-pole.webp",
+  },
+  {
+    title: "JBL GO 5 Waterproof Speaker",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM39 / day",
+    description: "A compact waterproof speaker for campsite music, projector nights and a stronger social chill mood outdoors.",
+    image: "/images/jbl-go-5-waterproof-speaker.webp",
+  },
+  {
     title: "Xiao Mi Walkie Talkies",
     route: "/rent-it/camp-lifestyle-series",
     price: "From RM29 / day",
@@ -594,6 +660,13 @@ export const featuredPicks: FeaturedPick[] = [
     description: "A larger statement setup for groups, gatherings and event-style outdoor weekends.",
     image: "/images/blackdog-modular-tent-system.webp",
   },
+  {
+    title: "Playdo Starry Sky 2nd Gen Rooftop Tent Set",
+    route: "/rent-it/tent-experience-series",
+    price: "From RM429 / day",
+    description: "A premium rooftop-and-ground-ready full set for car camp stays, flexible glamping and stronger visual impact.",
+    image: "/images/playdo-starry-sky-2nd-gen-rooftop-tent-set.webp",
+  },
 ];
 
 export const helinoxTiers: HelinoxTier[] = [
@@ -621,7 +694,6 @@ export const helinoxNotes = [
 ];
 
 export const comingSoonItems = [
-  "DJI Osmo Nano 128GB",
   "DJI Osmo 360",
   "Action 6 Accessories Pack",
   "Pocket 4 Accessories Pack",
@@ -635,7 +707,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Creator Series",
     title: "Travel-ready creator tools for Sabah stories.",
     intro:
-      "This series is built for vlog days, road trips, scenic stops and creator weekends where guests want better footage without owning every device.",
+      "This series is built for vlog days, road trips, scenic stops and creator weekends where guests want better footage without owning every device, including lighter wearable POV options for hands-free travel moments.",
     featuredTitle: "DJI Pocket 4 Creator Combo",
     featuredPrice: "From RM99 / day",
     featuredText:
@@ -643,7 +715,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/dji-pocket4-creator-combo.webp",
     heroImage: "/images/rent-it-creator-series-cover.webp",
     heroImageAlt: "AFFT Creator Series hero cover",
-    bestFor: "Vlogs, travel shooting, POV content and weekend creator trips.",
+    bestFor: "Vlogs, travel shooting, wearable POV content and weekend creator trips.",
     priceRange: "RM49 to RM499 across creator items and bundles.",
     route: "/rent-it/creator-series",
   },
@@ -651,7 +723,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, power support, premium adventure lighting, walkie talkies, binoculars, projector nights and compact warmth.",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, tarp and shade support, power support, premium adventure lighting, walkie talkies, binoculars, projector nights, portable camp audio and compact warmth.",
     featuredTitle: "Yaber T2 Plus Projector",
     featuredPrice: "From RM99 / day",
     featuredText:
@@ -659,7 +731,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/yaber-t2-plus-projector.webp",
     heroImage: "/images/yaber-t2-plus-projector.webp",
     heroImageAlt: "Yaber T2 Plus Projector product image",
-    bestFor: "Coffee rituals, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
+    bestFor: "Coffee rituals, tarp support, camp audio, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
     priceRange: "RM19 to RM249 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },
@@ -683,7 +755,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Tent Experience Series",
     title: "Tent systems that feel like stays, not just shelter.",
     intro:
-      "These tents carry more value, more visual identity and a bigger booking decision, so the page should present them like premium experiences.",
+      "These tents carry more value, more visual identity and a bigger booking decision, from couple glamping and family basecamps to car-side rooftop stays and flexible ground setups.",
     featuredTitle: "Black Dog Modular Tent System",
     featuredPrice: "From RM499 / day",
     featuredText:
@@ -691,7 +763,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/blackdog-modular-tent-system.webp",
     heroImage: "/images/rent-it-tent-experience-series-cover.webp",
     heroImageAlt: "AFFT Tent Experience Series hero cover",
-    bestFor: "Couple glamping, family camp, group camp and event-style stays.",
+    bestFor: "Couple glamping, family camp, car-side stays, flexible ground setups and group camp weekends.",
     priceRange: "RM159 to RM1199 across the current tent lineup.",
     route: "/rent-it/tent-experience-series",
   },

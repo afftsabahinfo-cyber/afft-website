@@ -100,7 +100,8 @@ export default function TentExperienceSeriesPage() {
           <p className="mt-4 max-w-4xl text-white/70">
             These tents should be presented as premium stay options because the
             visual identity, capacity and booking value are much higher than
-            standard utility gear.
+            standard utility gear. Vehicle-based rooftop options also need a
+            quick compatibility check before confirming.
           </p>
 
           <div className="mt-10">
@@ -114,12 +115,12 @@ export default function TentExperienceSeriesPage() {
             text="Black Dog XingSu 5.9 is the stronger fit for visual glamping and quieter luxury stays."
           />
           <RentItInfoCard
-            title="Family and Groups"
-            text="Black Dog Modular Tent System or Mobi Garden Commander 245 should be matched to group size and campsite layout."
+            title="Car-side Camp"
+            text="Playdo Starry Sky 2nd Gen Rooftop Tent Set is the stronger fit for car camp stays, ground-use flexibility and guests who want premium visual impact without jumping to the biggest tent-system tier."
           />
           <RentItInfoCard
-            title="Before Booking"
-            text="Contact AFFT with group size, vehicle type, campsite size and trip style for the right tent recommendation."
+            title="Family and Groups"
+            text="Black Dog Modular Tent System or Mobi Garden Commander 245 should be matched to group size, campsite layout and whether the trip is more vehicle-based or walk-in."
           />
         </section>
 

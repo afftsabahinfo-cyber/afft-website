@@ -92,6 +92,9 @@ export default function CampLifestyleSeriesPage() {
                   Adventure lights for campsite glow, night movement and premium outdoor mood.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Portable speakers for campsite music, projector support and relaxed outdoor social mood.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
                   Walkie talkies for long standby and far connection between guests.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
@@ -119,10 +122,10 @@ export default function CampLifestyleSeriesPage() {
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
             more styled campsite, with portable power for simple outdoor device
-            support, premium adventure lighting for night mood, walkie talkies for
-            group coordination and binoculars for nature viewing. It works
-            especially well when paired with Premium Camp or Tent Experience
-            bookings.
+            support, premium adventure lighting for night mood, portable speakers
+            for campsite music or projector nights, walkie talkies for group
+            coordination and binoculars for nature viewing. It works especially
+            well when paired with Premium Camp or Tent Experience bookings.
           </p>
 
           <div className="mt-8">
@@ -138,6 +141,10 @@ export default function CampLifestyleSeriesPage() {
           <RentItInfoCard
             title="Adventure Lighting"
             text="Outask TD-2 and Finel N7 give stronger campsite glow for night movement, setup photos and premium outdoor mood."
+          />
+          <RentItInfoCard
+            title="Camp Audio"
+            text="JBL GO 5 Waterproof Speaker adds easy campsite music, projector support and a stronger social chill mood without carrying larger audio gear."
           />
           <RentItInfoCard
             title="Group Communication"
