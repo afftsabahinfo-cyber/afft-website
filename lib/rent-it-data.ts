@@ -80,6 +80,10 @@ export const getRentItItemImage = (title: string) => {
     return "/images/finel-n7-carbon-adventure-light.webp";
   }
 
+  if (normalized.includes("igt mobile kitchen")) {
+    return "/images/snow-peak-igt-mobile-kitchen-set.webp";
+  }
+
   if (normalized.includes("walkie")) {
     return "/images/xiao-mi-walkie-talkies.webp";
   }
@@ -226,7 +230,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "35", label: "gear items and bundle options" },
+  { value: "36", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -375,6 +379,13 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM109",
     day3: "RM149",
     bestFor: "Carbon adventure lighting, night camp mood and setup photos.",
+  },
+  {
+    title: "Snow Peak IGT Mobile Kitchen Set",
+    day1: "RM119",
+    day2: "RM209",
+    day3: "RM249",
+    bestFor: "IGT frame, burner, cooking tools and tent add-on camp kitchen setup.",
   },
   {
     title: "JakeLah J.Pile Outdoor Pole",
@@ -612,6 +623,13 @@ export const featuredPicks: FeaturedPick[] = [
     image: "/images/finel-n7-carbon-adventure-light.webp",
   },
   {
+    title: "Snow Peak IGT Mobile Kitchen Set",
+    route: "/rent-it/camp-lifestyle-series",
+    price: "From RM119 / day",
+    description: "A full IGT frame, burner and cooking tool add-on for tent bookings and proper campsite meals.",
+    image: "/images/snow-peak-igt-mobile-kitchen-set.webp",
+  },
+  {
     title: "JakeLah J.Pile Outdoor Pole",
     route: "/rent-it/camp-lifestyle-series",
     price: "From RM39 / day",
@@ -723,7 +741,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, tarp and shade support, power support, premium adventure lighting, walkie talkies, binoculars, projector nights, portable camp audio and compact warmth.",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, mobile kitchen support, tarp and shade support, power support, premium adventure lighting, walkie talkies, binoculars, projector nights, portable camp audio and compact warmth.",
     featuredTitle: "Yaber T2 Plus Projector",
     featuredPrice: "From RM99 / day",
     featuredText:
@@ -731,7 +749,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/yaber-t2-plus-projector.webp",
     heroImage: "/images/yaber-t2-plus-projector.webp",
     heroImageAlt: "Yaber T2 Plus Projector product image",
-    bestFor: "Coffee rituals, tarp support, camp audio, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
+    bestFor: "Coffee rituals, mobile kitchen support, tarp support, camp audio, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
     priceRange: "RM19 to RM249 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },

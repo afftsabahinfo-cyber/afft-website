@@ -86,6 +86,9 @@ export default function CampLifestyleSeriesPage() {
                   Projector nights for glamping stays, family downtime and slower campsite entertainment.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
+                  Snow Peak IGT frame, burner and cooking tools for a more complete tent add-on kitchen.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
                   Power support for phones, cameras, lights and small outdoor devices.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
@@ -121,11 +124,12 @@ export default function CampLifestyleSeriesPage() {
           <h2 className="text-3xl font-bold">Camp Lifestyle Price Guide</h2>
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
-            more styled campsite, with portable power for simple outdoor device
-            support, premium adventure lighting for night mood, portable speakers
-            for campsite music or projector nights, walkie talkies for group
-            coordination and binoculars for nature viewing. It works especially
-            well when paired with Premium Camp or Tent Experience bookings.
+            more styled campsite, with mobile kitchen support for tent bookings,
+            portable power for simple outdoor device support, premium adventure
+            lighting for night mood, portable speakers for campsite music or
+            projector nights, walkie talkies for group coordination and
+            binoculars for nature viewing. It works especially well when paired
+            with Premium Camp or Tent Experience bookings.
           </p>
 
           <div className="mt-8">
@@ -134,6 +138,10 @@ export default function CampLifestyleSeriesPage() {
         </section>
 
         <section className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <RentItInfoCard
+            title="Mobile Kitchen"
+            text="Snow Peak IGT Mobile Kitchen Set includes the IGT frame, burner and cooking tools for guests who want a proper camp kitchen with their tent booking."
+          />
           <RentItInfoCard
             title="Power Support"
             text="Anker Solix C300 DC Power Station is useful for charging phones, cameras, lights and small campsite devices."
