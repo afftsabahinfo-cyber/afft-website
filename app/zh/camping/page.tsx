@@ -22,6 +22,17 @@ export const metadata: Metadata = {
       "zh-Hans": "/zh/camping",
     },
   },
+  openGraph: {
+    title: "神山露营体验 RM699 | AFFT 中文露营套餐",
+    description:
+      "2 天 1 夜 Kundasang 神山露营体验，包含 Mobi Garden 245 帐篷、Tiggo 8 Pro 私人移动和 AFFT 露营支持。",
+    images: [
+      {
+        url: "/images/mount-kinabalu-camping-experience-rm699-zh.webp",
+        alt: "AFFT 神山露营体验 RM699 中文海报",
+      },
+    ],
+  },
 };
 
 const steps = [
@@ -87,6 +98,58 @@ export default function ZhCampingPage() {
                 查看营地指南
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="mount-kinabalu-camping-experience"
+        className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center"
+      >
+        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
+          <img
+            src="/images/mount-kinabalu-camping-experience-rm699-zh.webp"
+            alt="AFFT 神山露营体验 RM699 中文海报"
+            className="w-full bg-[#07130f] object-contain"
+          />
+        </div>
+
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
+            推荐露营体验
+          </p>
+          <h2 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
+            神山露营体验，RM699 / pax 起。
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-white/72">
+            适合第一次想轻松露营的客人。2 天 1 夜 Kundasang 方向，包含 Mobi
+            Garden 245 帐篷体验、Tiggo 8 Pro 私人移动和 AFFT 露营支持。
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <ZhInfoCard title="时间" text="2 天 1 夜露营体验。" />
+            <ZhInfoCard title="地点" text="Kundasang, Sabah / 神山景色方向。" />
+            <ZhInfoCard title="适合" text="第一次露营、情侣、小团体和想轻松出发的客人。" />
+            <ZhInfoCard title="包含" text="帐篷设置、基础露营装备、Tiggo 8 Pro 和 AFFT 支持。" />
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href={makeWhatsappLink(
+                "你好 AFFT，我想了解神山露营体验 RM699 配套。"
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
+            >
+              询问 RM699 神山露营体验
+            </a>
+            <a
+              href="#packages"
+              className="rounded-full border border-white/30 px-8 py-4 font-bold text-white"
+            >
+              比较其他露营套餐
+            </a>
           </div>
         </div>
       </section>

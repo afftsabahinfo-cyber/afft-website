@@ -22,8 +22,8 @@ export const metadata: Metadata = {
       "Ready-built Sabah camping experiences with AFFT support, real campsite planning and WhatsApp-first coordination.",
     images: [
       {
-        url: "/images/afft-explorer-camp-rm599-sabah.webp",
-        alt: "AFFT Explorer Camp Sabah camping package",
+        url: "/images/mount-kinabalu-camping-experience-rm699-en.webp",
+        alt: "AFFT Mount Kinabalu Camping Experience RM699 poster",
       },
     ],
   },
@@ -150,6 +150,59 @@ export default function CampingPage() {
                 View Campsite Guide
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="mount-kinabalu-camping-experience"
+        className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center"
+      >
+        <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
+          <img
+            src="/images/mount-kinabalu-camping-experience-rm699-en.webp"
+            alt="Mount Kinabalu Camping Experience RM699 AFFT poster"
+            className="w-full bg-[#07130f] object-contain"
+          />
+        </div>
+
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
+            Featured Camping Experience
+          </p>
+          <h2 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
+            Mount Kinabalu Camping Experience from RM699 / pax.
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-white/72">
+            A simple 2 days 1 night Kundasang camping package for guests who
+            want the mountain view, a ready Mobi Garden 245 tent setup and Tiggo
+            8 Pro private movement without handling the gear themselves.
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <InfoCard title="Duration" text="2 days 1 night camping experience." />
+            <InfoCard title="Location" text="Kundasang, Sabah / Mount Kinabalu view direction." />
+            <InfoCard title="Best For" text="First-time campers, couples and private small groups." />
+            <InfoCard title="Includes" text="Tent setup, basic camping equipment, Tiggo 8 Pro and AFFT support." />
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href={makeWhatsappLink(
+                "Hi AFFT, I want details for the Mount Kinabalu Camping Experience RM699 package."
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
+            >
+              Ask About RM699 Experience
+            </a>
+            <a
+              href="#packages"
+              className="rounded-full border border-white/30 px-8 py-4 font-bold text-white"
+            >
+              Compare Other Packages
+            </a>
           </div>
         </div>
       </section>
