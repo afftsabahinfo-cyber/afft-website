@@ -84,6 +84,10 @@ export const getRentItItemImage = (title: string) => {
     return "/images/snow-peak-igt-mobile-kitchen-set.webp";
   }
 
+  if (normalized.includes("titanium mug")) {
+    return "/images/snow-peak-titanium-mug-2pcs.webp";
+  }
+
   if (normalized.includes("walkie")) {
     return "/images/xiao-mi-walkie-talkies.webp";
   }
@@ -230,7 +234,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "36", label: "gear items and bundle options" },
+  { value: "37", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -386,6 +390,13 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM209",
     day3: "RM249",
     bestFor: "IGT frame, burner, cooking tools and tent add-on camp kitchen setup.",
+  },
+  {
+    title: "Snow Peak Titanium Mug - 2 pcs",
+    day1: "RM29",
+    day2: "RM49",
+    day3: "RM69",
+    bestFor: "Premium camp coffee, hot drinks and pairing with kitchen gear.",
   },
   {
     title: "JakeLah J.Pile Outdoor Pole",
@@ -715,7 +726,6 @@ export const comingSoonItems = [
   "DJI Osmo 360",
   "Action 6 Accessories Pack",
   "Pocket 4 Accessories Pack",
-  "Snow Peak Titanium Cup Series",
   "Snow Peak IGT System",
   "PG-1 Mobility Camp Set",
 ];
@@ -741,7 +751,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     eyebrow: "Camp Lifestyle Series",
     title: "Coffee, cooking and slower campsite rituals.",
     intro:
-      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, mobile kitchen support, tarp and shade support, power support, premium adventure lighting, walkie talkies, binoculars, projector nights, portable camp audio and compact warmth.",
+      "This series is for guests who care about atmosphere as much as function. It turns a basic campsite into a more memorable, more visual outdoor stay with coffee, cooking, premium mugs, mobile kitchen support, tarp and shade support, power support, premium adventure lighting, walkie talkies, binoculars, projector nights, portable camp audio and compact warmth.",
     featuredTitle: "Yaber T2 Plus Projector",
     featuredPrice: "From RM99 / day",
     featuredText:
@@ -749,7 +759,7 @@ export const seriesPageSummaries: Record<MainSeriesSlug, SeriesPageSummary> = {
     featuredImage: "/images/yaber-t2-plus-projector.webp",
     heroImage: "/images/yaber-t2-plus-projector.webp",
     heroImageAlt: "Yaber T2 Plus Projector product image",
-    bestFor: "Coffee rituals, mobile kitchen support, tarp support, camp audio, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
+    bestFor: "Coffee rituals, premium mugs, mobile kitchen support, tarp support, camp audio, power support, premium adventure lighting, walkie talkies, nature view checking, bird seeking, projector nights and visual campsite mood.",
     priceRange: "RM19 to RM249 across practical camp lifestyle pieces.",
     route: "/rent-it/camp-lifestyle-series",
   },

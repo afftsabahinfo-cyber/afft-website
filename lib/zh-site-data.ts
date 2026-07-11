@@ -284,6 +284,7 @@ export const zhRentSeries: ZhRentSeries[] = [
       { title: "Outask TD-2 Adventure Light", day1: "RM69", day2: "RM129", day3: "RM169", bestFor: "高级营地灯光、夜间移动和氛围布置。" },
       { title: "Finel N7 Carbon Adventure Light", day1: "RM59", day2: "RM109", day3: "RM149", bestFor: "碳纤维营地灯、夜营气氛和照片布置。" },
       { title: "Snow Peak IGT Mobile Kitchen Set", day1: "RM119", day2: "RM209", day3: "RM249", bestFor: "IGT 架、炉具、煮食工具和帐篷加项营地厨房。" },
+      { title: "Snow Peak Titanium Mug - 2 pcs", day1: "RM29", day2: "RM49", day3: "RM69", bestFor: "高级营地咖啡、热饮和搭配厨房装备。" },
       { title: "Xiao Mi Walkie Talkies", day1: "RM29", day2: "RM49", day3: "RM69", bestFor: "团队营地、车队和现场沟通。" },
       { title: "Celestron Outland X", day1: "RM25", day2: "RM45", day3: "RM65", bestFor: "看自然、鸟类、远景和轻户外观察。" },
       { title: "Bialetti Coffee Set", day1: "RM39", day2: "RM69", day3: "RM89", bestFor: "早晨咖啡和营地慢生活。" },

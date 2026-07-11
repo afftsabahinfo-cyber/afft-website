@@ -104,7 +104,7 @@ export default function CampLifestyleSeriesPage() {
                   Binoculars for nature view checking, bird seeking and campsite spotting.
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Compact warmth, coffee and simple meals that make the setup feel more complete.
+                  Compact warmth, coffee, titanium mugs and simple meals that make the setup feel more complete.
                 </div>
               </div>
             </div>
@@ -124,12 +124,13 @@ export default function CampLifestyleSeriesPage() {
           <h2 className="text-3xl font-bold">Camp Lifestyle Price Guide</h2>
           <p className="mt-4 max-w-4xl text-white/70">
             This series supports slower mornings, better cooking corners and a
-            more styled campsite, with mobile kitchen support for tent bookings,
-            portable power for simple outdoor device support, premium adventure
-            lighting for night mood, portable speakers for campsite music or
-            projector nights, walkie talkies for group coordination and
-            binoculars for nature viewing. It works especially well when paired
-            with Premium Camp or Tent Experience bookings.
+            more styled campsite, with Snow Peak titanium mugs, mobile kitchen
+            support for tent bookings, portable power for simple outdoor device
+            support, premium adventure lighting for night mood, portable
+            speakers for campsite music or projector nights, walkie talkies for
+            group coordination and binoculars for nature viewing. It works
+            especially well when paired with Premium Camp or Tent Experience
+            bookings.
           </p>
 
           <div className="mt-8">
@@ -168,7 +169,7 @@ export default function CampLifestyleSeriesPage() {
           />
           <RentItInfoCard
             title="Warmth & Coffee"
-            text="Grandburn Heater, Bialetti and the cooking pieces build around the projector for a more complete lifestyle setup."
+            text="Grandburn Heater, Bialetti, Snow Peak Titanium Mug set and the cooking pieces build around the projector for a more complete lifestyle setup."
           />
         </section>
 
