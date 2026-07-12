@@ -4,6 +4,8 @@ import {
   campsiteRegionProfiles,
   campsiteRegions,
   campsiteSpots,
+  campsiteGuideLastReviewedAt,
+  campsiteGuideNextReviewAt,
   getCampsiteSpot,
   getZhCampsitePhotoCredit,
   makeZhCampsiteWhatsappLink,
@@ -271,6 +273,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
           </article>
 
           <div className="grid gap-4">
+            <InfoPill label="最后复核" value={`${campsiteGuideLastReviewedAt} · 下次 ${campsiteGuideNextReviewAt}`} />
             {isClosed ? <InfoPill label="目前状态" value="已关闭" /> : null}
             <InfoPill label="从 KK 出发" value={spot.driveFromKK} />
             <InfoPill label="适合对象" value={profile.zhBestFor} />

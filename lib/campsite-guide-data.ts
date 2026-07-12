@@ -1,5 +1,8 @@
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
+export const campsiteGuideLastReviewedAt = "2026-07-10";
+export const campsiteGuideNextReviewAt = "2026-10-08";
+
 export type CampsiteRegionId =
   | "kota-kinabalu"
   | "tuaran"

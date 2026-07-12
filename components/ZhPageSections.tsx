@@ -1,4 +1,5 @@
 import { AfftBrand } from "@/components/AfftBrand";
+import { MobileNav } from "@/components/MobileNav";
 import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
 import { zhNavLinks } from "@/lib/zh-site-data";
 
@@ -21,6 +22,7 @@ export function ZhSiteTopNav({ enHref = "/" }: { enHref?: string } = {}) {
       </div>
 
       <div className="flex items-center gap-3">
+        <MobileNav links={zhNavLinks} label="菜单" />
         <a
           href={enHref}
           className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
@@ -153,6 +155,9 @@ export function ZhSiteFooter() {
           <p className="text-white/70">2024 注册成立</p>
           <p className="text-white/70">(202401014720 (1560570-W))</p>
           <p className="text-white/70">KPL/LN: 12014</p>
+          <div className="mt-4 grid gap-2 text-sm text-white/60">
+            <a href="/zh/privacy">隐私说明</a><a href="/zh/terms">服务条款</a><a href="/zh/cancellation">取消与天气</a><a href="/zh/rental-policy">租借政策</a><a href="/zh/payment-confirmation">付款与确认</a>
+          </div>
         </div>
       </div>
 

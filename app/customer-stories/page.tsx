@@ -5,7 +5,14 @@ import {
   SiteFooter,
   SiteTopNav,
 } from "@/components/V3PageSections";
+import {
+  customerStories,
+  explorerCampPhotos,
+} from "@/lib/customer-stories-data";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
+import { TrackedLink } from "@/components/TrackedLink";
+
+const leadStory = customerStories[0];
 
 export const metadata: Metadata = {
   title: "AFFT Customer Stories | Real Sabah Camping and Travel Support",
@@ -20,58 +27,12 @@ export const metadata: Metadata = {
       "Real customer stories from AFFT camping packages, private car charter and Sabah outdoor support.",
     images: [
       {
-        url: "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-group-01-blur.webp",
-        alt: "AFFT Explorer Camp real customer story",
+        url: leadStory.image,
+        alt: leadStory.en.imageAlt,
       },
     ],
   },
 };
-
-const stories = [
-  {
-    image:
-      "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-group-01-blur.webp",
-    title: "Explorer Camp RM599 in real use",
-    eyebrow: "Camping Story",
-    text: "A recent Explorer Camp booking showed how the setup feels beyond the poster: shelter, tent, table area and a slower 2D1N Sabah rhythm.",
-    detail:
-      "This story helps first-time campers understand what AFFT means by a ready-made camp experience.",
-    href: "/packages/explorer-camp",
-    cta: "View Explorer Camp",
-    whatsapp: "Hi AFFT, I want details for the RM599 Explorer Camp package.",
-  },
-  {
-    image:
-      "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
-    title: "Tiggo 8 Pro private Sabah mountain movement",
-    eyebrow: "Private Car Story",
-    text: "A private group used AFFT Tiggo 8 Pro Charter for a smoother Sabah mountain trip with more comfortable private movement.",
-    detail:
-      "This story is useful for guests who need transport support, not only a camping package.",
-    href: "/car-rental",
-    cta: "View Car Rental",
-    whatsapp:
-      "Hi AFFT, I want details for the Tiggo 8 Pro charter and private car service in Sabah.",
-  },
-];
-
-const explorerPhotos = [
-  {
-    image:
-      "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
-    caption: "Real campsite setup before guests settled in.",
-  },
-  {
-    image:
-      "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-detail-01.webp",
-    caption: "Covered area and camp details for slower outdoor time.",
-  },
-  {
-    image:
-      "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-night-01.webp",
-    caption: "Night mood that makes the stay feel complete.",
-  },
-];
 
 export default function CustomerStoriesPage() {
   return (
@@ -79,8 +40,7 @@ export default function CustomerStoriesPage() {
       <section
         className="relative bg-cover bg-center px-6 py-8 md:px-10"
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(16,20,15,.96), rgba(16,20,15,.74), rgba(16,20,15,.35)), url(/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-group-01-blur.webp)",
+          backgroundImage: `linear-gradient(90deg, rgba(16,20,15,.96), rgba(16,20,15,.74), rgba(16,20,15,.35)), url(${leadStory.image})`,
         }}
       >
         <div className="mx-auto max-w-7xl">
@@ -119,34 +79,34 @@ export default function CustomerStoriesPage() {
         />
 
         <div className="grid gap-8 xl:grid-cols-2">
-          {stories.map((story) => (
+          {customerStories.map((story) => (
             <article
-              key={story.title}
+              key={story.slug}
               className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5"
             >
               <img
                 src={story.image}
-                alt={story.title}
+                alt={story.en.imageAlt}
                 className="h-80 w-full object-cover"
               />
               <div className="p-8">
                 <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-                  {story.eyebrow}
+                  {story.en.eyebrow}
                 </p>
                 <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-                  {story.title}
+                  {story.en.title}
                 </h2>
-                <p className="mt-5 text-white/72">{story.text}</p>
-                <p className="mt-4 text-white/55">{story.detail}</p>
+                <p className="mt-5 text-white/72">{story.en.text}</p>
+                <p className="mt-4 text-white/55">{story.en.detail}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={story.href}
+                    href={story.en.href}
                     className="rounded-full border border-white/15 px-6 py-3 font-bold text-white"
                   >
-                    {story.cta}
+                    {story.en.cta}
                   </a>
                   <a
-                    href={makeWhatsappLink(story.whatsapp)}
+                    href={makeWhatsappLink(story.en.whatsappText)}
                     target="_blank"
                     rel="noreferrer"
                     className="rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
@@ -168,7 +128,7 @@ export default function CustomerStoriesPage() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            {explorerPhotos.map((photo) => (
+            {explorerCampPhotos.map((photo) => (
               <figure
                 key={photo.image}
                 className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5"
@@ -191,6 +151,11 @@ export default function CustomerStoriesPage() {
           text="Send AFFT the story you liked, your travel date and your group size. We will reply with the right package, route or car support."
           message="Hi AFFT, I saw the customer stories and want help planning my own Sabah trip."
         />
+        <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-7">
+          <h2 className="text-2xl font-bold">Already travelled with AFFT?</h2>
+          <p className="mt-3 text-white/70">Share honest feedback and real photos. AFFT will ask permission before publishing anything and will never invent a review.</p>
+          <TrackedLink eventName="review_request" eventParams={{ language: "en" }} href={makeWhatsappLink("Hi AFFT, I completed an AFFT experience and want to share honest feedback or photos.")} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full border border-white/15 px-6 py-3 font-bold">Share feedback</TrackedLink>
+        </div>
       </section>
 
       <SiteFooter />

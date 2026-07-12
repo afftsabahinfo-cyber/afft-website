@@ -1,4 +1,5 @@
 import { AfftBrand } from "@/components/AfftBrand";
+import { MobileNav } from "@/components/MobileNav";
 import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
 
 const navLinks = [
@@ -31,6 +32,7 @@ export function SiteTopNav({ zhHref = "/zh" }: { zhHref?: string } = {}) {
       </div>
 
       <div className="flex items-center gap-3">
+        <MobileNav links={navLinks} />
         <a
           href={zhHref}
           className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"
@@ -170,6 +172,9 @@ export function SiteFooter() {
           <p className="text-white/70">Registered 2024</p>
           <p className="text-white/70">(202401014720 (1560570-W))</p>
           <p className="text-white/70">KPL/LN: 12014</p>
+          <div className="mt-4 grid gap-2 text-sm text-white/60">
+            <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cancellation">Cancellation & Weather</a><a href="/rental-policy">Rental Policy</a><a href="/payment-confirmation">Payment & Confirmation</a>
+          </div>
         </div>
       </div>
 

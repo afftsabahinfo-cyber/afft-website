@@ -1,4 +1,5 @@
 import { AfftBrand } from "@/components/AfftBrand";
+import { MobileNav } from "@/components/MobileNav";
 import type { CatalogItem, TentShowcaseItem } from "@/lib/rent-it-data";
 import {
   getRentItItemImage,
@@ -45,6 +46,7 @@ export function RentItBackLink({
       </div>
 
       <div className="flex items-center gap-3">
+        <MobileNav links={rentItNavLinks} />
         <a
           href="/zh/rent-it"
           className="rounded-full border border-white/20 px-4 py-3 text-sm font-bold text-white"

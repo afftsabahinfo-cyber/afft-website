@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Urbanist, Playfair_Display } from 'next/font/google';
 import './globals.css';
+import { Analytics } from '@/components/Analytics';
 
 const urbanist = Urbanist({ subsets: ['latin'], variable: '--font-urbanist', display: 'swap' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' });
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   applicationName: 'AFFT Club',
   title: {
     default: 'AFFT Club | Sabah Outdoor Experiences',
-    template: '%s | AFFT Club',
+    template: '%s',
   },
   description:
     'AFFT helps visitors plan Sabah camping packages, Rent It gear rental, private tours, car rental and outdoor experiences around Kota Kinabalu and Mount Kinabalu.',
@@ -179,6 +180,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${urbanist.variable} ${playfair.variable} font-sans antialiased`}>
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

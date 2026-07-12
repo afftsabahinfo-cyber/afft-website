@@ -5,8 +5,9 @@ import {
   ZhSiteFooter,
   ZhSiteTopNav,
 } from "@/components/ZhPageSections";
+import { customerStories } from "@/lib/customer-stories-data";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
-import { zhStories } from "@/lib/zh-site-data";
+import { TrackedLink } from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "AFFT 真实案例 | 中文 Customer Stories",
@@ -49,34 +50,34 @@ export default function ZhCustomerStoriesPage() {
         />
 
         <div className="grid gap-8 xl:grid-cols-2">
-          {zhStories.map((story) => (
+          {customerStories.map((story) => (
             <article
-              key={story.title}
+              key={story.slug}
               className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5"
             >
               <img
                 src={story.image}
-                alt={story.title}
+                alt={story.zh.imageAlt}
                 className="h-[22rem] w-full object-cover"
               />
               <div className="p-8 md:p-10">
                 <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-                  {story.eyebrow}
+                  {story.zh.eyebrow}
                 </p>
                 <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-                  {story.title}
+                  {story.zh.title}
                 </h2>
-                <p className="mt-5 text-white/72">{story.text}</p>
-                <p className="mt-4 text-white/60">{story.detail}</p>
+                <p className="mt-5 text-white/72">{story.zh.text}</p>
+                <p className="mt-4 text-white/60">{story.zh.detail}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={story.href}
+                    href={story.zh.href}
                     className="inline-flex rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
                   >
-                    {story.cta}
+                    {story.zh.cta}
                   </a>
                   <a
-                    href={makeWhatsappLink(story.whatsappText)}
+                    href={makeWhatsappLink(story.zh.whatsappText)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex rounded-full border border-white/15 px-6 py-3 font-bold text-white"
@@ -96,6 +97,11 @@ export default function ZhCustomerStoriesPage() {
             message="你好 AFFT，我看到真实案例，想了解适合我的沙巴安排。"
             buttonLabel="WhatsApp 询问 AFFT"
           />
+        </div>
+        <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-7">
+          <h2 className="text-2xl font-bold">已经体验过 AFFT？</h2>
+          <p className="mt-3 text-white/70">欢迎分享真实意见与照片。AFFT 会先取得同意才公开，并且不会制造评价。</p>
+          <TrackedLink eventName="review_request" eventParams={{ language: "zh" }} href={makeWhatsappLink("你好 AFFT，我已经完成 AFFT 体验，想分享真实意见或照片。")} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full border border-white/15 px-6 py-3 font-bold">分享意见</TrackedLink>
         </div>
       </section>
 

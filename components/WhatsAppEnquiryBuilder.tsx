@@ -1,186 +1,51 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createInquiryRef, formatInquiryRef, trackEvent } from "@/lib/analytics";
+import { offers } from "@/lib/offers";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
-type ServiceOption = {
-  label: string;
-  value: string;
-};
+type Service = "Camping package" | "Rent It gear" | "Private tour" | "Car rental / charter";
+const services: Service[] = ["Camping package", "Rent It gear", "Private tour", "Car rental / charter"];
 
-const defaultServices: ServiceOption[] = [
-  { label: "Camping package", value: "Camping package" },
-  { label: "Rent It gear", value: "Rent It gear" },
-  { label: "Private tour", value: "Private tour" },
-  { label: "Car rental / charter", value: "Car rental / charter" },
-  { label: "Airport transfer", value: "Airport transfer" },
-];
-
-export function WhatsAppEnquiryBuilder({
-  title = "Send AFFT the right details first",
-  text = "Use this simple WhatsApp helper so AFFT can reply with the practical next step faster.",
-  defaultService = "Camping package",
-  defaultInterest = "",
-  services = defaultServices,
-}: {
-  title?: string;
-  text?: string;
-  defaultService?: string;
-  defaultInterest?: string;
-  services?: ServiceOption[];
-}) {
-  const [service, setService] = useState(defaultService);
+export function WhatsAppEnquiryBuilder({ title = "Send AFFT the right details first", text = "Answer a few practical questions so AFFT can reply with the right option faster.", defaultService = "Camping package", defaultInterest = "" }: { title?: string; text?: string; defaultService?: string; defaultInterest?: string; services?: {label:string;value:string}[] }) {
+  const [service, setService] = useState<Service>(services.includes(defaultService as Service) ? defaultService as Service : "Camping package");
+  const [offerId, setOfferId] = useState("");
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState("");
-  const [pickup, setPickup] = useState("");
+  const [location, setLocation] = useState("");
+  const [budget, setBudget] = useState("");
   const [interest, setInterest] = useState(defaultInterest);
-  const [notes, setNotes] = useState("");
+  const [addOns, setAddOns] = useState("");
   const [copied, setCopied] = useState(false);
+  const [refLine, setRefLine] = useState("REF: preparing website source");
+  const campingOffers = offers.filter((offer) => offer.category === "camping");
+
+  useEffect(() => { setRefLine(formatInquiryRef(createInquiryRef("en", offerId || "GENERAL"))); }, [offerId]);
 
   const message = useMemo(() => {
-    const lines = [
-      "Hi AFFT, I want to plan a Sabah trip.",
-      "",
-      `Service: ${service || "Not sure yet"}`,
-      `Travel date: ${date || "Not confirmed yet"}`,
-      `Guests: ${guests || "Not confirmed yet"}`,
-      `Pickup / location: ${pickup || "Not confirmed yet"}`,
-      `Interest: ${interest || "Please recommend the right option"}`,
-      notes ? `Notes: ${notes}` : "",
-      "",
-      "Please reply with available options and the practical next step.",
-    ];
+    const detailLabel = service === "Rent It gear" ? "Gear / use" : service === "Private tour" ? "Route / interests" : service === "Car rental / charter" ? "Route / luggage" : "Camping needs";
+    return ["Hi AFFT, I want to plan a Sabah experience.", "", `Service: ${service}`, offerId ? `Offer: ${offerId}` : "", `Date: ${date || "Not confirmed"}`, `Guests: ${guests || "Not confirmed"}`, `Location / pickup: ${location || "Not confirmed"}`, `Budget: ${budget || "Please advise"}`, `${detailLabel}: ${interest || "Please recommend"}`, `Add-ons: ${addOns || "None yet"}`, "", refLine, "", "Please reply with availability, price and the practical next step."].filter(Boolean).join("\n");
+  }, [addOns, budget, date, guests, interest, location, offerId, refLine, service]);
 
-    return lines.filter(Boolean).join("\n");
-  }, [date, guests, interest, notes, pickup, service]);
-
-  const copyMessage = async () => {
-    if (!navigator.clipboard) {
-      return;
-    }
-
-    await navigator.clipboard.writeText(message);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
-  };
-
-  return (
-    <section className="rounded-[2rem] border border-[#F3922B]/20 bg-[#182015] p-6 md:p-8">
-      <div className="grid gap-8 xl:grid-cols-[0.85fr_1.15fr]">
-        <div>
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
-            WhatsApp Helper
-          </p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2>
-          <p className="mt-4 text-white/70">{text}</p>
-        </div>
-
-        <div className="grid gap-4">
-          <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Service">
-              <select
-                value={service}
-                onChange={(event) => setService(event.target.value)}
-                className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-[#F3922B]"
-              >
-                {services.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </Field>
-
-            <Field label="Travel date">
-              <input
-                value={date}
-                onChange={(event) => setDate(event.target.value)}
-                placeholder="Example: 12 Aug 2026"
-                className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]"
-              />
-            </Field>
-
-            <Field label="Guests">
-              <input
-                value={guests}
-                onChange={(event) => setGuests(event.target.value)}
-                placeholder="Example: 2 adults, 1 child"
-                className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]"
-              />
-            </Field>
-
-            <Field label="Pickup / location">
-              <input
-                value={pickup}
-                onChange={(event) => setPickup(event.target.value)}
-                placeholder="Example: KK city hotel"
-                className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]"
-              />
-            </Field>
-          </div>
-
-          <Field label="Interest">
-            <input
-              value={interest}
-              onChange={(event) => setInterest(event.target.value)}
-              placeholder="Example: Explorer Camp with transport"
-              className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]"
-            />
-          </Field>
-
-          <Field label="Notes">
-            <textarea
-              value={notes}
-              onChange={(event) => setNotes(event.target.value)}
-              placeholder="Budget, preferred route, luggage, gear, special requests"
-              rows={3}
-              className="w-full resize-none rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]"
-            />
-          </Field>
-
-          <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/45">
-              Message Preview
-            </p>
-            <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-6 text-white/75">
-              {message}
-            </pre>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={makeWhatsappLink(message)}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black"
-            >
-              Open WhatsApp
-            </a>
-            <button
-              type="button"
-              onClick={copyMessage}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-bold text-white"
-            >
-              {copied ? "Copied" : "Copy Message"}
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  const openHref = makeWhatsappLink(message);
+  return <section className="rounded-[2rem] border border-[#F3922B]/20 bg-[#182015] p-6 md:p-8" onFocusCapture={() => trackEvent("start_enquiry", { service })}>
+    <div className="grid gap-8 xl:grid-cols-[.8fr_1.2fr]"><div><p className="text-sm font-bold uppercase tracking-[.3em] text-[#F3922B]">WhatsApp Builder 2.0</p><h2 className="mt-3 text-3xl font-bold md:text-4xl">{title}</h2><p className="mt-4 text-white/70">{text}</p><p className="mt-4 text-sm text-white/45">No account required. The website does not store these answers.</p></div>
+    <div className="grid gap-4"><div className="grid gap-4 md:grid-cols-2">
+      <Field label="Service"><select value={service} onChange={(e)=>{setService(e.target.value as Service);setOfferId("");}} className={control}>{services.map(x=><option key={x}>{x}</option>)}</select></Field>
+      {service === "Camping package" ? <Field label="Package"><select value={offerId} onChange={(e)=>setOfferId(e.target.value)} className={control}><option value="">Please recommend</option>{campingOffers.map(o=><option key={o.offerId} value={o.offerId}>{o.locales.en.name} — {o.priceType === "custom" ? "Custom quote" : `From RM${o.priceFrom}`}</option>)}</select></Field> : null}
+      <Field label="Date"><input value={date} onChange={e=>setDate(e.target.value)} placeholder="Example: 12 Aug 2026" className={control}/></Field>
+      <Field label="Guests"><input value={guests} onChange={e=>setGuests(e.target.value)} placeholder="2 adults, 1 child" className={control}/></Field>
+      <Field label="Location / pickup"><input value={location} onChange={e=>setLocation(e.target.value)} placeholder="KK hotel, campsite or route" className={control}/></Field>
+      <Field label="Budget"><input value={budget} onChange={e=>setBudget(e.target.value)} placeholder="Example: RM600–900" className={control}/></Field>
+    </div>
+    <Field label={service === "Rent It gear" ? "Gear and intended use" : service === "Private tour" ? "Places and interests" : service === "Car rental / charter" ? "Route, luggage and child seats" : "Camping needs"}><input value={interest} onChange={e=>setInterest(e.target.value)} placeholder="Tell us what matters most" className={control}/></Field>
+    <Field label="Optional add-ons"><input value={addOns} onChange={e=>setAddOns(e.target.value)} placeholder="Transport, meals, creator gear or extra tent" className={control}/></Field>
+    <div className="rounded-2xl border border-white/10 bg-black/20 p-4"><p className="text-xs font-bold uppercase tracking-[.24em] text-white/45">Message preview</p><pre className="mt-3 max-h-72 overflow-auto whitespace-pre-wrap font-sans text-sm leading-6 text-white/75">{message}</pre></div>
+    <div className="flex flex-wrap gap-3"><a href={openHref} target="_blank" rel="noreferrer" className="rounded-full bg-[#F3922B] px-6 py-3 font-bold text-black">Open WhatsApp</a><button type="button" onClick={async()=>{await navigator.clipboard?.writeText(message);trackEvent("copy_message",{service,offer_id:offerId||"GENERAL"});setCopied(true);setTimeout(()=>setCopied(false),1600);}} className="rounded-full border border-white/15 px-6 py-3 font-bold">{copied ? "Copied" : "Copy message"}</button></div>
+    </div></div>
+  </section>;
 }
 
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-sm font-bold text-white/70">{label}</span>
-      {children}
-    </label>
-  );
-}
+const control = "w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-[#F3922B]";
+function Field({label,children}:{label:string;children:React.ReactNode}){return <label className="block"><span className="mb-2 block text-sm font-bold text-white/70">{label}</span>{children}</label>}

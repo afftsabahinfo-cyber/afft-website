@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import {
   campsiteRegions,
   campsiteSpots,
+  campsiteGuideLastReviewedAt,
+  campsiteGuideNextReviewAt,
   getCampsiteSpot,
   getCampsitePhotoCredit,
   makeCampsiteWhatsappLink,
@@ -273,6 +275,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
             <InfoPill label="From KK" value={spot.driveFromKK} />
             <InfoPill label="Best for" value={spot.bestFor} />
             <InfoPill label="Gear idea" value={spot.gearSuggestion} />
+            <InfoPill label="Last reviewed" value={`${campsiteGuideLastReviewedAt} · Next review ${campsiteGuideNextReviewAt}`} />
           </div>
         </div>
       </section>
@@ -301,6 +304,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
               ? "This campsite is currently not treated as an available option on AFFT because it is marked closed. Ask AFFT for open alternatives before planning the route."
               : "Campsite rules, fees and available lots can change. Ask AFFT to help confirm the practical details before you travel."}
           </p>
+          <p className="mt-3 text-sm text-white/45">Guide reviewed {campsiteGuideLastReviewedAt}. Scheduled for review every 90 days; always reconfirm before travel.</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {spot.sourceUrl ? (
               <a

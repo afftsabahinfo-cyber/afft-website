@@ -28,6 +28,11 @@ const routes = [
   "/zh/about",
   "/zh/faq",
   "/zh/customer-stories",
+  "/zh/privacy",
+  "/zh/terms",
+  "/zh/cancellation",
+  "/zh/rental-policy",
+  "/zh/payment-confirmation",
   "/camping",
   "/rent-it",
   "/rent-it/creator-series",
@@ -48,6 +53,11 @@ const routes = [
   "/about",
   "/faq",
   "/customer-stories",
+  "/privacy",
+  "/terms",
+  "/cancellation",
+  "/rental-policy",
+  "/payment-confirmation",
   "/camping-spots",
 ];
 
