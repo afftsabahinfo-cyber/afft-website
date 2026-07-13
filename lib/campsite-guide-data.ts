@@ -237,6 +237,9 @@ const sourceUrls = {
 const facebookSources = {
   kokolHill: "https://www.facebook.com/kokolhillcampsite",
   kokolMamaHill: "https://www.facebook.com/KokolMamaHill",
+  skyhill: "https://www.facebook.com/skyhill.kokol",
+  tamazaAcv: "https://www.facebook.com/myassociate",
+  papasEcoCamp: "https://www.facebook.com/Papasecocampmarahang",
   yunHai: "https://www.facebook.com/yunhaicampandstay",
   backyardKokol: "https://www.facebook.com/people/Backyard-Kokol/100077997461341/",
   kokolHobbiton: "https://www.facebook.com/KokolHobbiton",
@@ -261,6 +264,8 @@ const facebookSources = {
   dragonPearlBeach: "https://www.facebook.com/profile.php?id=61556971106425",
   drbNanamun: "https://www.facebook.com/DRBNanamunBeach",
   kiauPaka: "https://www.facebook.com/kiaufarmstay",
+  nolobuhTerintidon: "https://www.facebook.com/TheTravellingNatureOfKg.Terintidon",
+  kalangadanHill: "https://www.facebook.com/minin.gampaih",
   minakit: "https://www.facebook.com/profile.php?id=100076145143098",
   nahandang: "https://www.facebook.com/nahandanghomestay",
   pirasKadamaian: "https://www.facebook.com/profile.php?id=100090769778792",
@@ -275,12 +280,16 @@ const facebookSources = {
   tambiau: "https://www.facebook.com/TambiauForestHouseRanauSabah",
   konunukan: "https://www.facebook.com/profile.php?id=100063713734079",
   titimpakon: "https://www.facebook.com/profile.php?id=61571449719298",
+  tiwungEscape: "https://www.facebook.com/profile.php?id=100092522292666",
+  ecocadoRanch: "https://www.facebook.com/profile.php?id=61560725986964",
   dolungan: "https://www.facebook.com/profile.php?id=61590364277361",
   alleyStay: "https://www.facebook.com/profile.php?id=61560796890979",
   sinaranKinabalu: "https://www.facebook.com/profile.php?id=61574066081296",
   lohanMini: "https://www.facebook.com/profile.php?id=100066463973151",
   batuPayung: "https://www.facebook.com/profile.php?id=100090843122616",
   twinsCottage: "https://www.facebook.com/profile.php?id=100063456286193",
+  houtBush: "https://www.facebook.com/p/Kombuutan-Camping-and-Nature-Trails-100090890064910/",
+  crkCampsite: "https://www.facebook.com/groups/175250286401989/posts/1728070717786597/",
   azZummar: "https://www.facebook.com/azzummarcampsite",
   downhill: "https://www.facebook.com/profile.php?id=61570880141614",
   malimGunung: "https://www.facebook.com/profile.php?id=61570414575315",
@@ -295,6 +304,8 @@ const facebookSources = {
   boribi: "https://www.facebook.com/profile.php?id=61568383659929",
   didiama: "https://www.facebook.com/d.idiamacampsite",
   ratau: "https://www.facebook.com/RATAUCAMPSITE",
+  sinopian: "https://www.facebook.com/p/Sinopian-Riverside-Rafting-Camp-100093331691481/",
+  dumbio: "https://www.facebook.com/cikgulenz/posts/pounsikou-tompinai-linson-tutut-inson-tu-pinoposontob-do-ginawo-kunosongodou-kop/1222759773307694/",
   ponompuhuyan: "https://www.facebook.com/profile.php?id=100077580715265",
   dayangkuBorneo: "https://www.facebook.com/profile.php?id=61564400136035",
   kiuluRiverPark: "https://www.facebook.com/profile.php?id=100069076311350",
@@ -305,6 +316,8 @@ const facebookSources = {
   pokdi: "https://www.facebook.com/profile.php?id=61566503069171",
   kiuluFarmstay: "https://www.facebook.com/kiulufarmstay/",
   mandalipau: "https://www.facebook.com/picnic.camping.fishingpond/",
+  pantaiPekurung: "https://www.facebook.com/auroraalan91/posts/%EF%B8%8F%EF%B8%8F%EF%B8%8F/27561375250197074/",
+  smartCampsite: "https://www.facebook.com/groups/2138867222959991/posts/2896101577236548/",
   aaBolotikon: "https://www.facebook.com/100063910121150/",
   kaiduanEbt: "https://www.facebook.com/profile.php?id=61583253689852",
   mondikotDeerCamp: "https://www.facebook.com/wemmogindol",
@@ -321,17 +334,57 @@ const facebookSources = {
 };
 
 const photoUrls = {
-  pogumJo: "/images/pogum-jo-campsite-logo.jpg",
-  awanAwan:
-    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7284/minified/50090efefad37695562b260c3ca6b6b9.png",
-  kundasangFarmhouse:
-    "https://production-hotel-media.s3.us-west-2.amazonaws.com/6518/minified/7f4e5d154d4e6083935d0e54ecebe42f.png",
-  minurod:
-    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7306/minified/ae7d6fd8fad23dc3e9565569f2eb830a.png",
-  taralamas:
-    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7026/minified/25355ae2d6b464dd925267aebea7a599.png",
-  umea:
-    "https://production-hotel-media.s3.us-west-2.amazonaws.com/7469/minified/e817d7666170a4964e832808c0b710c3.png",
+  pogumJo: "/images/campsites/pogum-jo-campsite.webp",
+  skyhill: "/images/campsites/skyhill-kokol.webp",
+  tamazaAcv: "/images/campsites/tamaza-acv-telipok.webp",
+  jpSantai2: "/images/campsites/jp-s-campsite-santai2.webp",
+  modeView: "/images/campsites/mode-view-campsite-kokol-hill.webp",
+  vvLand: "/images/campsites/vv-land.webp",
+  melangkapRecreation: "/images/campsites/melangkap-recreation-centre.webp",
+  papasEcoCamp: "/images/campsites/papas-eco-camp-homestay-id-kalangadan.webp",
+  yunHai: "/images/campsites/yun-hai-camp-stay.webp",
+  nuluhon: "/images/campsites/nuluhon-homestay-campsite.webp",
+  kiauPaka: "/images/campsites/kiau-paka-campsite-farmstay.webp",
+  pirasKadamaian: "/images/campsites/piras-kadamaian-campsite-roomstay.webp",
+  murogPurog: "/images/campsites/murog-purog-camp-site-kg-tambatuon.webp",
+  greenhouse: "/images/campsites/greenhouse-camping-site.webp",
+  birdsCherry: "/images/campsites/birds-and-cherry-mini-campsite.webp",
+  nolobuh: "/images/campsites/nolobuh-base-camp-eko-pelancongan-kg-terintidon.webp",
+  kalangadanHill: "/images/campsites/kalangadan-hill-campsite.webp",
+  himbaan: "/images/campsites/himbaan-garden-stay-camping.webp",
+  konunukan: "/images/campsites/konunukan-gardenstay-camping.webp",
+  titimpakon: "/images/campsites/titimpakon-campsite-staycation.webp",
+  langanan: "/images/campsites/langanan-campground.webp",
+  mountainCamp: "/images/campsites/the-mountain-camp-mt-kinabalu-by-primastay.webp",
+  tiwungEscape: "/images/campsites/tiwung-escape-kundasang.webp",
+  ecocadoRanch: "/images/campsites/ecocado-ranch-campsites.webp",
+  twinsCottage: "/images/campsites/twins-cottage-campsite-ranau.webp",
+  wildCampingMesilou: "/images/campsites/wild-camping-mesilou.webp",
+  daparak: "/images/campsites/daparak-campsite.webp",
+  senseMount: "/images/campsites/sense-mount-residence-kundasang.webp",
+  houtBush: "/images/campsites/hout-bush-campsite.webp",
+  crkCampsite: "/images/campsites/crk-campsite.webp",
+  kisonit: "/images/campsites/7-d-kisonit-campsite.webp",
+  sinopian: "/images/campsites/sinopian-campsite.webp",
+  dumbio: "/images/campsites/dumbio-campsite.webp",
+  groundCampKiulu: "/images/campsites/ground-camp-kiulu-knc.webp",
+  bapaSitam: "/images/campsites/bapa-sitam-campsite.webp",
+  sulapPesorong: "/images/campsites/sulap-pesorong-ka-am-dinakan.webp",
+  pantaiPekurung: "/images/campsites/pantai-pekurung.webp",
+  smartCampsite: "/images/campsites/smart-campsite.webp",
+  kuriou: "/images/campsites/kuriou-lodge-campsite.webp",
+  mandalipau: "/images/campsites/mandalipau-white-water-view-fishpond.webp",
+  sosodikon: "/images/campsites/sosodikon-campsite.webp",
+  mentoki: "/images/campsites/mentoki-hideout-campsite.webp",
+  nrCampsite: "/images/campsites/nr-campsite.webp",
+  viewPointDairy: "/images/campsites/view-point-dairy-farmstay-campsite.webp",
+  olumaag: "/images/campsites/olumaag-campsite.webp",
+  hounanRidge: "/images/campsites/hounan-ridge-campsite.webp",
+  awanAwan: "/images/campsites/awan-awan-kundasang.webp",
+  kundasangFarmhouse: "/images/campsites/kundasang-farmhouse.webp",
+  minurod: "/images/campsites/minurod-campsite.webp",
+  taralamas: "/images/campsites/taralamas-campsite.webp",
+  umea: "/images/campsites/umea-glam-kundasang-by-leafy-thrive.webp",
 };
 
 const rawSpots: Array<
@@ -381,6 +434,10 @@ const rawSpots: Array<
     location: "Menggatal / Kokol area",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.skyhill,
+    facebookUrl: facebookSources.skyhill,
+    facebookSummary:
+      "Public Facebook posts identify Skyhill Kokol and show its hilltop camping scenery.",
     status: "closed",
     statusNote:
       "Google listing checked by AFFT shows Skyhill Kokol as permanently closed.",
@@ -394,6 +451,7 @@ const rawSpots: Array<
     location: "Kokol - Tombongon",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.yunHai,
     facebookUrl: facebookSources.yunHai,
     facebookSummary:
       "Facebook page describes camping and culvert tube room stays with mountain range scenery.",
@@ -414,6 +472,7 @@ const rawSpots: Array<
     location: "Kota Kinabalu",
     feeNote: "CSV: RM30 per site",
     entranceNote: "CSV: RM3 per person",
+    photoUrl: photoUrls.nuluhon,
     facebookUrl: facebookSources.nuluhon,
     facebookSummary:
       "Facebook page describes a village-style homestay and campsite with privacy.",
@@ -450,8 +509,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    photoUrl: photoUrls.tamazaAcv,
+    facebookUrl: facebookSources.tamazaAcv,
     facebookSummary:
-      "Public campsite roundup lists Tamaza ACV in Telipok under Kota Kinabalu camping spots.",
+      "Public campsite roundup lists Tamaza ACV in Telipok. The linked Adventure Cultural Village page is the associated operator page, not a separate Tamaza page.",
     ...publicMapResearchSource,
   },
   {
@@ -473,8 +534,9 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    photoUrl: photoUrls.jpSantai2,
     facebookSummary:
-      "Public campsite roundup lists JP's Campsite Santai2 together with Pogun Jo under Kota Kinabalu camping spots.",
+      "Public campsite research and the exact Google Maps listing identify JP's Campsite Santai2 at Kg Mawaras, Menggatal and show its river and camping area.",
     ...publicMapResearchSource,
   },
   {
@@ -498,8 +560,10 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Papas Eco Camp & Homestay Id Kalangadan Sabah"
     ),
+    photoUrl: photoUrls.papasEcoCamp,
+    facebookUrl: facebookSources.papasEcoCamp,
     facebookSummary:
-      "Google Maps public search lists Papas Eco Camp & Homestay Id Kalangadan as a camping ground on Jalan Kokol - Tombongon.",
+      "The public Facebook campsite page lists Papas Eco Camp Marahang at Jalan Kokol - Tombongon and shows its camping grounds.",
     ...googleMapsLiveSource,
   },
   {
@@ -521,6 +585,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Mode View Campsite Kokol Hill Sabah"),
+    photoUrl: photoUrls.modeView,
     facebookSummary:
       "Google Maps public search lists Mode View Campsite Kokol Hill as a Kokol-area camping ground.",
     ...googleMapsLiveSource,
@@ -532,6 +597,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("VV Land Kota Kinabalu campsite"),
+    photoUrl: photoUrls.vvLand,
     facebookSummary:
       "Google Maps public search lists VV Land as a Kota Kinabalu camping ground candidate.",
     ...googleMapsLiveSource,
@@ -555,6 +621,7 @@ const rawSpots: Array<
     location: "Kg Melangkap, Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.melangkapRecreation,
     ...csvSource,
   },
   {
@@ -700,6 +767,7 @@ const rawSpots: Array<
     location: "Kiau / Kota Belud",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.kiauPaka,
     facebookUrl: facebookSources.kiauPaka,
     ...csvSource,
   },
@@ -771,6 +839,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Murog Purog Camp Site Kg Tambatuon Kota Belud Sabah"
     ),
+    photoUrl: photoUrls.murogPurog,
     facebookSummary:
       "Google Maps public search lists Murog Purog Camp Site in Kg Tambatuon, Kota Belud.",
     ...googleMapsLiveSource,
@@ -784,8 +853,10 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Nolobuh Base Camp Eko Pelancongan Kg Terintidon Kota Belud Sabah"
     ),
+    photoUrl: photoUrls.nolobuh,
+    facebookUrl: facebookSources.nolobuhTerintidon,
     facebookSummary:
-      "Google Maps public search lists Nolobuh Base Camp Eko Pelancongan Kg Terintidon as a Kota Belud camping ground.",
+      "The linked public Facebook page belongs to the Kg Terintidon community tourism operator associated with this base camp area.",
     ...googleMapsLiveSource,
   },
   {
@@ -807,8 +878,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Kalangadan Hill Campsite Sabah"),
+    photoUrl: photoUrls.kalangadanHill,
+    facebookUrl: facebookSources.kalangadanHill,
     facebookSummary:
-      "Google Maps public search lists Kalangadan Hill Campsite around the Kota Belud to Ranau route.",
+      "The linked public Facebook profile identifies its owner as the manager of Kalangadan Hill Campsite and shows the hill camping area.",
     ...googleMapsLiveSource,
   },
   {
@@ -818,6 +891,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("GreenHouse Camping site Kota Belud Sabah"),
+    photoUrl: photoUrls.greenhouse,
     facebookSummary:
       "Google Maps public search lists GreenHouse Camping Site as a Kota Belud camping candidate.",
     ...googleMapsLiveSource,
@@ -841,6 +915,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Birds & Cherry Mini Campsite Sabah"),
+    photoUrl: photoUrls.birdsCherry,
     facebookSummary:
       "Google Maps public search lists Birds & Cherry Mini Campsite as a Kota Belud camping ground candidate.",
     ...googleMapsLiveSource,
@@ -854,6 +929,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "Piras Kadamaian Campsite Roomstay Kampung Tambatuon Sabah"
     ),
+    photoUrl: photoUrls.pirasKadamaian,
     facebookUrl: facebookSources.pirasKadamaian,
     facebookSummary:
       "Google Maps public search lists Piras Kadamaian Campsite & Roomstay around Kampung Tambatuon.",
@@ -874,6 +950,7 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.sosodikon,
     ...csvSource,
   },
   {
@@ -895,6 +972,7 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.mentoki,
     facebookUrl: facebookSources.mentoki,
     facebookSummary:
       "Facebook search result lists Mentoki Hideout Campsite in Mentoki, Kundasang.",
@@ -906,6 +984,7 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.himbaan,
     facebookUrl: facebookSources.himbaan,
     facebookSummary:
       "Facebook page points to Himbaan Gardenstay as a homestay reference.",
@@ -930,6 +1009,7 @@ const rawSpots: Array<
     location: "Kundasang",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.nrCampsite,
     ...csvSource,
   },
   {
@@ -975,6 +1055,7 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.viewPointDairy,
     ...csvSource,
   },
   {
@@ -1009,6 +1090,7 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.olumaag,
     facebookUrl: facebookSources.olumaag,
     facebookSummary:
       "Facebook page lists Olumaag Campsite at Kg Tiang Lama, Ranau.",
@@ -1020,6 +1102,7 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.hounanRidge,
     ...csvSource,
   },
   {
@@ -1028,6 +1111,7 @@ const rawSpots: Array<
     location: "Ranau",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.konunukan,
     facebookUrl: facebookSources.konunukan,
     ...csvSource,
   },
@@ -1038,8 +1122,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    photoUrl: photoUrls.tiwungEscape,
+    facebookUrl: facebookSources.tiwungEscape,
     facebookSummary:
-      "Public campsite roundup lists Tiwung Escape in Kundasang under Ranau highland camping spots.",
+      "The public Facebook campsite page lists Tiwung Escape in Kundasang and shows its off-grid camping and cabin setting.",
     ...publicMapResearchSource,
   },
   {
@@ -1049,6 +1135,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    photoUrl: photoUrls.langanan,
     facebookSummary:
       "Public campsite roundup lists Langanan Campground under Kundasang and Ranau camping spots.",
     ...publicMapResearchSource,
@@ -1060,6 +1147,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: sourceUrls.helloSabahCamping,
+    photoUrl: photoUrls.titimpakon,
     facebookUrl: facebookSources.titimpakon,
     facebookSummary:
       "Public campsite roundup lists Titimpakon Campsite & Staycation under Kundasang and Ranau camping spots.",
@@ -1086,6 +1174,7 @@ const rawSpots: Array<
     sourceUrl: makeGoogleMapsSearchUrl(
       "The Mountain Camp Mt Kinabalu by PrimaStay Sabah"
     ),
+    photoUrl: photoUrls.mountainCamp,
     facebookSummary:
       "Google Maps public search lists The Mountain Camp @ Mt. Kinabalu by PrimaStay as a camping cabin or camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1133,8 +1222,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("ECOCADO Ranch Campsites Ranau Sabah"),
+    photoUrl: photoUrls.ecocadoRanch,
+    facebookUrl: facebookSources.ecocadoRanch,
     facebookSummary:
-      "Google Maps public search lists ECOCADO Ranch Campsites around Kg Kinarasan, Ranau.",
+      "The public Facebook campsite page lists ECOCADO Ranch at Kg Kinarasan, Ranau and shows its ranch camping grounds.",
     ...googleMapsLiveSource,
   },
   {
@@ -1156,6 +1247,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Twin's Cottage & Campsite Ranau Sabah"),
+    photoUrl: photoUrls.twinsCottage,
     facebookUrl: facebookSources.twinsCottage,
     facebookSummary:
       "Google Maps public search lists Twin's Cottage & Campsite as a Ranau camping ground candidate.",
@@ -1204,6 +1296,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Wild Camping Mesilou Kundasang Sabah"),
+    photoUrl: photoUrls.wildCampingMesilou,
     facebookSummary:
       "Google Maps public search lists Wild Camping Mesilou as a Mesilou camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1227,8 +1320,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Hout Bush Campsite Bundu Tuhan Sabah"),
+    photoUrl: photoUrls.houtBush,
+    facebookUrl: facebookSources.houtBush,
     facebookSummary:
-      "Google Maps public search lists Hout Bush Campsite around Bundu Tuhan.",
+      "The shared Kombuutan camping operator page explicitly identifies Hout Bush Campsite and shows its sunset car-camping area.",
     ...googleMapsLiveSource,
   },
   {
@@ -1250,8 +1345,9 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Daparak Campsite Kundasang Sabah"),
+    photoUrl: photoUrls.daparak,
     facebookSummary:
-      "Google Maps public search lists Daparak Campsite as a Kundasang or Ranau camping candidate.",
+      "Google Maps lists Daparak Campsite in Kundasang; the local image shows the adjacent Daparak Hill area because the campsite listing has no public photo.",
     ...googleMapsLiveSource,
   },
   {
@@ -1261,6 +1357,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Sense Mount Residence Kundasang campsite"),
+    photoUrl: photoUrls.senseMount,
     facebookSummary:
       "Google Maps public search lists Sense Mount Residence Kundasang as a camping ground candidate.",
     ...googleMapsLiveSource,
@@ -1272,8 +1369,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("C.R.K. Campsite Kundasang Sabah"),
+    photoUrl: photoUrls.crkCampsite,
+    facebookUrl: facebookSources.crkCampsite,
     facebookSummary:
-      "Google Maps public search lists C.R.K. Campsite around Jalan Semuruh Kinaundusan.",
+      "A public Sabah camping group post explicitly identifies C.R.K. Campsite and shows the campsite grounds.",
     ...googleMapsLiveSource,
   },
   {
@@ -1321,6 +1420,7 @@ const rawSpots: Array<
     location: "Kiulu, Tuaran",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.kuriou,
     sourceUrl: sourceUrls.helloSabahCamping,
     facebookUrl: facebookSources.kuriou,
     facebookSummary:
@@ -1468,6 +1568,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("7'D Kisonit Campsite Sabah"),
+    photoUrl: photoUrls.kisonit,
     facebookSummary:
       "Google Maps public search lists 7'D Kisonit Campsite around Jalan Gonipis, Tobobon.",
     ...googleMapsLiveSource,
@@ -1479,8 +1580,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Sinopian Campsite Kiulu Tuaran Sabah"),
+    photoUrl: photoUrls.sinopian,
+    facebookUrl: facebookSources.sinopian,
     facebookSummary:
-      "Google Maps public search lists Sinopian Campsite as a Kiulu camping cabin candidate.",
+      "The public Sinopian Riverside, Rafting & Camp page identifies Sinopian Campsite in Kiulu and shows the campsite setting.",
     ...googleMapsLiveSource,
   },
   {
@@ -1514,8 +1617,10 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Dumbio Campsite Tenghilan Tuaran Sabah"),
+    photoUrl: photoUrls.dumbio,
+    facebookUrl: facebookSources.dumbio,
     facebookSummary:
-      "Google Maps public search lists Dumbio Campsite around Kg Kayangat Tenghilan.",
+      "A public Facebook visitor post explicitly identifies Dumbio Campsite at Kg Kayangat Tenghilan and includes campsite photos.",
     ...googleMapsLiveSource,
   },
   {
@@ -1525,6 +1630,7 @@ const rawSpots: Array<
     feeNote: "To confirm",
     entranceNote: "To confirm",
     sourceUrl: makeGoogleMapsSearchUrl("Ground Camp Kiulu KNC Sabah"),
+    photoUrl: photoUrls.groundCampKiulu,
     facebookSummary:
       "Google Maps public search lists Ground Camp Kiulu (KNC) around Kg Bayag, Kiulu.",
     ...googleMapsLiveSource,
@@ -1564,6 +1670,7 @@ const rawSpots: Array<
     sourceStatus: "web",
     sourceLabel: "Mandalipau public site + MyPapar guide",
     sourceUrl: sourceUrls.mandalipau,
+    photoUrl: photoUrls.mandalipau,
     facebookUrl: facebookSources.mandalipau,
     facebookSummary:
       "Public sources describe Mandalipau as a Papar ecotourism area for swimming, picnic, fishing, camping, BBQ, rafting, zip line and family activities.",
@@ -1585,6 +1692,7 @@ const rawSpots: Array<
     location: "Papar coastal side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.bapaSitam,
     facebookSummary:
       "Google Maps screenshot shows Bapa Sitam Campsite as a Papar camping ground near Pasakon Beach Camp Site.",
     ...googleMapsSource,
@@ -1595,6 +1703,7 @@ const rawSpots: Array<
     location: "Papar coastal side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.sulapPesorong,
     facebookSummary:
       "Google Maps screenshot shows Sulap Pesorong Ka'am Dinakan as a camping ground on the Papar coast.",
     ...googleMapsSource,
@@ -1605,8 +1714,10 @@ const rawSpots: Array<
     location: "Papar coast",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.pantaiPekurung,
+    facebookUrl: facebookSources.pantaiPekurung,
     facebookSummary:
-      "Google Maps screenshot lists Pantai PEKURUNG as a Papar camping ground, useful for beach-side camping checks.",
+      "A public Facebook location post at Pantai Pekurung shows the coastal camping area.",
     ...googleMapsSource,
   },
   {
@@ -1670,8 +1781,10 @@ const rawSpots: Array<
     location: "Mandalipau / Papar river side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
+    photoUrl: photoUrls.smartCampsite,
+    facebookUrl: facebookSources.smartCampsite,
     facebookSummary:
-      "Google Maps screenshot lists Smart Campsite as a Papar camping ground near the Mandalipau cluster.",
+      "A public Sabah camping group post explicitly identifies Smart Campsite on Jalan Kambizaan Ovoi, Papar and shows its family campsite facilities.",
     ...googleMapsSource,
   },
   {
