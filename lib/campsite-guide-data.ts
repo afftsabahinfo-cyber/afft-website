@@ -319,7 +319,7 @@ const facebookSources = {
   pantaiPekurung: "https://www.facebook.com/auroraalan91/posts/%EF%B8%8F%EF%B8%8F%EF%B8%8F/27561375250197074/",
   smartCampsite: "https://www.facebook.com/groups/2138867222959991/posts/2896101577236548/",
   aaBolotikon: "https://www.facebook.com/100063910121150/",
-  kaiduanEbt: "https://www.facebook.com/profile.php?id=61583253689852",
+  kaiduanEbt: "https://www.facebook.com/profile.php?id=100063544602576",
   mondikotDeerCamp: "https://www.facebook.com/wemmogindol",
   kigandangRiverView: "https://www.facebook.com/profile.php?id=100065455151012",
   mondoringin: "https://www.facebook.com/profile.php?id=100066984062498",
@@ -329,7 +329,6 @@ const facebookSources = {
   kumpatRiver: "https://www.facebook.com/kumpatrivercampsitemembakutsabah",
   sawatan: "https://www.facebook.com/SawatanCampSite",
   tuhunonBolotikon: "https://www.facebook.com/profile.php?id=100047989886219",
-  threeRiversFarm: "https://www.facebook.com/3riversfarm",
   malambun: "https://www.facebook.com/malambun.campsite",
 };
 
@@ -347,7 +346,6 @@ const photoUrls = {
   kiauPaka: "/images/campsites/kiau-paka-campsite-farmstay.webp",
   pirasKadamaian: "/images/campsites/piras-kadamaian-campsite-roomstay.webp",
   murogPurog: "/images/campsites/murog-purog-camp-site-kg-tambatuon.webp",
-  greenhouse: "/images/campsites/greenhouse-camping-site.webp",
   birdsCherry: "/images/campsites/birds-and-cherry-mini-campsite.webp",
   nolobuh: "/images/campsites/nolobuh-base-camp-eko-pelancongan-kg-terintidon.webp",
   kalangadanHill: "/images/campsites/kalangadan-hill-campsite.webp",
@@ -372,6 +370,7 @@ const photoUrls = {
   sulapPesorong: "/images/campsites/sulap-pesorong-ka-am-dinakan.webp",
   pantaiPekurung: "/images/campsites/pantai-pekurung.webp",
   smartCampsite: "/images/campsites/smart-campsite.webp",
+  threeRiversFarm: "/images/campsites/3-rivers-farm.webp",
   kuriou: "/images/campsites/kuriou-lodge-campsite.webp",
   mandalipau: "/images/campsites/mandalipau-white-water-view-fishpond.webp",
   sosodikon: "/images/campsites/sosodikon-campsite.webp",
@@ -882,18 +881,6 @@ const rawSpots: Array<
     facebookUrl: facebookSources.kalangadanHill,
     facebookSummary:
       "The linked public Facebook profile identifies its owner as the manager of Kalangadan Hill Campsite and shows the hill camping area.",
-    ...googleMapsLiveSource,
-  },
-  {
-    name: "GreenHouse Camping Site",
-    region: "kota-belud",
-    location: "Kota Belud",
-    feeNote: "To confirm",
-    entranceNote: "To confirm",
-    sourceUrl: makeGoogleMapsSearchUrl("GreenHouse Camping site Kota Belud Sabah"),
-    photoUrl: photoUrls.greenhouse,
-    facebookSummary:
-      "Google Maps public search lists GreenHouse Camping Site as a Kota Belud camping candidate.",
     ...googleMapsLiveSource,
   },
   {
@@ -1759,10 +1746,11 @@ const rawSpots: Array<
     location: "Mandalipau / Papar river side",
     feeNote: "To confirm",
     entranceNote: "To confirm",
-    facebookUrl: facebookSources.threeRiversFarm,
+    sourceUrl: makeGoogleMapsSearchUrl("3 Rivers Farm Papar Sabah"),
+    photoUrl: photoUrls.threeRiversFarm,
     facebookSummary:
-      "Google Maps screenshot shows 3 Rivers Farm near Mandalipau, with public comments mentioning essential facilities.",
-    ...googleMapsSource,
+      "The exact Google Maps listing at P3CF+4H shows a working riverside farm, campsite grounds, chalet facilities and public camping reviews.",
+    ...googleMapsLiveSource,
   },
   {
     name: "Mondoringin Campsite",
@@ -1879,7 +1867,7 @@ export const campsiteSpots: CampsiteSpot[] = rawSpots.map((spot) => {
     watchOut: profile.watchOut,
     gearSuggestion: profile.gearSuggestion,
     photoNote: profile.photoNote,
-    photoUrl: spot.photoUrl ?? (spot.facebookUrl ? `/images/campsites/${slug}.jpg` : undefined),
+    photoUrl: spot.photoUrl ?? (spot.facebookUrl ? `/images/campsites/${slug}.webp` : undefined),
   };
 });
 
@@ -1924,11 +1912,11 @@ export function getCampsitePhotoCredit(
   }
 
   if (spot.facebookUrl) {
-    return "Photo: campsite Facebook";
+    return "Photo: saved on AFFT";
   }
 
   if (spot.photoUrl.startsWith("/images/")) {
-    return "Photo: AFFT supplied";
+    return "Photo: saved on AFFT";
   }
 
   if (spot.sourceUrl) {
@@ -1949,11 +1937,11 @@ export function getZhCampsitePhotoCredit(
   }
 
   if (spot.facebookUrl) {
-    return "照片：营地 Facebook";
+    return "照片：已保存到 AFFT 网站";
   }
 
   if (spot.photoUrl.startsWith("/images/")) {
-    return "照片：AFFT 提供";
+    return "照片：已保存到 AFFT 网站";
   }
 
   if (spot.sourceUrl) {
