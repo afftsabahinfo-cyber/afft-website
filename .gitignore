@@ -3,3 +3,6 @@ out/
 node_modules/
 .env.local
 npm-debug.log*
+.wrangler/
+.wrangler-dry-run/
+.dev.vars

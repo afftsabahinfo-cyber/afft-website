@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "afft-website-alice-api",
+  "main": "worker/alice-api.ts",
+  "compatibility_date": "2026-07-15",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "afft.club/api/alice/*",
+      "zone_name": "afft.club"
+    },
+    {
+      "pattern": "www.afft.club/api/alice/*",
+      "zone_name": "afft.club"
+    }
+  ],
+  "vars": {
+    "ALICE_TURNSTILE_SITE_KEY": "0x4AAAAAAD2asv23rUpmvSTk",
+    "ALICE_BETA_ENABLED": "true",
+    "ALICE_BETA_LABEL": "Beta"
+  },
+  "services": [
+    {
+      "binding": "ALICE_ADVISOR_SERVICE",
+      "service": "afft-growth-os"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "ALICE_RATE_LIMITER",
+      "namespace_id": "740915",
+      "simple": {
+        "limit": 10,
+        "period": 60
+      }
+    }
+  ]
+}
