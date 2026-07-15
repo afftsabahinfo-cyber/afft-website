@@ -84,6 +84,10 @@ export const getRentItItemImage = (title: string) => {
     return "/images/snow-peak-igt-mobile-kitchen-set.webp";
   }
 
+  if (normalized.includes("home&camp burner")) {
+    return "/images/snow-peak-home-camp-burner.jpg";
+  }
+
   if (normalized.includes("titanium mug")) {
     return "/images/snow-peak-titanium-mug-2pcs.webp";
   }
@@ -190,6 +194,10 @@ export type CatalogItem = {
   day2: string;
   day3: string;
   bestFor: string;
+  description?: string;
+  productType?: string;
+  aliases?: string[];
+  safetyBoundary?: string;
 };
 
 export type FeaturedPick = {
@@ -234,7 +242,7 @@ export type SeriesPageSummary = {
 };
 
 export const rentItStats = [
-  { value: "37", label: "gear items and bundle options" },
+  { value: "38", label: "gear items and bundle options" },
   { value: "4", label: "rental series to browse" },
   { value: "1", label: "WhatsApp contact for booking help" },
 ];
@@ -390,6 +398,26 @@ export const campLifestyleItems: CatalogItem[] = [
     day2: "RM209",
     day3: "RM249",
     bestFor: "IGT frame, burner, cooking tools and tent add-on camp kitchen setup.",
+  },
+  {
+    title: "Snow Peak HOME&CAMP Burner",
+    day1: "From RM39 / day",
+    day2: "From RM59",
+    day3: "From RM69",
+    bestFor: "Simple campsite cooking, hot drinks, road trips and small outdoor meal preparation.",
+    description:
+      "A compact tabletop burner for simple campsite cooking, hot drinks and road-trip meal preparation. A practical option for customers who want a portable cooking setup without renting a full mobile kitchen.",
+    productType: "Compact Tabletop Gas Stove",
+    aliases: [
+      "HOME&CAMP Burner",
+      "Snow Peak gas stove",
+      "tabletop gas stove",
+      "portable camp burner",
+      "camping stove",
+      "outdoor cooking burner",
+    ],
+    safetyBoundary:
+      "Use only on a stable heat-resistant surface in a permitted outdoor cooking area. Never use in a tent, sleeping area or enclosed space.",
   },
   {
     title: "Snow Peak Titanium Mug - 2 pcs",
