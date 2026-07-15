@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Urbanist, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@/components/Analytics';
+import { AliceAdvisor } from '@/components/AliceAdvisor';
 
 const urbanist = Urbanist({ subsets: ['latin'], variable: '--font-urbanist', display: 'swap' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' });
@@ -188,6 +189,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
         />
         {children}
+        <AliceAdvisor />
       </body>
     </html>
   );
