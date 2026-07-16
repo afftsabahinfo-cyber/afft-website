@@ -24,6 +24,7 @@ export type AliceWorkerEnv = {
   ALICE_TURNSTILE_SITE_KEY: string;
   ALICE_BETA_ENABLED: string;
   ALICE_BETA_LABEL: string;
+  AIP_WEBSITE_CATALOG_SECRET: string;
 };
 
 export type AliceApiDependencies = {
@@ -296,6 +297,49 @@ async function handleAnswer(
   }
 }
 
+async function handleRentItCatalog(request: Request, env: AliceWorkerEnv) {
+  if (request.method !== "GET") {
+    return safeFailure("Not found.", 404);
+  }
+
+  const secret = env.AIP_WEBSITE_CATALOG_SECRET;
+  if (!secret) return safeFailure("Catalog temporarily unavailable.", 503);
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
+  try {
+    const upstream = await Promise.race([
+      env.ALICE_ADVISOR_SERVICE.fetch(
+        new Request("https://internal/__internal/aip/public/rent-it", {
+          method: "GET",
+          headers: { "x-afft-website-catalog-secret": secret },
+          signal: controller.signal,
+        }),
+      ),
+      new Promise<never>((_, reject) => {
+        setTimeout(() => reject(new Error("Catalog service timeout.")), 10_000);
+      }),
+    ]);
+    if (!upstream.ok) return safeFailure("Catalog temporarily unavailable.", 503);
+    const text = await upstream.text();
+    if (text.length > 1_000_000) return safeFailure("Catalog returned an invalid response.", 502);
+    const payload = JSON.parse(text) as { version?: unknown; updatedAt?: unknown; products?: unknown };
+    if (!Array.isArray(payload.products)) return safeFailure("Catalog returned an invalid response.", 502);
+    return jsonResponse(
+      { version: payload.version ?? null, updatedAt: payload.updatedAt ?? null, products: payload.products },
+      200,
+      {
+        "Cache-Control": "public, max-age=60, stale-while-revalidate=86400",
+        "X-Content-Type-Options": "nosniff",
+        "X-Robots-Tag": "noindex",
+      },
+    );
+  } catch {
+    return safeFailure("Catalog temporarily unavailable.", 503);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 function handleConfig(env: AliceWorkerEnv) {
   const label = env.ALICE_BETA_LABEL || "Beta";
   return jsonResponse({
@@ -313,6 +357,9 @@ export async function handleAliceRequest(
 ) {
   const path = new URL(request.url).pathname;
 
+  if (path === "/api/rent-it/catalog") {
+    return handleRentItCatalog(request, env);
+  }
   if (path === "/api/alice/config" && request.method === "GET") {
     return handleConfig(env);
   }
