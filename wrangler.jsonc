@@ -12,6 +12,14 @@
     {
       "pattern": "www.afft.club/api/alice/*",
       "zone_name": "afft.club"
+    },
+    {
+      "pattern": "afft.club/api/rent-it/catalog",
+      "zone_name": "afft.club"
+    },
+    {
+      "pattern": "www.afft.club/api/rent-it/catalog",
+      "zone_name": "afft.club"
     }
   ],
   "vars": {

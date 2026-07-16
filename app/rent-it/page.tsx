@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RentItLiveCatalog } from "@/components/RentItLiveCatalog";
 import {
   catalogSections,
   comingSoonItems,
@@ -181,6 +182,8 @@ export default function RentItLandingPage() {
             secondaryLabel="Jump to Price Guide"
           />
         </div>
+
+        <RentItLiveCatalog />
 
         <section id="price-guide" className="mt-20">
           <div className="max-w-3xl">
