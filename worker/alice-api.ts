@@ -171,6 +171,9 @@ async function validateTurnstile(
       JSON.stringify({
         event: "turnstile_siteverify_error",
         errorName: error instanceof Error ? error.name : typeof error,
+        messageLength: message.length,
+        hasDependencyReference: /dependenc/i.test(message),
+        hasAbortReference: /abort|signal|timeout/i.test(message),
         errorClass: /cache/i.test(message)
           ? "cache_option"
           : /redirect/i.test(message)
@@ -211,6 +214,7 @@ async function handleSession(
       tokenLength: typeof token === "string" ? token.length : 0,
       keyCount: keys.length,
       exactKey: keys.length === 1 && keys[0] === "turnstileToken",
+      fetcherType: typeof dependencies.fetcher,
     }),
   );
   if (
