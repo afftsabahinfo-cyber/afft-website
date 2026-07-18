@@ -165,7 +165,23 @@ async function validateTurnstile(
       allowedHostnames.has(result.hostname) &&
       result.action === turnstileAction
     );
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "";
+    console.log(
+      JSON.stringify({
+        event: "turnstile_siteverify_error",
+        errorName: error instanceof Error ? error.name : typeof error,
+        errorClass: /cache/i.test(message)
+          ? "cache_option"
+          : /redirect/i.test(message)
+            ? "redirect_option"
+            : /abort|signal|timeout/i.test(message)
+              ? "timeout_or_signal"
+              : /fetch|network/i.test(message)
+                ? "fetch_or_network"
+                : "other",
+      }),
+    );
     return false;
   }
 }
