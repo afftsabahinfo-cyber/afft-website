@@ -134,7 +134,20 @@ async function validateTurnstile(
       success?: boolean;
       hostname?: string;
       action?: string;
+      [key: string]: unknown;
     };
+    console.log(
+      JSON.stringify({
+        event: "turnstile_siteverify",
+        httpStatus: response.status,
+        success: result.success === true,
+        hostname: result.hostname ?? null,
+        action: result.action ?? null,
+        errorCodes: Array.isArray(result["error-codes"])
+          ? result["error-codes"]
+          : [],
+      }),
+    );
     return (
       result.success === true &&
       typeof result.hostname === "string" &&
