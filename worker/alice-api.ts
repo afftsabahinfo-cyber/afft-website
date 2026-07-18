@@ -122,7 +122,7 @@ async function validateTurnstile(
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
+        body: body.toString(),
         cache: "no-store",
         redirect: "error",
         signal: AbortSignal.timeout(8_000),
@@ -136,18 +136,6 @@ async function validateTurnstile(
       action?: string;
       [key: string]: unknown;
     };
-    console.log(
-      JSON.stringify({
-        event: "turnstile_siteverify",
-        httpStatus: response.status,
-        success: result.success === true,
-        hostname: result.hostname ?? null,
-        action: result.action ?? null,
-        errorCodes: Array.isArray(result["error-codes"])
-          ? result["error-codes"]
-          : [],
-      }),
-    );
     return (
       result.success === true &&
       typeof result.hostname === "string" &&
@@ -391,7 +379,9 @@ export async function handleAliceRequest(
 }
 
 const aliceApiWorker = {
-  fetch: handleAliceRequest,
+  fetch(request: Request, env: AliceWorkerEnv) {
+    return handleAliceRequest(request, env);
+  },
 };
 
 export default aliceApiWorker;
