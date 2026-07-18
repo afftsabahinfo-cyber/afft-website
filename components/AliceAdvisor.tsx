@@ -25,6 +25,10 @@ import {
   useState,
 } from "react";
 import { makeAliceWhatsappLink } from "@/lib/alice-public";
+import {
+  buildAliceHistory,
+  type AliceHistoryDisplayMessage,
+} from "@/lib/alice-history";
 import { whatsapp } from "@/lib/rent-it-data";
 
 type AliceConfig = {
@@ -46,6 +50,7 @@ type DisplayMessage = {
   id: string;
   role: "user" | "assistant";
   content: string;
+  status: AliceHistoryDisplayMessage["status"];
   response?: AliceAnswer;
 };
 
@@ -351,13 +356,13 @@ export function AliceAdvisor() {
     abortControllerRef.current = controller;
     sendingRef.current = true;
 
-    const history = messages
-      .map(({ role, content }) => ({ role, content }))
-      .slice(-4);
+    const history = buildAliceHistory(messages);
+    const userMessageId = crypto.randomUUID();
     const userMessage: DisplayMessage = {
-      id: crypto.randomUUID(),
+      id: userMessageId,
       role: "user",
       content: cleanQuestion,
+      status: "pending",
     };
 
     setMessages((current) => [...current, userMessage]);
@@ -380,6 +385,13 @@ export function AliceAdvisor() {
       if (!requestGuardRef.current.isCurrent(requestSequence)) return;
 
       if (response.status === 401) {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === userMessageId
+              ? { ...message, status: "failed" }
+              : message,
+          ),
+        );
         resetSession();
         return;
       }
@@ -393,17 +405,29 @@ export function AliceAdvisor() {
             : chinese
               ? "Alice \u6682\u65f6\u65e0\u6cd5\u56de\u7b54\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\u3002"
               : "Alice is temporarily unavailable. Please try again.";
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === userMessageId
+              ? { ...message, status: "failed" }
+              : message,
+          ),
+        );
         setError(message);
         return;
       }
 
       setError("");
       setMessages((current) => [
-        ...current,
+        ...current.map((message) =>
+          message.id === userMessageId
+            ? { ...message, status: "complete" as const }
+            : message,
+        ),
         {
           id: crypto.randomUUID(),
           role: "assistant",
           content: payload.answer,
+          status: "complete",
           response: payload,
         },
       ]);
@@ -414,6 +438,13 @@ export function AliceAdvisor() {
       ) {
         return;
       }
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === userMessageId
+            ? { ...message, status: "failed" }
+            : message,
+        ),
+      );
       setError(
         chinese
           ? "Alice \u6682\u65f6\u79bb\u7ebf\u3002\u4f60\u53ef\u4ee5\u901a\u8fc7 WhatsApp \u8054\u7cfb AFFT\u3002"

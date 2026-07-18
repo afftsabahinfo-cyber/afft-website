@@ -1,3 +1,8 @@
+import {
+  ALICE_HISTORY_MAX_MESSAGES,
+  normalizeAliceHistoryContent,
+} from "../lib/alice-history";
+
 export type AliceHistoryMessage = {
   role: "user" | "assistant";
   content: string;
@@ -108,7 +113,7 @@ export function validateAliceQuestionPayload(
     question.length > 800 ||
     forbiddenInput.test(question) ||
     !Array.isArray(record.history) ||
-    record.history.length > 4
+    record.history.length > ALICE_HISTORY_MAX_MESSAGES
   ) {
     return null;
   }
@@ -119,16 +124,16 @@ export function validateAliceQuestionPayload(
     const message = item as Record<string, unknown>;
     if (!hasExactKeys(message, ["content", "role"])) return null;
 
-    const content =
+    const rawContent =
       typeof message.content === "string" ? message.content.trim() : "";
     if (
       (message.role !== "user" && message.role !== "assistant") ||
-      content.length < 1 ||
-      content.length > 600 ||
-      forbiddenInput.test(content)
+      rawContent.length < 1 ||
+      forbiddenInput.test(rawContent)
     ) {
       return null;
     }
+    const content = normalizeAliceHistoryContent(rawContent);
     history.push({
       role: message.role,
       content,
