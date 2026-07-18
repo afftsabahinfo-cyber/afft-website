@@ -34,7 +34,7 @@ export type AliceApiDependencies = {
 };
 
 const defaultDependencies: AliceApiDependencies = {
-  fetcher: fetch,
+  fetcher: globalThis.fetch.bind(globalThis),
   now: Date.now,
   randomUUID: crypto.randomUUID.bind(crypto),
 };
@@ -136,22 +136,6 @@ async function validateTurnstile(
       action?: string;
       [key: string]: unknown;
     };
-    console.log(
-      JSON.stringify({
-        event: "turnstile_siteverify_result",
-        httpStatus: response.status,
-        success: result.success === true,
-        hostname: result.hostname ?? null,
-        hostnameAllowed:
-          typeof result.hostname === "string" &&
-          allowedHostnames.has(result.hostname),
-        action: result.action ?? null,
-        actionMatches: result.action === turnstileAction,
-        errorCodes: Array.isArray(result["error-codes"])
-          ? result["error-codes"]
-          : [],
-      }),
-    );
     return (
       result.success === true &&
       typeof result.hostname === "string" &&
