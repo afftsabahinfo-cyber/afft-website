@@ -171,6 +171,7 @@ async function validateTurnstile(
       JSON.stringify({
         event: "turnstile_siteverify_error",
         errorName: error instanceof Error ? error.name : typeof error,
+        safeMessage: message.slice(0, 220),
         messageLength: message.length,
         hasDependencyReference: /dependenc/i.test(message),
         hasAbortReference: /abort|signal|timeout/i.test(message),
