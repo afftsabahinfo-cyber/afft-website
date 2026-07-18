@@ -128,6 +128,13 @@ async function validateTurnstile(
         signal: AbortSignal.timeout(8_000),
       },
     );
+    console.log(
+      JSON.stringify({
+        event: "turnstile_siteverify_http",
+        httpStatus: response.status,
+        ok: response.ok,
+      }),
+    );
     if (!response.ok) return false;
 
     const result = (await response.json()) as {
