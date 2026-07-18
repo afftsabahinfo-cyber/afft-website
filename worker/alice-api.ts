@@ -188,6 +188,15 @@ async function handleSession(
     body && keys.length === 1 && keys[0] === "turnstileToken"
       ? body.turnstileToken
       : null;
+  console.log(
+    JSON.stringify({
+      event: "turnstile_token_shape",
+      tokenType: typeof token,
+      tokenLength: typeof token === "string" ? token.length : 0,
+      keyCount: keys.length,
+      exactKey: keys.length === 1 && keys[0] === "turnstileToken",
+    }),
+  );
   if (
     typeof token !== "string" ||
     token.length < 1 ||
