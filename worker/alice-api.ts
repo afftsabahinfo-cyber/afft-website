@@ -128,8 +128,6 @@ async function validateTurnstile(
         signal: AbortSignal.timeout(8_000),
       },
     );
-    if (!response.ok) return false;
-
     const result = (await response.json()) as {
       success?: boolean;
       hostname?: string;
@@ -148,6 +146,7 @@ async function validateTurnstile(
           : [],
       }),
     );
+    if (!response.ok) return false;
     return (
       result.success === true &&
       typeof result.hostname === "string" &&
@@ -155,6 +154,11 @@ async function validateTurnstile(
       result.action === turnstileAction
     );
   } catch {
+    console.log(
+      JSON.stringify({
+        event: "turnstile_siteverify_error",
+      }),
+    );
     return false;
   }
 }
