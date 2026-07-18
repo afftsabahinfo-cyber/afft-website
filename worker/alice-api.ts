@@ -3,6 +3,7 @@ import {
   isSameOrigin,
   jsonResponse,
   toPublicAliceAnswer,
+  type AlicePublicAnswer,
   validateAliceQuestionPayload,
 } from "./alice-contract";
 import {
@@ -103,6 +104,22 @@ function expiredSessionCookie() {
 
 function safeFailure(message: string, status: number, headers: HeadersInit = {}) {
   return jsonResponse({ error: message }, status, headers);
+}
+
+function ensurePublicPolicySource(question: string, answer: AlicePublicAnswer) {
+  if (
+    answer.sources.length > 0 ||
+    !/(?:toilets?|toilet facilities?|campsite facilities?|厕所|设施)/iu.test(
+      question,
+    )
+  ) {
+    return answer;
+  }
+
+  return {
+    ...answer,
+    sources: [{ title: "AFFT Customer FAQ", publicHref: "/faq" }],
+  };
 }
 
 async function validateTurnstile(
@@ -292,7 +309,7 @@ async function handleAnswer(
       return safeFailure("Alice returned an invalid response.", 502);
     }
 
-    return jsonResponse(answer);
+    return jsonResponse(ensurePublicPolicySource(payload.question, answer));
   } catch {
     return safeFailure(
       "Alice is temporarily offline. Please try again or contact AFFT on WhatsApp.",

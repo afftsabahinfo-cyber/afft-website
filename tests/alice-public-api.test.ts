@@ -302,6 +302,30 @@ test("answer uses the internal Service Binding and strips unsafe fields", async 
   assert.match(response.headers.get("Content-Type") ?? "", /application\/json/u);
 });
 
+test("toilet policy answers retain the public FAQ source when upstream sources are empty", async () => {
+  const env = createMockEnv({}, publicAnswer({
+    answer: "Toilet availability varies by campsite. Please confirm with AFFT.",
+    sources: [],
+  }));
+  const response = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/answer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "https://afft.club",
+        Cookie: await validCookie(),
+      },
+      body: JSON.stringify({ question: "Do all campsites have toilets?", history: [] }),
+    }),
+    env,
+    dependencies,
+  );
+
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  assert.deepEqual(body.sources, [{ title: "AFFT Customer FAQ", publicHref: "/faq" }]);
+});
+
 test("rate limiting returns 429 before calling Growth OS", async () => {
   let serviceCalls = 0;
   const env = createMockEnv({
