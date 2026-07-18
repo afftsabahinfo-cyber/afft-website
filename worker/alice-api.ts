@@ -124,7 +124,8 @@ async function validateTurnstile(
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
         cache: "no-store",
-        redirect: "error",
+        // Workers does not implement redirect: "error"; manual never follows it.
+        redirect: "manual",
         signal: AbortSignal.timeout(8_000),
       },
     );
