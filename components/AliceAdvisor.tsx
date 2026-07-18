@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
+  canStartAliceRequest,
+  createAliceRequestGuard,
+  updateAliceQuestion,
+  validateAliceQuestion,
+} from "@/lib/alice-advisor-state";
+import {
   FormEvent,
   KeyboardEvent,
   useEffect,
@@ -125,6 +131,9 @@ export function AliceAdvisor() {
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetRef = useRef<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const requestGuardRef = useRef(createAliceRequestGuard());
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const sendingRef = useRef(false);
 
   const quickQuestions = chinese ? chineseQuestions : englishQuestions;
   const welcome = chinese
@@ -164,6 +173,14 @@ export function AliceAdvisor() {
       behavior: "smooth",
     });
   }, [messages, sending]);
+
+  useEffect(() => {
+    const requestGuard = requestGuardRef.current;
+    return () => {
+      requestGuard.invalidate();
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   useEffect(() => {
     if (
@@ -254,6 +271,11 @@ export function AliceAdvisor() {
   if (!config) return null;
 
   function closePanel() {
+    requestGuardRef.current.invalidate();
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
+    sendingRef.current = false;
+    setSending(false);
     setOpen(false);
     setError("");
   }
@@ -293,14 +315,26 @@ export function AliceAdvisor() {
     );
   }
 
+  function clearConversation() {
+    requestGuardRef.current.invalidate();
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
+    sendingRef.current = false;
+    setMessages([]);
+    setQuestion("");
+    setQuestionCount(0);
+    setSending(false);
+    setError("");
+  }
+
   async function sendQuestion(rawQuestion: string) {
     const cleanQuestion = rawQuestion.trim();
-    if (
-      sending ||
-      !sessionReady ||
-      cleanQuestion.length < 2 ||
-      cleanQuestion.length > 800
-    ) {
+    if (!canStartAliceRequest(sendingRef.current, sessionReady)) {
+      return;
+    }
+    const validationError = validateAliceQuestion(cleanQuestion, chinese);
+    if (validationError) {
+      setError(validationError);
       return;
     }
     if (questionCount >= 30) {
@@ -311,6 +345,11 @@ export function AliceAdvisor() {
       );
       return;
     }
+
+    const requestSequence = requestGuardRef.current.start();
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    sendingRef.current = true;
 
     const history = messages
       .map(({ role, content }) => ({ role, content }))
@@ -332,10 +371,13 @@ export function AliceAdvisor() {
         method: "POST",
         credentials: "same-origin",
         cache: "no-store",
+        signal: controller.signal,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: cleanQuestion, history }),
       });
       const payload = (await response.json().catch(() => null)) as unknown;
+
+      if (!requestGuardRef.current.isCurrent(requestSequence)) return;
 
       if (response.status === 401) {
         resetSession();
@@ -355,6 +397,7 @@ export function AliceAdvisor() {
         return;
       }
 
+      setError("");
       setMessages((current) => [
         ...current,
         {
@@ -364,14 +407,26 @@ export function AliceAdvisor() {
           response: payload,
         },
       ]);
-    } catch {
+    } catch (requestError) {
+      if (
+        !requestGuardRef.current.isCurrent(requestSequence) ||
+        (requestError instanceof Error && requestError.name === "AbortError")
+      ) {
+        return;
+      }
       setError(
         chinese
           ? "Alice \u6682\u65f6\u79bb\u7ebf\u3002\u4f60\u53ef\u4ee5\u901a\u8fc7 WhatsApp \u8054\u7cfb AFFT\u3002"
           : "Alice is temporarily offline. You can contact AFFT on WhatsApp.",
       );
     } finally {
-      setSending(false);
+      if (requestGuardRef.current.isCurrent(requestSequence)) {
+        sendingRef.current = false;
+        setSending(false);
+        if (abortControllerRef.current === controller) {
+          abortControllerRef.current = null;
+        }
+      }
     }
   }
 
@@ -490,7 +545,7 @@ export function AliceAdvisor() {
                       {quickQuestions.map((item) => (
                         <button
                           className="rounded-full border border-[#d8c5a9] bg-white px-3 py-2 text-left text-xs font-bold text-[#463425] transition hover:border-[#f28c28] hover:bg-[#fff3df] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f28c28] motion-reduce:transition-none"
-                          disabled={sending}
+                          disabled={sending || !sessionReady}
                           key={item}
                           onClick={() => void sendQuestion(item)}
                           type="button"
@@ -594,7 +649,11 @@ export function AliceAdvisor() {
                     disabled={sending}
                     id="alice-question"
                     maxLength={800}
-                    onChange={(event) => setQuestion(event.target.value)}
+                    onChange={(event) => {
+                      const next = updateAliceQuestion(error, event.target.value);
+                      setQuestion(next.value);
+                      setError(next.error);
+                    }}
                     placeholder={chinese ? "\u8be2\u95ee AFFT \u9732\u8425\u3001\u79df\u8d41\u3001\u65c5\u6e38\u6216\u4ea4\u901a..." : "Ask about AFFT camping, rentals, tours or transport..."}
                     rows={1}
                     value={question}
@@ -617,9 +676,7 @@ export function AliceAdvisor() {
                 <button
                   className="inline-flex items-center gap-1 hover:text-[#1f3627] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f28c28]"
                   onClick={() => {
-                    setMessages([]);
-                    setQuestionCount(0);
-                    setError("");
+                    clearConversation();
                   }}
                   type="button"
                 >
