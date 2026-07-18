@@ -1,77 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-type LiveProduct = {
-  productId: string;
-  officialName: string;
-  slug: string;
-  series: string;
-  status: string;
-  publicPrice: string;
-  publicDescription: string;
-  bestFor: string[];
-  availability: string;
-  deliveryCollection: string;
-  setup: string;
-  image: string;
-  altText: string;
-};
-
-type LiveCatalog = {
-  version: string | null;
-  updatedAt: string | null;
-  products: LiveProduct[];
-};
+import { useRentItLiveCatalog } from "@/components/RentItLiveCatalogProvider";
+import {
+  groupActiveRentItProducts,
+  type RentItLiveCatalog as RentItLiveCatalogData,
+  type RentItLiveProduct,
+} from "@/lib/rent-it-live-catalog";
 
 const seriesRoutes: Record<string, string> = {
   "Creator Series": "/rent-it/creator-series",
   "Camp Lifestyle Series": "/rent-it/camp-lifestyle-series",
   "Premium Camp Series": "/rent-it/premium-camp-series",
+  "Experience Set Series": "/rent-it#price-guide",
   "Tent Experience Series": "/rent-it/tent-experience-series",
 };
 
 const seriesOrder = Object.keys(seriesRoutes);
 
 export function RentItLiveCatalog() {
-  const [catalog, setCatalog] = useState<LiveCatalog | null>(null);
+  const { catalog, loading, live, activeProducts } = useRentItLiveCatalog();
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/rent-it/catalog", {
-      method: "GET",
-      cache: "no-store",
-      redirect: "error",
-      headers: { Accept: "application/json" },
-    })
-      .then(async (response) => {
-        if (!response.ok) return null;
-        const value = (await response.json()) as LiveCatalog;
-        return Array.isArray(value.products) ? value : null;
-      })
-      .then((value) => {
-        if (!cancelled && value) setCatalog(value);
-      })
-      .catch(() => undefined);
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  if (!catalog?.products.length) return null;
-
-  const groups = seriesOrder
-    .map((series) => ({
-      series,
-      products: catalog.products.filter(
-        (product) => product.status === "Active" && product.series === series,
-      ),
-    }))
-    .filter((group) => group.products.length > 0);
+  if (loading || !catalog) return null;
 
   return (
-    <section className="mt-20 rounded-[2rem] border border-[#F3922B]/20 bg-[#182015] p-8 md:p-10">
+    <RentItLiveCatalogView
+      catalog={catalog}
+      live={live}
+      activeProducts={activeProducts}
+    />
+  );
+}
+
+export function RentItLiveCatalogView({
+  catalog,
+  live,
+  activeProducts,
+}: {
+  catalog: RentItLiveCatalogData;
+  live: boolean;
+  activeProducts: RentItLiveProduct[];
+}) {
+  const groups = groupActiveRentItProducts(activeProducts, seriesOrder);
+
+  return (
+    <section
+      className="mt-20 rounded-[2rem] border border-[#F3922B]/20 bg-[#182015] p-8 md:p-10"
+      data-active-product-count={activeProducts.length}
+      data-catalog-source={live ? "live" : "fallback"}
+    >
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#F3922B]">
@@ -86,7 +62,9 @@ export function RentItLiveCatalog() {
           </p>
         </div>
         <p className="text-sm text-white/50">
-          Catalog {catalog.version ? `v${catalog.version}` : "current"}
+          {live
+            ? `Catalog ${catalog.version ? `v${catalog.version}` : "current"}`
+            : "Catalog fallback"}
         </p>
       </div>
 
@@ -95,18 +73,21 @@ export function RentItLiveCatalog() {
           <div key={group.series}>
             <div className="flex items-center justify-between gap-4">
               <h3 className="text-2xl font-bold">{group.series}</h3>
-              <a
-                href={seriesRoutes[group.series]}
-                className="text-sm font-bold text-[#F3922B]"
-              >
-                Open Series &rarr;
-              </a>
+              {seriesRoutes[group.series] ? (
+                <a
+                  href={seriesRoutes[group.series]}
+                  className="text-sm font-bold text-[#F3922B]"
+                >
+                  Open Series &rarr;
+                </a>
+              ) : null}
             </div>
             <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {group.products.map((product) => (
                 <article
                   key={product.productId}
                   className="overflow-hidden rounded-3xl border border-white/10 bg-black/20"
+                  data-product-id={product.productId}
                 >
                   {product.image ? (
                     <img
