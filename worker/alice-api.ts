@@ -128,31 +128,12 @@ async function validateTurnstile(
         signal: AbortSignal.timeout(8_000),
       },
     );
-    console.log(
-      JSON.stringify({
-        event: "turnstile_siteverify_response",
-        httpStatus: response.status,
-        ok: response.ok,
-      }),
-    );
     const result = (await response.json()) as {
       success?: boolean;
       hostname?: string;
       action?: string;
       [key: string]: unknown;
     };
-    console.log(
-      JSON.stringify({
-        event: "turnstile_siteverify",
-        httpStatus: response.status,
-        success: result.success === true,
-        hostname: result.hostname ?? null,
-        action: result.action ?? null,
-        errorCodes: Array.isArray(result["error-codes"])
-          ? result["error-codes"]
-          : [],
-      }),
-    );
     if (!response.ok) return false;
     return (
       result.success === true &&
@@ -160,26 +141,7 @@ async function validateTurnstile(
       allowedHostnames.has(result.hostname) &&
       result.action === turnstileAction
     );
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : "";
-    const errorClass = /cache/i.test(errorMessage)
-      ? "cache_option"
-      : /redirect/i.test(errorMessage)
-        ? "redirect_option"
-        : /abort|signal|timeout/i.test(errorMessage)
-          ? "abort_option"
-          : /body|content-type|request/i.test(errorMessage)
-            ? "request_option"
-            : "fetch_or_network";
-    console.log(
-      JSON.stringify({
-        event: "turnstile_siteverify_error",
-        errorName: error instanceof Error ? error.name : typeof error,
-        abortSignalTimeout: typeof AbortSignal.timeout,
-        errorClass,
-        errorMessage: error instanceof Error ? error.message.slice(0, 160) : "",
-      }),
-    );
+  } catch {
     return false;
   }
 }
@@ -416,7 +378,9 @@ export async function handleAliceRequest(
 }
 
 const aliceApiWorker = {
-  fetch: handleAliceRequest,
+  fetch(request: Request, env: AliceWorkerEnv) {
+    return handleAliceRequest(request, env);
+  },
 };
 
 export default aliceApiWorker;
