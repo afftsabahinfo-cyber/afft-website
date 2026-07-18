@@ -177,6 +177,7 @@ async function validateTurnstile(
         errorName: error instanceof Error ? error.name : typeof error,
         abortSignalTimeout: typeof AbortSignal.timeout,
         errorClass,
+        errorMessage: error instanceof Error ? error.message.slice(0, 160) : "",
       }),
     );
     return false;
