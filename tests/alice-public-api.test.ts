@@ -194,6 +194,7 @@ test("session sends Turnstile verification as urlencoded form data", async () =>
     verificationRequest?.headers.get("Content-Type"),
     "application/x-www-form-urlencoded",
   );
+  assert.equal(verificationRequest?.redirect, "manual");
   assert.deepEqual(
     Object.fromEntries(new URLSearchParams(await verificationRequest!.text())),
     {
