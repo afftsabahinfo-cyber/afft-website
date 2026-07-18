@@ -122,11 +122,18 @@ async function validateTurnstile(
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
+        body: body.toString(),
         cache: "no-store",
         redirect: "error",
         signal: AbortSignal.timeout(8_000),
       },
+    );
+    console.log(
+      JSON.stringify({
+        event: "turnstile_siteverify_response",
+        httpStatus: response.status,
+        ok: response.ok,
+      }),
     );
     const result = (await response.json()) as {
       success?: boolean;
