@@ -160,10 +160,12 @@ async function validateTurnstile(
       allowedHostnames.has(result.hostname) &&
       result.action === turnstileAction
     );
-  } catch {
+  } catch (error) {
     console.log(
       JSON.stringify({
         event: "turnstile_siteverify_error",
+        errorName: error instanceof Error ? error.name : typeof error,
+        abortSignalTimeout: typeof AbortSignal.timeout,
       }),
     );
     return false;
