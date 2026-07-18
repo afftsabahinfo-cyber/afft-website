@@ -161,11 +161,22 @@ async function validateTurnstile(
       result.action === turnstileAction
     );
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "";
+    const errorClass = /cache/i.test(errorMessage)
+      ? "cache_option"
+      : /redirect/i.test(errorMessage)
+        ? "redirect_option"
+        : /abort|signal|timeout/i.test(errorMessage)
+          ? "abort_option"
+          : /body|content-type|request/i.test(errorMessage)
+            ? "request_option"
+            : "fetch_or_network";
     console.log(
       JSON.stringify({
         event: "turnstile_siteverify_error",
         errorName: error instanceof Error ? error.name : typeof error,
         abortSignalTimeout: typeof AbortSignal.timeout,
+        errorClass,
       }),
     );
     return false;
