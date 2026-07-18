@@ -43,6 +43,7 @@ const allowedHostnames = new Set(["afft.club", "www.afft.club"]);
 const maxBodyBytes = 12_000;
 const turnstileAction = "alice_chat";
 const roleName = "AFFT AI Outdoor Advisor";
+const aliceServiceTimeoutMs = 30_000;
 
 function isEnabled(env: AliceWorkerEnv) {
   return env.ALICE_BETA_ENABLED.toLowerCase() === "true";
@@ -222,7 +223,7 @@ async function fetchAliceService(
       new Promise<never>((_, reject) => {
         timeout = setTimeout(
           () => reject(new Error("Alice service timeout.")),
-          10_000,
+          aliceServiceTimeoutMs,
         );
       }),
     ]);
