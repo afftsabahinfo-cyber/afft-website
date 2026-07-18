@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { RentItCatalogStats } from "@/components/RentItCatalogStats";
 import { RentItLiveCatalog } from "@/components/RentItLiveCatalog";
+import { RentItLiveCatalogProvider } from "@/components/RentItLiveCatalogProvider";
 import {
   catalogSections,
   comingSoonItems,
@@ -9,7 +11,6 @@ import {
   makeWhatsappLink,
   normalizeRentItTitle,
   rentItMainSeries,
-  rentItStats,
   tentShowcaseItems,
 } from "@/lib/rent-it-data";
 import {
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
 
 export default function RentItLandingPage() {
   return (
-    <main className="min-h-screen bg-[#10140F] text-white">
+    <RentItLiveCatalogProvider>
+      <main className="min-h-screen bg-[#10140F] text-white">
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-20">
         <RentItBackLink />
 
@@ -79,17 +81,7 @@ export default function RentItLandingPage() {
               </a>
             </div>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {rentItStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-5"
-                >
-                  <p className="text-3xl font-bold text-[#F3922B]">{stat.value}</p>
-                  <p className="mt-2 text-sm text-white/65">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+            <RentItCatalogStats />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -196,8 +188,8 @@ export default function RentItLandingPage() {
             <p className="mt-5 text-white/70">
               Once you know whether the trip is for content, coffee, comfort or
               tents, use the tables below to compare prices and shortlist what
-              to ask about on WhatsApp. The 4 main series also open into their
-              own focused pages.
+              to ask about on WhatsApp. The featured series above also open
+              into their own focused pages.
             </p>
           </div>
 
@@ -333,6 +325,7 @@ export default function RentItLandingPage() {
           </div>
         </section>
       </section>
-    </main>
+      </main>
+    </RentItLiveCatalogProvider>
   );
 }

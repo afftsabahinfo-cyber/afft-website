@@ -241,12 +241,6 @@ export type SeriesPageSummary = {
   route: string;
 };
 
-export const rentItStats = [
-  { value: "38", label: "gear items and bundle options" },
-  { value: "4", label: "rental series to browse" },
-  { value: "1", label: "WhatsApp contact for booking help" },
-];
-
 export const rentItMainSeries: MainSeries[] = [
   {
     slug: "creator-series",
