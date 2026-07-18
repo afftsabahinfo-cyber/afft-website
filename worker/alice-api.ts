@@ -110,7 +110,7 @@ async function validateTurnstile(
   env: AliceWorkerEnv,
   dependencies: AliceApiDependencies,
 ) {
-  const body = new FormData();
+  const body = new URLSearchParams();
   body.set("secret", env.TURNSTILE_SECRET_KEY);
   body.set("response", token);
   const remoteIp = request.headers.get("CF-Connecting-IP");
@@ -121,6 +121,7 @@ async function validateTurnstile(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
         method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,
         cache: "no-store",
         redirect: "error",

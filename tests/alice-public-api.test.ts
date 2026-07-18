@@ -161,6 +161,48 @@ test("session requires same-origin JSON and valid Turnstile hostname/action", as
   assert.equal(invalidAction.status, 400);
 });
 
+test("session sends Turnstile verification as urlencoded form data", async () => {
+  let verificationRequest: Request | null = null;
+  const response = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "https://afft.club",
+      },
+      body: JSON.stringify({ turnstileToken: "valid-token" }),
+    }),
+    createMockEnv(),
+    {
+      ...dependencies,
+      fetcher: async (input, init) => {
+        verificationRequest = new Request(input, init);
+        return new Response(
+          JSON.stringify({
+            success: true,
+            hostname: "afft.club",
+            action: "alice_chat",
+          }),
+          { headers: { "Content-Type": "application/json" } },
+        );
+      },
+    },
+  );
+
+  assert.equal(response.status, 200);
+  assert.equal(
+    verificationRequest?.headers.get("Content-Type"),
+    "application/x-www-form-urlencoded",
+  );
+  assert.deepEqual(
+    Object.fromEntries(new URLSearchParams(await verificationRequest!.text())),
+    {
+      secret: "turnstile-secret-used-only-for-local-unit-tests",
+      response: "valid-token",
+    },
+  );
+});
+
 test("session signatures reject expiry and forgery", async () => {
   const session = await createAliceSession(sessionSecret, {
     now,
