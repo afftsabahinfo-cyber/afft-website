@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
+import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
 import {
-  creatorSeriesItems,
-  makeWhatsappLink,
-  seriesPageSummaries,
-} from "@/lib/rent-it-data";
-import {
-  RentItBackLink,
-  RentItCatalogTable,
-  RentItInfoCard,
-  RentItInlineCta,
-} from "@/components/rent-it-shared";
+  RentItSeriesFeaturedProduct,
+  RentItSeriesMetrics,
+} from "@/components/RentItSeriesLiveSummary";
+import { makeWhatsappLink, seriesPageSummaries } from "@/lib/rent-it-data";
+import { RentItBackLink, RentItInlineCta } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["creator-series"];
 
@@ -63,64 +60,20 @@ export default function CreatorSeriesPage() {
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-            {summary.heroImage || summary.featuredImage ? (
-              <img
-                src={summary.heroImage ?? summary.featuredImage}
-                alt={summary.heroImageAlt ?? summary.featuredTitle}
-                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
-              />
-            ) : (
-              <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#10140F_65%,#182015)] md:min-h-[360px]" />
-            )}
-            <div className="border-t border-white/10 p-8">
-              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
-                Featured Creator Kit
-              </p>
-              <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
-              <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
-              <p className="mt-5 text-white/70">{summary.featuredText}</p>
-            </div>
-          </div>
+          <RentItSeriesFeaturedProduct
+            label="Featured Creator Kit"
+            preferredSlug="dji-pocket-4-creator-combo"
+            series="Creator Series"
+          />
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          <RentItInfoCard title="Best For" text={summary.bestFor} />
-          <RentItInfoCard
-            title="Featured Kit"
-            text={`${summary.featuredTitle} / ${summary.featuredPrice}`}
-          />
-          <RentItInfoCard title="Price Range" text={summary.priceRange} />
-        </div>
+        <RentItSeriesMetrics series="Creator Series" />
 
-        <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8">
-          <h2 className="text-3xl font-bold">Creator Series Price Guide</h2>
-          <p className="mt-4 max-w-4xl text-white/70">
-            This series should feel practical and premium at the same time.
-            Give guests quick entry points, then let them move up into bundles
-            when they want more coverage, more convenience or lighter
-            hands-free POV shooting.
-          </p>
-
-          <div className="mt-8">
-            <RentItCatalogTable items={creatorSeriesItems} />
-          </div>
-        </section>
-
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
-          <RentItInfoCard
-            title="Light Travel Setup"
-            text="Osmo Nano, Pocket 4 or Action 6 works for guests who want speed, small bag size and simple travel capture."
-          />
-          <RentItInfoCard
-            title="Audio Upgrade"
-            text="Pocket 4 + Mic 3 is the easiest step up for cleaner spoken content and interviews."
-          />
-          <RentItInfoCard
-            title="Flight Upgrade"
-            text="Avata and Goggles turn the booking into a stronger cinematic travel package."
-          />
-        </section>
+        <RentItLivePriceGuide
+          description="Browse every active Creator Series product and its current approved public price. Choose a simple entry point or ask AFFT which bundle fits your shoot."
+          series="Creator Series"
+        />
+        <RentItCatalogNoScriptFallback series="Creator Series" />
 
         <div className="mt-16">
           <RentItInlineCta

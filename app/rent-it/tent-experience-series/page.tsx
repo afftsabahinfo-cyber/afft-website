@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
+import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
 import {
-  makeWhatsappLink,
-  seriesPageSummaries,
-  tentShowcaseItems,
-} from "@/lib/rent-it-data";
-import {
-  RentItBackLink,
-  RentItInfoCard,
-  RentItInlineCta,
-  RentItTentGrid,
-} from "@/components/rent-it-shared";
+  RentItSeriesFeaturedProduct,
+  RentItSeriesMetrics,
+} from "@/components/RentItSeriesLiveSummary";
+import { makeWhatsappLink, seriesPageSummaries } from "@/lib/rent-it-data";
+import { RentItBackLink, RentItInlineCta } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["tent-experience-series"];
 
@@ -63,66 +60,20 @@ export default function TentExperienceSeriesPage() {
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-            {summary.heroImage || summary.featuredImage ? (
-              <img
-                src={summary.heroImage ?? summary.featuredImage}
-                alt={summary.heroImageAlt ?? summary.featuredTitle}
-                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
-              />
-            ) : (
-              <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#10140F_65%,#182015)] md:min-h-[360px]" />
-            )}
-            <div className="border-t border-white/10 p-8">
-              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
-                Featured Tent Anchor
-              </p>
-              <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
-              <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
-              <p className="mt-5 text-white/70">{summary.featuredText}</p>
-            </div>
-          </div>
+          <RentItSeriesFeaturedProduct
+            label="Featured Tent Anchor"
+            preferredSlug="black-dog-modular-tent-system"
+            series="Tent Experience Series"
+          />
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          <RentItInfoCard title="Best For" text={summary.bestFor} />
-          <RentItInfoCard
-            title="Featured Tent"
-            text={`${summary.featuredTitle} / ${summary.featuredPrice}`}
-          />
-          <RentItInfoCard title="Price Range" text={summary.priceRange} />
-        </div>
+        <RentItSeriesMetrics series="Tent Experience Series" />
 
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Tent Experience lineup
-          </h2>
-          <p className="mt-4 max-w-4xl text-white/70">
-            These tents should be presented as premium stay options because the
-            visual identity, capacity and booking value are much higher than
-            standard utility gear. Vehicle-based rooftop options also need a
-            quick compatibility check before confirming.
-          </p>
-
-          <div className="mt-10">
-            <RentItTentGrid tents={tentShowcaseItems} />
-          </div>
-        </section>
-
-        <section className="mt-16 grid gap-6 md:grid-cols-3">
-          <RentItInfoCard
-            title="Couple Bookings"
-            text="Black Dog XingSu 5.9 is the stronger fit for visual glamping and quieter luxury stays."
-          />
-          <RentItInfoCard
-            title="Car-side Camp"
-            text="Playdo Starry Sky 2nd Gen Rooftop Tent Set is the stronger fit for car camp stays, ground-use flexibility and guests who want premium visual impact without jumping to the biggest tent-system tier."
-          />
-          <RentItInfoCard
-            title="Family and Groups"
-            text="Black Dog Modular Tent System or Mobi Garden Commander 245 should be matched to group size, campsite layout and whether the trip is more vehicle-based or walk-in."
-          />
-        </section>
+        <RentItLivePriceGuide
+          description="Browse every active Tent Experience product and its current approved public price. Confirm group size, campsite fit and vehicle compatibility with AFFT before booking."
+          series="Tent Experience Series"
+        />
+        <RentItCatalogNoScriptFallback series="Tent Experience Series" />
 
         <div className="mt-16">
           <RentItInlineCta

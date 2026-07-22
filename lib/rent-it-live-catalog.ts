@@ -37,6 +37,10 @@ export type RentItStatCard = {
   label: string;
 };
 
+export function normalizeRentItSeriesName(series: string) {
+  return series.trim() || "Other Rent It";
+}
+
 type CatalogFetcher = (
   input: RequestInfo | URL,
   init?: RequestInit,
@@ -79,7 +83,7 @@ export function getRentItCatalogMetrics(
     (product) => product.status === "Active",
   );
   const activeSeries = new Set(
-    activeProducts.map((product) => product.series.trim()).filter(Boolean),
+    activeProducts.map((product) => normalizeRentItSeriesName(product.series)),
   );
 
   return {
@@ -97,7 +101,7 @@ export function groupActiveRentItProducts(
 
   for (const product of products) {
     if (product.status !== "Active") continue;
-    const series = product.series.trim() || "Other Rent It";
+    const series = normalizeRentItSeriesName(product.series);
     const group = groups.get(series) ?? [];
     group.push(product);
     groups.set(series, group);
@@ -121,6 +125,19 @@ export function groupActiveRentItProducts(
       series,
       products: seriesProducts,
     }));
+}
+
+export function getActiveRentItProductsForSeries(
+  products: RentItLiveProduct[],
+  series: string,
+) {
+  const normalizedSeries = normalizeRentItSeriesName(series);
+
+  return products.filter(
+    (product) =>
+      product.status === "Active" &&
+      normalizeRentItSeriesName(product.series) === normalizedSeries,
+  );
 }
 
 export function buildRentItStatCards({
