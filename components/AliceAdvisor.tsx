@@ -36,9 +36,11 @@ type AliceConfig = {
   siteKey: string;
   name: string;
   role: string;
+  feedbackEnabled: boolean;
 };
 
 type AliceAnswer = {
+  messageId: string;
   answer: string;
   needsHumanConfirmation: boolean;
   sources: Array<{ title: string; publicHref: string }>;
@@ -52,6 +54,7 @@ type DisplayMessage = {
   content: string;
   status: AliceHistoryDisplayMessage["status"];
   response?: AliceAnswer;
+  feedback?: "saving" | "yes" | "no" | "error";
 };
 
 const englishQuestions = [
@@ -111,12 +114,24 @@ function isAliceAnswer(value: unknown): value is AliceAnswer {
   const answer = value as Partial<AliceAnswer>;
   return (
     typeof answer.answer === "string" &&
+    typeof answer.messageId === "string" &&
+    /^[0-9a-f-]{36}$/iu.test(answer.messageId) &&
     typeof answer.needsHumanConfirmation === "boolean" &&
     Array.isArray(answer.sources) &&
     Array.isArray(answer.suggestedQuestions) &&
     !!answer.handoff &&
     typeof answer.handoff.topic === "string"
   );
+}
+
+function feedbackCopy(answer: string) {
+  if (/[\u3400-\u9fff]/u.test(answer)) {
+    return { prompt: "这个回答有帮助吗？", yes: "有帮助", no: "没有帮助", thanks: "谢谢你的反馈。", failed: "反馈暂时无法保存。" };
+  }
+  if (/\b(?:saya|anda|tarikh|tetamu|cadangan|perkhemahan|AFFT mesti)\b/iu.test(answer)) {
+    return { prompt: "Adakah jawapan ini membantu?", yes: "Ya", no: "Tidak", thanks: "Terima kasih atas maklum balas anda.", failed: "Maklum balas tidak dapat disimpan." };
+  }
+  return { prompt: "Was this helpful?", yes: "Yes", no: "No", thanks: "Thanks for your feedback.", failed: "Feedback could not be saved." };
 }
 
 export function AliceAdvisor() {
@@ -320,7 +335,7 @@ export function AliceAdvisor() {
     );
   }
 
-  function clearConversation() {
+  async function clearConversation() {
     requestGuardRef.current.invalidate();
     abortControllerRef.current?.abort();
     abortControllerRef.current = null;
@@ -330,6 +345,58 @@ export function AliceAdvisor() {
     setQuestionCount(0);
     setSending(false);
     setError("");
+    setSessionReady(false);
+    try {
+      const response = await fetch("/api/alice/conversation", {
+        method: "POST",
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+      if (!response.ok) throw new Error("Conversation reset failed.");
+      setSessionReady(true);
+    } catch {
+      setError(
+        chinese
+          ? "对话已清除。请重新完成安全验证后继续。"
+          : "Conversation cleared. Please verify again to continue.",
+      );
+    }
+  }
+
+  async function submitFeedback(messageId: string, vote: "yes" | "no") {
+    const current = messages.find((message) => message.id === messageId);
+    if (!current || (current.feedback && current.feedback !== "error")) return;
+    setMessages((items) => items.map((message) => (
+      message.id === messageId ? { ...message, feedback: "saving" } : message
+    )));
+    try {
+      const response = await fetch("/api/alice/feedback", {
+        method: "POST",
+        credentials: "same-origin",
+        cache: "no-store",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messageId, vote }),
+      });
+      if (!response.ok) throw new Error("Feedback failed.");
+      setMessages((items) => items.map((message) => (
+        message.id === messageId ? { ...message, feedback: vote } : message
+      )));
+    } catch {
+      setMessages((items) => items.map((message) => (
+        message.id === messageId ? { ...message, feedback: "error" } : message
+      )));
+    }
+  }
+
+  function recordHandoff(messageId: string) {
+    void fetch("/api/alice/handoff", {
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-store",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messageId }),
+    }).catch(() => undefined);
   }
 
   async function sendQuestion(rawQuestion: string) {
@@ -424,7 +491,7 @@ export function AliceAdvisor() {
             : message,
         ),
         {
-          id: crypto.randomUUID(),
+          id: payload.messageId,
           role: "assistant",
           content: payload.answer,
           status: "complete",
@@ -631,12 +698,48 @@ export function AliceAdvisor() {
                             href={makeAliceWhatsappLink(
                               message.response.handoff.topic,
                             )}
+                            onClick={() => recordHandoff(message.id)}
                             rel="noreferrer"
                             target="_blank"
                           >
                             Confirm with AFFT on WhatsApp
                             <ExternalLink aria-hidden="true" className="h-3 w-3" />
                           </a>
+                        ) : null}
+                        {message.response && config.feedbackEnabled ? (
+                          <div className="mt-3 border-t border-[#eadcc8] pt-3">
+                            {message.feedback === "yes" || message.feedback === "no" ? (
+                              <p className="text-xs font-bold text-[#275335]" role="status">
+                                {feedbackCopy(message.content).thanks}
+                              </p>
+                            ) : (
+                              <>
+                                <p className="text-xs font-black text-[#6d5b48]">
+                                  {feedbackCopy(message.content).prompt}
+                                </p>
+                                <div className="mt-2 flex flex-wrap items-center gap-2">
+                                  <button
+                                    className="rounded-full border border-[#9ab49f] bg-[#eef4ec] px-3 py-1.5 text-xs font-black text-[#275335] disabled:opacity-50"
+                                    disabled={message.feedback === "saving"}
+                                    onClick={() => void submitFeedback(message.id, "yes")}
+                                    type="button"
+                                  >
+                                    {feedbackCopy(message.content).yes}
+                                  </button>
+                                  <button
+                                    className="rounded-full border border-[#d8c5a9] bg-[#fffaf1] px-3 py-1.5 text-xs font-black text-[#6d4a2a] disabled:opacity-50"
+                                    disabled={message.feedback === "saving"}
+                                    onClick={() => void submitFeedback(message.id, "no")}
+                                    type="button"
+                                  >
+                                    {feedbackCopy(message.content).no}
+                                  </button>
+                                  {message.feedback === "saving" ? <span className="text-xs text-[#7b6854]">Saving…</span> : null}
+                                  {message.feedback === "error" ? <span className="text-xs font-bold text-[#8b3f2a]" role="status">{feedbackCopy(message.content).failed}</span> : null}
+                                </div>
+                              </>
+                            )}
+                          </div>
                         ) : null}
                       </article>
                     ))}
@@ -707,7 +810,7 @@ export function AliceAdvisor() {
                 <button
                   className="inline-flex items-center gap-1 hover:text-[#1f3627] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f28c28]"
                   onClick={() => {
-                    clearConversation();
+                    void clearConversation();
                   }}
                   type="button"
                 >

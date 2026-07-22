@@ -24,7 +24,8 @@ export type AliceWorkerEnv = {
   TURNSTILE_SECRET_KEY: string;
   ALICE_TURNSTILE_SITE_KEY: string;
   ALICE_BETA_ENABLED: string;
-  AIP_WEBSITE_CATALOG_SECRET: string;
+  ALICE_PUBLIC_FEEDBACK_ENABLED?: string;
+  AIP_WEBSITE_CATALOG_SECRET?: string;
 };
 
 export type AliceApiDependencies = {
@@ -47,6 +48,10 @@ const aliceServiceTimeoutMs = 30_000;
 
 function isEnabled(env: AliceWorkerEnv) {
   return env.ALICE_BETA_ENABLED.toLowerCase() === "true";
+}
+
+function isFeedbackEnabled(env: AliceWorkerEnv) {
+  return env.ALICE_PUBLIC_FEEDBACK_ENABLED?.toLowerCase() === "true";
 }
 
 function isJsonRequest(request: Request) {
@@ -99,6 +104,32 @@ function expiredSessionCookie() {
     "Path=/api/alice",
     "Max-Age=0",
   ].join("; ");
+}
+
+function sessionCookie(value: string) {
+  return [
+    `${aliceSessionCookie.name}=${value}`,
+    "HttpOnly",
+    "Secure",
+    "SameSite=Lax",
+    "Path=/api/alice",
+    `Max-Age=${aliceSessionCookie.maxAge}`,
+  ].join("; ");
+}
+
+async function conversationHash(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function requireSession(request: Request, env: AliceWorkerEnv, now: number) {
+  return verifyAliceSession(
+    getCookie(request, aliceSessionCookie.name),
+    env.ALICE_SESSION_SECRET,
+    now,
+  );
 }
 
 function safeFailure(message: string, status: number, headers: HeadersInit = {}) {
@@ -197,19 +228,10 @@ async function handleSession(
       now: dependencies.now(),
       id: dependencies.randomUUID(),
     });
-    const cookie = [
-      `${aliceSessionCookie.name}=${session.value}`,
-      "HttpOnly",
-      "Secure",
-      "SameSite=Lax",
-      "Path=/api/alice",
-      `Max-Age=${aliceSessionCookie.maxAge}`,
-    ].join("; ");
-
     return jsonResponse(
       { ok: true, expiresIn: aliceSessionCookie.maxAge },
       200,
-      { "Set-Cookie": cookie },
+      { "Set-Cookie": sessionCookie(session.value) },
     );
   } catch {
     return safeFailure("Alice is temporarily unavailable.", 503);
@@ -260,12 +282,7 @@ async function handleAnswer(
     return safeFailure("Request not accepted.", 403);
   }
 
-  const cookieValue = getCookie(request, aliceSessionCookie.name);
-  const session = await verifyAliceSession(
-    cookieValue,
-    env.ALICE_SESSION_SECRET,
-    dependencies.now(),
-  );
+  const session = await requireSession(request, env, dependencies.now());
   if (!session) {
     return safeFailure(
       "Please verify again to continue.",
@@ -291,7 +308,13 @@ async function handleAnswer(
   }
 
   try {
-    const upstream = await fetchAliceService(JSON.stringify(payload), env);
+    const messageId = dependencies.randomUUID();
+    const upstream = await fetchAliceService(JSON.stringify({
+      ...payload,
+      messageId,
+      conversationIdHash: await conversationHash(session.id),
+      turnIndex: payload.history.filter((message) => message.role === "user").length + 1,
+    }), env);
     if (!upstream.ok) {
       return safeFailure(
         "Alice could not complete that answer. Please try again or contact AFFT.",
@@ -308,12 +331,125 @@ async function handleAnswer(
       return safeFailure("Alice returned an invalid response.", 502);
     }
 
-    return jsonResponse(ensurePublicPolicySource(payload.question, answer));
+    return jsonResponse({ ...ensurePublicPolicySource(payload.question, answer), messageId });
   } catch {
     return safeFailure(
       "Alice is temporarily offline. Please try again or contact AFFT on WhatsApp.",
       503,
     );
+  }
+}
+
+async function handleConversationReset(
+  request: Request,
+  env: AliceWorkerEnv,
+  dependencies: AliceApiDependencies,
+) {
+  if (!isEnabled(env) || request.method !== "POST" || !isSameOrigin(request)) {
+    return safeFailure("Request not accepted.", 403);
+  }
+  const current = await requireSession(request, env, dependencies.now());
+  if (!current) {
+    return safeFailure("Please verify again to continue.", 401, {
+      "Set-Cookie": expiredSessionCookie(),
+    });
+  }
+  try {
+    const next = await createAliceSession(env.ALICE_SESSION_SECRET, {
+      now: dependencies.now(),
+      id: dependencies.randomUUID(),
+    });
+    return jsonResponse({ ok: true }, 200, {
+      "Set-Cookie": sessionCookie(next.value),
+    });
+  } catch {
+    return safeFailure("Conversation could not be cleared.", 503);
+  }
+}
+
+async function forwardAliceSignal(
+  path: "/__internal/alice/feedback" | "/__internal/alice/handoff",
+  body: Record<string, string>,
+  env: AliceWorkerEnv,
+) {
+  return env.ALICE_ADVISOR_SERVICE.fetch(new Request(`https://internal${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-afft-alice-service-secret": env.ALICE_SERVICE_SECRET,
+    },
+    body: JSON.stringify(body),
+  }));
+}
+
+async function handleFeedback(
+  request: Request,
+  env: AliceWorkerEnv,
+  dependencies: AliceApiDependencies,
+) {
+  if (!isFeedbackEnabled(env)) return safeFailure("Feedback unavailable.", 404);
+  if (request.method !== "POST" || !isSameOrigin(request)) {
+    return safeFailure("Request not accepted.", 403);
+  }
+  const session = await requireSession(request, env, dependencies.now());
+  if (!session) return safeFailure("Feedback could not be saved.", 401);
+  const body = await readJsonBody(request);
+  if (
+    !body
+    || Object.keys(body).sort().join(",") !== "messageId,vote"
+    || typeof body.messageId !== "string"
+    || !/^[0-9a-f-]{36}$/iu.test(body.messageId)
+    || (body.vote !== "yes" && body.vote !== "no")
+  ) {
+    return safeFailure("Feedback could not be saved.", 400);
+  }
+  const rateLimit = await env.ALICE_RATE_LIMITER.limit({
+    key: `alice-feedback:${session.id}:${body.messageId}`,
+  });
+  if (!rateLimit.success) return safeFailure("Feedback could not be saved.", 429);
+  try {
+    const upstream = await forwardAliceSignal(
+      "/__internal/alice/feedback",
+      { messageId: body.messageId, vote: body.vote },
+      env,
+    );
+    return upstream.ok
+      ? jsonResponse({ ok: true })
+      : safeFailure("Feedback could not be saved.", 503);
+  } catch {
+    return safeFailure("Feedback could not be saved.", 503);
+  }
+}
+
+async function handleHandoff(
+  request: Request,
+  env: AliceWorkerEnv,
+  dependencies: AliceApiDependencies,
+) {
+  if (!isFeedbackEnabled(env)) return safeFailure("Not found.", 404);
+  if (request.method !== "POST" || !isSameOrigin(request)) {
+    return safeFailure("Request not accepted.", 403);
+  }
+  const session = await requireSession(request, env, dependencies.now());
+  if (!session) return safeFailure("Request not accepted.", 401);
+  const body = await readJsonBody(request);
+  if (
+    !body
+    || Object.keys(body).length !== 1
+    || typeof body.messageId !== "string"
+    || !/^[0-9a-f-]{36}$/iu.test(body.messageId)
+  ) return safeFailure("Request not accepted.", 400);
+  try {
+    const upstream = await forwardAliceSignal(
+      "/__internal/alice/handoff",
+      { messageId: body.messageId },
+      env,
+    );
+    return upstream.ok
+      ? jsonResponse({ ok: true })
+      : safeFailure("Request not accepted.", 503);
+  } catch {
+    return safeFailure("Request not accepted.", 503);
   }
 }
 
@@ -366,6 +502,7 @@ function handleConfig(env: AliceWorkerEnv) {
     siteKey: env.ALICE_TURNSTILE_SITE_KEY,
     name: "Alice Li",
     role: roleName,
+    feedbackEnabled: isFeedbackEnabled(env),
   });
 }
 
@@ -387,6 +524,15 @@ export async function handleAliceRequest(
   }
   if (path === "/api/alice/answer") {
     return handleAnswer(request, env, dependencies);
+  }
+  if (path === "/api/alice/conversation") {
+    return handleConversationReset(request, env, dependencies);
+  }
+  if (path === "/api/alice/feedback") {
+    return handleFeedback(request, env, dependencies);
+  }
+  if (path === "/api/alice/handoff") {
+    return handleHandoff(request, env, dependencies);
   }
 
   return new Response("Not found", {
