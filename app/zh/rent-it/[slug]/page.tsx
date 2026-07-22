@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { RentItProductImagePreview } from "@/components/rent-it-shared";
+import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
+import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
+import { RentItSeriesCards } from "@/components/RentItSeriesCards";
 import {
-  ZhInfoCard,
+  RentItSeriesFeaturedProduct,
+  RentItSeriesMetrics,
+} from "@/components/RentItSeriesLiveSummary";
+import {
   ZhPageFinalCta,
   ZhSectionHeading,
   ZhSiteFooter,
@@ -12,7 +17,6 @@ import { makeWhatsappLink } from "@/lib/rent-it-data";
 import {
   getZhRentSeries,
   zhRentSeries,
-  type ZhCatalogItem,
 } from "@/lib/zh-site-data";
 
 type PageProps = {
@@ -22,6 +26,20 @@ type PageProps = {
 };
 
 export const dynamicParams = false;
+
+const catalogSeriesBySlug: Record<string, string> = {
+  "creator-series": "Creator Series",
+  "camp-lifestyle-series": "Camp Lifestyle Series",
+  "premium-camp-series": "Premium Camp Series",
+  "tent-experience-series": "Tent Experience Series",
+};
+
+const featuredProductBySlug: Record<string, string> = {
+  "creator-series": "dji-pocket-4-creator-combo",
+  "camp-lifestyle-series": "yaber-t2-plus-projector",
+  "premium-camp-series": "helinox-solo-full-set",
+  "tent-experience-series": "black-dog-modular-tent-system",
+};
 
 export function generateStaticParams() {
   return zhRentSeries.map((series) => ({
@@ -72,7 +90,8 @@ export default async function ZhRentSeriesPage({ params }: PageProps) {
     notFound();
   }
 
-  const otherSeries = zhRentSeries.filter((item) => item.slug !== series.slug);
+  const catalogSeries = catalogSeriesBySlug[series.slug];
+  const featuredProduct = featuredProductBySlug[series.slug];
 
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">
@@ -104,43 +123,30 @@ export default async function ZhRentSeriesPage({ params }: PageProps) {
               </a>
             </div>
 
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-              <img
-                src={series.image}
-                alt={series.imageAlt}
-                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
-              />
-              <div className="border-t border-white/10 p-8">
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-white/70">
-                  重点装备
-                </p>
-                <h2 className="mt-4 text-4xl font-bold">{series.featuredTitle}</h2>
-                <p className="mt-4 font-bold text-[#F3922B]">
-                  {series.featuredPrice}
-                </p>
-                <p className="mt-5 text-white/70">{series.featuredText}</p>
-              </div>
-            </div>
+            <RentItSeriesFeaturedProduct
+              label="重点装备"
+              locale="zh-Hans"
+              preferredSlug={featuredProduct}
+              series={catalogSeries}
+            />
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
-        <div className="grid gap-6 md:grid-cols-3">
-          <ZhInfoCard title="适合" text={series.bestFor} />
-          <ZhInfoCard
-            title="重点装备"
-            text={`${series.featuredTitle} / ${series.featuredPrice}`}
-          />
-          <ZhInfoCard title="价格范围" text={series.priceRange} />
-        </div>
+        <RentItSeriesMetrics locale="zh-Hans" series={catalogSeries} />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8">
-          <ZhSectionHeading small="价格表" big={`${series.eyebrow} 装备方向`} />
-          <ZhCatalogTable items={series.items} />
-        </div>
+        <RentItLivePriceGuide
+          locale="zh-Hans"
+          series={catalogSeries}
+          title={`${series.eyebrow} 当前产品与价格`}
+        />
+        <RentItCatalogNoScriptFallback
+          locale="zh-Hans"
+          series={catalogSeries}
+        />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
@@ -158,29 +164,11 @@ export default async function ZhRentSeriesPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-10 md:px-10">
-        <ZhSectionHeading small="其他 Rent It 系列" big="也可以比较其他装备方向。" />
-        <div className="grid gap-4 md:grid-cols-3">
-          {otherSeries.map((item) => (
-            <a
-              key={item.slug}
-              href={item.href}
-              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
-            >
-              <img
-                src={item.image}
-                alt={item.imageAlt}
-                className="h-40 w-full bg-white object-contain p-2"
-              />
-              <div className="p-5">
-                <p className="text-sm font-bold text-[#F3922B]">
-                  {item.startingFrom}
-                </p>
-                <h3 className="mt-3 text-xl font-bold">{item.eyebrow}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/65">{item.hook}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <ZhSectionHeading small="全部 Rent It 系列" big="也可以比较其他装备方向。" />
+        <RentItSeriesCards
+          anchorBasePath="/zh/rent-it"
+          locale="zh-Hans"
+        />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-10 md:px-10">
@@ -194,39 +182,5 @@ export default async function ZhRentSeriesPage({ params }: PageProps) {
 
       <ZhSiteFooter />
     </main>
-  );
-}
-
-function ZhCatalogTable({ items }: { items: ZhCatalogItem[] }) {
-  return (
-    <div className="overflow-x-auto rounded-3xl border border-white/10 pb-44">
-      <div className="min-w-[820px]">
-        <div className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] bg-black/25 px-4 py-3 text-sm font-bold text-white/70">
-          <span>装备</span>
-          <span>1 天</span>
-          <span>2 天</span>
-          <span>3 天</span>
-          <span>适合</span>
-        </div>
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] gap-2 border-t border-white/10 px-4 py-4 text-sm text-white/72"
-          >
-            <div className="flex items-center gap-3">
-              <RentItProductImagePreview
-                title={item.title}
-                ariaLabel={`查看 ${item.title} 图片`}
-              />
-              <strong className="text-white">{item.title}</strong>
-            </div>
-            <span>{item.day1}</span>
-            <span>{item.day2}</span>
-            <span>{item.day3}</span>
-            <span>{item.bestFor}</span>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }

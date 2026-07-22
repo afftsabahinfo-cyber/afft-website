@@ -40,12 +40,14 @@ export function RentItLiveCatalogProvider({
   useEffect(() => {
     const controller = new AbortController();
     let mounted = true;
+    const fallbackTimer = window.setTimeout(() => controller.abort(), 8000);
 
     loadRentItCatalog({
       fetcher: fetch,
       fallbackCatalog: checkedInRentItFallbackCatalog,
       signal: controller.signal,
     }).then((result) => {
+      window.clearTimeout(fallbackTimer);
       if (!mounted) return;
       setCatalog(result.catalog);
       setLive(result.live);
@@ -54,6 +56,7 @@ export function RentItLiveCatalogProvider({
 
     return () => {
       mounted = false;
+      window.clearTimeout(fallbackTimer);
       controller.abort();
     };
   }, []);

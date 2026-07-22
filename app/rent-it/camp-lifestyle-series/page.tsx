@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
+import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
 import {
-  campLifestyleItems,
-  makeWhatsappLink,
-  seriesPageSummaries,
-} from "@/lib/rent-it-data";
-import {
-  RentItBackLink,
-  RentItCatalogTable,
-  RentItInfoCard,
-  RentItInlineCta,
-} from "@/components/rent-it-shared";
+  RentItSeriesFeaturedProduct,
+  RentItSeriesMetrics,
+} from "@/components/RentItSeriesLiveSummary";
+import { makeWhatsappLink, seriesPageSummaries } from "@/lib/rent-it-data";
+import { RentItBackLink, RentItInlineCta } from "@/components/rent-it-shared";
 
 const summary = seriesPageSummaries["camp-lifestyle-series"];
 
@@ -63,115 +60,20 @@ export default function CampLifestyleSeriesPage() {
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
-            {summary.heroImage ? (
-              <img
-                src={summary.heroImage}
-                alt={summary.heroImageAlt ?? summary.featuredTitle}
-                className="h-[320px] w-full bg-white object-contain p-3 md:h-[420px]"
-              />
-            ) : (
-              <div className="min-h-[320px] bg-[linear-gradient(145deg,#734C24,#182015_60%,#10140F)] md:min-h-[360px]" />
-            )}
-            <div className="border-t border-white/10 p-8">
-              <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">
-                Featured Lifestyle Anchor
-              </p>
-              <h2 className="mt-4 text-4xl font-bold">{summary.featuredTitle}</h2>
-              <p className="mt-4 font-bold text-[#F3922B]">{summary.featuredPrice}</p>
-              <p className="mt-5 text-white/70">{summary.featuredText}</p>
-
-              <div className="mt-8 grid gap-3">
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Projector nights for glamping stays, family downtime and slower campsite entertainment.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Snow Peak IGT frame, burner and cooking tools for a more complete tent add-on kitchen.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Power support for phones, cameras, lights and small outdoor devices.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Adventure lights for campsite glow, night movement and premium outdoor mood.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Portable speakers for campsite music, projector support and relaxed outdoor social mood.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Walkie talkies for long standby and far connection between guests.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Binoculars for nature view checking, bird seeking and campsite spotting.
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4 text-white/70">
-                  Compact warmth, coffee, titanium mugs and simple meals that make the setup feel more complete.
-                </div>
-              </div>
-            </div>
-          </div>
+          <RentItSeriesFeaturedProduct
+            label="Featured Lifestyle Anchor"
+            preferredSlug="yaber-t2-plus-projector"
+            series="Camp Lifestyle Series"
+          />
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          <RentItInfoCard title="Best For" text={summary.bestFor} />
-          <RentItInfoCard
-            title="Featured Piece"
-            text={`${summary.featuredTitle} / ${summary.featuredPrice}`}
-          />
-          <RentItInfoCard title="Price Range" text={summary.priceRange} />
-        </div>
+        <RentItSeriesMetrics series="Camp Lifestyle Series" />
 
-        <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8">
-          <h2 className="text-3xl font-bold">Camp Lifestyle Price Guide</h2>
-          <p className="mt-4 max-w-4xl text-white/70">
-            This series supports slower mornings, better cooking corners and a
-            more styled campsite, with Snow Peak titanium mugs, mobile kitchen
-            support for tent bookings, portable power for simple outdoor device
-            support, premium adventure lighting for night mood, portable
-            speakers for campsite music or projector nights, walkie talkies for
-            group coordination and binoculars for nature viewing. It works
-            especially well when paired with Premium Camp or Tent Experience
-            bookings.
-          </p>
-
-          <div className="mt-8">
-            <RentItCatalogTable items={campLifestyleItems} />
-          </div>
-        </section>
-
-        <section className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <RentItInfoCard
-            title="Mobile Kitchen"
-            text="Snow Peak IGT Mobile Kitchen Set includes the IGT frame, burner and cooking tools for guests who want a proper camp kitchen with their tent booking."
-          />
-          <RentItInfoCard
-            title="Power Support"
-            text="Anker Solix C300 DC Power Station is useful for charging phones, cameras, lights and small campsite devices."
-          />
-          <RentItInfoCard
-            title="Adventure Lighting"
-            text="Outask TD-2 and Finel N7 give stronger campsite glow for night movement, setup photos and premium outdoor mood."
-          />
-          <RentItInfoCard
-            title="Camp Audio"
-            text="JBL GO 5 Waterproof Speaker adds easy campsite music, projector support and a stronger social chill mood without carrying larger audio gear."
-          />
-          <RentItInfoCard
-            title="Group Communication"
-            text="Xiao Mi Walkie Talkies help guests stay connected with long standby and far connection support."
-          />
-          <RentItInfoCard
-            title="Nature View"
-            text="Celestron Outland X is useful for nature view checking, bird seeking and quick outdoor spotting."
-          />
-          <RentItInfoCard
-            title="Movie Setup"
-            text="Yaber T2 Plus Projector is a stronger add-on for guests who want movie nights, family downtime or glamping entertainment."
-          />
-          <RentItInfoCard
-            title="Warmth & Coffee"
-            text="Grandburn Heater, Bialetti, Snow Peak Titanium Mug set and the cooking pieces build around the projector for a more complete lifestyle setup."
-          />
-        </section>
+        <RentItLivePriceGuide
+          description="Browse every active Camp Lifestyle product and its current approved public price. Pair cooking, cooling, power, lighting and comfort gear to fit your campsite plan."
+          series="Camp Lifestyle Series"
+        />
+        <RentItCatalogNoScriptFallback series="Camp Lifestyle Series" />
 
         <div className="mt-16">
           <RentItInlineCta

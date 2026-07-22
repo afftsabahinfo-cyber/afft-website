@@ -215,6 +215,8 @@ test("unknown active series stay visible and blank series do not drop active car
   const groups = groupActiveRentItProducts(metrics.activeProducts);
 
   assert.equal(metrics.activeProductCount, 2);
+  assert.equal(metrics.activeSeriesCount, 2);
+  assert.equal(groups.length, metrics.activeSeriesCount);
   assert.equal(
     groups.reduce((count, group) => count + group.products.length, 0),
     2,

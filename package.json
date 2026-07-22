@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "tsx --test tests/alice-public-api.test.ts tests/alice-advisor-state.test.ts tests/alice-history.test.ts tests/rent-it-live-catalog.test.ts",
+    "test": "tsx --test tests/alice-public-api.test.ts tests/alice-advisor-state.test.ts tests/alice-history.test.ts tests/rent-it-live-catalog.test.ts tests/rent-it-live-ui.test.ts",
     "typegen": "wrangler types cloudflare-env.d.ts --include-runtime false",
     "build:worker": "wrangler deploy --dry-run --outdir .wrangler-dry-run",
     "deploy:alice": "wrangler deploy",

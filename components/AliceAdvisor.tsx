@@ -3,7 +3,6 @@
 import {
   ExternalLink,
   LoaderCircle,
-  MessageCircle,
   Minus,
   Send,
   ShieldCheck,
@@ -137,6 +136,7 @@ function feedbackCopy(answer: string) {
 export function AliceAdvisor() {
   const pathname = usePathname();
   const chinese = pathname.startsWith("/zh");
+  const hasHomepageWhatsapp = pathname === "/" || pathname === "/zh";
   const [config, setConfig] = useState<AliceConfig | null>(null);
   const [open, setOpen] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
@@ -537,7 +537,11 @@ export function AliceAdvisor() {
     <>
       <button
         aria-label={chinese ? "\u6253\u5f00 Alice Li AI \u987e\u95ee" : "Open Alice Li AI advisor"}
-        className="fixed bottom-28 right-5 z-[70] flex items-center gap-3 rounded-full border border-white/20 bg-[#1f3627] px-4 py-3 text-sm font-black text-white shadow-[0_16px_45px_rgba(16,30,21,0.32)] transition hover:-translate-y-1 hover:bg-[#294a34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f28c28] motion-reduce:transition-none sm:right-6"
+        className={`group fixed z-[70] flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-[#1f3627] p-2 text-sm font-black text-white shadow-[0_16px_45px_rgba(16,30,21,0.32)] transition hover:-translate-y-1 hover:bg-[#294a34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f28c28] motion-reduce:transition-none ${
+          hasHomepageWhatsapp
+            ? "bottom-28 right-6"
+            : "bottom-4 right-4 sm:bottom-6 sm:right-6"
+        }`}
         onClick={() => setOpen(true)}
         type="button"
       >
@@ -547,13 +551,9 @@ export function AliceAdvisor() {
         >
           AL
         </span>
-        <span className="text-left leading-tight">
-          <span className="block">Ask Alice</span>
-          <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-[#f8d7ad]">
-            {config.role}
-          </span>
+        <span className="pointer-events-none absolute right-16 hidden whitespace-nowrap rounded-full border border-white/15 bg-[#1f3627] px-4 py-2 text-xs font-black shadow-lg group-hover:block group-focus-visible:block">
+          Ask Alice
         </span>
-        <MessageCircle aria-hidden="true" className="h-5 w-5" />
       </button>
 
       {open ? (

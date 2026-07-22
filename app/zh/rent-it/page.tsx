@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { RentItProductImagePreview } from "@/components/rent-it-shared";
+import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
+import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
+import { RentItSeriesCards } from "@/components/RentItSeriesCards";
 import { ZhWhatsAppEnquiryBuilder } from "@/components/ZhWhatsAppEnquiryBuilder";
 import {
   ZhInfoCard,
@@ -9,12 +11,11 @@ import {
   ZhSiteTopNav,
 } from "@/components/ZhPageSections";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
-import { zhRentSeries, type ZhCatalogItem } from "@/lib/zh-site-data";
 
 export const metadata: Metadata = {
   title: "AFFT Rent It 中文目录 | 沙巴装备租借",
   description:
-    "AFFT Rent It 中文页面，包含创作者设备、露营生活装备、高级露营家具和帐篷体验系列。通过 WhatsApp 查询可用数量和适合组合。",
+    "AFFT Rent It 中文页面，包含创作者设备、露营生活装备、高级露营家具、体验组合和帐篷体验系列。通过 WhatsApp 查询可用数量和适合组合。",
   alternates: {
     canonical: "/zh/rent-it",
     languages: {
@@ -77,34 +78,7 @@ export default function ZhRentItPage() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {zhRentSeries.map((series) => (
-                <a
-                  key={series.slug}
-                  href={series.href}
-                  className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
-                >
-                  <img
-                    src={series.image}
-                    alt={series.imageAlt}
-                    className="h-44 w-full bg-white object-contain p-2"
-                  />
-                  <div className="p-6">
-                    <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#F3922B]">
-                      {series.startingFrom}
-                    </p>
-                    <h2 className="mt-4 text-2xl font-bold">{series.eyebrow}</h2>
-                    <p className="mt-4 text-white/70">{series.hook}</p>
-                    <p className="mt-4 text-sm leading-6 text-white/55">
-                      {series.bestFor}
-                    </p>
-                    <span className="mt-6 inline-block font-bold text-[#F3922B]">
-                      打开系列 -&gt;
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
+            <RentItSeriesCards locale="zh-Hans" />
           </div>
         </div>
       </section>
@@ -122,38 +96,9 @@ export default function ZhRentItPage() {
         </div>
       </section>
 
-      <section id="price-guide" className="mx-auto max-w-7xl px-6 py-16 md:px-10">
-        <ZhSectionHeading
-          small="价格方向"
-          big="按系列看装备，比较容易知道要问什么。"
-          text="价格会受天数、数量、状态和实际可用性影响。请以 WhatsApp 最后确认为准。"
-        />
-
-        <div className="space-y-8">
-          {zhRentSeries.map((series) => (
-            <article
-              key={series.slug}
-              className="rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8"
-            >
-              <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
-                  <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#F3922B]">
-                    {series.eyebrow}
-                  </p>
-                  <h2 className="mt-3 text-3xl font-bold">{series.title}</h2>
-                  <p className="mt-3 text-white/65">{series.priceRange}</p>
-                </div>
-                <a
-                  href={series.href}
-                  className="inline-flex rounded-full border border-white/15 px-5 py-3 font-bold text-white"
-                >
-                  查看系列详情
-                </a>
-              </div>
-              <ZhCatalogTable items={series.items} />
-            </article>
-          ))}
-        </div>
+      <section className="mx-auto max-w-7xl px-6 pb-16 md:px-10">
+        <RentItLivePriceGuide locale="zh-Hans" />
+        <RentItCatalogNoScriptFallback locale="zh-Hans" />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
@@ -167,6 +112,7 @@ export default function ZhRentItPage() {
             { label: "创作者设备", value: "Creator Series" },
             { label: "露营生活装备", value: "Camp Lifestyle Series" },
             { label: "高级露营家具", value: "Premium Camp Series" },
+            { label: "体验组合", value: "Experience Set Series" },
             { label: "帐篷体验", value: "Tent Experience Series" },
           ]}
         />
@@ -183,39 +129,5 @@ export default function ZhRentItPage() {
 
       <ZhSiteFooter />
     </main>
-  );
-}
-
-function ZhCatalogTable({ items }: { items: ZhCatalogItem[] }) {
-  return (
-    <div className="overflow-x-auto rounded-3xl border border-white/10 pb-44">
-      <div className="min-w-[820px]">
-        <div className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] bg-black/25 px-4 py-3 text-sm font-bold text-white/70">
-          <span>装备</span>
-          <span>1 天</span>
-          <span>2 天</span>
-          <span>3 天</span>
-          <span>适合</span>
-        </div>
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="grid grid-cols-[1.35fr_0.55fr_0.55fr_0.55fr_1.35fr] gap-2 border-t border-white/10 px-4 py-4 text-sm text-white/72"
-          >
-            <div className="flex items-center gap-3">
-              <RentItProductImagePreview
-                title={item.title}
-                ariaLabel={`查看 ${item.title} 图片`}
-              />
-              <strong className="text-white">{item.title}</strong>
-            </div>
-            <span>{item.day1}</span>
-            <span>{item.day2}</span>
-            <span>{item.day3}</span>
-            <span>{item.bestFor}</span>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
