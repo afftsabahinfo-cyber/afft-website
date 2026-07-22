@@ -500,7 +500,7 @@ export function AliceAdvisor() {
           <div
             aria-label="Alice Li, AFFT AI Outdoor Advisor"
             aria-modal="true"
-            className="pointer-events-auto absolute inset-x-0 bottom-0 flex max-h-[92dvh] flex-col overflow-hidden rounded-t-[28px] border border-[#dbc9ad] bg-[#fffaf1] shadow-[0_-18px_60px_rgba(20,29,22,0.28)] sm:bottom-28 sm:left-auto sm:right-6 sm:w-[400px] sm:max-w-[calc(100vw-3rem)] sm:rounded-[28px] sm:shadow-[0_24px_80px_rgba(20,29,22,0.3)]"
+            className="pointer-events-auto absolute inset-x-0 bottom-0 flex max-h-[92dvh] flex-col overflow-hidden rounded-t-[28px] border border-[#dbc9ad] bg-[#fffaf1] shadow-[0_-18px_60px_rgba(20,29,22,0.28)] sm:bottom-28 sm:left-auto sm:right-6 sm:max-h-[calc(100dvh-8.5rem)] sm:w-[400px] sm:max-w-[calc(100vw-3rem)] sm:rounded-[28px] sm:shadow-[0_24px_80px_rgba(20,29,22,0.3)]"
             onKeyDown={handlePanelKeyDown}
             ref={panelRef}
             role="dialog"
@@ -537,7 +537,7 @@ export function AliceAdvisor() {
               </button>
             </header>
 
-            <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-4">
               <section className="rounded-2xl border border-[#eadcc8] bg-white p-4 text-sm leading-6 text-[#3e3328]">
                 <div className="mb-2 flex items-center gap-2 font-black text-[#1f3627]">
                   <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#d66f1f]" />
