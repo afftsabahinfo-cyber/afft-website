@@ -13,12 +13,14 @@ function turn(question: string, answer: string) {
   ];
 }
 
-test("Alice history keeps two complete turns and compacts long answers", () => {
+test("Alice history keeps four complete turns and compacts long answers", () => {
   const history = buildAliceHistory([
     ...turn("old question", "old answer"),
     ...turn("family camp", "a".repeat(1_200)),
     { role: "user", content: "failed question", status: "failed" },
     ...turn("transport", "confirm transport with AFFT"),
+    ...turn("budget", "confirm the final quotation with AFFT"),
+    ...turn("preferences", "no cooking and coffee chill"),
   ]);
 
   assert.equal(history.length, ALICE_HISTORY_MAX_MESSAGES);
@@ -27,6 +29,9 @@ test("Alice history keeps two complete turns and compacts long answers", () => {
   assert.equal(history[1]?.content.endsWith("..."), true);
   assert.equal(history[2]?.content, "transport");
   assert.equal(history[3]?.role, "assistant");
+  assert.equal(history[4]?.content, "budget");
+  assert.equal(history[6]?.content, "preferences");
+  assert.equal(history.some((item) => item.content === "old question"), false);
   assert.equal(history.some((item) => item.content === "failed question"), false);
   assert.ok(history.every((item) => item.content.length <= ALICE_HISTORY_MAX_CHARACTERS));
 });

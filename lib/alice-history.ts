@@ -1,4 +1,4 @@
-export const ALICE_HISTORY_MAX_MESSAGES = 4;
+export const ALICE_HISTORY_MAX_MESSAGES = 8;
 export const ALICE_HISTORY_MAX_CHARACTERS = 600;
 
 export type AliceHistoryDisplayMessage = {
@@ -50,5 +50,5 @@ export function buildAliceHistory(
     index += 1;
   }
 
-  return completeTurns.slice(-2).flat();
+  return completeTurns.slice(-4).flat();
 }
