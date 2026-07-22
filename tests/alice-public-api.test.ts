@@ -88,6 +88,7 @@ test("config exposes public values only and respects the beta switch", async () 
     siteKey: "public-site-key",
     name: "Alice Li",
     role: "AFFT AI Outdoor Advisor",
+    feedbackEnabled: false,
   });
   assert.equal(JSON.stringify(body).includes(serviceSecret), false);
 
@@ -189,13 +190,15 @@ test("session sends Turnstile verification as urlencoded form data", async () =>
   );
 
   assert.equal(response.status, 200);
+  assert.ok(verificationRequest);
+  const checkedVerificationRequest = verificationRequest as Request;
   assert.equal(
-    verificationRequest?.headers.get("Content-Type"),
+    checkedVerificationRequest.headers.get("Content-Type"),
     "application/x-www-form-urlencoded",
   );
-  assert.equal(verificationRequest?.redirect, "manual");
+  assert.equal(checkedVerificationRequest.redirect, "manual");
   assert.deepEqual(
-    Object.fromEntries(new URLSearchParams(await verificationRequest!.text())),
+    Object.fromEntries(new URLSearchParams(await checkedVerificationRequest.text())),
     {
       secret: "turnstile-secret-used-only-for-local-unit-tests",
       response: "valid-token",
@@ -289,16 +292,128 @@ test("answer uses the internal Service Binding and strips unsafe fields", async 
   );
 
   assert.equal(response.status, 200);
-  assert.equal(capturedRequest?.url, "https://internal/__internal/alice/answer");
+  assert.ok(capturedRequest);
+  const checkedRequest = capturedRequest as Request;
+  assert.equal(checkedRequest.url, "https://internal/__internal/alice/answer");
   assert.equal(
-    capturedRequest?.headers.get("x-afft-alice-service-secret"),
+    checkedRequest.headers.get("x-afft-alice-service-secret"),
     serviceSecret,
   );
+  const upstreamBody = await checkedRequest.json() as Record<string, unknown>;
+  assert.equal(upstreamBody.messageId, fixedSessionId);
+  assert.equal(upstreamBody.turnIndex, 2);
+  assert.match(String(upstreamBody.conversationIdHash), /^[0-9a-f]{64}$/u);
   const body = await response.json();
+  assert.equal(body.messageId, fixedSessionId);
   assert.equal(body.sources.length, 3);
   assert.equal(JSON.stringify(body).includes("sourcePath"), false);
   assert.equal(JSON.stringify(body).includes("internalError"), false);
   assert.match(response.headers.get("Content-Type") ?? "", /application\/json/u);
+});
+
+test("feedback is feature-gated, session-bound, same-origin and minimal", async () => {
+  const forwarded: Request[] = [];
+  const env = createMockEnv({
+    ALICE_PUBLIC_FEEDBACK_ENABLED: "true",
+    ALICE_ADVISOR_SERVICE: {
+      async fetch(request) {
+        forwarded.push(request);
+        return Response.json({ ok: true });
+      },
+    },
+  });
+  const request = () => new Request("https://afft.club/api/alice/feedback", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Origin: "https://afft.club",
+      Cookie: awaitableCookie,
+    },
+    body: JSON.stringify({ messageId: fixedSessionId, vote: "no" }),
+  });
+  const awaitableCookie = await validCookie();
+  const accepted = await handleAliceRequest(request(), env, dependencies);
+  assert.equal(accepted.status, 200);
+  assert.equal(forwarded.length, 1);
+  assert.equal(forwarded[0].url, "https://internal/__internal/alice/feedback");
+  assert.equal(forwarded[0].headers.get("x-afft-alice-service-secret"), serviceSecret);
+  assert.deepEqual(await forwarded[0].json(), { messageId: fixedSessionId, vote: "no" });
+
+  const crossOrigin = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "https://attacker.example",
+        Cookie: awaitableCookie,
+      },
+      body: JSON.stringify({ messageId: fixedSessionId, vote: "yes" }),
+    }),
+    env,
+    dependencies,
+  );
+  assert.equal(crossOrigin.status, 403);
+  assert.equal(forwarded.length, 1);
+
+  const noSession = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Origin: "https://afft.club" },
+      body: JSON.stringify({ messageId: fixedSessionId, vote: "yes" }),
+    }),
+    env,
+    dependencies,
+  );
+  assert.equal(noSession.status, 401);
+
+  const disabled = await handleAliceRequest(request(), createMockEnv(), dependencies);
+  assert.equal(disabled.status, 404);
+});
+
+test("conversation reset rotates the signed session and handoff forwards only the message id", async () => {
+  const cookie = await validCookie();
+  const nextSessionId = "22222222-2222-4222-8222-222222222222";
+  const reset = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/conversation", {
+      method: "POST",
+      headers: { Origin: "https://afft.club", Cookie: cookie },
+    }),
+    createMockEnv(),
+    { ...dependencies, randomUUID: () => nextSessionId },
+  );
+  assert.equal(reset.status, 200);
+  const resetCookie = reset.headers.get("Set-Cookie") ?? "";
+  assert.match(resetCookie, /HttpOnly/u);
+  const token = resetCookie.match(/afft_alice_beta=([^;]+)/u)?.[1] ?? "";
+  assert.equal((await verifyAliceSession(token, sessionSecret, now))?.id, nextSessionId);
+
+  let forwarded: Request | null = null;
+  const handoff = await handleAliceRequest(
+    new Request("https://afft.club/api/alice/handoff", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "https://afft.club",
+        Cookie: cookie,
+      },
+      body: JSON.stringify({ messageId: fixedSessionId }),
+    }),
+    createMockEnv({
+      ALICE_PUBLIC_FEEDBACK_ENABLED: "true",
+      ALICE_ADVISOR_SERVICE: {
+        async fetch(request) {
+          forwarded = request;
+          return Response.json({ ok: true });
+        },
+      },
+    }),
+    dependencies,
+  );
+  assert.equal(handoff.status, 200);
+  assert.ok(forwarded);
+  const checkedForwarded = forwarded as Request;
+  assert.equal(checkedForwarded.url, "https://internal/__internal/alice/handoff");
+  assert.deepEqual(await checkedForwarded.json(), { messageId: fixedSessionId });
 });
 
 test("toilet policy answers retain the public FAQ source when upstream sources are empty", async () => {
