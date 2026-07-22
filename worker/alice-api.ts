@@ -24,7 +24,6 @@ export type AliceWorkerEnv = {
   TURNSTILE_SECRET_KEY: string;
   ALICE_TURNSTILE_SITE_KEY: string;
   ALICE_BETA_ENABLED: string;
-  ALICE_BETA_LABEL: string;
   AIP_WEBSITE_CATALOG_SECRET: string;
 };
 
@@ -362,12 +361,11 @@ async function handleRentItCatalog(request: Request, env: AliceWorkerEnv) {
   }
 }
 function handleConfig(env: AliceWorkerEnv) {
-  const label = env.ALICE_BETA_LABEL || "Beta";
   return jsonResponse({
     enabled: isEnabled(env),
     siteKey: env.ALICE_TURNSTILE_SITE_KEY,
     name: "Alice Li",
-    role: `${roleName} \u00b7 ${label}`,
+    role: roleName,
   });
 }
 

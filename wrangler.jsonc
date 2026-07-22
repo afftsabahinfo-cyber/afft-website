@@ -24,8 +24,7 @@
   ],
   "vars": {
     "ALICE_TURNSTILE_SITE_KEY": "0x4AAAAAAD2asv23rUpmvSTk",
-    "ALICE_BETA_ENABLED": "true",
-    "ALICE_BETA_LABEL": "Beta"
+    "ALICE_BETA_ENABLED": "true"
   },
   "services": [
     {

@@ -49,7 +49,6 @@ function createMockEnv(
     TURNSTILE_SECRET_KEY: "turnstile-secret-used-only-for-local-unit-tests",
     ALICE_TURNSTILE_SITE_KEY: "public-site-key",
     ALICE_BETA_ENABLED: "true",
-    ALICE_BETA_LABEL: "Beta",
     ...overrides,
   } satisfies AliceWorkerEnv;
 }
@@ -88,7 +87,7 @@ test("config exposes public values only and respects the beta switch", async () 
     enabled: true,
     siteKey: "public-site-key",
     name: "Alice Li",
-    role: "AFFT AI Outdoor Advisor \u00b7 Beta",
+    role: "AFFT AI Outdoor Advisor",
   });
   assert.equal(JSON.stringify(body).includes(serviceSecret), false);
 
