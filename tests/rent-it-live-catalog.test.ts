@@ -206,6 +206,24 @@ test("live groups and top-level count use the same active product set", () => {
   assert.match(catalogHtml, /sm:grid-cols-2 xl:grid-cols-3/);
 });
 
+test("product images remain accessible zoom triggers", () => {
+  const catalogHtml = renderToStaticMarkup(
+    React.createElement(RentItLiveCatalogView, {
+      catalog: catalog([product(0, { image: "/images/fixture-product.webp" })]),
+      live: true,
+      activeProducts: [product(0, { image: "/images/fixture-product.webp" })],
+    }),
+  );
+
+  assert.match(catalogHtml, /data-rent-it-image-trigger="true"/);
+  assert.match(
+    catalogHtml,
+    /aria-label="View larger image of Fixture Product 1"/,
+  );
+  assert.match(catalogHtml, /loading="lazy"/);
+  assert.match(catalogHtml, /decoding="async"/);
+});
+
 test("unknown active series stay visible and blank series do not drop active cards", () => {
   const products = [
     product(0, { series: "Future Series" }),
