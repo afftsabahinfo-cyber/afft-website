@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRentItLiveCatalog } from "@/components/RentItLiveCatalogProvider";
 import {
   groupActiveRentItProducts,
@@ -42,19 +41,6 @@ export function RentItLiveCatalogView({
   activeProducts: RentItLiveProduct[];
 }) {
   const groups = groupActiveRentItProducts(activeProducts, seriesOrder);
-  const [selectedProduct, setSelectedProduct] =
-    useState<RentItLiveProduct | null>(null);
-
-  useEffect(() => {
-    if (!selectedProduct) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedProduct(null);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedProduct]);
 
   return (
     <section
@@ -104,21 +90,11 @@ export function RentItLiveCatalogView({
                   data-product-id={product.productId}
                 >
                   {product.image ? (
-                    <button
-                      type="button"
-                      className="group block w-full cursor-zoom-in bg-white text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#F3922B]"
-                      aria-label={`View larger image of ${product.officialName}`}
-                      data-rent-it-image-trigger="true"
-                      onClick={() => setSelectedProduct(product)}
-                    >
-                      <img
-                        src={product.image}
-                        alt={product.altText}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-48 w-full bg-white object-contain p-3 transition duration-200 group-hover:scale-[1.02]"
-                      />
-                    </button>
+                    <img
+                      src={product.image}
+                      alt={product.altText}
+                      className="h-48 w-full bg-white object-contain p-3"
+                    />
                   ) : null}
                   <div className="p-5">
                     <h4 className="text-xl font-bold">{product.officialName}</h4>
@@ -139,50 +115,6 @@ export function RentItLiveCatalogView({
         ))}
       </div>
 
-      {selectedProduct?.image ? (
-        <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-          onClick={() => setSelectedProduct(null)}
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="rent-it-image-dialog-title"
-            className="relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/15 bg-[#182015] shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4 md:px-7">
-              <div className="min-w-0">
-                <h2
-                  id="rent-it-image-dialog-title"
-                  className="truncate text-lg font-bold text-white md:text-2xl"
-                >
-                  {selectedProduct.officialName}
-                </h2>
-                <p className="mt-1 text-sm font-bold text-[#F3922B]">
-                  {selectedProduct.publicPrice}
-                </p>
-              </div>
-              <button
-                type="button"
-                autoFocus
-                aria-label="Close product image"
-                className="shrink-0 rounded-full border border-white/20 px-3 py-1.5 text-sm font-bold text-white transition hover:border-[#F3922B] hover:text-[#F3922B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3922B]"
-                onClick={() => setSelectedProduct(null)}
-              >
-                Close
-              </button>
-            </div>
-            <div className="flex min-h-0 items-center justify-center overflow-auto bg-white p-4 md:p-8">
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.altText}
-                className="max-h-[calc(90vh-8rem)] max-w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
