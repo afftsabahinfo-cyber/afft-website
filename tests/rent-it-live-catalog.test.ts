@@ -4,6 +4,7 @@ import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { RentItCatalogStatsView } from "../components/RentItCatalogStats";
 import { RentItLiveCatalogView } from "../components/RentItLiveCatalog";
+import { RentItLivePriceGuideView } from "../components/RentItLivePriceGuide";
 import {
   campLifestyleItems,
   creatorSeriesItems,
@@ -206,12 +207,13 @@ test("live groups and top-level count use the same active product set", () => {
   assert.match(catalogHtml, /sm:grid-cols-2 xl:grid-cols-3/);
 });
 
-test("product images remain accessible zoom triggers", () => {
+test("live price guide images remain accessible zoom triggers", () => {
   const catalogHtml = renderToStaticMarkup(
-    React.createElement(RentItLiveCatalogView, {
-      catalog: catalog([product(0, { image: "/images/fixture-product.webp" })]),
+    React.createElement(RentItLivePriceGuideView, {
       live: true,
+      loading: false,
       activeProducts: [product(0, { image: "/images/fixture-product.webp" })],
+      locale: "en",
     }),
   );
 

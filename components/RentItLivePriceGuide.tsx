@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useRentItLiveCatalog } from "@/components/RentItLiveCatalogProvider";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 import {
@@ -38,15 +39,31 @@ function productEnquiryLink(
   );
 }
 
-function ProductImage({ product }: { product: RentItLiveProduct }) {
+function ProductImage({
+  product,
+  onOpen,
+}: {
+  product: RentItLiveProduct;
+  onOpen: (product: RentItLiveProduct) => void;
+}) {
   if (!product.image) return null;
 
   return (
-    <img
-      alt={product.altText || product.officialName}
-      className="h-12 w-12 shrink-0 rounded-xl bg-white object-contain p-1.5"
-      src={product.image}
-    />
+    <button
+      type="button"
+      className="group h-12 w-12 shrink-0 cursor-zoom-in rounded-xl bg-white p-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3922B]"
+      aria-label={`View larger image of ${product.officialName}`}
+      data-rent-it-image-trigger="true"
+      onClick={() => onOpen(product)}
+    >
+      <img
+        alt={product.altText || product.officialName}
+        className="h-full w-full rounded-lg object-contain transition duration-200 group-hover:scale-110"
+        decoding="async"
+        loading="lazy"
+        src={product.image}
+      />
+    </button>
   );
 }
 
@@ -76,6 +93,20 @@ export function RentItLivePriceGuideView({
   loading: boolean;
   live: boolean;
 }) {
+  const [selectedProduct, setSelectedProduct] =
+    useState<RentItLiveProduct | null>(null);
+
+  useEffect(() => {
+    if (!selectedProduct) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedProduct(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProduct]);
+
   const approvedActiveProducts = activeProducts.filter(
     (product) => product.status === "Active",
   );
@@ -221,7 +252,10 @@ export function RentItLivePriceGuideView({
                         >
                           <td className="block font-semibold text-white md:table-cell md:px-4 md:py-4">
                             <div className="flex min-w-56 items-center gap-3">
-                              <ProductImage product={product} />
+                              <ProductImage
+                                product={product}
+                                onOpen={setSelectedProduct}
+                              />
                               <span>{product.officialName}</span>
                             </div>
                           </td>
@@ -260,6 +294,52 @@ export function RentItLivePriceGuideView({
           })}
         </div>
       )}
+
+      {selectedProduct?.image ? (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="rent-it-image-dialog-title"
+            data-rent-it-image-dialog="true"
+            className="relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/15 bg-[#182015] shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4 md:px-7">
+              <div className="min-w-0">
+                <h2
+                  id="rent-it-image-dialog-title"
+                  className="truncate text-lg font-bold text-white md:text-2xl"
+                >
+                  {selectedProduct.officialName}
+                </h2>
+                <p className="mt-1 text-sm font-bold text-[#F3922B]">
+                  {selectedProduct.publicPrice}
+                </p>
+              </div>
+              <button
+                type="button"
+                autoFocus
+                aria-label="Close product image"
+                className="shrink-0 rounded-full border border-white/20 px-3 py-1.5 text-sm font-bold text-white transition hover:border-[#F3922B] hover:text-[#F3922B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3922B]"
+                onClick={() => setSelectedProduct(null)}
+              >
+                Close
+              </button>
+            </div>
+            <div className="flex min-h-0 items-center justify-center overflow-auto bg-white p-4 md:p-8">
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.altText || selectedProduct.officialName}
+                className="max-h-[calc(90vh-8rem)] max-w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
