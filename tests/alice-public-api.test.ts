@@ -75,6 +75,86 @@ async function validCookie() {
   return `afft_alice_beta=${session.value}`;
 }
 
+function createCatalogCache() {
+  let stored: Response | undefined;
+  return {
+    cache: {
+      async match() {
+        return stored?.clone();
+      },
+      async put(_request: Request, response: Response) {
+        stored = response.clone();
+      },
+    },
+    hasValue() {
+      return stored !== undefined;
+    },
+  };
+}
+
+test("Rent It catalog keeps a validated last-known-good edge copy", async () => {
+  const catalog = {
+    version: "fixture",
+    updatedAt: "2026-07-29T00:00:00.000Z",
+    products: [{ productId: "AFFT-RENT-TEST-001", status: "Active" }],
+  };
+  const memory = createCatalogCache();
+  const live = await handleAliceRequest(
+    new Request("https://afft.club/api/rent-it/catalog"),
+    createMockEnv({
+      AIP_WEBSITE_CATALOG_SECRET: "catalog-secret",
+      ALICE_ADVISOR_SERVICE: {
+        async fetch() {
+          return Response.json(catalog);
+        },
+      },
+    }),
+    { ...dependencies, catalogCache: memory.cache },
+  );
+
+  assert.equal(live.status, 200);
+  assert.equal(live.headers.get("X-AFFT-Catalog-Source"), "live");
+  assert.equal(memory.hasValue(), true);
+  assert.deepEqual(await live.json(), catalog);
+
+  const stale = await handleAliceRequest(
+    new Request("https://afft.club/api/rent-it/catalog"),
+    createMockEnv({
+      AIP_WEBSITE_CATALOG_SECRET: "catalog-secret",
+      ALICE_ADVISOR_SERVICE: {
+        async fetch() {
+          return new Response("offline", { status: 503 });
+        },
+      },
+    }),
+    { ...dependencies, catalogCache: memory.cache },
+  );
+
+  assert.equal(stale.status, 200);
+  assert.equal(stale.headers.get("X-AFFT-Catalog-Source"), "stale-cache");
+  assert.deepEqual(await stale.json(), catalog);
+});
+
+test("Rent It catalog still fails safely when upstream and edge copy are unavailable", async () => {
+  const response = await handleAliceRequest(
+    new Request("https://afft.club/api/rent-it/catalog"),
+    createMockEnv({
+      AIP_WEBSITE_CATALOG_SECRET: "catalog-secret",
+      ALICE_ADVISOR_SERVICE: {
+        async fetch() {
+          return new Response("offline", { status: 503 });
+        },
+      },
+    }),
+    dependencies,
+  );
+
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), {
+    error: "Catalog temporarily unavailable.",
+  });
+});
+
 test("config exposes public values only and respects the beta switch", async () => {
   const enabled = await handleAliceRequest(
     new Request("https://afft.club/api/alice/config"),

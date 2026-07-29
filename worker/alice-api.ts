@@ -32,12 +32,23 @@ export type AliceApiDependencies = {
   fetcher: typeof fetch;
   now: () => number;
   randomUUID: () => string;
+  catalogCache?: {
+    match(request: Request): Promise<Response | undefined>;
+    put(request: Request, response: Response): Promise<void>;
+  };
 };
 
 const defaultDependencies: AliceApiDependencies = {
   fetcher: globalThis.fetch.bind(globalThis),
   now: Date.now,
   randomUUID: crypto.randomUUID.bind(crypto),
+  catalogCache: (
+    globalThis as typeof globalThis & {
+      caches?: {
+        default?: AliceApiDependencies["catalogCache"];
+      };
+    }
+  ).caches?.default,
 };
 
 const allowedHostnames = new Set(["afft.club", "www.afft.club"]);
@@ -453,13 +464,79 @@ async function handleHandoff(
   }
 }
 
-async function handleRentItCatalog(request: Request, env: AliceWorkerEnv) {
+const rentItCatalogCacheKey = new Request(
+  "https://afft.club/__cache/rent-it/catalog",
+);
+
+function rentItCatalogResponse(
+  text: string,
+  source: "live" | "stale-cache",
+) {
+  return new Response(text, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "public, max-age=60, stale-while-revalidate=86400",
+      "X-AFFT-Catalog-Source": source,
+      "X-Content-Type-Options": "nosniff",
+      "X-Robots-Tag": "noindex",
+    },
+  });
+}
+
+function validRentItCatalogText(text: string) {
+  if (text.length > 1_000_000) return null;
+  try {
+    const payload = JSON.parse(text) as {
+      version?: unknown;
+      updatedAt?: unknown;
+      products?: unknown;
+    };
+    if (!Array.isArray(payload.products)) return null;
+    return JSON.stringify({
+      version: payload.version ?? null,
+      updatedAt: payload.updatedAt ?? null,
+      products: payload.products,
+    });
+  } catch {
+    return null;
+  }
+}
+
+async function cachedRentItCatalog(
+  cache: AliceApiDependencies["catalogCache"],
+) {
+  if (!cache) return null;
+  try {
+    const cached = await cache.match(rentItCatalogCacheKey);
+    if (!cached) return null;
+    const text = validRentItCatalogText(await cached.text());
+    return text ? rentItCatalogResponse(text, "stale-cache") : null;
+  } catch {
+    return null;
+  }
+}
+
+async function rentItCatalogFailure(
+  cache: AliceApiDependencies["catalogCache"],
+) {
+  return (
+    (await cachedRentItCatalog(cache)) ??
+    safeFailure("Catalog temporarily unavailable.", 503)
+  );
+}
+
+async function handleRentItCatalog(
+  request: Request,
+  env: AliceWorkerEnv,
+  dependencies: AliceApiDependencies,
+) {
   if (request.method !== "GET") {
     return safeFailure("Not found.", 404);
   }
 
   const secret = env.AIP_WEBSITE_CATALOG_SECRET;
-  if (!secret) return safeFailure("Catalog temporarily unavailable.", 503);
+  if (!secret) return rentItCatalogFailure(dependencies.catalogCache);
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10_000);
@@ -476,22 +553,31 @@ async function handleRentItCatalog(request: Request, env: AliceWorkerEnv) {
         setTimeout(() => reject(new Error("Catalog service timeout.")), 10_000);
       }),
     ]);
-    if (!upstream.ok) return safeFailure("Catalog temporarily unavailable.", 503);
-    const text = await upstream.text();
-    if (text.length > 1_000_000) return safeFailure("Catalog returned an invalid response.", 502);
-    const payload = JSON.parse(text) as { version?: unknown; updatedAt?: unknown; products?: unknown };
-    if (!Array.isArray(payload.products)) return safeFailure("Catalog returned an invalid response.", 502);
-    return jsonResponse(
-      { version: payload.version ?? null, updatedAt: payload.updatedAt ?? null, products: payload.products },
-      200,
-      {
-        "Cache-Control": "public, max-age=60, stale-while-revalidate=86400",
-        "X-Content-Type-Options": "nosniff",
-        "X-Robots-Tag": "noindex",
-      },
-    );
+    if (!upstream.ok) {
+      return rentItCatalogFailure(dependencies.catalogCache);
+    }
+    const text = validRentItCatalogText(await upstream.text());
+    if (!text) {
+      return rentItCatalogFailure(dependencies.catalogCache);
+    }
+    if (dependencies.catalogCache) {
+      try {
+        await dependencies.catalogCache.put(
+          rentItCatalogCacheKey,
+          new Response(text, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              "Cache-Control": "public, max-age=31536000",
+            },
+          }),
+        );
+      } catch {
+        // The live response remains usable even if edge cache persistence fails.
+      }
+    }
+    return rentItCatalogResponse(text, "live");
   } catch {
-    return safeFailure("Catalog temporarily unavailable.", 503);
+    return rentItCatalogFailure(dependencies.catalogCache);
   } finally {
     clearTimeout(timeout);
   }
@@ -514,7 +600,7 @@ export async function handleAliceRequest(
   const path = new URL(request.url).pathname;
 
   if (path === "/api/rent-it/catalog") {
-    return handleRentItCatalog(request, env);
+    return handleRentItCatalog(request, env, dependencies);
   }
   if (path === "/api/alice/config" && request.method === "GET") {
     return handleConfig(env);
