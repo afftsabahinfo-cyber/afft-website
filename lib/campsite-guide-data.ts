@@ -1886,8 +1886,8 @@ export const campsiteRegions = campsiteRegionTabs
   }));
 
 export const campsiteStats = {
-  total: campsiteSpots.length,
-  webBacked: campsiteSpots.filter((spot) => spot.sourceStatus === "web").length,
+  total: activeCampsiteSpots.length,
+  webBacked: activeCampsiteSpots.filter((spot) => spot.sourceStatus === "web").length,
   regions: campsiteRegions.length,
 };
 
