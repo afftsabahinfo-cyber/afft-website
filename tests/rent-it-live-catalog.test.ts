@@ -5,13 +5,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { RentItCatalogStatsView } from "../components/RentItCatalogStats";
 import { RentItLiveCatalogView } from "../components/RentItLiveCatalog";
 import { RentItLivePriceGuideView } from "../components/RentItLivePriceGuide";
-import {
-  campLifestyleItems,
-  creatorSeriesItems,
-  experienceSetItems,
-  premiumCampItems,
-  tentShowcaseItems,
-} from "../lib/rent-it-data";
 import { checkedInRentItFallbackCatalog } from "../lib/rent-it-fallback-catalog";
 import {
   buildRentItStatCards,
@@ -97,11 +90,7 @@ test("catalog API failure selects checked-in fallback and derives its counts", a
   assert.equal(result.live, false);
   assert.equal(
     result.catalog.products.length,
-    creatorSeriesItems.length +
-      campLifestyleItems.length +
-      premiumCampItems.length +
-      experienceSetItems.length +
-      tentShowcaseItems.length,
+    checkedInRentItFallbackCatalog.products.length,
   );
   assert.equal(
     metrics.activeProductCount,
@@ -130,6 +119,14 @@ test("catalog API failure selects checked-in fallback and derives its counts", a
   assert.ok(
     result.catalog.products.every(
       (item) => !/\/\s*day\s*\/\s*day/i.test(item.publicPrice),
+    ),
+  );
+  assert.ok(
+    result.catalog.products.every(
+      (item) =>
+        !/(?:procurement|actual paid|internal note|supplier listing|order number|transaction)/iu.test(
+          JSON.stringify(item),
+        ),
     ),
   );
 });
