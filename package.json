@@ -10,7 +10,9 @@
     "test": "tsx --test tests/alice-public-api.test.ts tests/alice-advisor-state.test.ts tests/alice-history.test.ts tests/rent-it-live-catalog.test.ts tests/rent-it-live-ui.test.ts",
     "typegen": "wrangler types cloudflare-env.d.ts --include-runtime false",
     "build:worker": "wrangler deploy --dry-run --outdir .wrangler-dry-run",
+    "predeploy:alice": "node scripts/guard-production-deploy.mjs",
     "deploy:alice": "wrangler deploy",
+    "predeploy:pages": "node scripts/guard-production-deploy.mjs",
     "deploy:pages": "next build && wrangler pages deploy out --project-name afft-website --branch main"
   },
   "dependencies": {
