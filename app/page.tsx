@@ -133,7 +133,7 @@ const explorerCampRm599Story = {
 
 const tiggo8ProCharterStory = {
   image:
-    "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
+    "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-privacy-watermarked.webp",
   imageAlt: "A private group with AFFT Tiggo 8 Pro charter support in Sabah",
   eyebrow: "Private Car Story",
   title:

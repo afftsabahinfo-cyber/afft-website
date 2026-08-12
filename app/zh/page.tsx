@@ -166,7 +166,7 @@ const explorerCampRm599Story = {
 
 const tiggo8ProCharterStory = {
   image:
-    "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
+    "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-privacy-watermarked.webp",
   imageAlt: "AFFT Tiggo 8 Pro 包车服务真实案例",
   eyebrow: "私人包车案例",
   title: "有一组客人用 AFFT Tiggo 8 Pro Charter，让沙巴高地路线走得更顺。",

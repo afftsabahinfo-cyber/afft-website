@@ -478,7 +478,7 @@ export const zhStories = [
     whatsappText: "你好，我看到 Explorer Camp 真实案例，想了解 RM599 套餐。",
   },
   {
-    image: "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
+    image: "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-privacy-watermarked.webp",
     title: "Tiggo 8 Pro 私人包车高地路线",
     eyebrow: "包车案例",
     text: "小团队使用 AFFT Tiggo 8 Pro Charter，让机场、市区和高地移动更舒服、更稳定。",

@@ -44,7 +44,7 @@ Examples
 - `tiggo-8-pro-charter-01.jpg`
 - `tiggo-8-pro-charter-02.jpg`
 - `tiggo-8-pro-charter-group-01.jpg`
-- `tiggo-8-pro-charter-group-01-blur.webp`
+- `tiggo-8-pro-charter-group-01-privacy-watermarked.webp`
 
 Selection guide
 - `cover`
