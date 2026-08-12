@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     "Rent creator gear, camp lifestyle gear, premium camp furniture, ready-paired experience sets and tent systems for Sabah trips. WhatsApp AFFT for availability and setup advice.",
   alternates: {
     canonical: "/rent-it",
+    languages: {
+      en: "/rent-it",
+      "zh-Hans": "/zh/rent-it",
+      "x-default": "/rent-it",
+    },
   },
   openGraph: {
     title: "AFFT Rent It Series | Sabah Gear Rental",

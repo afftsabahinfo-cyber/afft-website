@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     "Rent Helinox, Snow Peak and premium camp furniture for cleaner Sabah camping comfort. WhatsApp AFFT to choose the right setup.",
   alternates: {
     canonical: "/rent-it/premium-camp-series",
+    languages: {
+      en: "/rent-it/premium-camp-series",
+      "zh-Hans": "/zh/rent-it/premium-camp-series",
+      "x-default": "/rent-it/premium-camp-series",
+    },
   },
   openGraph: {
     title: "Premium Camp Gear Rental Sabah | AFFT Rent It",

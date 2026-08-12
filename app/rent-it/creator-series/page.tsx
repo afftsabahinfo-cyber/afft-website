@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Rent DJI Pocket 4, DJI Action 6, Mic 3 and creator kits for Sabah travel content. WhatsApp AFFT for availability and setup advice.",
   alternates: {
     canonical: "/rent-it/creator-series",
+    languages: {
+      en: "/rent-it/creator-series",
+      "zh-Hans": "/zh/rent-it/creator-series",
+      "x-default": "/rent-it/creator-series",
+    },
   },
   openGraph: {
     title: "Creator Gear Rental Sabah | AFFT Rent It",

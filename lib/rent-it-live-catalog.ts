@@ -5,11 +5,19 @@ export type RentItLiveProduct = {
   series: string;
   status: string;
   publicPrice: string;
+  publicPriceAmount?: number | null;
+  publicPriceUnit?: string | null;
   publicDescription: string;
   bestFor: string[];
+  confirmedInclusions?: string[];
+  notIncluded?: string[];
   availability: string;
   deliveryCollection: string;
   setup: string;
+  safetyRules?: string;
+  searchAliases?: string[];
+  source?: string;
+  sourceLastChecked?: string;
   image: string;
   altText: string;
 };
@@ -64,12 +72,34 @@ export function isRentItLiveCatalog(value: unknown): value is RentItLiveCatalog 
         product.series.trim().length > 0 &&
         typeof product.status === "string" &&
         typeof product.publicPrice === "string" &&
+        (product.publicPriceAmount === undefined ||
+          product.publicPriceAmount === null ||
+          typeof product.publicPriceAmount === "number") &&
+        (product.publicPriceUnit === undefined ||
+          product.publicPriceUnit === null ||
+          typeof product.publicPriceUnit === "string") &&
         typeof product.publicDescription === "string" &&
         Array.isArray(product.bestFor) &&
         product.bestFor.every((item) => typeof item === "string") &&
+        (product.confirmedInclusions === undefined ||
+          (Array.isArray(product.confirmedInclusions) &&
+            product.confirmedInclusions.every(
+              (item) => typeof item === "string",
+            ))) &&
+        (product.notIncluded === undefined ||
+          (Array.isArray(product.notIncluded) &&
+            product.notIncluded.every((item) => typeof item === "string"))) &&
         typeof product.availability === "string" &&
         typeof product.deliveryCollection === "string" &&
         typeof product.setup === "string" &&
+        (product.safetyRules === undefined ||
+          typeof product.safetyRules === "string") &&
+        (product.searchAliases === undefined ||
+          (Array.isArray(product.searchAliases) &&
+            product.searchAliases.every((item) => typeof item === "string"))) &&
+        (product.source === undefined || typeof product.source === "string") &&
+        (product.sourceLastChecked === undefined ||
+          typeof product.sourceLastChecked === "string") &&
         typeof product.image === "string" &&
         typeof product.altText === "string",
     )

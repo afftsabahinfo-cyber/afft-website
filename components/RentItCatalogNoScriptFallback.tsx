@@ -57,7 +57,16 @@ export function RentItCatalogNoScriptFallback({
                     className="flex items-start justify-between gap-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm"
                     key={product.productId}
                   >
-                    <span>{product.officialName}</span>
+                    <a
+                      className="underline decoration-white/20 underline-offset-4 hover:text-[#F3922B]"
+                      href={
+                        locale === "zh-Hans"
+                          ? `/zh/rent-it/${product.slug}`
+                          : `/rent-it/${product.slug}`
+                      }
+                    >
+                      {product.officialName}
+                    </a>
                     <strong className="shrink-0 text-[#F3922B]">
                       {product.publicPrice}
                     </strong>

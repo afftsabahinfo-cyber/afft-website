@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     languages: {
       en: "/rent-it",
       "zh-Hans": "/zh/rent-it",
+      "x-default": "/rent-it",
     },
   },
 };
