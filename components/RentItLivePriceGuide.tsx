@@ -256,7 +256,16 @@ export function RentItLivePriceGuideView({
                                 product={product}
                                 onOpen={setSelectedProduct}
                               />
-                              <span>{product.officialName}</span>
+                              <Link
+                                className="underline decoration-white/20 underline-offset-4 transition hover:text-[#F3922B] hover:decoration-[#F3922B]/60"
+                                href={
+                                  locale === "zh-Hans"
+                                    ? `/zh/rent-it/${product.slug}`
+                                    : `/rent-it/${product.slug}`
+                                }
+                              >
+                                {product.officialName}
+                              </Link>
                             </div>
                           </td>
                           <td className="mt-2 block whitespace-nowrap font-semibold text-[#F3922B] md:mt-0 md:table-cell md:px-4 md:py-4">
@@ -283,6 +292,16 @@ export function RentItLivePriceGuideView({
                               </span>
                               <span className="hidden md:inline">WhatsApp</span>
                             </a>
+                            <Link
+                              className="ml-2 inline-flex whitespace-nowrap px-2 py-2 text-xs font-bold text-white/55 hover:text-white"
+                              href={
+                                locale === "zh-Hans"
+                                  ? `/zh/rent-it/${product.slug}`
+                                  : `/rent-it/${product.slug}`
+                              }
+                            >
+                              {locale === "zh-Hans" ? "详情" : "Details"}
+                            </Link>
                           </td>
                         </tr>
                       ))}

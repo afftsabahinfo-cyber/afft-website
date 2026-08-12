@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { RentItProductPage } from "@/components/RentItProductPage";
 import { RentItCatalogNoScriptFallback } from "@/components/RentItCatalogNoScriptFallback";
 import { RentItLivePriceGuide } from "@/components/RentItLivePriceGuide";
 import { RentItSeriesCards } from "@/components/RentItSeriesCards";
@@ -14,6 +15,11 @@ import {
   ZhSiteTopNav,
 } from "@/components/ZhPageSections";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
+import {
+  activeRentItSeoProducts,
+  buildRentItProductMetadata,
+  getActiveRentItProduct,
+} from "@/lib/rent-it-product-seo";
 import {
   getZhRentSeries,
   zhRentSeries,
@@ -42,15 +48,19 @@ const featuredProductBySlug: Record<string, string> = {
 };
 
 export function generateStaticParams() {
-  return zhRentSeries.map((series) => ({
-    slug: series.slug,
-  }));
+  return [
+    ...zhRentSeries.map((series) => ({ slug: series.slug })),
+    ...activeRentItSeoProducts.map((product) => ({ slug: product.slug })),
+  ];
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const product = getActiveRentItProduct(slug);
+  if (product) return buildRentItProductMetadata(product, "zh-Hans");
+
   const series = getZhRentSeries(slug);
 
   if (!series) {
@@ -67,6 +77,7 @@ export async function generateMetadata({
       languages: {
         en: `/rent-it/${series.slug}`,
         "zh-Hans": series.href,
+        "x-default": `/rent-it/${series.slug}`,
       },
     },
     openGraph: {
@@ -84,6 +95,11 @@ export async function generateMetadata({
 
 export default async function ZhRentSeriesPage({ params }: PageProps) {
   const { slug } = await params;
+  const product = getActiveRentItProduct(slug);
+  if (product) {
+    return <RentItProductPage locale="zh-Hans" product={product} />;
+  }
+
   const series = getZhRentSeries(slug);
 
   if (!series) {

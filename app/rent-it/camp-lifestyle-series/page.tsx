@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Rent camp lifestyle gear for Sabah camping, coffee, lights, projector nights and outdoor comfort. WhatsApp AFFT for the right setup.",
   alternates: {
     canonical: "/rent-it/camp-lifestyle-series",
+    languages: {
+      en: "/rent-it/camp-lifestyle-series",
+      "zh-Hans": "/zh/rent-it/camp-lifestyle-series",
+      "x-default": "/rent-it/camp-lifestyle-series",
+    },
   },
   openGraph: {
     title: "Camp Lifestyle Gear Rental Sabah | AFFT Rent It",

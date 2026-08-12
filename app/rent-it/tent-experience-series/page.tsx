@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     "Rent Black Dog, Mobi Garden and tent experience systems for Sabah camping, glamping and group outdoor stays. WhatsApp AFFT for fit and availability.",
   alternates: {
     canonical: "/rent-it/tent-experience-series",
+    languages: {
+      en: "/rent-it/tent-experience-series",
+      "zh-Hans": "/zh/rent-it/tent-experience-series",
+      "x-default": "/rent-it/tent-experience-series",
+    },
   },
   openGraph: {
     title: "Tent Rental Sabah | AFFT Rent It",
