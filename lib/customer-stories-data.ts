@@ -84,7 +84,7 @@ export const customerStories: CustomerStory[] = [
   {
     slug: "tiggo-8-pro-charter",
     image:
-      "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-blur.webp",
+      "/images/customer-stories/tiggo-8-pro-charter/tiggo-8-pro-charter-group-01-privacy-watermarked.webp",
     en: {
       imageAlt: "AFFT Tiggo 8 Pro private Sabah mountain charter story",
       eyebrow: "Private Car Story",
