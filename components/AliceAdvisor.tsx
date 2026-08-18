@@ -137,7 +137,7 @@ export function AliceAdvisor() {
   const pathname = usePathname();
   const chinese = pathname.startsWith("/zh");
   const hasHomepageWhatsapp = pathname === "/" || pathname === "/zh";
-  const [config, setConfig] = useState<AliceConfig | null>(null);
+  const [config, setConfig] = useState<AliceConfig | null | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
   const [sessionLoading, setSessionLoading] = useState(false);
@@ -171,7 +171,7 @@ export function AliceAdvisor() {
         return (await response.json()) as AliceConfig;
       })
       .then((value) => {
-        if (active && value.enabled && value.siteKey) setConfig(value);
+        if (active) setConfig(value.enabled && value.siteKey ? value : null);
       })
       .catch(() => {
         if (active) setConfig(null);
@@ -288,7 +288,7 @@ export function AliceAdvisor() {
     };
   }, [chinese, config?.siteKey, open, sessionReady]);
 
-  if (!config) return null;
+  if (config === null) return null;
 
   function closePanel() {
     requestGuardRef.current.invalidate();
@@ -542,6 +542,7 @@ export function AliceAdvisor() {
             ? "bottom-28 right-6"
             : "bottom-4 right-4 sm:bottom-6 sm:right-6"
         }`}
+        disabled={!config}
         onClick={() => setOpen(true)}
         type="button"
       >
@@ -552,11 +553,11 @@ export function AliceAdvisor() {
           AL
         </span>
         <span className="pointer-events-none absolute right-16 hidden whitespace-nowrap rounded-full border border-white/15 bg-[#1f3627] px-4 py-2 text-xs font-black shadow-lg group-hover:block group-focus-visible:block">
-          Ask Alice
+          {config ? (chinese ? "\u8be2\u95ee Alice" : "Ask Alice") : (chinese ? "Alice \u51c6\u5907\u4e2d" : "Alice is getting ready")}
         </span>
       </button>
 
-      {open ? (
+      {open && config ? (
         <div className="fixed inset-0 z-[80] bg-black/45 sm:pointer-events-none sm:bg-transparent">
           <button
             aria-label={chinese ? "\u5173\u95ed Alice Li" : "Close Alice Li"}
