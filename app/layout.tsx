@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   keywords: [
     'AFFT',
     'Sabah camping',
+    'Jimny camping Sabah',
+    'Jimny Camp Series',
     'Kota Kinabalu camping',
     'Kundasang private tour',
     'Sabah car rental',
@@ -133,6 +135,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       ],
       knowsAbout: [
         'Sabah camping packages',
+        'Jimny camping packages',
+        'Jimny Sierra camping',
         'Camping equipment rental',
         'Creator gear rental',
         'Private Sabah tours',

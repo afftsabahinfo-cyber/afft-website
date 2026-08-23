@@ -7,7 +7,7 @@ import {
 } from "@/lib/rent-it-product-seo";
 
 const baseUrl = "https://afft.club";
-const siteContentLastModified = "2026-08-12";
+const siteContentLastModified = "2026-08-23";
 
 export const dynamic = "force-static";
 
@@ -20,6 +20,9 @@ const bilingualStaticRoutes: Array<[english: string, chinese: string]> = [
   ["/rent-it/camp-lifestyle-series", "/zh/rent-it/camp-lifestyle-series"],
   ["/rent-it/premium-camp-series", "/zh/rent-it/premium-camp-series"],
   ["/rent-it/tent-experience-series", "/zh/rent-it/tent-experience-series"],
+  ["/packages/jimny-sleep-camp", "/zh/packages/jimny-sleep-camp"],
+  ["/packages/jimny-explorer-camp", "/zh/packages/jimny-explorer-camp"],
+  ["/packages/jimny-adventure-camp", "/zh/packages/jimny-adventure-camp"],
   ["/packages/solo-explorer", "/zh/packages/solo-explorer"],
   ["/packages/explorer-camp", "/zh/packages/explorer-camp"],
   ["/packages/couple-camp-milky-way", "/zh/packages/couple-camp-milky-way"],

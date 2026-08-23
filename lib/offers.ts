@@ -22,6 +22,132 @@ export type Offer = {
 
 export const offers: Offer[] = [
   {
+    offerId: "CAMP-JIMNY-SLEEP-399",
+    slug: "jimny-sleep-camp",
+    category: "camping",
+    priceFrom: 399,
+    priceType: "fixed",
+    capacity: "2 guests",
+    duration: "2D1N",
+    status: "active",
+    lastReviewedAt: "2026-08-23",
+    locales: {
+      en: {
+        name: "JIMNY Sleep Camp",
+        summary:
+          "Simple Light Camp for two guests with Jimny Sierra, campsite fee and core car-sleep camp setup.",
+        inclusions: [
+          "Jimny Sierra",
+          "Campsite fee",
+          "Mobi Garden car sleeping mat",
+          "Black Dog chairs, Nature Hike table, basic lanterns and JBL GO 5",
+        ],
+        exclusions: [
+          "Cooler box",
+          "Cookware set",
+          "Coffee brewing set",
+          "Portable fan",
+          "Premium lighting",
+          "Food and drinks",
+        ],
+        addOns: ["Cooler box", "Cookware", "Coffee gear", "Portable fan"],
+        whatsappTemplate:
+          "Hi AFFT, I want to ask about JIMNY Sleep Camp (CAMP-JIMNY-SLEEP-399).",
+      },
+      zh: {
+        name: "Jimny Sleep Camp",
+        summary: "两人轻量 Jimny 露营入门，包含 Jimny Sierra、营地费用和基础车睡设置。",
+        inclusions: ["Jimny Sierra", "营地费用", "Mobi Garden 车睡垫", "基础桌椅、灯光和 JBL GO 5"],
+        exclusions: ["Cooler box", "料理装备", "咖啡装备", "风扇", "高级灯光", "食物和饮料"],
+        addOns: ["Cooler box", "料理装备", "咖啡装备", "风扇"],
+        whatsappTemplate:
+          "你好 AFFT，我想咨询 Jimny Sleep Camp（CAMP-JIMNY-SLEEP-399）。",
+      },
+    },
+  },
+  {
+    offerId: "CAMP-JIMNY-EXPLORER-599",
+    slug: "jimny-explorer-camp",
+    category: "camping",
+    priceFrom: 599,
+    priceType: "fixed",
+    capacity: "2 guests",
+    duration: "2D1N",
+    status: "active",
+    lastReviewedAt: "2026-08-23",
+    locales: {
+      en: {
+        name: "JIMNY Explorer Camp",
+        summary:
+          "Most Popular Jimny Camp Series option for two with tent, campsite, sleep setup, chairs, table, fan, lights and simple lifestyle items.",
+        inclusions: [
+          "Jimny Sierra",
+          "Campsite fee",
+          "2 pax tent rooftop or Base Camp tent",
+          "Sleeping mats or double bed",
+          "Black Dog chairs, table, lanterns, fan, Snowpeak mugs and JBL GO 5",
+        ],
+        exclusions: [
+          "Cooler box",
+          "Coffee brewing set",
+          "Food and drinks",
+          "Premium camp furniture",
+          "Decorative lighting",
+        ],
+        addOns: ["Cooler box", "Coffee brewing set", "Food arrangement", "Premium lighting"],
+        whatsappTemplate:
+          "Hi AFFT, I want to ask about JIMNY Explorer Camp (CAMP-JIMNY-EXPLORER-599).",
+      },
+      zh: {
+        name: "Jimny Explorer Camp",
+        summary: "Jimny Camp Series 的 Most Popular，两人、2 天 1 夜，包含帐篷、营地、睡眠、桌椅、灯光和风扇。",
+        inclusions: ["Jimny Sierra", "营地费用", "2 人帐篷", "睡眠配置", "桌椅、灯光、风扇、Snowpeak 杯和 JBL GO 5"],
+        exclusions: ["Cooler box", "咖啡装备", "食物和饮料", "高级营地家具", "装饰灯光"],
+        addOns: ["Cooler box", "咖啡装备", "餐食安排", "高级灯光"],
+        whatsappTemplate:
+          "你好 AFFT，我想咨询 Jimny Explorer Camp（CAMP-JIMNY-EXPLORER-599）。",
+      },
+    },
+  },
+  {
+    offerId: "CAMP-JIMNY-ADVENTURE-799",
+    slug: "jimny-adventure-camp",
+    category: "camping",
+    priceFrom: 799,
+    priceType: "fixed",
+    capacity: "2 guests",
+    duration: "2D1N",
+    status: "active",
+    lastReviewedAt: "2026-08-23",
+    locales: {
+      en: {
+        name: "JIMNY Adventure Camp",
+        summary:
+          "Full Jimny camping experience for two with premium tent, Helinox chairs, 270 awning, cooking, coffee, cooler box and premium lighting.",
+        inclusions: [
+          "Jimny Sierra",
+          "Campsite fee",
+          "Premium 2 pax tent",
+          "Premium sleep setup and Helinox chairs",
+          "270 awning, Kovea stove, Iwatani cookware, Bialetti coffee set and cooler box",
+        ],
+        exclusions: ["Food and drinks unless separately confirmed"],
+        addOns: ["Meal planning", "Creator gear", "Private route support"],
+        whatsappTemplate:
+          "Hi AFFT, I want to ask about JIMNY Adventure Camp (CAMP-JIMNY-ADVENTURE-799).",
+      },
+      zh: {
+        name: "Jimny Adventure Camp",
+        summary: "Jimny Camp Series 的完整体验，两人、2 天 1 夜，包含高级帐篷、Helinox、270 awning、料理、咖啡和 cooler box。",
+        inclusions: ["Jimny Sierra", "营地费用", "高级 2 人帐篷", "高级睡眠配置和 Helinox 椅", "270 awning、炉具、料理装备、咖啡装备和 cooler box"],
+        exclusions: ["除非另外确认，否则不含食物和饮料"],
+        addOns: ["餐食规划", "创作者设备", "私人路线支持"],
+        whatsappTemplate:
+          "你好 AFFT，我想咨询 Jimny Adventure Camp（CAMP-JIMNY-ADVENTURE-799）。",
+      },
+    },
+  },
+  {
     offerId: "CAMP-SOLO-399",
     slug: "solo-explorer",
     category: "camping",
@@ -142,4 +268,3 @@ export const offers: Offer[] = [
 export function getOffer(offerId?: string) {
   return offers.find((offer) => offer.offerId === offerId);
 }
-

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
+import { jimnyCampPackages } from "@/lib/jimny-camp-packages";
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
@@ -14,7 +15,7 @@ import { SiteTopNav } from "@/components/V3PageSections";
 export const metadata: Metadata = {
   title: "AFFT Club | Sabah Outdoor Experiences",
   description:
-    "Private Sabah outdoor experiences, camping packages, Rent It gear rentals and travel support around Mount Kinabalu.",
+    "Private Sabah outdoor experiences, Jimny camping packages, Rent It gear rentals and travel support around Mount Kinabalu.",
   alternates: {
     canonical: "/",
     languages: {
@@ -62,6 +63,17 @@ const socialLinks = [
 ];
 
 const campingPackages = [
+  ...jimnyCampPackages.map((pkg) => ({
+    href: pkg.href,
+    image: pkg.image,
+    imageAlt: pkg.imageAlt,
+    watermark: "/images/explorer-camp-watermark.svg",
+    price: `${pkg.priceLabel} / Jimny Camp Series`,
+    title: pkg.shortTitle,
+    hook: pkg.cardText,
+    bestFor: `Best for: ${pkg.bestFor}`,
+    cta: "View Package",
+  })),
   {
     href: "/packages/solo-explorer",
     image: "/images/solo-explorer-poster.webp",
@@ -282,7 +294,7 @@ export default function Home() {
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
         <Title
           small="Camping Packages"
-          big="Camping packages built for Sabah weekends, first-time campers and family trips."
+          big="Camping packages built for Jimny weekends, first-time campers and family trips."
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">

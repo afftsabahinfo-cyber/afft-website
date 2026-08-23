@@ -14,7 +14,7 @@ import { zhFaqGroups, zhPackages } from "@/lib/zh-site-data";
 export const metadata: Metadata = {
   title: "沙巴露营套餐 | AFFT Club",
   description:
-    "AFFT 中文露营套餐页面，包含 Solo Explorer、Explorer Camp、星空露营和家庭露营。通过 WhatsApp 询问日期、人数和适合套餐。",
+    "AFFT 中文露营套餐页面，包含 Jimny Camp Series、Solo Explorer、Explorer Camp、星空露营和家庭露营。通过 WhatsApp 询问日期、人数和适合套餐。",
   alternates: {
     canonical: "/zh/camping",
     languages: {
@@ -209,7 +209,7 @@ export default function ZhCampingPage() {
           title="把露营询问整理好再发给 AFFT"
           text="日期、人数、接送点和想要的露营风格越清楚，AFFT 越容易给你实际建议。"
           defaultService="露营套餐"
-          defaultInterest="Explorer Camp、家庭露营或星空露营"
+          defaultInterest="Jimny Camp Series、Explorer Camp、家庭露营或星空露营"
         />
       </section>
 

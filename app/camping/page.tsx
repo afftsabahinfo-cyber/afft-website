@@ -7,12 +7,13 @@ import {
   SiteFooter,
   SiteTopNav,
 } from "@/components/V3PageSections";
+import { jimnyCampPackages } from "@/lib/jimny-camp-packages";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 
 export const metadata: Metadata = {
   title: "Sabah Camping Packages | AFFT Club",
   description:
-    "AFFT camping packages in Sabah for couples, solo travellers, families and stargazing trips. WhatsApp AFFT to plan your dates, group size and setup.",
+    "AFFT camping packages in Sabah including Jimny Camp Series, couples, solo travellers, families and stargazing trips. WhatsApp AFFT to plan your dates, group size and setup.",
   alternates: {
     canonical: "/camping",
   },
@@ -30,6 +31,14 @@ export const metadata: Metadata = {
 };
 
 const packages = [
+  ...jimnyCampPackages.map((pkg) => ({
+    href: pkg.href,
+    image: pkg.image,
+    price: pkg.priceLabel,
+    title: pkg.shortTitle,
+    text: pkg.cardText,
+    bestFor: pkg.bestFor,
+  })),
   {
     href: "/packages/solo-explorer",
     image: "/images/solo-explorer-poster.webp",
@@ -262,7 +271,7 @@ export default function CampingPage() {
           title="Ask AFFT about camping with the key details ready"
           text="Send date, guests and the kind of camp you want. AFFT can reply with the package fit, add-ons and next step."
           defaultService="Camping package"
-          defaultInterest="Explorer Camp, family camp or Milky Way camping"
+          defaultInterest="Jimny Camp Series, Explorer Camp, family camp or Milky Way camping"
         />
       </section>
 

@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
 import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
-import { zhRentSeries, type ZhRentSeries } from "@/lib/zh-site-data";
+import {
+  zhPackages,
+  zhRentSeries,
+  type ZhRentSeries,
+} from "@/lib/zh-site-data";
 
 export const metadata: Metadata = {
   title: "AFFT Club | 沙巴户外体验与露营套餐",
   description:
-    "AFFT 提供沙巴露营套餐、私人行程、Rent It 装备租借和包车支持，适合中文旅客直接 WhatsApp 询问。",
+    "AFFT 提供沙巴 Jimny 露营套餐、私人行程、Rent It 装备租借和包车支持，适合中文旅客直接 WhatsApp 询问。",
   alternates: {
     canonical: "/zh",
     languages: {
@@ -53,52 +57,24 @@ const socialLinks = [
   },
 ];
 
-const campingPackages = [
-  {
-    href: "/zh/packages/solo-explorer",
-    image: "/images/solo-explorer-poster.webp",
-    imageAlt: "AFFT Solo Explorer package poster",
-    watermark: "/images/solo-explorer-watermark.svg",
-    price: "RM399 起 / 单人轻露营",
-    title: "Solo Explorer",
-    hook: "适合一个人出发，想轻松体验沙巴户外生活的旅客。",
-    bestFor: "适合：1 人 / 轻装 / 周末短出走",
-    cta: "查看套餐",
-  },
-  {
-    href: "/zh/packages/explorer-camp",
-    image: "/images/afft-explorer-camp-rm599-sabah.webp",
-    imageAlt: "AFFT Explorer Camp package poster",
-    watermark: "/images/explorer-camp-watermark.svg",
-    price: "RM599 起 / AFFT 招牌露营",
-    title: "Explorer Camp",
-    hook: "适合情侣或小团队，想舒服露营但不想自己准备整套装备。",
-    bestFor: "适合：2-4 人 / 第一次露营 / 想住得更舒服",
-    cta: "查看套餐",
-  },
-  {
-    href: "/zh/packages/couple-camp-milky-way",
-    image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
-    imageAlt: "AFFT Couple Camp Milky Way package poster",
-    watermark: "/images/astro-hunter-watermark.svg",
-    price: "RM799 起 / 星空露营体验",
-    title: "Couple Camp Milky Way",
-    hook: "主打夜空、凉爽天气和拍照氛围的双人露营夜晚。",
-    bestFor: "适合：观星 / 拍照 / 特别约会",
-    cta: "查看套餐",
-  },
-  {
-    href: "/zh/packages/family-camp",
-    image: "/images/afft-family-camp-series-sabah.webp",
-    imageAlt: "AFFT Family Camp Series package poster",
-    watermark: "/images/family-camp-watermark.svg",
-    price: "按需求报价 / 家庭户外套餐",
-    title: "Family Camp Series",
-    hook: "适合亲子和家庭旅客，安排更轻松，空间也更宽松。",
-    bestFor: "适合：家庭 / 小孩 / 轻松户外周末",
-    cta: "查看套餐",
-  },
-] as const;
+const packageWatermarks: Record<string, string> = {
+  "solo-explorer": "/images/solo-explorer-watermark.svg",
+  "explorer-camp": "/images/explorer-camp-watermark.svg",
+  "couple-camp-milky-way": "/images/astro-hunter-watermark.svg",
+  "family-camp": "/images/family-camp-watermark.svg",
+};
+
+const campingPackages = zhPackages.map((pkg) => ({
+  href: pkg.href,
+  image: pkg.image,
+  imageAlt: pkg.imageAlt,
+  watermark: packageWatermarks[pkg.slug] ?? "/images/explorer-camp-watermark.svg",
+  price: pkg.price,
+  title: pkg.title,
+  hook: pkg.shortText,
+  bestFor: pkg.bestFor,
+  cta: "查看套餐",
+}));
 
 const sabahTripWhatsapp = makeWhatsappLink(
   "你好，我想规划沙巴行程，想了解露营套餐、私人行程、包车或 Rent It 装备租借。"
@@ -345,7 +321,7 @@ export default function ChineseHomePage() {
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
         <Title
           small="Camping Packages"
-          big="适合沙巴周末、第一次露营和家庭户外出行的现成套餐。"
+          big="适合 Jimny 周末、第一次露营和家庭户外出行的现成套餐。"
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
