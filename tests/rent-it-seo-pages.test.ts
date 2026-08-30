@@ -11,17 +11,17 @@ import {
   getRentItProductPath,
 } from "../lib/rent-it-product-seo";
 
-test("the SEO page system generates one English and one Chinese page for all 63 active products", () => {
+test("the SEO page system generates one English and one Chinese page for all 64 active products", () => {
   const identity = getRentItCatalogIdentity();
   const englishParams = generateEnglishProductParams();
   const chineseParams = generateChineseRentItParams();
   const chineseProductSlugs = new Set(chineseParams.map((item) => item.slug));
 
-  assert.equal(identity.version, "1.88");
-  assert.equal(identity.activeCount, 63);
-  assert.equal(activeRentItSeoProducts.length, 63);
-  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, 63);
-  assert.equal(englishParams.length, 63);
+  assert.equal(identity.version, "1.89");
+  assert.equal(identity.activeCount, 64);
+  assert.equal(activeRentItSeoProducts.length, 64);
+  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, 64);
+  assert.equal(englishParams.length, 64);
   assert.ok(
     activeRentItSeoProducts.every((product) =>
       chineseProductSlugs.has(product.slug),
@@ -49,7 +49,7 @@ test("every product metadata set has self canonical, reciprocal hreflang and x-d
   }
 });
 
-test("sitemap contains 126 product URLs with reciprocal language alternates and real product dates", () => {
+test("sitemap contains 128 product URLs with reciprocal language alternates and real product dates", () => {
   const entries = sitemap();
   const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
 
@@ -86,7 +86,34 @@ test("catalog tables link product names to the independent detail pages", () => 
   }
 });
 
-test("build guard protects catalog v1.88 and the 63-product floor", () => {
+test("the Philips AD8090 has a public bilingual SEO page contract", () => {
+  const product = activeRentItSeoProducts.find(
+    (item) => item.productId === "AFFT-RENT-LIFESTYLE-031",
+  );
+
+  assert.ok(product);
+  assert.equal(product.slug, "philips-ad8090-portable-ice-maker");
+  assert.equal(product.officialName, "Philips AD8090 Portable Ice Maker");
+  assert.equal(product.series, "Camp Lifestyle Series");
+  assert.equal(product.publicPrice, "From RM49 / day");
+  assert.equal(product.publicPriceAmount, 49);
+  assert.equal(product.publicPriceUnit, "day");
+  assert.equal(product.sourceLastChecked, "2026-08-30");
+  assert.match(product.image, /^https:\/\/media\.afft\.club\/rent-it\//u);
+  assert.equal(getRentItProductPath(product, "en"), "/rent-it/philips-ad8090-portable-ice-maker");
+  assert.equal(getRentItProductPath(product, "zh-Hans"), "/zh/rent-it/philips-ad8090-portable-ice-maker");
+});
+
+test("the public snapshot excludes the private procurement price", () => {
+  const snapshot = readFileSync(
+    new URL("../lib/rent-it-fallback-snapshot.json", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(snapshot, /RM\s*500|procurement|internalNote/iu);
+});
+
+test("build guard protects catalog v1.89 and the 64-product floor", () => {
   const guard = readFileSync(
     new URL("../scripts/guard-rent-it-catalog.mjs", import.meta.url),
     "utf8",
@@ -95,8 +122,8 @@ test("build guard protects catalog v1.88 and the 63-product floor", () => {
     readFileSync(new URL("../package.json", import.meta.url), "utf8"),
   );
 
-  assert.match(guard, /minimumVersion = "1\.88"/u);
-  assert.match(guard, /minimumActiveProducts = 63/u);
+  assert.match(guard, /minimumVersion = "1\.89"/u);
+  assert.match(guard, /minimumActiveProducts = 64/u);
   assert.match(guard, /liveCatalogUrl/u);
   assert.match(packageJson.scripts.build, /guard-rent-it-catalog\.mjs/u);
   assert.match(packageJson.scripts["predeploy:pages"], /guard-rent-it-catalog\.mjs/u);

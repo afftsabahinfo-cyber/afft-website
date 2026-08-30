@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 
-const minimumVersion = "1.88";
-const minimumActiveProducts = 63;
+const minimumVersion = "1.89";
+const minimumActiveProducts = 64;
 const liveCatalogUrl = "https://afft.club/api/rent-it/catalog";
 
 function stop(message) {
