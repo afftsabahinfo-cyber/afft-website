@@ -6,6 +6,7 @@ import {
   formatRentItPrice,
   getRelatedRentItProducts,
   getRentItCatalogIdentity,
+  getRentItProductDisplayImage,
   getRentItProductPageCopy,
   getRentItProductPath,
   getRentItSeriesPath,
@@ -105,6 +106,7 @@ export function RentItProductPage({
   const isChinese = locale === "zh-Hans";
   const catalogIdentity = getRentItCatalogIdentity();
   const copy = getRentItProductPageCopy(product, locale);
+  const displayImage = getRentItProductDisplayImage(product);
   const relatedProducts = getRelatedRentItProducts(product);
   const currentPath = getRentItProductPath(product, locale);
   const alternatePath = getRentItProductPath(
@@ -210,13 +212,13 @@ export function RentItProductPage({
             </div>
 
             <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4">
-              {product.image ? (
+              {displayImage ? (
                 <img
                   alt={product.altText || product.officialName}
                   className="aspect-square w-full rounded-[1.5rem] bg-white object-contain p-4"
                   decoding="async"
                   fetchPriority="high"
-                  src={product.image}
+                  src={displayImage}
                 />
               ) : (
                 <div className="flex aspect-square items-center justify-center rounded-[1.5rem] border border-dashed border-white/15 bg-black/20 p-8 text-center text-white/60">

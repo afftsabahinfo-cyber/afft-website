@@ -10,12 +10,21 @@ export type RentItProductLocale = "en" | "zh-Hans";
 
 const siteUrl = "https://afft.club";
 
+const productDisplayImageOverrides: Record<string, string> = {
+  "philips-tb8501-55l-outdoor-refrigerator-set":
+    "/images/rent-it/philips-tb8501-55l-outdoor-refrigerator-set.gif",
+};
+
 export const activeRentItSeoProducts = getRentItCatalogMetrics(
   checkedInRentItFallbackCatalog,
 ).activeProducts;
 
 export function getActiveRentItProduct(slug: string) {
   return activeRentItSeoProducts.find((product) => product.slug === slug);
+}
+
+export function getRentItProductDisplayImage(product: RentItLiveProduct) {
+  return productDisplayImageOverrides[product.slug] || product.image;
 }
 
 export function getRelatedRentItProducts(product: RentItLiveProduct) {
@@ -75,6 +84,7 @@ function chineseExperienceUses(product: RentItLiveProduct) {
   const name = product.officialName.toLowerCase();
 
   if (/ice maker/.test(name)) return ["营地冷饮", "户外聚会", "Glamping 体验"];
+  if (/refrigerator|fridge/.test(name)) return ["露营食材保鲜", "车载露营", "多人户外体验"];
   if (/projector/.test(name)) return ["露营电影夜", "家庭放松", "Glamping 氛围"];
   if (/coffee|brewer|bialetti|mug|tea pot/.test(name)) {
     return ["营地咖啡", "户外慢生活", "舒适露营"];
