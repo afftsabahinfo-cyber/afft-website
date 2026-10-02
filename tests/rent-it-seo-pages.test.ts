@@ -12,17 +12,17 @@ import {
   getRentItProductPath,
 } from "../lib/rent-it-product-seo";
 
-test("the SEO page system generates one English and one Chinese page for all 65 active products", () => {
+test("the SEO page system generates one English and one Chinese page for all 67 active products", () => {
   const identity = getRentItCatalogIdentity();
   const englishParams = generateEnglishProductParams();
   const chineseParams = generateChineseRentItParams();
   const chineseProductSlugs = new Set(chineseParams.map((item) => item.slug));
 
-  assert.equal(identity.version, "1.90");
-  assert.equal(identity.activeCount, 65);
-  assert.equal(activeRentItSeoProducts.length, 65);
-  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, 65);
-  assert.equal(englishParams.length, 65);
+  assert.equal(identity.version, "1.92");
+  assert.equal(identity.activeCount, 67);
+  assert.equal(activeRentItSeoProducts.length, 67);
+  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, 67);
+  assert.equal(englishParams.length, 67);
   assert.ok(
     activeRentItSeoProducts.every((product) =>
       chineseProductSlugs.has(product.slug),
@@ -50,7 +50,7 @@ test("every product metadata set has self canonical, reciprocal hreflang and x-d
   }
 });
 
-test("sitemap contains 130 product URLs with reciprocal language alternates and real product dates", () => {
+test("sitemap contains 134 product URLs with reciprocal language alternates and real product dates", () => {
   const entries = sitemap();
   const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
 
@@ -133,16 +133,55 @@ test("the Philips TB8501 has a public bilingual SEO page and GIF contract", () =
   );
 });
 
+test("the DJI Osmo Pocket 4P has a public bilingual SEO page contract", () => {
+  const product = activeRentItSeoProducts.find(
+    (item) => item.productId === "AFFT-RENT-CREATOR-016",
+  );
+
+  assert.ok(product);
+  assert.equal(product.slug, "dji-osmo-pocket-4p");
+  assert.equal(product.officialName, "DJI Osmo Pocket 4P");
+  assert.equal(product.series, "Creator Series");
+  assert.equal(product.publicPrice, "From RM99 / day");
+  assert.equal(product.publicPriceAmount, 99);
+  assert.equal(product.publicPriceUnit, "day");
+  assert.equal(product.sourceLastChecked, "2026-10-01");
+  assert.match(product.image, /^https:\/\/media\.afft\.club\/rent-it\//u);
+  assert.equal(getRentItProductPath(product, "en"), "/rent-it/dji-osmo-pocket-4p");
+  assert.equal(getRentItProductPath(product, "zh-Hans"), "/zh/rent-it/dji-osmo-pocket-4p");
+});
+
+test("the DJI Osmo 360 II has a public bilingual SEO page contract", () => {
+  const product = activeRentItSeoProducts.find(
+    (item) => item.productId === "AFFT-RENT-CREATOR-017",
+  );
+
+  assert.ok(product);
+  assert.equal(product.slug, "dji-osmo-360-ii");
+  assert.equal(product.officialName, "DJI Osmo 360 II");
+  assert.equal(product.series, "Creator Series");
+  assert.equal(product.publicPrice, "From RM99 / day");
+  assert.equal(product.publicPriceAmount, 99);
+  assert.equal(product.publicPriceUnit, "day");
+  assert.equal(product.sourceLastChecked, "2026-10-01");
+  assert.match(product.image, /^https:\/\/media\.afft\.club\/rent-it\//u);
+  assert.equal(getRentItProductPath(product, "en"), "/rent-it/dji-osmo-360-ii");
+  assert.equal(getRentItProductPath(product, "zh-Hans"), "/zh/rent-it/dji-osmo-360-ii");
+});
+
 test("the public snapshot excludes private procurement prices", () => {
   const snapshot = readFileSync(
     new URL("../lib/rent-it-fallback-snapshot.json", import.meta.url),
     "utf8",
   );
 
-  assert.doesNotMatch(snapshot, /RM\s*(?:500|1,?500)|procurement|internalNote/iu);
+  assert.doesNotMatch(
+    snapshot,
+    /RM\s*(?:500|1,?500|2,?189|2,?419)|procurement|internalNote/iu,
+  );
 });
 
-test("build guard protects catalog v1.90 and the 65-product floor", () => {
+test("build guard protects catalog v1.92 and the 67-product floor", () => {
   const guard = readFileSync(
     new URL("../scripts/guard-rent-it-catalog.mjs", import.meta.url),
     "utf8",
@@ -151,8 +190,8 @@ test("build guard protects catalog v1.90 and the 65-product floor", () => {
     readFileSync(new URL("../package.json", import.meta.url), "utf8"),
   );
 
-  assert.match(guard, /minimumVersion = "1\.90"/u);
-  assert.match(guard, /minimumActiveProducts = 65/u);
+  assert.match(guard, /minimumVersion = "1\.92"/u);
+  assert.match(guard, /minimumActiveProducts = 67/u);
   assert.match(guard, /liveCatalogUrl/u);
   assert.match(packageJson.scripts.build, /guard-rent-it-catalog\.mjs/u);
   assert.match(packageJson.scripts["predeploy:pages"], /guard-rent-it-catalog\.mjs/u);
