@@ -51,9 +51,9 @@ export function CampingCard({
           src={campPoster(p, lang)}
           alt={`${p.name[lang]} — ${campPrice(p, lang)} / ${p.audience[lang]}`}
           width={1080}
-          height={1350}
+          height={1920}
           loading="lazy"
-          className="aspect-[4/5] w-full object-contain"
+          className="aspect-[9/16] w-full object-contain"
         />
       </a>
       <div className="flex flex-1 flex-col p-5">
@@ -325,7 +325,7 @@ export function campingMetadata(
         {
           url: campPoster(p ?? campBases[3], lang),
           width: 1080,
-          height: 1350,
+          height: 1920,
           alt: p?.name[lang] ?? title,
         },
       ],
@@ -466,7 +466,7 @@ export function CampingDetail({
             <img
               src={campPoster(p, lang)}
               width={1080}
-              height={1350}
+              height={1920}
               alt={`${p.name[lang]} ${campPrice(p, lang)} ${p.audience[lang]}`}
               className="w-full rounded-2xl"
             />
@@ -481,6 +481,11 @@ export function CampingDetail({
               {zh ? "下载中文海报" : "Download English poster"} ↓
             </a>
           </figcaption>
+          <p className="mt-2 text-xs leading-5 text-white/55">
+            {zh
+              ? "AI 场景示意；营地及具体装备由 AFFT 于付款前确认。"
+              : "AI concept illustration. AFFT confirms the site and exact equipment before payment."}
+          </p>
         </figure>
       </section>
       {base && (
