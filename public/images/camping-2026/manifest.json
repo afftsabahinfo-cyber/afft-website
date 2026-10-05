@@ -1,0 +1,322 @@
+[
+  {
+    "slug": "day-escape",
+    "lang": "en",
+    "price": 249,
+    "path": "/images/camping-2026/day-escape-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "day-escape",
+    "lang": "zh",
+    "price": 249,
+    "path": "/images/camping-2026/day-escape-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "solo-camp-kit",
+    "lang": "en",
+    "price": 199,
+    "path": "/images/camping-2026/solo-camp-kit-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "solo-camp-kit",
+    "lang": "zh",
+    "price": 199,
+    "path": "/images/camping-2026/solo-camp-kit-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "duo-camp-kit",
+    "lang": "en",
+    "price": 299,
+    "path": "/images/camping-2026/duo-camp-kit-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "duo-camp-kit",
+    "lang": "zh",
+    "price": 299,
+    "path": "/images/camping-2026/duo-camp-kit-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "ready-camp-for-two",
+    "lang": "en",
+    "price": 599,
+    "path": "/images/camping-2026/ready-camp-for-two-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "ready-camp-for-two",
+    "lang": "zh",
+    "price": 599,
+    "path": "/images/camping-2026/ready-camp-for-two-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "comfort-camp-for-two",
+    "lang": "en",
+    "price": 799,
+    "path": "/images/camping-2026/comfort-camp-for-two-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "comfort-camp-for-two",
+    "lang": "zh",
+    "price": 799,
+    "path": "/images/camping-2026/comfort-camp-for-two-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-first-camp",
+    "lang": "en",
+    "price": 899,
+    "path": "/images/camping-2026/family-first-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-first-camp",
+    "lang": "zh",
+    "price": 899,
+    "path": "/images/camping-2026/family-first-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-camp-four",
+    "lang": "en",
+    "price": 999,
+    "path": "/images/camping-2026/friends-camp-four-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-camp-four",
+    "lang": "zh",
+    "price": 999,
+    "path": "/images/camping-2026/friends-camp-four-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-camp-six",
+    "lang": "en",
+    "price": 1399,
+    "path": "/images/camping-2026/friends-camp-six-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-camp-six",
+    "lang": "zh",
+    "price": 1399,
+    "path": "/images/camping-2026/friends-camp-six-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "jimny-drive-camp",
+    "lang": "en",
+    "price": 599,
+    "path": "/images/camping-2026/jimny-drive-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "jimny-drive-camp",
+    "lang": "zh",
+    "price": 599,
+    "path": "/images/camping-2026/jimny-drive-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "duo-cooking-camp",
+    "lang": "en",
+    "price": 728,
+    "path": "/images/camping-2026/duo-cooking-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "duo-cooking-camp",
+    "lang": "zh",
+    "price": 728,
+    "path": "/images/camping-2026/duo-cooking-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "comfort-date-camp",
+    "lang": "en",
+    "price": 928,
+    "path": "/images/camping-2026/comfort-date-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "comfort-date-camp",
+    "lang": "zh",
+    "price": 928,
+    "path": "/images/camping-2026/comfort-date-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-cinema-camp",
+    "lang": "en",
+    "price": 1048,
+    "path": "/images/camping-2026/family-cinema-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-cinema-camp",
+    "lang": "zh",
+    "price": 1048,
+    "path": "/images/camping-2026/family-cinema-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-nature-camp",
+    "lang": "en",
+    "price": 938,
+    "path": "/images/camping-2026/family-nature-camp-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "family-nature-camp",
+    "lang": "zh",
+    "price": 938,
+    "path": "/images/camping-2026/family-nature-camp-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-dinner-cinema",
+    "lang": "en",
+    "price": 1277,
+    "path": "/images/camping-2026/friends-dinner-cinema-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "friends-dinner-cinema",
+    "lang": "zh",
+    "price": 1277,
+    "path": "/images/camping-2026/friends-dinner-cinema-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "jimny-travel-story",
+    "lang": "en",
+    "price": 698,
+    "path": "/images/camping-2026/jimny-travel-story-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "jimny-travel-story",
+    "lang": "zh",
+    "price": 698,
+    "path": "/images/camping-2026/jimny-travel-story-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "outdoor-kitchen",
+    "lang": "en",
+    "price": 129,
+    "path": "/images/camping-2026/outdoor-kitchen-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "outdoor-kitchen",
+    "lang": "zh",
+    "price": 129,
+    "path": "/images/camping-2026/outdoor-kitchen-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "camp-cinema",
+    "lang": "en",
+    "price": 149,
+    "path": "/images/camping-2026/camp-cinema-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "camp-cinema",
+    "lang": "zh",
+    "price": 149,
+    "path": "/images/camping-2026/camp-cinema-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "travel-story",
+    "lang": "en",
+    "price": 99,
+    "path": "/images/camping-2026/travel-story-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "travel-story",
+    "lang": "zh",
+    "price": 99,
+    "path": "/images/camping-2026/travel-story-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "night-lounge",
+    "lang": "en",
+    "price": 99,
+    "path": "/images/camping-2026/night-lounge-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "night-lounge",
+    "lang": "zh",
+    "price": 99,
+    "path": "/images/camping-2026/night-lounge-zh.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "nature-explorer",
+    "lang": "en",
+    "price": 39,
+    "path": "/images/camping-2026/nature-explorer-en.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "slug": "nature-explorer",
+    "lang": "zh",
+    "price": 39,
+    "path": "/images/camping-2026/nature-explorer-zh.webp",
+    "width": 1080,
+    "height": 1350
+  }
+]

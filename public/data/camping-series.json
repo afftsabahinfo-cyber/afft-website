@@ -1,0 +1,1726 @@
+{
+  "version": "2026-10-05.1",
+  "currency": "MYR",
+  "lastUpdated": "2026-10-05",
+  "items": [
+    {
+      "kind": "base",
+      "duration": {
+        "en": "4–6 hours / daytime",
+        "zh": "日间4–6小时"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        }
+      ],
+      "slug": "day-escape",
+      "category": "day",
+      "price": 249,
+      "guests": 2,
+      "name": {
+        "en": "Day Escape",
+        "zh": "日间轻露营"
+      },
+      "summary": {
+        "en": "An outdoor break without staying overnight.",
+        "zh": "不用过夜，也能好好享受户外。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Shade + seats for two",
+          "zh": "遮阳与双人桌椅"
+        },
+        {
+          "en": "Standard site included",
+          "zh": "含标准场地"
+        },
+        {
+          "en": "Setup + pack-down",
+          "zh": "包含搭建撤收"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Shade setup, two chairs, table and cups",
+          "zh": "遮阳配置、两张椅子、桌及杯具"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Overnight stay and sleeping gear",
+          "zh": "过夜与睡眠装备"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "Collect and return at the agreed time. Premium Helinox gear shown is an upgrade option, not included in the basic kit.",
+          "zh": "按约定时间自取归还；图片所示 Helinox 高端装备为升级选项，不属于基础组标配。"
+        }
+      ],
+      "slug": "solo-camp-kit",
+      "category": "gear",
+      "price": 199,
+      "guests": 1,
+      "name": {
+        "en": "Solo Camp Kit",
+        "zh": "独处装备组"
+      },
+      "summary": {
+        "en": "A complete starting kit for your own quiet camp.",
+        "zh": "带上一组装备，自己安排安静的露营时光。"
+      },
+      "audience": {
+        "en": "1 guest",
+        "zh": "1人"
+      },
+      "service": "gear",
+      "photo": "/images/helinox-solo-full-set.jpg",
+      "highlights": [
+        {
+          "en": "Tent + sleep setup",
+          "zh": "帐篷与睡眠组"
+        },
+        {
+          "en": "One seat + small table",
+          "zh": "单椅与小桌"
+        },
+        {
+          "en": "Collect and set up yourself",
+          "zh": "自取自搭"
+        }
+      ],
+      "includes": [
+        {
+          "en": "One suitable tent and a sleeping mat, pillow and bedding",
+          "zh": "一顶适用帐篷、睡垫、枕头及寝具"
+        },
+        {
+          "en": "1 camp chairs and a shared table",
+          "zh": "1张露营椅及共用桌"
+        },
+        {
+          "en": "Basic camp light and equipment handover",
+          "zh": "基础营灯及装备交接说明"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Campsite, delivery, setup and pack-down",
+          "zh": "营地、配送、搭建与撤收"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "Own transport and self-setup required. Collection and return times are agreed before payment.",
+          "zh": "需自备交通并自行搭撤；付款前确认取还时间。"
+        }
+      ],
+      "slug": "duo-camp-kit",
+      "category": "gear",
+      "price": 299,
+      "guests": 2,
+      "name": {
+        "en": "Duo Camp Kit",
+        "zh": "双人装备组"
+      },
+      "summary": {
+        "en": "For two friends or a couple who enjoy doing it themselves.",
+        "zh": "适合愿意自己搭营的两个朋友或情侣。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "gear",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Tent + sleep gear for two",
+          "zh": "帐篷与双人睡眠组"
+        },
+        {
+          "en": "Table, chairs, light + fan",
+          "zh": "桌椅、灯与风扇"
+        },
+        {
+          "en": "Collect and set up yourself",
+          "zh": "自取自搭"
+        }
+      ],
+      "includes": [
+        {
+          "en": "One suitable tent",
+          "zh": "一顶适用帐篷"
+        },
+        {
+          "en": "2 sleeping places with mats, pillows and bedding",
+          "zh": "2人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "2 camp chairs and a shared table",
+          "zh": "2张露营椅及共用桌"
+        },
+        {
+          "en": "Basic lighting, fan and equipment handover",
+          "zh": "基础灯光、风扇及装备交接说明"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Campsite, delivery, setup and pack-down",
+          "zh": "营地、配送、搭建与撤收"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        }
+      ],
+      "slug": "ready-camp-for-two",
+      "category": "couples",
+      "price": 599,
+      "guests": 2,
+      "name": {
+        "en": "Ready Camp for Two",
+        "zh": "双人免搭营"
+      },
+      "summary": {
+        "en": "Arrive together. Your camp is ready.",
+        "zh": "两个人轻松到场，营地由我们准备。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Complete sleep setup",
+          "zh": "完整双人睡眠组"
+        },
+        {
+          "en": "Campsite included",
+          "zh": "含标准营地"
+        },
+        {
+          "en": "We set up and pack down",
+          "zh": "我们负责搭建撤收"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Tent and sheltered sitting area",
+          "zh": "帐篷与遮蔽休息区"
+        },
+        {
+          "en": "2 sleeping places with mats, pillows and bedding",
+          "zh": "2人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "2 camp chairs and a shared table",
+          "zh": "2张露营椅及共用桌"
+        },
+        {
+          "en": "Basic lighting and fan",
+          "zh": "基础灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Optional experience add-ons",
+          "zh": "自选体验加配"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        }
+      ],
+      "slug": "comfort-camp-for-two",
+      "category": "couples",
+      "price": 799,
+      "guests": 2,
+      "name": {
+        "en": "Comfort Camp for Two",
+        "zh": "双人舒适营"
+      },
+      "summary": {
+        "en": "More room to rest, sit back and enjoy your time together.",
+        "zh": "睡得更舒服，坐得更自在，多一点相处空间。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "ready",
+      "photo": "/images/blackdog-xingsu59.webp",
+      "highlights": [
+        {
+          "en": "Roomier tent + better sleep",
+          "zh": "宽敞帐篷与睡眠升级"
+        },
+        {
+          "en": "Helinox seating",
+          "zh": "Helinox 座椅"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Roomier tent with an upgraded two-person sleeping setup",
+          "zh": "更宽敞的帐篷及升级双人睡眠配置"
+        },
+        {
+          "en": "Two Helinox seats and a shared table",
+          "zh": "两张 Helinox 座椅及共用桌"
+        },
+        {
+          "en": "Sheltered lounge, lighting and fan",
+          "zh": "遮蔽休息区、灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Cooking equipment and camera hire",
+          "zh": "料理装备及相机租用"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "Price covers two adults and two children aged 3–11, each with a sleeping place. Ask for infants, older children or a different family size.",
+          "zh": "价格包含两位成人及两位3–11岁儿童，每人有睡眠位置；婴幼儿、较大儿童或不同家庭人数另行确认。"
+        }
+      ],
+      "slug": "family-first-camp",
+      "category": "family",
+      "price": 899,
+      "guests": 4,
+      "name": {
+        "en": "Family First Camp",
+        "zh": "亲子初体验"
+      },
+      "summary": {
+        "en": "A first family camp with space for everyone to sleep and sit.",
+        "zh": "让第一次亲子露营，每个人都有睡觉和休息的位置。"
+      },
+      "audience": {
+        "en": "2 adults + 2 children (3–11)",
+        "zh": "2大2小（儿童3–11岁）"
+      },
+      "service": "ready",
+      "photo": "/images/mobi-garden-commander-245.webp",
+      "highlights": [
+        {
+          "en": "Four sleeping places",
+          "zh": "4人独立睡眠位置"
+        },
+        {
+          "en": "Sheltered family space",
+          "zh": "遮蔽亲子活动区"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Family tent matched to the sleeping layout",
+          "zh": "按睡眠布局配好的家庭帐篷"
+        },
+        {
+          "en": "4 sleeping places with mats, pillows and bedding",
+          "zh": "4人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "4 camp chairs and a shared table",
+          "zh": "4张露营椅及共用桌"
+        },
+        {
+          "en": "Sheltered activity area, basic lighting and fan",
+          "zh": "遮蔽活动区、基础灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Childcare and guided activities",
+          "zh": "儿童托管及导览活动"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        }
+      ],
+      "slug": "friends-camp-four",
+      "category": "friends",
+      "price": 999,
+      "guests": 4,
+      "name": {
+        "en": "Friends Camp · Four",
+        "zh": "四人朋友营"
+      },
+      "summary": {
+        "en": "Two tents for privacy. One shared space for good company.",
+        "zh": "两顶帐篷保留私人空间，一起共享户外时光。"
+      },
+      "audience": {
+        "en": "4 guests",
+        "zh": "4人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Two two-person tents",
+          "zh": "2顶双人帐"
+        },
+        {
+          "en": "Shared shade + table",
+          "zh": "共用遮蔽区与餐桌"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Two two-person tents",
+          "zh": "两顶双人帐篷"
+        },
+        {
+          "en": "4 sleeping places with mats, pillows and bedding",
+          "zh": "4人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "4 camp chairs and a shared table",
+          "zh": "4张露营椅及共用桌"
+        },
+        {
+          "en": "Shared sheltered area, basic lighting and fans",
+          "zh": "共用遮蔽区、基础照明与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Cooking and cinema add-ons",
+          "zh": "料理及电影加配"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        }
+      ],
+      "slug": "friends-camp-six",
+      "category": "friends",
+      "price": 1399,
+      "guests": 6,
+      "name": {
+        "en": "Friends Camp · Six",
+        "zh": "六人朋友营"
+      },
+      "summary": {
+        "en": "A small-group camp with a bigger place to gather.",
+        "zh": "小团体一起出发，拥有更大的共用休息空间。"
+      },
+      "audience": {
+        "en": "6 guests",
+        "zh": "6人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Three two-person tents",
+          "zh": "3顶双人帐"
+        },
+        {
+          "en": "Six seats + shared shade",
+          "zh": "6座位与加大遮蔽区"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Three two-person tents",
+          "zh": "三顶双人帐篷"
+        },
+        {
+          "en": "6 sleeping places with mats, pillows and bedding",
+          "zh": "6人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "6 camp chairs and a shared table",
+          "zh": "6张露营椅及共用桌"
+        },
+        {
+          "en": "Larger shared sheltered area, basic lighting and fans",
+          "zh": "加大共用遮蔽区、基础照明与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Cooking and cinema add-ons",
+          "zh": "料理及电影加配"
+        }
+      ]
+    },
+    {
+      "kind": "base",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "Self-drive and self-setup. AFFT confirms driving eligibility, exact pickup/return times, deposit and vehicle terms. A 2D1N camp does not automatically mean 48-hour vehicle hire.",
+          "zh": "自驾自搭；AFFT 确认驾驶资格、准确取还车时间、押金及车辆条款。2天1夜露营不自动等于48小时租车。"
+        },
+        {
+          "en": "Tent type and vehicle mounting compatibility are confirmed before payment; the photo is a gear reference.",
+          "zh": "帐篷类型及车辆安装兼容性于付款前确认；图片为装备参考。"
+        }
+      ],
+      "slug": "jimny-drive-camp",
+      "category": "drive",
+      "price": 599,
+      "from": true,
+      "guests": 2,
+      "name": {
+        "en": "Jimny Drive & Camp",
+        "zh": "Jimny 双人自驾营"
+      },
+      "summary": {
+        "en": "Your own Sabah drive, with the camp essentials packed.",
+        "zh": "开着 Jimny 探索沙巴，带上完整基础露营装备。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "drive",
+      "photo": "/images/playdo-starry-sky-2nd-gen-rooftop-tent-set.webp",
+      "highlights": [
+        {
+          "en": "Jimny self-drive",
+          "zh": "Jimny 自驾"
+        },
+        {
+          "en": "Two-person camp kit",
+          "zh": "完整双人基础装备"
+        },
+        {
+          "en": "Standard campsite included",
+          "zh": "含标准营地"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Jimny vehicle for the agreed rental period",
+          "zh": "约定租期内的 Jimny 车辆"
+        },
+        {
+          "en": "Suitable tent, two sleeping places, table, two chairs, lights and fan",
+          "zh": "适用帐篷、双人睡眠组、桌、两张椅子、灯与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment handover and self-setup guidance",
+          "zh": "装备交接及自搭说明"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Driver, guest transfers, fuel and road charges",
+          "zh": "司机、客人接送、燃油与道路费用"
+        },
+        {
+          "en": "On-site setup and pack-down service",
+          "zh": "现场代搭与撤收服务"
+        }
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "AFFT confirms the fuel allowance and cookware before payment. This is an equipment add-on, not a catered meal.",
+          "zh": "付款前确认燃料额度与锅具；此为料理装备加配，不含代煮餐食。"
+        },
+        {
+          "en": "Outdoor cooking only; follow campsite cooking rules.",
+          "zh": "仅在允许的户外区域料理，遵守营地规定。"
+        }
+      ],
+      "slug": "duo-cooking-camp",
+      "category": "couples",
+      "price": 728,
+      "guests": 2,
+      "name": {
+        "en": "Duo Cooking Camp",
+        "zh": "双人料理露营"
+      },
+      "summary": {
+        "en": "Ready Camp for Two with Outdoor Kitchen.",
+        "zh": "双人免搭营，配上户外料理。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Complete sleep setup",
+          "zh": "完整双人睡眠组"
+        },
+        {
+          "en": "Snow Peak IGT",
+          "zh": "Snow Peak IGT 料理桌"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Tent and sheltered sitting area",
+          "zh": "帐篷与遮蔽休息区"
+        },
+        {
+          "en": "2 sleeping places with mats, pillows and bedding",
+          "zh": "2人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "2 camp chairs and a shared table",
+          "zh": "2张露营椅及共用桌"
+        },
+        {
+          "en": "Basic lighting and fan",
+          "zh": "基础灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        },
+        {
+          "en": "Snow Peak IGT kitchen, stove, suitable cookware and utensils for your booked group",
+          "zh": "Snow Peak IGT 料理桌、炉具及适合预订人数的锅具餐具"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Fuel unless included in the written quote",
+          "zh": "书面报价未列明的燃料"
+        }
+      ],
+      "baseSlug": "ready-camp-for-two",
+      "addonSlugs": [
+        "outdoor-kitchen"
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "AFFT confirms the fuel allowance and cookware before payment. This is an equipment add-on, not a catered meal.",
+          "zh": "付款前确认燃料额度与锅具；此为料理装备加配，不含代煮餐食。"
+        },
+        {
+          "en": "Outdoor cooking only; follow campsite cooking rules.",
+          "zh": "仅在允许的户外区域料理，遵守营地规定。"
+        }
+      ],
+      "slug": "comfort-date-camp",
+      "category": "couples",
+      "price": 928,
+      "guests": 2,
+      "name": {
+        "en": "Comfort Date Camp",
+        "zh": "舒适约会露营"
+      },
+      "summary": {
+        "en": "Comfort Camp for Two with Outdoor Kitchen.",
+        "zh": "双人舒适营，配上户外料理。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "ready",
+      "photo": "/images/blackdog-xingsu59.webp",
+      "highlights": [
+        {
+          "en": "Roomier tent + better sleep",
+          "zh": "宽敞帐篷与睡眠升级"
+        },
+        {
+          "en": "Snow Peak IGT",
+          "zh": "Snow Peak IGT 料理桌"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Roomier tent with an upgraded two-person sleeping setup",
+          "zh": "更宽敞的帐篷及升级双人睡眠配置"
+        },
+        {
+          "en": "Two Helinox seats and a shared table",
+          "zh": "两张 Helinox 座椅及共用桌"
+        },
+        {
+          "en": "Sheltered lounge, lighting and fan",
+          "zh": "遮蔽休息区、灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        },
+        {
+          "en": "Snow Peak IGT kitchen, stove, suitable cookware and utensils for your booked group",
+          "zh": "Snow Peak IGT 料理桌、炉具及适合预订人数的锅具餐具"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Fuel unless included in the written quote",
+          "zh": "书面报价未列明的燃料"
+        }
+      ],
+      "baseSlug": "comfort-camp-for-two",
+      "addonSlugs": [
+        "outdoor-kitchen"
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "Price covers two adults and two children aged 3–11, each with a sleeping place. Ask for infants, older children or a different family size.",
+          "zh": "价格包含两位成人及两位3–11岁儿童，每人有睡眠位置；婴幼儿、较大儿童或不同家庭人数另行确认。"
+        },
+        {
+          "en": "AFFT confirms power, playback compatibility and the campsite quiet hours. Bring your own legally accessible film.",
+          "zh": "由 AFFT 确认供电、播放兼容性及营地安静时段；请准备可合法播放的影片。"
+        }
+      ],
+      "slug": "family-cinema-camp",
+      "category": "family",
+      "price": 1048,
+      "guests": 4,
+      "name": {
+        "en": "Family Cinema Camp",
+        "zh": "亲子电影露营"
+      },
+      "summary": {
+        "en": "Family First Camp with Camp Cinema.",
+        "zh": "亲子初体验，配上营地电影。"
+      },
+      "audience": {
+        "en": "2 adults + 2 children (3–11)",
+        "zh": "2大2小（儿童3–11岁）"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-night-01.webp",
+      "highlights": [
+        {
+          "en": "Four sleeping places",
+          "zh": "4人独立睡眠位置"
+        },
+        {
+          "en": "Yaber projector",
+          "zh": "Yaber 投影机"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Family tent matched to the sleeping layout",
+          "zh": "按睡眠布局配好的家庭帐篷"
+        },
+        {
+          "en": "4 sleeping places with mats, pillows and bedding",
+          "zh": "4人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "4 camp chairs and a shared table",
+          "zh": "4张露营椅及共用桌"
+        },
+        {
+          "en": "Sheltered activity area, basic lighting and fan",
+          "zh": "遮蔽活动区、基础灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        },
+        {
+          "en": "Yaber projector, suitable screen / projection surface, compatible power arrangement and setup",
+          "zh": "Yaber 投影机、适用投影面、兼容供电安排及安装调试"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Streaming subscriptions and paid films",
+          "zh": "串流订阅及付费影片"
+        }
+      ],
+      "baseSlug": "family-first-camp",
+      "addonSlugs": [
+        "camp-cinema"
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "Price covers two adults and two children aged 3–11, each with a sleeping place. Ask for infants, older children or a different family size.",
+          "zh": "价格包含两位成人及两位3–11岁儿童，每人有睡眠位置；婴幼儿、较大儿童或不同家庭人数另行确认。"
+        },
+        {
+          "en": "Children explore with their own accompanying adults. This does not include childcare.",
+          "zh": "儿童由同行成人陪同探索，不含托管服务。"
+        }
+      ],
+      "slug": "family-nature-camp",
+      "category": "family",
+      "price": 938,
+      "guests": 4,
+      "name": {
+        "en": "Family Nature Camp",
+        "zh": "亲子自然观察营"
+      },
+      "summary": {
+        "en": "Family First Camp with Nature Explorer.",
+        "zh": "亲子初体验，配上自然观察。"
+      },
+      "audience": {
+        "en": "2 adults + 2 children (3–11)",
+        "zh": "2大2小（儿童3–11岁）"
+      },
+      "service": "ready",
+      "photo": "/images/mobi-garden-commander-245.webp",
+      "highlights": [
+        {
+          "en": "Four sleeping places",
+          "zh": "4人独立睡眠位置"
+        },
+        {
+          "en": "Shared binoculars",
+          "zh": "共用望远镜"
+        },
+        {
+          "en": "Campsite + setup included",
+          "zh": "包含营地与搭撤"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Family tent matched to the sleeping layout",
+          "zh": "按睡眠布局配好的家庭帐篷"
+        },
+        {
+          "en": "4 sleeping places with mats, pillows and bedding",
+          "zh": "4人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "4 camp chairs and a shared table",
+          "zh": "4张露营椅及共用桌"
+        },
+        {
+          "en": "Sheltered activity area, basic lighting and fan",
+          "zh": "遮蔽活动区、基础灯光与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        },
+        {
+          "en": "One shared pair of binoculars and a nature observation activity card",
+          "zh": "一副共用望远镜及自然观察任务卡"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Guide, transport and wildlife-sighting guarantees",
+          "zh": "导览员、交通及野生动物目击保证"
+        }
+      ],
+      "baseSlug": "family-first-camp",
+      "addonSlugs": [
+        "nature-explorer"
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "AFFT confirms the fuel allowance and cookware before payment. This is an equipment add-on, not a catered meal.",
+          "zh": "付款前确认燃料额度与锅具；此为料理装备加配，不含代煮餐食。"
+        },
+        {
+          "en": "Outdoor cooking only; follow campsite cooking rules.",
+          "zh": "仅在允许的户外区域料理，遵守营地规定。"
+        },
+        {
+          "en": "AFFT confirms power, playback compatibility and the campsite quiet hours. Bring your own legally accessible film.",
+          "zh": "由 AFFT 确认供电、播放兼容性及营地安静时段；请准备可合法播放的影片。"
+        }
+      ],
+      "slug": "friends-dinner-cinema",
+      "category": "friends",
+      "price": 1277,
+      "guests": 4,
+      "name": {
+        "en": "Friends Cook & Cinema",
+        "zh": "四人料理电影营"
+      },
+      "summary": {
+        "en": "Friends Camp · Four with Outdoor Kitchen + Camp Cinema.",
+        "zh": "四人朋友营，配上户外料理与营地电影。"
+      },
+      "audience": {
+        "en": "4 guests",
+        "zh": "4人"
+      },
+      "service": "ready",
+      "photo": "/images/customer-stories/explorer-camp-rm599/explorer-camp-rm599-setup-01.webp",
+      "highlights": [
+        {
+          "en": "Two two-person tents",
+          "zh": "2顶双人帐"
+        },
+        {
+          "en": "Snow Peak IGT",
+          "zh": "Snow Peak IGT 料理桌"
+        },
+        {
+          "en": "Yaber projector",
+          "zh": "Yaber 投影机"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Two two-person tents",
+          "zh": "两顶双人帐篷"
+        },
+        {
+          "en": "4 sleeping places with mats, pillows and bedding",
+          "zh": "4人睡眠位置，含睡垫、枕头及寝具"
+        },
+        {
+          "en": "4 camp chairs and a shared table",
+          "zh": "4张露营椅及共用桌"
+        },
+        {
+          "en": "Shared sheltered area, basic lighting and fans",
+          "zh": "共用遮蔽区、基础照明与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment delivery, setup and pack-down at the agreed standard campsite",
+          "zh": "约定标准营地的装备配送、搭建与撤收"
+        },
+        {
+          "en": "Snow Peak IGT kitchen, stove, suitable cookware and utensils for your booked group",
+          "zh": "Snow Peak IGT 料理桌、炉具及适合预订人数的锅具餐具"
+        },
+        {
+          "en": "Yaber projector, suitable screen / projection surface, compatible power arrangement and setup",
+          "zh": "Yaber 投影机、适用投影面、兼容供电安排及安装调试"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Guest transport / pickup",
+          "zh": "客人交通与接送"
+        },
+        {
+          "en": "Fuel unless included in the written quote",
+          "zh": "书面报价未列明的燃料"
+        },
+        {
+          "en": "Streaming subscriptions and paid films",
+          "zh": "串流订阅及付费影片"
+        }
+      ],
+      "baseSlug": "friends-camp-four",
+      "addonSlugs": [
+        "outdoor-kitchen",
+        "camp-cinema"
+      ]
+    },
+    {
+      "kind": "bundle",
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "notes": [
+        {
+          "en": "AFFT confirms the campsite, facilities, arrival time and any location/date supplement before payment.",
+          "zh": "付款前由 AFFT 确认营地、设施、到场时间及任何地点／日期差价。"
+        },
+        {
+          "en": "Self-drive and self-setup. AFFT confirms driving eligibility, exact pickup/return times, deposit and vehicle terms. A 2D1N camp does not automatically mean 48-hour vehicle hire.",
+          "zh": "自驾自搭；AFFT 确认驾驶资格、准确取还车时间、押金及车辆条款。2天1夜露营不自动等于48小时租车。"
+        },
+        {
+          "en": "Tent type and vehicle mounting compatibility are confirmed before payment; the photo is a gear reference.",
+          "zh": "帐篷类型及车辆安装兼容性于付款前确认；图片为装备参考。"
+        },
+        {
+          "en": "Ask for the DJI Pocket setup or a suitable alternative. AFFT confirms the exact model and accessories; this price does not cover every camera in Rent It.",
+          "zh": "可询问 DJI Pocket 配置或合适替代款；具体型号与配件由 AFFT 确认，此加配价不适用于 Rent It 所有相机。"
+        }
+      ],
+      "slug": "jimny-travel-story",
+      "category": "drive",
+      "price": 698,
+      "from": true,
+      "guests": 2,
+      "name": {
+        "en": "Jimny Travel Story",
+        "zh": "Jimny 旅行记录营"
+      },
+      "summary": {
+        "en": "Jimny Drive & Camp with Travel Story.",
+        "zh": "Jimny 双人自驾营，配上旅行记录。"
+      },
+      "audience": {
+        "en": "2 guests",
+        "zh": "2人"
+      },
+      "service": "drive",
+      "photo": "/images/playdo-starry-sky-2nd-gen-rooftop-tent-set.webp",
+      "highlights": [
+        {
+          "en": "Jimny self-drive",
+          "zh": "Jimny 自驾"
+        },
+        {
+          "en": "One selected camera",
+          "zh": "一台指定相机"
+        },
+        {
+          "en": "Vehicle + campsite included",
+          "zh": "包含车辆与标准营地"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Jimny vehicle for the agreed rental period",
+          "zh": "约定租期内的 Jimny 车辆"
+        },
+        {
+          "en": "Suitable tent, two sleeping places, table, two chairs, lights and fan",
+          "zh": "适用帐篷、双人睡眠组、桌、两张椅子、灯与风扇"
+        },
+        {
+          "en": "Standard campsite fee for the stated guests",
+          "zh": "所列人数的标准营地费用"
+        },
+        {
+          "en": "Equipment handover and self-setup guidance",
+          "zh": "装备交接及自搭说明"
+        },
+        {
+          "en": "One selected camera, battery / charging accessories and a short handover lesson",
+          "zh": "一台指定相机、电池／充电配件及简短使用教学"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Driver, fuel, road charges and on-site setup",
+          "zh": "司机、燃油、道路费用与现场代搭"
+        },
+        {
+          "en": "Photographer, editing, drone flights and paid storage",
+          "zh": "摄影师、剪辑、无人机飞行及付费储存"
+        }
+      ],
+      "baseSlug": "jimny-drive-camp",
+      "addonSlugs": [
+        "travel-story"
+      ]
+    },
+    {
+      "slug": "outdoor-kitchen",
+      "kind": "addon",
+      "category": "extras",
+      "price": 129,
+      "guests": 0,
+      "name": {
+        "en": "Outdoor Kitchen",
+        "zh": "户外料理"
+      },
+      "summary": {
+        "en": "Cook dinner and breakfast at your own pace.",
+        "zh": "自己动手，慢慢享受营地晚餐与早餐。"
+      },
+      "audience": {
+        "en": "Per group",
+        "zh": "每组"
+      },
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "service": "addon",
+      "photo": "/images/snow-peak-igt-mobile-kitchen-set.webp",
+      "highlights": [
+        {
+          "en": "Snow Peak IGT",
+          "zh": "Snow Peak IGT 料理桌"
+        },
+        {
+          "en": "Stove + cookware",
+          "zh": "炉具与锅具"
+        },
+        {
+          "en": "Cook your own meals",
+          "zh": "自己动手料理"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Snow Peak IGT kitchen, stove, suitable cookware and utensils for your booked group",
+          "zh": "Snow Peak IGT 料理桌、炉具及适合预订人数的锅具餐具"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Food and drinks",
+          "zh": "食物与饮料"
+        },
+        {
+          "en": "Fuel unless included in the written quote",
+          "zh": "书面报价未列明的燃料"
+        }
+      ],
+      "notes": [
+        {
+          "en": "AFFT confirms the fuel allowance and cookware before payment. This is an equipment add-on, not a catered meal.",
+          "zh": "付款前确认燃料额度与锅具；此为料理装备加配，不含代煮餐食。"
+        },
+        {
+          "en": "Outdoor cooking only; follow campsite cooking rules.",
+          "zh": "仅在允许的户外区域料理，遵守营地规定。"
+        }
+      ]
+    },
+    {
+      "slug": "camp-cinema",
+      "kind": "addon",
+      "category": "extras",
+      "price": 149,
+      "guests": 0,
+      "name": {
+        "en": "Camp Cinema",
+        "zh": "营地电影"
+      },
+      "summary": {
+        "en": "A simple movie night together after sunset.",
+        "zh": "日落后，一起享受轻松的营地电影时光。"
+      },
+      "audience": {
+        "en": "Per group",
+        "zh": "每组"
+      },
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "service": "addon",
+      "photo": "/images/yaber-t2-plus-projector.webp",
+      "highlights": [
+        {
+          "en": "Yaber projector",
+          "zh": "Yaber 投影机"
+        },
+        {
+          "en": "Screen + power plan",
+          "zh": "投影面与供电安排"
+        },
+        {
+          "en": "Setup included",
+          "zh": "包含安装调试"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Yaber projector, suitable screen / projection surface, compatible power arrangement and setup",
+          "zh": "Yaber 投影机、适用投影面、兼容供电安排及安装调试"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Streaming subscriptions and paid films",
+          "zh": "串流订阅及付费影片"
+        }
+      ],
+      "notes": [
+        {
+          "en": "AFFT confirms power, playback compatibility and the campsite quiet hours. Bring your own legally accessible film.",
+          "zh": "由 AFFT 确认供电、播放兼容性及营地安静时段；请准备可合法播放的影片。"
+        }
+      ]
+    },
+    {
+      "slug": "travel-story",
+      "kind": "addon",
+      "category": "extras",
+      "price": 99,
+      "guests": 0,
+      "name": {
+        "en": "Travel Story",
+        "zh": "旅行记录"
+      },
+      "summary": {
+        "en": "Bring home the little moments from your camp.",
+        "zh": "把露营路上的小片段带回家。"
+      },
+      "audience": {
+        "en": "Per camera",
+        "zh": "每台相机"
+      },
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "service": "addon",
+      "photo": "/images/dji-pocket4-creator-combo.webp",
+      "highlights": [
+        {
+          "en": "One selected camera",
+          "zh": "一台指定相机"
+        },
+        {
+          "en": "Battery + charging",
+          "zh": "电池与充电配件"
+        },
+        {
+          "en": "Quick-start guidance",
+          "zh": "简明使用教学"
+        }
+      ],
+      "includes": [
+        {
+          "en": "One selected camera, battery / charging accessories and a short handover lesson",
+          "zh": "一台指定相机、电池／充电配件及简短使用教学"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Photographer, editing, drone flights and paid storage",
+          "zh": "摄影师、剪辑、无人机飞行及付费储存"
+        }
+      ],
+      "notes": [
+        {
+          "en": "Ask for the DJI Pocket setup or a suitable alternative. AFFT confirms the exact model and accessories; this price does not cover every camera in Rent It.",
+          "zh": "可询问 DJI Pocket 配置或合适替代款；具体型号与配件由 AFFT 确认，此加配价不适用于 Rent It 所有相机。"
+        }
+      ]
+    },
+    {
+      "slug": "night-lounge",
+      "kind": "addon",
+      "category": "extras",
+      "price": 99,
+      "guests": 2,
+      "name": {
+        "en": "Night Lounge",
+        "zh": "夜间休息区"
+      },
+      "summary": {
+        "en": "More comfortable seating for slow evening conversations.",
+        "zh": "换上更舒服的座椅，慢慢聊天看夜景。"
+      },
+      "audience": {
+        "en": "2-person upgrade",
+        "zh": "2人升级组"
+      },
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "service": "addon",
+      "photo": "/images/helinox-chair.webp",
+      "highlights": [
+        {
+          "en": "Upgraded seats for two",
+          "zh": "双人座椅升级"
+        },
+        {
+          "en": "Gentle mood lighting",
+          "zh": "柔和氛围灯"
+        },
+        {
+          "en": "Shared table space",
+          "zh": "共用桌面"
+        }
+      ],
+      "includes": [
+        {
+          "en": "Two upgraded seats, mood lighting and shared table space",
+          "zh": "两张升级座椅、氛围灯及共用桌面"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Private guide, photography and a guaranteed star view",
+          "zh": "私人导览、摄影服务及星空能见度保证"
+        }
+      ],
+      "notes": [
+        {
+          "en": "If your package already includes upgraded seating or lights, AFFT quotes only the extra items. Do not add this full price twice.",
+          "zh": "若套餐已包含升级座椅或灯光，仅就净增加的项目报价，不重复收取整组费用。"
+        }
+      ]
+    },
+    {
+      "slug": "nature-explorer",
+      "kind": "addon",
+      "category": "extras",
+      "price": 39,
+      "guests": 0,
+      "name": {
+        "en": "Nature Explorer",
+        "zh": "自然观察"
+      },
+      "summary": {
+        "en": "Notice birds, trees and small outdoor discoveries together.",
+        "zh": "一起观察鸟类、树木和户外的小发现。"
+      },
+      "audience": {
+        "en": "Per group",
+        "zh": "每组"
+      },
+      "duration": {
+        "en": "2 days / 1 night",
+        "zh": "2天1夜"
+      },
+      "service": "addon",
+      "photo": "/images/celestron-outland-x.webp",
+      "highlights": [
+        {
+          "en": "Shared binoculars",
+          "zh": "共用望远镜"
+        },
+        {
+          "en": "Nature activity card",
+          "zh": "自然观察任务卡"
+        },
+        {
+          "en": "Self-guided discovery",
+          "zh": "自行探索"
+        }
+      ],
+      "includes": [
+        {
+          "en": "One shared pair of binoculars and a nature observation activity card",
+          "zh": "一副共用望远镜及自然观察任务卡"
+        }
+      ],
+      "excludes": [
+        {
+          "en": "Guide, transport and wildlife-sighting guarantees",
+          "zh": "导览员、交通及野生动物目击保证"
+        }
+      ],
+      "notes": [
+        {
+          "en": "Children explore with their own accompanying adults. This does not include childcare.",
+          "zh": "儿童由同行成人陪同探索，不含托管服务。"
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "explorer-camp": "ready-camp-for-two",
+    "solo-explorer": "solo-camp-kit",
+    "family-camp": "family-first-camp",
+    "couple-camp-milky-way": "comfort-camp-for-two",
+    "astro-hunter": "comfort-camp-for-two",
+    "jimny-explorer-camp": "jimny-drive-camp",
+    "jimny-sleep-camp": "jimny-drive-camp",
+    "jimny-adventure-camp": "jimny-drive-camp"
+  },
+  "services": {
+    "ready": {
+      "en": "Arrive to a ready camp",
+      "zh": "到场入住"
+    },
+    "gear": {
+      "en": "Collect & set up yourself",
+      "zh": "自取自搭"
+    },
+    "drive": {
+      "en": "Self-drive & self-setup",
+      "zh": "自驾自搭"
+    },
+    "addon": {
+      "en": "Optional camp add-on",
+      "zh": "露营自选加配"
+    }
+  },
+  "faqs": [
+    {
+      "q": {
+        "en": "Is the price per person?",
+        "zh": "价格是每个人吗？"
+      },
+      "a": {
+        "en": "Package prices are totals for the stated group and duration. Add-ons are per group, per camera or per two-person upgrade as labelled. Any refundable deposit is listed separately.",
+        "zh": "套餐价格是所列人数与时长的整组总价。加配按标示的每组、每台相机或双人升级组计费；可退押金另列。"
+      }
+    },
+    {
+      "q": {
+        "en": "What is included in a ready camp?",
+        "zh": "免搭套餐包含什么？"
+      },
+      "a": {
+        "en": "The listed equipment, standard campsite fee, equipment delivery, setup and pack-down. Travel to the campsite and meals are not included. The agreed campsite and any location/date supplement are confirmed before payment.",
+        "zh": "包含列明装备、标准营地费用、装备配送、搭建与撤收；不含客人到营地的交通与餐食。付款前确认营地及任何地点／日期差价。"
+      }
+    },
+    {
+      "q": {
+        "en": "Can we stay an extra night or bring more guests?",
+        "zh": "可以续住或增加人数吗？"
+      },
+      "a": {
+        "en": "Yes, ask for a total quote. An unchanged same-site setup does not incur a second full setup fee. Campsite, equipment, vehicle time and extra sleeping places are quoted separately; extra tents may require a different package.",
+        "zh": "可以询问完整报价。同址不撤营的原配置不重复收取完整搭建费；营地、装备续用、车辆时长及新增睡眠位置分别核算，需要加帐时可能改用另一套餐。"
+      }
+    },
+    {
+      "q": {
+        "en": "Can we add meals or transfers?",
+        "zh": "可以加餐食或接送吗？"
+      },
+      "a": {
+        "en": "Ask AFFT with your guest count and pickup point. Outdoor Kitchen provides cooking equipment, not food or a cook. A driver transfer is different from the Jimny self-drive package.",
+        "zh": "提供人数与接送地点向 AFFT 询问。户外料理是装备加配，不含食材或厨师；司机接送与 Jimny 自驾套餐不同。"
+      }
+    },
+    {
+      "q": {
+        "en": "Can we camp under the stars?",
+        "zh": "可以安排星空露营吗？"
+      },
+      "a": {
+        "en": "Ask about suitable dates and locations with Comfort Camp for Two. Stars and the Milky Way depend on weather and moonlight. Guide and photography services are not included unless quoted. Weather, access and change terms are confirmed before payment.",
+        "zh": "可为双人舒适营询问适合的日期与地点；星空及银河受天气和月光影响。不含未报价的导览或摄影服务；付款前确认天气、通行及改期条款。"
+      }
+    }
+  ]
+}

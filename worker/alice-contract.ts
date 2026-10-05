@@ -2,6 +2,7 @@ import {
   ALICE_HISTORY_MAX_MESSAGES,
   normalizeAliceHistoryContent,
 } from "../lib/alice-history";
+import { campItems, campPath } from "../lib/camping-series";
 
 export type AliceHistoryMessage = {
   role: "user" | "assistant";
@@ -34,6 +35,8 @@ const allowedSourceRoutes = new Set([
   "/car-rental",
   "/camping-spots",
   "/faq",
+  "/zh/camping",
+  ...campItems.flatMap(item => [campPath(item, "en"), campPath(item, "zh")]),
 ]);
 
 const allowedGapCategories = new Set([
