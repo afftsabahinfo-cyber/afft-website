@@ -239,31 +239,30 @@ export default function ChineseHomePage() {
           </div>
         </nav>
 
-        <div className="max-w-4xl pt-28 md:pt-40">
+        <div className="max-w-4xl py-16 md:py-24">
           <p className="mb-6 inline-block rounded-full border border-white/30 bg-black/30 px-5 py-2 text-sm">
             神山 / 沙巴户外基地
           </p>
-          <h1 className="text-6xl font-bold leading-tight md:text-8xl">
-            探索沙巴
-            <br />
-            不只是走游客路线
+          <h1 className="text-4xl font-bold leading-tight sm:text-6xl md:text-7xl">
+            双人沙巴露营，从这里开始。
           </h1>
+          <p className="mt-6 text-2xl font-bold text-[#F3922B]">Jimny Explorer Camp · RM599 / 2 人 · 2 天 1 夜</p>
           <p className="mt-8 max-w-2xl text-xl text-white/80">
-            私人户外体验、露营套餐、Rent It 装备租借和沙巴包车支持，
-            让你更轻松开始一趟真实的沙巴旅程。
+            包含 Jimny Sierra、营地费、帐篷、睡眠装备、桌椅、灯光与风扇。
+            先查询日期，再通过 WhatsApp 确认总价与实际安排。
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#experiences"
+              href="/zh/packages/jimny-explorer-camp#check-dates"
               className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
-              查看体验内容
+              查询我的露营日期
             </a>
             <a
-              href={whatsapp}
+              href="/zh/packages/jimny-explorer-camp#compare-explorer"
               className="rounded-full border border-white/40 bg-black/30 px-8 py-4 font-bold"
             >
-              直接联系 AFFT
+              比较两个 RM599 套餐
             </a>
           </div>
         </div>

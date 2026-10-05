@@ -8,6 +8,7 @@ import {
 
 const baseUrl = "https://afft.club";
 const siteContentLastModified = "2026-08-23";
+const conversionPages = new Set(["", "/zh", "/camping", "/zh/camping", "/packages/jimny-explorer-camp", "/zh/packages/jimny-explorer-camp", "/packages/explorer-camp", "/zh/packages/explorer-camp", "/privacy", "/zh/privacy"]);
 
 export const dynamic = "force-static";
 
@@ -65,7 +66,7 @@ function bilingualEntries(
 
   return [englishPath, chinesePath].map((path) => ({
     url: absolute(path),
-    lastModified,
+    lastModified: conversionPages.has(path) ? "2026-10-05" : lastModified,
     alternates: { languages },
     images,
   }));

@@ -262,20 +262,16 @@ export const zhPackages: ZhPackage[] = [
     href: "/zh/packages/explorer-camp",
     image: "/images/afft-explorer-camp-rm599-sabah.webp",
     imageAlt: "AFFT Explorer Camp RM599 沙巴露营套餐",
-    price: "RM599 起",
+    price: "RM599 起 / 双人基础布置",
     title: "Explorer Camp",
     shortText: "AFFT 招牌 2 天 1 夜露营，适合情侣、朋友和第一次露营的人。",
-    bestFor: "适合：2-4 人 / 第一次露营 / 想住得更舒服",
+    bestFor: "双人基础价；额外人数、交通与未注明的营地费另行报价",
     duration: "2 天 1 夜",
     overview:
-      "Explorer Camp 是 AFFT 最容易理解的招牌露营套餐。重点是现成营地、帐篷、桌椅和更舒服的户外节奏，让客人不用从零开始处理露营细节。",
+      "Explorer Camp 为双人提供现成帐篷、遮棚与桌椅基础布置，2 天 1 夜 RM599 起。交通、未注明的营地费、餐食与额外装备需另外报价。",
     includes: [
-      "高级营地布置",
-      "帐篷与睡眠安排",
+      "帐篷与遮棚搭建",
       "露营桌椅配置",
-      "基础营地灯光",
-      "咖啡与户外生活感布置",
-      "AFFT 体验支持",
     ],
     faqs: [
       {

@@ -212,6 +212,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                   ? getZhClosedAfftFitText(spot, profile.zhLabel)
                   : getZhAfftFitText(spot)}
               </p>
+              <p className="mt-5 rounded-xl border border-[#F3922B]/30 bg-[#F3922B]/5 p-4 text-sm leading-6 text-white/80">AFFT 提供露营装备、搭建与行程建议，并非这个营地的业主或管理方。只询问营地门票或营位，请向营地经营者确认；需要 AFFT 装备或露营安排，请发送日期、人数与装备需求。</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={
@@ -225,7 +226,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
                   rel="noreferrer"
                   className="rounded-full bg-[#F3922B] px-7 py-4 font-bold text-black"
                 >
-                  {isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问这个营地"}
+                  {isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问 AFFT 装备与搭建"}
                 </a>
                 <a
                   href={`/zh/camping-spots/${region.id}`}
@@ -385,7 +386,7 @@ export default async function ZhCampsiteSpotPage({ params }: PageProps) {
               ? `你好 AFFT，我看到 ${spot.name} 已关闭。可以推荐其他还在营业的 Kokol 或 Kota Kinabalu 山区营地吗？`
               : `你好 AFFT，我想确认 ${spot.name} 适不适合我的露营计划。`
           }
-          buttonLabel={isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问这个营地"}
+          buttonLabel={isClosed ? "WhatsApp 问替代营地" : "WhatsApp 问 AFFT 装备与搭建"}
         />
       </section>
 

@@ -208,6 +208,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
               <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 md:text-xl">
                 {isClosed ? getClosedAfftFitText(spot, region.profile.label) : getAfftFitText(spot)}
               </p>
+              <p className="mt-5 rounded-xl border border-[#F3922B]/30 bg-[#F3922B]/5 p-4 text-sm leading-6 text-white/80">AFFT provides camping gear, setup and trip planning. We do not own or manage this campsite. For campsite-only entry or site rental, check with the campsite operator. For an AFFT camp, send your dates, guests and gear needs.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={
@@ -223,7 +224,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
                 >
                   {isClosed
                     ? "WhatsApp AFFT For Open Alternatives"
-                    : "WhatsApp AFFT About This Campsite"}
+                    : "Ask AFFT About Gear & Setup"}
                 </a>
                 <a
                   href={`/camping-spots/${region.id}`}
@@ -387,7 +388,7 @@ export default async function CampsiteSpotPage({ params }: PageProps) {
           buttonLabel={
             isClosed
               ? "WhatsApp AFFT For Alternatives"
-              : "WhatsApp AFFT About This Campsite"
+              : "Ask AFFT About Gear & Setup"
           }
         />
       </section>
