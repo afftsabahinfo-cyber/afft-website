@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { createHash } from "node:crypto";
+import sharp from "sharp";
 import {
   campItems,
   campBases,
@@ -52,6 +54,23 @@ test("published Alice JSON equals the website source with no private fields", ()
   const json = fs.readFileSync("public/data/camping-series.json", "utf8");
   assert.deepEqual(JSON.parse(json), campingCatalog);
   assert.doesNotMatch(json, /internalNote|procurement|costPrice|supplierCost/);
+});
+test("all 40 AI poster editions are distinct, intact and full 9:16 portraits", async () => {
+  const manifest = JSON.parse(fs.readFileSync("public/images/camping-ai-2026/manifest.json", "utf8"));
+  assert.equal(manifest.length, 40);
+  assert.equal(new Set(manifest.map((p: { sha256: string }) => p.sha256)).size, 40);
+  for (const p of campItems) for (const lang of ["en", "zh"] as const) {
+    const url = campPoster(p, lang);
+    const entry = manifest.find((m: { path: string }) => m.path === url);
+    assert.ok(entry, url);
+    assert.equal(entry.price, p.price);
+    const bytes = fs.readFileSync("public" + url);
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), entry.sha256);
+    const image = await sharp(bytes).metadata();
+    assert.equal(image.width, 1080);
+    assert.equal(image.height, 1920);
+    assert.equal(image.format, "webp");
+  }
 });
 test("day camp is daytime, children have stated ages, self-drive excludes chauffeur", () => {
   assert.equal(getCamp("day-escape")!.duration.en, "4–6 hours / daytime");

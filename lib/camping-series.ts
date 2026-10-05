@@ -754,7 +754,7 @@ export const campPrice = (p: CampItem, l: CampLanguage = "en") =>
 export const campPath = (p: CampItem, l: CampLanguage = "en") =>
   `${l === "zh" ? "/zh" : ""}/packages/${p.slug}`;
 export const campPoster = (p: CampItem, l: CampLanguage = "en") =>
-  `/images/camping-2026/${p.slug}-${l}.webp`;
+  `/images/camping-ai-2026/${p.slug}-${l}.webp`;
 export const getCamp = (slug: string) =>
   campItems.find((p) => p.slug === (campAliases[slug] || slug));
 export const campMessage = (p: CampItem, l: CampLanguage = "en") =>
