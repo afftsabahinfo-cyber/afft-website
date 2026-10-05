@@ -1953,8 +1953,8 @@ export function getZhCampsitePhotoCredit(
 
 export const makeCampsiteWhatsappLink = (spotName: string) =>
   makeWhatsappLink(
-    `Hi AFFT, I want to ask whether ${spotName} is suitable for my camping trip.`
+    `Hi AFFT, I need camping gear or setup for ${spotName}. I understand AFFT is not the campsite operator.\nDate: Please advise\nGuests: Please advise\nPlease confirm the AFFT setup, campsite availability and total quote.`
   );
 
 export const makeZhCampsiteWhatsappLink = (spotName: string) =>
-  makeWhatsappLink(`你好 AFFT，我想了解 ${spotName} 适不适合我的露营计划。`);
+  makeWhatsappLink(`你好 AFFT，我想查询 ${spotName} 的露营装备或搭建。我知道 AFFT 并非营地管理方。\n日期：请建议\n人数：请建议\n请确认 AFFT 布置、营地供应与总价。`);

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CampComparison } from "@/components/CampComparison";
 import { ZhWhatsAppEnquiryBuilder } from "@/components/ZhWhatsAppEnquiryBuilder";
 import {
   ZhFaqCard,
@@ -100,6 +101,10 @@ export default function ZhCampingPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
+        <CampComparison zh />
       </section>
 
       <section

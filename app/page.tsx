@@ -93,7 +93,7 @@ const campingPackages = [
     price: "From RM599 / AFFT Signature Camp",
     title: "Explorer Camp",
     hook: "AFFT's signature setup for couples or small groups who want comfort without hassle.",
-    bestFor: "Best for: 2-4 pax / first-time campers / comfortable stay",
+    bestFor: "Base price for 2 guests / transport and unstated campsite fees extra",
     cta: "View Package",
   },
   {
@@ -214,29 +214,30 @@ export default function Home() {
       >
         <SiteTopNav />
 
-        <div className="max-w-4xl pt-28 md:pt-40">
+        <div className="max-w-4xl py-16 md:py-24">
           <p className="mb-6 inline-block rounded-full border border-white/30 bg-black/30 px-5 py-2 text-sm">
             Mount Kinabalu / Sabah Outdoor Base
           </p>
-          <h1 className="text-6xl font-bold leading-tight md:text-8xl">
-            Explore Sabah Beyond The Tourist Trail
+          <h1 className="text-4xl font-bold leading-tight sm:text-6xl md:text-7xl">
+            Your Sabah camp, made simple.
           </h1>
+          <p className="mt-6 text-2xl font-bold text-[#F3922B]">Jimny Explorer Camp · RM599 for two · 2 days, 1 night</p>
           <p className="mt-8 max-w-2xl text-xl text-white/80">
-            Private outdoor experiences, camping adventures, Rent It Series and
-            custom travel services across Sabah.
+            Jimny Sierra, campsite fee, tent, sleep gear, chairs, table, lights
+            and fan included. Check your dates and get a clear total quote on WhatsApp.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#experiences"
+              href="/packages/jimny-explorer-camp#check-dates"
               className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
-              Explore Experiences
+              Check my camping dates
             </a>
             <a
-              href={whatsapp}
+              href="/packages/jimny-explorer-camp#compare-explorer"
               className="rounded-full border border-white/40 bg-black/30 px-8 py-4 font-bold"
             >
-              Chat With AFFT
+              Compare the two RM599 camps
             </a>
           </div>
         </div>

@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "afft-website-metrics", "main": "worker/site-events.ts",
+  "compatibility_date": "2026-10-05", "workers_dev": false,
+  "routes": [
+    { "pattern": "afft.club/api/site-events", "zone_name": "afft.club" },
+    { "pattern": "www.afft.club/api/site-events", "zone_name": "afft.club" }
+  ],
+  "d1_databases": [{ "binding": "METRICS", "database_name": "afft-website-metrics", "database_id": "eeb5c972-3875-4513-82c6-4bba295a97f3", "migrations_dir": "migrations/metrics" }],
+  "ratelimits": [{ "name": "EVENT_RATE_LIMITER", "namespace_id": "741005", "simple": { "limit": 60, "period": 60 } }],
+  "triggers": { "crons": ["15 19 * * *"] },
+  "limits": { "cpu_ms": 10 }, "observability": { "enabled": false }
+}

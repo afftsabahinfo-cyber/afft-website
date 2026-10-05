@@ -10,6 +10,7 @@ import {
 } from "@/components/ZhPageSections";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 import { getZhPackage, zhPackages } from "@/lib/zh-site-data";
+import { ExplorerLandingPage } from "@/components/ExplorerLandingPage";
 
 type PageProps = {
   params: Promise<{
@@ -69,6 +70,10 @@ export default async function ZhPackageDetailPage({ params }: PageProps) {
   }
 
   const otherPackages = zhPackages.filter((item) => item.slug !== pkg.slug);
+
+  if (slug === "jimny-explorer-camp" || slug === "explorer-camp") {
+    return <ExplorerLandingPage slug={slug} zh />;
+  }
 
   return (
     <main lang="zh-Hans" className="min-h-screen bg-[#10140F] text-white">

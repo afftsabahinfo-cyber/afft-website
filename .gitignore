@@ -5,4 +5,7 @@ node_modules/
 npm-debug.log*
 .wrangler/
 .wrangler-dry-run/
+.wrangler-metrics-dry-run/
+metrics-exports/
+*.tsbuildinfo
 .dev.vars

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { WhatsAppEnquiryBuilder } from "@/components/WhatsAppEnquiryBuilder";
+import { CampComparison } from "@/components/CampComparison";
 import {
   InfoCard,
   PageFinalCta,
@@ -53,7 +54,7 @@ const packages = [
     price: "From RM599",
     title: "Explorer Camp",
     text: "AFFT signature 2D1N setup for couples, friends and first-time campers.",
-    bestFor: "2-4 pax / comfort / easy first camp",
+    bestFor: "Base price for 2 guests / transport and unstated campsite fees extra",
   },
   {
     href: "/packages/couple-camp-milky-way",
@@ -161,6 +162,10 @@ export default function CampingPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
+        <CampComparison />
       </section>
 
       <section
