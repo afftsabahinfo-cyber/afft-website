@@ -1,6 +1,6 @@
+import { CampingHomeGrid } from "@/components/CampingSeries";
 import type { Metadata } from "next";
 import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
-import { jimnyCampPackages } from "@/lib/jimny-camp-packages";
 import type { FeaturedPick, MainSeries } from "@/lib/rent-it-data";
 import {
   featuredPicks,
@@ -62,63 +62,6 @@ const socialLinks = [
   },
 ];
 
-const campingPackages = [
-  ...jimnyCampPackages.map((pkg) => ({
-    href: pkg.href,
-    image: pkg.image,
-    imageAlt: pkg.imageAlt,
-    watermark: "/images/explorer-camp-watermark.svg",
-    price: `${pkg.priceLabel} / Jimny Camp Series`,
-    title: pkg.shortTitle,
-    hook: pkg.cardText,
-    bestFor: `Best for: ${pkg.bestFor}`,
-    cta: "View Package",
-  })),
-  {
-    href: "/packages/solo-explorer",
-    image: "/images/solo-explorer-poster.webp",
-    imageAlt: "AFFT Solo Explorer package poster",
-    watermark: "/images/solo-explorer-watermark.svg",
-    price: "From RM399 / PG-1 Mobility Camp",
-    title: "Solo Explorer",
-    hook: "Easy camping for solo travellers who want a simple Sabah outdoor reset.",
-    bestFor: "Best for: 1 person / light setup / short getaway",
-    cta: "View Package",
-  },
-  {
-    href: "/packages/explorer-camp",
-    image: "/images/afft-explorer-camp-rm599-sabah.webp",
-    imageAlt: "AFFT Explorer Camp package poster",
-    watermark: "/images/explorer-camp-watermark.svg",
-    price: "From RM599 / AFFT Signature Camp",
-    title: "Explorer Camp",
-    hook: "AFFT's signature setup for couples or small groups who want comfort without hassle.",
-    bestFor: "Base price for 2 guests / transport and unstated campsite fees extra",
-    cta: "View Package",
-  },
-  {
-    href: "/packages/couple-camp-milky-way",
-    image: "/images/afft-astro-hunter-rm799-milky-way-sabah.webp",
-    imageAlt: "AFFT Couple Camp Milky Way package poster",
-    watermark: "/images/astro-hunter-watermark.svg",
-    price: "From RM799 / Milky Way Experience",
-    title: "Couple Camp Milky Way",
-    hook: "A night camp built around cooler air, star views and a photo-friendly setup.",
-    bestFor: "Best for: stargazing / content shooting / special nights",
-    cta: "View Package",
-  },
-  {
-    href: "/packages/family-camp",
-    image: "/images/afft-family-camp-series-sabah.webp",
-    imageAlt: "AFFT Family Camp Series package poster",
-    watermark: "/images/family-camp-watermark.svg",
-    price: "Custom quote / Family outdoor setup",
-    title: "Family Camp Series",
-    hook: "Custom family camping with easier planning, gear support and more space to relax.",
-    bestFor: "Best for: parents / kids / family outdoor trips",
-    cta: "View Package",
-  },
-] as const;
 
 const sabahTripWhatsapp = makeWhatsappLink(
   "Hi AFFT, I want to plan a Sabah trip. I need details for camping, private tours, car rental or Rent It support."
@@ -169,7 +112,7 @@ const browsePaths = [
     href: "/camping",
     label: "Camping Packages",
     title: "Plan a Sabah camping package",
-    text: "Start here for Explorer Camp, Solo Explorer, family camping or Milky Way camping.",
+    text: "Choose a ready camp, family trip, friends weekend, Jimny drive or self-setup kit.",
   },
   {
     href: "/rent-it",
@@ -221,23 +164,22 @@ export default function Home() {
           <h1 className="text-4xl font-bold leading-tight sm:text-6xl md:text-7xl">
             Your Sabah camp, made simple.
           </h1>
-          <p className="mt-6 text-2xl font-bold text-[#F3922B]">Jimny Explorer Camp · RM599 for two · 2 days, 1 night</p>
+          <p className="mt-6 text-2xl font-bold text-[#F3922B]">Ready Camp for Two · RM599 / 2 guests / 2 days, 1 night</p>
           <p className="mt-8 max-w-2xl text-xl text-white/80">
-            Jimny Sierra, campsite fee, tent, sleep gear, chairs, table, lights
-            and fan included. Check your dates and get a clear total quote on WhatsApp.
+            Standard campsite, tent, sleep gear, table, chairs, lights, fan and setup included. Check your dates and get a clear total quote on WhatsApp.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="/packages/jimny-explorer-camp#check-dates"
+              href="/packages/ready-camp-for-two#check-dates"
               className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
               Check my camping dates
             </a>
             <a
-              href="/packages/jimny-explorer-camp#compare-explorer"
+              href="/camping#choose"
               className="rounded-full border border-white/40 bg-black/30 px-8 py-4 font-bold"
             >
-              Compare the two RM599 camps
+              Compare camping options
             </a>
           </div>
         </div>
@@ -295,14 +237,10 @@ export default function Home() {
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
         <Title
           small="Camping Packages"
-          big="Camping packages built for Jimny weekends, first-time campers and family trips."
+          big="Choose your people. Find your kind of camp."
         />
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {campingPackages.map((pkg) => (
-            <CampingPackageCard key={pkg.href} {...pkg} />
-          ))}
-        </div>
+        <CampingHomeGrid lang="en"/><a href="/camping" className="mt-8 inline-block rounded-full bg-[#F3922B] px-6 py-4 font-bold text-black">Explore all 9 camps, 6 combinations & 5 add-ons →</a>
       </section>
 
       <section id="rent-it" className="px-6 py-20 md:px-16">
@@ -638,60 +576,6 @@ function TravelServiceCard({
   );
 }
 
-function CampingPackageCard({
-  href,
-  image,
-  imageAlt,
-  watermark,
-  price,
-  title,
-  hook,
-  bestFor,
-  cta,
-}: {
-  href: string;
-  image: string;
-  imageAlt: string;
-  watermark: string;
-  price: string;
-  title: string;
-  hook: string;
-  bestFor: string;
-  cta: string;
-}) {
-  return (
-    <a
-      href={href}
-      className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
-    >
-      <div className="relative overflow-hidden">
-        <img
-          src={image}
-          alt={imageAlt}
-          className="h-56 w-full bg-white object-contain p-2 transition duration-500"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10140F]/85 via-[#10140F]/15 to-transparent" />
-        <img
-          src={watermark}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute right-5 top-5 h-16 w-16 opacity-20 md:h-20 md:w-20"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-          {price}
-        </p>
-        <h3 className="mt-4 text-2xl font-bold">{title}</h3>
-        <p className="mt-4 text-white/72">{hook}</p>
-        <p className="mt-4 text-sm leading-6 text-white/55">{bestFor}</p>
-        <span className="mt-6 inline-block font-bold text-[#F3922B]">
-          {cta} -&gt;
-        </span>
-      </div>
-    </a>
-  );
-}
 
 function ImageCard({
   img,

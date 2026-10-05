@@ -1,3 +1,4 @@
+import { CampingHomeGrid } from "@/components/CampingSeries";
 import type { Metadata } from "next";
 import { AfftBrand, AfftLogoMark } from "@/components/AfftBrand";
 import { makeWhatsappLink, whatsapp } from "@/lib/rent-it-data";
@@ -57,24 +58,7 @@ const socialLinks = [
   },
 ];
 
-const packageWatermarks: Record<string, string> = {
-  "solo-explorer": "/images/solo-explorer-watermark.svg",
-  "explorer-camp": "/images/explorer-camp-watermark.svg",
-  "couple-camp-milky-way": "/images/astro-hunter-watermark.svg",
-  "family-camp": "/images/family-camp-watermark.svg",
-};
 
-const campingPackages = zhPackages.map((pkg) => ({
-  href: pkg.href,
-  image: pkg.image,
-  imageAlt: pkg.imageAlt,
-  watermark: packageWatermarks[pkg.slug] ?? "/images/explorer-camp-watermark.svg",
-  price: pkg.price,
-  title: pkg.title,
-  hook: pkg.shortText,
-  bestFor: pkg.bestFor,
-  cta: "查看套餐",
-}));
 
 const sabahTripWhatsapp = makeWhatsappLink(
   "你好，我想规划沙巴行程，想了解露营套餐、私人行程、包车或 Rent It 装备租借。"
@@ -165,7 +149,7 @@ const browsePaths = [
     href: "/zh/camping",
     label: "露营套餐",
     title: "选择沙巴露营套餐",
-    text: "从 Explorer Camp、Solo Explorer、家庭露营或星空露营开始看。",
+    text: "从双人、亲子、朋友、自驾、日营或装备自搭开始选。",
   },
   {
     href: "/zh/rent-it",
@@ -246,23 +230,21 @@ export default function ChineseHomePage() {
           <h1 className="text-4xl font-bold leading-tight sm:text-6xl md:text-7xl">
             双人沙巴露营，从这里开始。
           </h1>
-          <p className="mt-6 text-2xl font-bold text-[#F3922B]">Jimny Explorer Camp · RM599 / 2 人 · 2 天 1 夜</p>
+          <p className="mt-6 text-2xl font-bold text-[#F3922B]">双人免搭营 · RM599 / 2 人 · 2 天 1 夜</p>
           <p className="mt-8 max-w-2xl text-xl text-white/80">
-            包含 Jimny Sierra、营地费、帐篷、睡眠装备、桌椅、灯光与风扇。
-            先查询日期，再通过 WhatsApp 确认总价与实际安排。
-          </p>
+            包含标准营地、帐篷、双人睡眠组、桌椅、灯、风扇及搭撤。交通与餐食另计，通过 WhatsApp 确认日期与总价。</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="/zh/packages/jimny-explorer-camp#check-dates"
+              href="/zh/packages/ready-camp-for-two#check-dates"
               className="rounded-full bg-[#F3922B] px-8 py-4 font-bold text-black"
             >
               查询我的露营日期
             </a>
             <a
-              href="/zh/packages/jimny-explorer-camp#compare-explorer"
+              href="/zh/camping#choose"
               className="rounded-full border border-white/40 bg-black/30 px-8 py-4 font-bold"
             >
-              比较两个 RM599 套餐
+              比较全系列套餐
             </a>
           </div>
         </div>
@@ -319,15 +301,11 @@ export default function ChineseHomePage() {
 
       <section id="camping" className="bg-[#182015] px-6 py-20 md:px-16">
         <Title
-          small="Camping Packages"
-          big="适合 Jimny 周末、第一次露营和家庭户外出行的现成套餐。"
+          small="露营套餐"
+          big="双人、亲子、朋友、自驾，找到适合你的露营。"
         />
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {campingPackages.map((pkg) => (
-            <CampingPackageCard key={pkg.href} {...pkg} />
-          ))}
-        </div>
+        <CampingHomeGrid lang="zh"/><a href="/zh/camping" className="mt-8 inline-block rounded-full bg-[#F3922B] px-6 py-4 font-bold text-black">查看全系列：9款基础套餐、6款主题组合与5款加配 →</a>
       </section>
 
       <section id="rent-it" className="px-6 py-20 md:px-16">
@@ -636,60 +614,6 @@ function TravelServiceCard({
   );
 }
 
-function CampingPackageCard({
-  href,
-  image,
-  imageAlt,
-  watermark,
-  price,
-  title,
-  hook,
-  bestFor,
-  cta,
-}: {
-  href: string;
-  image: string;
-  imageAlt: string;
-  watermark: string;
-  price: string;
-  title: string;
-  hook: string;
-  bestFor: string;
-  cta: string;
-}) {
-  return (
-    <a
-      href={href}
-      className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-[#F3922B]/40"
-    >
-      <div className="relative overflow-hidden">
-        <img
-          src={image}
-          alt={imageAlt}
-          className="h-56 w-full bg-white object-contain p-2 transition duration-500"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10140F]/85 via-[#10140F]/15 to-transparent" />
-        <img
-          src={watermark}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute right-5 top-5 h-16 w-16 opacity-20 md:h-20 md:w-20"
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-sm font-bold uppercase tracking-[0.28em] text-[#F3922B]">
-          {price}
-        </p>
-        <h3 className="mt-4 text-2xl font-bold">{title}</h3>
-        <p className="mt-4 text-white/72">{hook}</p>
-        <p className="mt-4 text-sm leading-6 text-white/55">{bestFor}</p>
-        <span className="mt-6 inline-block font-bold text-[#F3922B]">
-          {cta} -&gt;
-        </span>
-      </div>
-    </a>
-  );
-}
 
 function ImageCard({
   img,

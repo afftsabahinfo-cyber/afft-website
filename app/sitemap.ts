@@ -1,3 +1,4 @@
+import { campItems, campPath, campPoster } from "@/lib/camping-series";
 import type { MetadataRoute } from "next";
 import { campsiteRegions, campsiteSpots } from "@/lib/campsite-guide-data";
 import {
@@ -8,7 +9,18 @@ import {
 
 const baseUrl = "https://afft.club";
 const siteContentLastModified = "2026-08-23";
-const conversionPages = new Set(["", "/zh", "/camping", "/zh/camping", "/packages/jimny-explorer-camp", "/zh/packages/jimny-explorer-camp", "/packages/explorer-camp", "/zh/packages/explorer-camp", "/privacy", "/zh/privacy"]);
+const conversionPages = new Set([
+  "",
+  "/zh",
+  "/camping",
+  "/zh/camping",
+  "/packages/jimny-explorer-camp",
+  "/zh/packages/jimny-explorer-camp",
+  "/packages/explorer-camp",
+  "/zh/packages/explorer-camp",
+  "/privacy",
+  "/zh/privacy",
+]);
 
 export const dynamic = "force-static";
 
@@ -21,19 +33,21 @@ const bilingualStaticRoutes: Array<[english: string, chinese: string]> = [
   ["/rent-it/camp-lifestyle-series", "/zh/rent-it/camp-lifestyle-series"],
   ["/rent-it/premium-camp-series", "/zh/rent-it/premium-camp-series"],
   ["/rent-it/tent-experience-series", "/zh/rent-it/tent-experience-series"],
-  ["/packages/jimny-sleep-camp", "/zh/packages/jimny-sleep-camp"],
-  ["/packages/jimny-explorer-camp", "/zh/packages/jimny-explorer-camp"],
-  ["/packages/jimny-adventure-camp", "/zh/packages/jimny-adventure-camp"],
-  ["/packages/solo-explorer", "/zh/packages/solo-explorer"],
-  ["/packages/explorer-camp", "/zh/packages/explorer-camp"],
-  ["/packages/couple-camp-milky-way", "/zh/packages/couple-camp-milky-way"],
-  ["/packages/family-camp", "/zh/packages/family-camp"],
   ["/private-tours", "/zh/private-tours"],
   ["/car-rental", "/zh/car-rental"],
   ["/travel-services/airport-transfer", "/zh/travel-services/airport-transfer"],
-  ["/travel-services/kundasang-private-tour", "/zh/travel-services/kundasang-private-tour"],
-  ["/travel-services/sandakan-private-tour", "/zh/travel-services/sandakan-private-tour"],
-  ["/travel-services/tiggo-alphard-charter", "/zh/travel-services/tiggo-alphard-charter"],
+  [
+    "/travel-services/kundasang-private-tour",
+    "/zh/travel-services/kundasang-private-tour",
+  ],
+  [
+    "/travel-services/sandakan-private-tour",
+    "/zh/travel-services/sandakan-private-tour",
+  ],
+  [
+    "/travel-services/tiggo-alphard-charter",
+    "/zh/travel-services/tiggo-alphard-charter",
+  ],
   ["/about", "/zh/about"],
   ["/faq", "/zh/faq"],
   ["/customer-stories", "/zh/customer-stories"],
@@ -119,7 +133,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticEntries,
-    ...englishOnlyEntries,
+    ...campItems.flatMap((p) =>
+      bilingualEntries(campPath(p), campPath(p, "zh"), "2026-10-05", [
+        absolute(campPoster(p)),
+      ]),
+    ),
+    ...bilingualEntries("/packages", "/zh/packages", "2026-10-05"),
+
     ...campsiteEntries,
     ...rentItProductEntries,
   ];
