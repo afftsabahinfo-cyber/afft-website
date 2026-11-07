@@ -61,6 +61,87 @@ test("adding the 40th active product updates the count without business constant
   assert.equal(stats[0].value, "40");
 });
 
+test("newly published products appear first without mutating catalog order", () => {
+  const products = [product(0), product(1), product(2)];
+  const metrics = getRentItCatalogMetrics(catalog(products));
+
+  assert.deepEqual(
+    metrics.activeProducts.map((item) => item.productId),
+    [products[2].productId, products[1].productId, products[0].productId],
+  );
+  assert.deepEqual(
+    products.map((item) => item.productId),
+    [
+      "AFFT-RENT-TEST-001",
+      "AFFT-RENT-TEST-002",
+      "AFFT-RENT-TEST-003",
+    ],
+  );
+});
+
+test("inactive publications stay hidden while the newest active item remains first", () => {
+  const products = [
+    product(0),
+    product(1),
+    product(2, { status: "Inactive" }),
+    product(3),
+  ];
+  const metrics = getRentItCatalogMetrics(catalog(products));
+
+  assert.deepEqual(
+    metrics.activeProducts.map((item) => item.productId),
+    [products[3].productId, products[1].productId, products[0].productId],
+  );
+});
+
+test("latest-first order is preserved inside each series group", () => {
+  const products = [
+    product(0, { series: "Fixture Series A" }),
+    product(1, { series: "Fixture Series B" }),
+    product(2, { series: "Fixture Series A" }),
+    product(3, { series: "Fixture Series B" }),
+  ];
+  const metrics = getRentItCatalogMetrics(catalog(products));
+  const groups = groupActiveRentItProducts(metrics.activeProducts);
+  const seriesA = groups.find((group) => group.series === "Fixture Series A");
+  const seriesB = groups.find((group) => group.series === "Fixture Series B");
+
+  assert.deepEqual(
+    seriesA?.products.map((item) => item.productId),
+    [products[2].productId, products[0].productId],
+  );
+  assert.deepEqual(
+    seriesB?.products.map((item) => item.productId),
+    [products[3].productId, products[1].productId],
+  );
+});
+
+test("the existing catalog card UI renders the newest publication first", () => {
+  const products = [
+    product(0, { series: "Fixture Series" }),
+    product(1, { series: "Fixture Series" }),
+    product(2, { series: "Fixture Series" }),
+  ];
+  const fixtureCatalog = catalog(products);
+  const metrics = getRentItCatalogMetrics(fixtureCatalog);
+  const html = renderToStaticMarkup(
+    React.createElement(RentItLiveCatalogView, {
+      catalog: fixtureCatalog,
+      live: true,
+      activeProducts: metrics.activeProducts,
+    }),
+  );
+
+  const newestPosition = html.indexOf(`data-product-id="${products[2].productId}"`);
+  const middlePosition = html.indexOf(`data-product-id="${products[1].productId}"`);
+  const oldestPosition = html.indexOf(`data-product-id="${products[0].productId}"`);
+
+  assert.ok(newestPosition > -1);
+  assert.ok(newestPosition < middlePosition);
+  assert.ok(middlePosition < oldestPosition);
+  assert.match(html, /sm:grid-cols-2 xl:grid-cols-3/);
+});
+
 test("an inactive product is excluded from the active count", () => {
   const products = Array.from({ length: 39 }, (_, index) => product(index));
   products[0] = product(0, { status: "Inactive" });

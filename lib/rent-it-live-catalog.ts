@@ -109,9 +109,12 @@ export function isRentItLiveCatalog(value: unknown): value is RentItLiveCatalog 
 export function getRentItCatalogMetrics(
   catalog: RentItLiveCatalog,
 ): RentItCatalogMetrics {
-  const activeProducts = catalog.products.filter(
-    (product) => product.status === "Active",
-  );
+  // Knowledge Manager publishes by appending the newly published product to
+  // the catalog. Reverse the filtered copy so every Rent It view keeps the
+  // latest publication at the top without changing the source catalog.
+  const activeProducts = catalog.products
+    .filter((product) => product.status === "Active")
+    .reverse();
   const activeSeries = new Set(
     activeProducts.map((product) => normalizeRentItSeriesName(product.series)),
   );
