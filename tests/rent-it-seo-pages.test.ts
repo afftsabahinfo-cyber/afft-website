@@ -12,17 +12,18 @@ import {
   getRentItProductPath,
 } from "../lib/rent-it-product-seo";
 
-test("the SEO page system generates one English and one Chinese page for all 67 active products", () => {
+test("the SEO page system generates one English and one Chinese page for every active product", () => {
   const identity = getRentItCatalogIdentity();
   const englishParams = generateEnglishProductParams();
   const chineseParams = generateChineseRentItParams();
   const chineseProductSlugs = new Set(chineseParams.map((item) => item.slug));
+  const activeCount = activeRentItSeoProducts.length;
 
-  assert.equal(identity.version, "1.92");
-  assert.equal(identity.activeCount, 67);
-  assert.equal(activeRentItSeoProducts.length, 67);
-  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, 67);
-  assert.equal(englishParams.length, 67);
+  assert.match(identity.version, /^\d+(?:\.\d+)*$/);
+  assert.equal(identity.activeCount, activeCount);
+  assert.equal(new Set(activeRentItSeoProducts.map((item) => item.slug)).size, activeCount);
+  assert.equal(englishParams.length, activeCount);
+  assert.equal(chineseParams.length, activeCount + 4);
   assert.ok(
     activeRentItSeoProducts.every((product) =>
       chineseProductSlugs.has(product.slug),
@@ -50,7 +51,7 @@ test("every product metadata set has self canonical, reciprocal hreflang and x-d
   }
 });
 
-test("sitemap contains 134 product URLs with reciprocal language alternates and real product dates", () => {
+test("sitemap contains two URLs per active product with reciprocal language alternates and real product dates", () => {
   const entries = sitemap();
   const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
 

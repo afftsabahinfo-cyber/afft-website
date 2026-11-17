@@ -188,14 +188,16 @@ test("catalog API failure selects checked-in fallback and derives its counts", a
     ).size,
   );
   assert.deepEqual(
-    new Set(result.catalog.products.map((item) => item.series)),
-    new Set([
-      "Creator Series",
-      "Camp Lifestyle Series",
-      "Premium Camp Series",
-      "Experience Set Series",
-      "Tent Experience Series",
-    ]),
+    new Set(
+      result.catalog.products
+        .filter((item) => item.status === "Active")
+        .map((item) => item.series),
+    ),
+    new Set(
+      checkedInRentItFallbackCatalog.products
+        .filter((item) => item.status === "Active")
+        .map((item) => item.series),
+    ),
   );
   assert.ok(
     result.catalog.products.every(

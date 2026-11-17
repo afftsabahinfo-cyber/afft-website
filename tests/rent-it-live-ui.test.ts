@@ -214,10 +214,28 @@ test("one responsive guide renders each product once and shares the same 53-prod
   assert.equal(cardProductTotal, products.length);
   assert.match(guideHtml, /data-active-product-count="53"/);
   assert.equal(cardProductTotal, 53);
-  assert.match(guideHtml, /data-responsive-price-table="true"/);
-  assert.match(guideHtml, /block w-full text-left text-sm md:table/);
-  assert.match(guideHtml, /block rounded-2xl[^\"]+md:table-row/);
-  assert.match(guideHtml, /<thead class="sr-only[^\"]+md:not-sr-only/);
+  assert.match(guideHtml, /data-responsive-product-rows="true"/);
+  assert.equal(
+    countMatches(guideHtml, /data-rent-it-product-row="true"/g),
+    products.length,
+  );
+  assert.match(guideHtml, /xl:grid-cols-\[168px_minmax\(190px,1\.05fr\)_minmax\(130px,0\.55fr\)_minmax\(300px,1\.55fr\)_112px\]/);
+  assert.doesNotMatch(guideHtml, />Availability</);
+  assert.doesNotMatch(guideHtml, />可用性</);
+});
+
+test("the row UI keeps four complete best-for uses and omits product availability", () => {
+  const product = fixtureProduct(0, fiveSeries[0], {
+    bestFor: ["Use one", "Use two", "Use three", "Use four", "Use five"],
+    availability: "This availability copy must not render.",
+  });
+
+  const html = renderGuide([product]);
+
+  assert.match(html, /Use one · Use two · Use three · Use four/);
+  assert.doesNotMatch(html, /Use five/);
+  assert.doesNotMatch(html, /This availability copy must not render/);
+  assert.doesNotMatch(html, /\+1 more/);
 });
 
 test("Chinese Rent It views use the same five live series and exact product rows", () => {

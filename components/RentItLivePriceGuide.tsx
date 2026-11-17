@@ -23,9 +23,8 @@ type RentItLivePriceGuideProps = {
   locale?: RentItCatalogLocale;
 };
 
-function compactBestFor(bestFor: string[]) {
-  if (bestFor.length <= 3) return bestFor.join(" · ");
-  return `${bestFor.slice(0, 3).join(" · ")} · +${bestFor.length - 3} more`;
+function expandedBestFor(bestFor: string[]) {
+  return bestFor.slice(0, 4).join(" · ");
 }
 
 function productEnquiryLink(
@@ -46,19 +45,27 @@ function ProductImage({
   product: RentItLiveProduct;
   onOpen: (product: RentItLiveProduct) => void;
 }) {
-  if (!product.image) return null;
+  if (!product.image) {
+    return (
+      <div
+        aria-hidden="true"
+        className="aspect-[4/3] w-full rounded-2xl border border-white/10 bg-black/20 lg:aspect-square"
+        data-rent-it-image-empty="true"
+      />
+    );
+  }
 
   return (
     <button
       type="button"
-      className="group h-12 w-12 shrink-0 cursor-zoom-in rounded-xl bg-white p-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3922B]"
+      className="group aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl bg-white p-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3922B] lg:aspect-square"
       aria-label={`View larger image of ${product.officialName}`}
       data-rent-it-image-trigger="true"
       onClick={() => onOpen(product)}
     >
       <img
         alt={product.altText || product.officialName}
-        className="h-full w-full rounded-lg object-contain transition duration-200 group-hover:scale-110"
+        className="h-full w-full rounded-xl object-contain transition duration-200 group-hover:scale-105"
         decoding="async"
         loading="lazy"
         src={product.image}
@@ -229,84 +236,85 @@ export function RentItLivePriceGuideView({
                   ) : null}
                 </div>
 
-                <div
-                  className="md:overflow-x-auto"
-                  data-responsive-price-table="true"
-                >
-                  <table className="block w-full text-left text-sm md:table md:min-w-[780px]">
-                    <thead className="sr-only border-b border-white/10 text-white/70 md:not-sr-only md:table-header-group">
-                      <tr>
-                        <th className="px-4 py-4 font-semibold uppercase tracking-[0.16em]">{locale === "zh-Hans" ? "产品" : "Product"}</th>
-                        <th className="px-4 py-4 font-semibold uppercase tracking-[0.16em]">{locale === "zh-Hans" ? "公开价格" : "Public price"}</th>
-                        <th className="px-4 py-4 font-semibold uppercase tracking-[0.16em]">{locale === "zh-Hans" ? "适合" : "Best for"}</th>
-                        <th className="px-4 py-4 font-semibold uppercase tracking-[0.16em]">{locale === "zh-Hans" ? "可用性" : "Availability"}</th>
-                        <th className="px-4 py-4 font-semibold uppercase tracking-[0.16em]">{locale === "zh-Hans" ? "查询" : "Enquire"}</th>
-                      </tr>
-                    </thead>
-                    <tbody className="block space-y-3 md:table-row-group md:space-y-0">
-                      {group.products.map((product) => (
-                        <tr
-                          className="block rounded-2xl border border-white/10 bg-black/20 p-4 align-top md:table-row md:rounded-none md:border-x-0 md:border-t-0 md:border-b md:bg-transparent md:p-0"
-                          data-product-id={product.productId}
-                          key={product.productId}
-                        >
-                          <td className="block font-semibold text-white md:table-cell md:px-4 md:py-4">
-                            <div className="flex min-w-56 items-center gap-3">
-                              <ProductImage
-                                product={product}
-                                onOpen={setSelectedProduct}
-                              />
-                              <Link
-                                className="underline decoration-white/20 underline-offset-4 transition hover:text-[#F3922B] hover:decoration-[#F3922B]/60"
-                                href={
-                                  locale === "zh-Hans"
-                                    ? `/zh/rent-it/${product.slug}`
-                                    : `/rent-it/${product.slug}`
-                                }
-                              >
-                                {product.officialName}
-                              </Link>
-                            </div>
-                          </td>
-                          <td className="mt-2 block whitespace-nowrap font-semibold text-[#F3922B] md:mt-0 md:table-cell md:px-4 md:py-4">
+                <div data-responsive-product-rows="true">
+                  <div className="hidden border-b border-white/10 pb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/70 xl:grid xl:grid-cols-[168px_minmax(190px,1.05fr)_minmax(130px,0.55fr)_minmax(300px,1.55fr)_112px] xl:gap-6">
+                    <span aria-hidden="true" />
+                    <span>{locale === "zh-Hans" ? "产品" : "Product"}</span>
+                    <span>{locale === "zh-Hans" ? "公开价格" : "Public price"}</span>
+                    <span>{locale === "zh-Hans" ? "适合" : "Best for"}</span>
+                    <span>{locale === "zh-Hans" ? "查询" : "Enquire"}</span>
+                  </div>
+
+                  <div className="divide-y divide-white/10">
+                    {group.products.map((product) => (
+                      <div
+                        className="grid gap-5 py-6 first:pt-0 sm:grid-cols-[160px_minmax(0,1fr)] xl:grid-cols-[168px_minmax(190px,1.05fr)_minmax(130px,0.55fr)_minmax(300px,1.55fr)_112px] xl:items-start xl:gap-6 xl:first:pt-6"
+                        data-product-id={product.productId}
+                        data-rent-it-product-row="true"
+                        key={product.productId}
+                      >
+                        <ProductImage
+                          product={product}
+                          onOpen={setSelectedProduct}
+                        />
+
+                        <div className="min-w-0 xl:pt-2">
+                          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45 xl:hidden">
+                            {locale === "zh-Hans" ? "产品" : "Product"}
+                          </p>
+                          <Link
+                            className="text-lg font-bold leading-7 text-white underline decoration-white/20 underline-offset-4 transition hover:text-[#F3922B] hover:decoration-[#F3922B]/60"
+                            href={
+                              locale === "zh-Hans"
+                                ? `/zh/rent-it/${product.slug}`
+                                : `/rent-it/${product.slug}`
+                            }
+                          >
+                            {product.officialName}
+                          </Link>
+                        </div>
+
+                        <div className="xl:pt-2">
+                          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45 xl:hidden">
+                            {locale === "zh-Hans" ? "公开价格" : "Public price"}
+                          </p>
+                          <p className="whitespace-nowrap font-bold text-[#F3922B]">
                             {product.publicPrice}
-                          </td>
-                          <td className="mt-3 block max-w-xs leading-6 text-white/65 md:mt-0 md:table-cell md:px-4 md:py-4">
-                            <span className="font-semibold text-white/80 md:hidden">
-                              {locale === "zh-Hans" ? "适合：" : "Best for: "}
-                            </span>
-                            {compactBestFor(product.bestFor)}
-                          </td>
-                          <td className="mt-2 block max-w-xs text-xs leading-5 text-white/45 md:mt-0 md:table-cell md:px-4 md:py-4 md:text-sm md:leading-6 md:text-white/55">
-                            {product.availability}
-                          </td>
-                          <td className="mt-3 block md:mt-0 md:table-cell md:px-4 md:py-4">
-                            <a
-                              className="inline-flex whitespace-nowrap rounded-full bg-[#F3922B] px-4 py-2 text-xs font-bold text-black md:border md:border-[#F3922B]/45 md:bg-transparent md:text-[#F3922B]"
-                              href={productEnquiryLink(product, locale)}
-                              rel="noreferrer"
-                              target="_blank"
-                            >
-                              <span className="md:hidden">
-                                {locale === "zh-Hans" ? "查询可用性" : "Check availability"}
-                              </span>
-                              <span className="hidden md:inline">WhatsApp</span>
-                            </a>
-                            <Link
-                              className="ml-2 inline-flex whitespace-nowrap px-2 py-2 text-xs font-bold text-white/55 hover:text-white"
-                              href={
-                                locale === "zh-Hans"
-                                  ? `/zh/rent-it/${product.slug}`
-                                  : `/rent-it/${product.slug}`
-                              }
-                            >
-                              {locale === "zh-Hans" ? "详情" : "Details"}
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                          </p>
+                        </div>
+
+                        <div className="min-w-0 xl:pt-2">
+                          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/45 xl:hidden">
+                            {locale === "zh-Hans" ? "适合" : "Best for"}
+                          </p>
+                          <p className="text-[15px] leading-7 text-white/70">
+                            {expandedBestFor(product.bestFor)}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-2 sm:col-start-2 xl:col-start-auto xl:flex-col xl:items-stretch xl:pt-1">
+                          <a
+                            className="inline-flex justify-center whitespace-nowrap rounded-full border border-[#F3922B]/55 bg-[#F3922B] px-4 py-2.5 text-xs font-bold text-black transition hover:bg-[#ffab4f] xl:bg-transparent xl:text-[#F3922B] xl:hover:bg-[#F3922B] xl:hover:text-black"
+                            href={productEnquiryLink(product, locale)}
+                            rel="noreferrer"
+                            target="_blank"
+                          >
+                            {locale === "zh-Hans" ? "WhatsApp 咨询" : "WhatsApp"}
+                          </a>
+                          <Link
+                            className="inline-flex justify-center whitespace-nowrap px-3 py-2 text-xs font-bold text-white/55 transition hover:text-white"
+                            href={
+                              locale === "zh-Hans"
+                                ? `/zh/rent-it/${product.slug}`
+                                : `/rent-it/${product.slug}`
+                            }
+                          >
+                            {locale === "zh-Hans" ? "详情" : "Details"}
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </article>
             );
