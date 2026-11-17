@@ -9,6 +9,7 @@ import {
   buildRentItProductMetadata,
   getRentItCatalogIdentity,
   getRentItProductDisplayImage,
+  getRentItProductPageCopy,
   getRentItProductPath,
 } from "../lib/rent-it-product-seo";
 
@@ -168,6 +169,12 @@ test("the DJI Osmo 360 II has a public bilingual SEO page contract", () => {
   assert.match(product.image, /^https:\/\/media\.afft\.club\/rent-it\//u);
   assert.equal(getRentItProductPath(product, "en"), "/rent-it/dji-osmo-360-ii");
   assert.equal(getRentItProductPath(product, "zh-Hans"), "/zh/rent-it/dji-osmo-360-ii");
+  assert.deepEqual(getRentItProductPageCopy(product, "zh-Hans").uses, [
+    "360° 旅行视频",
+    "户外与运动内容",
+    "营地故事记录",
+    "后期重构的竖屏社交短片",
+  ]);
 });
 
 test("the public snapshot excludes private procurement prices", () => {

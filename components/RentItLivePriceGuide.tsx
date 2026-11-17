@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRentItLiveCatalog } from "@/components/RentItLiveCatalogProvider";
+import { getLocalizedRentItBestFor } from "@/lib/rent-it-best-for";
 import { makeWhatsappLink } from "@/lib/rent-it-data";
 import {
   getActiveRentItProductsForSeries,
@@ -22,10 +23,6 @@ type RentItLivePriceGuideProps = {
   description?: string;
   locale?: RentItCatalogLocale;
 };
-
-function expandedBestFor(bestFor: string[]) {
-  return bestFor.slice(0, 4).join(" · ");
-}
 
 function productEnquiryLink(
   product: RentItLiveProduct,
@@ -288,7 +285,11 @@ export function RentItLivePriceGuideView({
                             {locale === "zh-Hans" ? "适合" : "Best for"}
                           </p>
                           <p className="text-[15px] leading-7 text-white/70">
-                            {expandedBestFor(product.bestFor)}
+                            {getLocalizedRentItBestFor(
+                              product.bestFor,
+                              product.series,
+                              locale,
+                            ).join(" · ")}
                           </p>
                         </div>
 

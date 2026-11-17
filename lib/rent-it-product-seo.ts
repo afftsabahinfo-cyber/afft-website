@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getLocalizedRentItBestFor } from "@/lib/rent-it-best-for";
 import { checkedInRentItFallbackCatalog } from "@/lib/rent-it-fallback-catalog";
 import {
   getRentItCatalogMetrics,
@@ -80,34 +81,6 @@ export function formatRentItPrice(
   return `RM${match[1]} 起 / ${localizedUnit}`;
 }
 
-function chineseExperienceUses(product: RentItLiveProduct) {
-  const name = product.officialName.toLowerCase();
-
-  if (/ice maker/.test(name)) return ["营地冷饮", "户外聚会", "Glamping 体验"];
-  if (/refrigerator|fridge/.test(name)) return ["露营食材保鲜", "车载露营", "多人户外体验"];
-  if (/projector/.test(name)) return ["露营电影夜", "家庭放松", "Glamping 氛围"];
-  if (/coffee|brewer|bialetti|mug|tea pot/.test(name)) {
-    return ["营地咖啡", "户外慢生活", "舒适露营"];
-  }
-  if (/chair|cot|bed|table|helinox/.test(name)) {
-    return ["坐得更舒服", "户外休息", "质感露营"];
-  }
-  if (/tent|xing|commander|rooftop/.test(name)) {
-    return ["情侣露营", "家庭露营", "户外住宿体验"];
-  }
-  if (/light|lantern/.test(name)) return ["夜间照明", "营地氛围", "户外布置"];
-  if (/power|solix/.test(name)) return ["户外供电", "摄影设备", "安心露营"];
-  if (/dji|osmo|insta360|oppo|gimbal|microphone|drone|camera/.test(name)) {
-    return ["旅行拍摄", "户外内容", "轻松创作"];
-  }
-  if (product.series.includes("Creator")) return ["旅行拍摄", "户外内容", "轻松创作"];
-  if (product.series.includes("Premium")) return ["更好舒适度", "质感露营", "户外休息"];
-  if (product.series.includes("Experience Set")) {
-    return ["不用逐件挑选", "轻松配对", "完整体验"];
-  }
-  return ["舒适露营", "营地生活", "沙巴户外体验"];
-}
-
 function firstUsefulSentence(value: string) {
   const compact = value.replace(/\s+/g, " ").trim();
   const sentence = compact.match(/^.{40,220}?[.!?](?:\s|$)/u)?.[0] ?? compact;
@@ -125,7 +98,11 @@ export function getRentItProductPageCopy(
       eyebrow: `${product.series} · 沙巴租借`,
       directAnswer: `在沙巴向 AFFT 租借 ${product.officialName}，${price}。不用购买整套装备，也能享受更舒服、更轻松的户外体验。`,
       experience: "AFFT 把好产品租给客人，让露营、旅行和内容创作更容易开始。告诉我们日期、人数和用途，我们会帮你配对。",
-      uses: chineseExperienceUses(product),
+      uses: getLocalizedRentItBestFor(
+        product.bestFor,
+        product.series,
+        "zh-Hans",
+      ),
       price,
       priceLabel: "公开租金",
       bestForLabel: "适合体验",

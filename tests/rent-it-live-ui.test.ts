@@ -5,6 +5,8 @@ import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { RentItLivePriceGuideView } from "../components/RentItLivePriceGuide";
 import { RentItSeriesCardsView } from "../components/RentItSeriesCards";
+import { checkedInRentItFallbackCatalog } from "../lib/rent-it-fallback-catalog";
+import { getLocalizedRentItBestFor } from "../lib/rent-it-best-for";
 import type { RentItLiveProduct } from "../lib/rent-it-live-catalog";
 import { rentItSeriesAnchor } from "../lib/rent-it-series";
 
@@ -240,6 +242,14 @@ test("the row UI keeps four complete best-for uses and omits product availabilit
 
 test("Chinese Rent It views use the same five live series and exact product rows", () => {
   const products = activeFixtureProducts();
+  products[0] = fixtureProduct(0, fiveSeries[0], {
+    bestFor: [
+      "360° travel videos",
+      "Outdoor and action content",
+      "Campsite storytelling",
+      "Reframed vertical social clips",
+    ],
+  });
   const cardsHtml = renderToStaticMarkup(
     React.createElement(RentItSeriesCardsView, {
       activeProducts: products,
@@ -263,6 +273,35 @@ test("Chinese Rent It views use the same five live series and exact product rows
   assert.match(guideHtml, /data-active-product-count="53"/);
   assert.equal(countMatches(guideHtml, /data-product-id=/g), products.length);
   assert.ok(guideHtml.includes("AFFT 实时价格目录"));
+  assert.match(
+    guideHtml,
+    /360° 旅行视频 · 户外与运动内容 · 营地故事记录 · 后期重构的竖屏社交短片/,
+  );
+  assert.doesNotMatch(guideHtml, /Outdoor and action content/);
+});
+
+test("every current Chinese best-for item has an explicit Chinese translation", () => {
+  const activeProducts = checkedInRentItFallbackCatalog.products.filter(
+    (product) => product.status === "Active",
+  );
+
+  for (const product of activeProducts) {
+    for (const use of product.bestFor.slice(0, 4)) {
+      const translated = getLocalizedRentItBestFor(
+        [use],
+        product.series,
+        "zh-Hans",
+      );
+
+      assert.equal(
+        translated.length,
+        1,
+        `missing explicit Chinese translation for ${product.productId}: ${use}`,
+      );
+      assert.notEqual(translated[0], use);
+      assert.match(translated[0], /\p{Script=Han}/u);
+    }
+  }
 });
 
 test("English and Chinese Rent It route trees share one provider without component-level fetches", () => {
