@@ -94,10 +94,11 @@ export function RentItSeriesMetrics({
   return (
     <div
       aria-busy={loading}
-      className="mt-16 grid gap-6 md:grid-cols-3"
+      className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-[0.72fr_0.9fr_1.38fr]"
       data-catalog-source={loading ? "loading" : live ? "live" : "fallback"}
     >
       <RentItInfoCard
+        tone="orange"
         title={locale === "zh-Hans" ? "Active 产品" : "Active Products"}
         text={
           loading
@@ -108,6 +109,7 @@ export function RentItSeriesMetrics({
         }
       />
       <RentItInfoCard
+        tone="gold"
         title={locale === "zh-Hans" ? "当前价格" : "Current Pricing"}
         text={
           loading
@@ -118,6 +120,9 @@ export function RentItSeriesMetrics({
         }
       />
       <RentItInfoCard
+        className="md:col-span-2 lg:col-span-1"
+        emphasis="copy"
+        tone="sage"
         title={locale === "zh-Hans" ? "适合" : "Best For"}
         text={copy.bestFor}
       />

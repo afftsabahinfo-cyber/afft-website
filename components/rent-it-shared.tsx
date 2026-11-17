@@ -69,14 +69,59 @@ export function RentItBackLink({
 export function RentItInfoCard({
   title,
   text,
+  tone = "orange",
+  emphasis = "metric",
+  className = "",
 }: {
   title: string;
   text: string;
+  tone?: "orange" | "gold" | "sage";
+  emphasis?: "metric" | "copy";
+  className?: string;
 }) {
+  const toneStyles = {
+    orange: {
+      card: "border-[#F3922B]/35 bg-[linear-gradient(145deg,rgba(243,146,43,0.16),rgba(255,255,255,0.045)_58%)]",
+      glow: "bg-[#F3922B]/20",
+      title: "text-[#FFAD55]",
+      value: "text-[#FFF4E6]",
+    },
+    gold: {
+      card: "border-[#F7C66A]/35 bg-[linear-gradient(145deg,rgba(247,198,106,0.15),rgba(255,255,255,0.045)_58%)]",
+      glow: "bg-[#F7C66A]/20",
+      title: "text-[#FFD78D]",
+      value: "text-[#FFF4D6]",
+    },
+    sage: {
+      card: "border-[#8FB47F]/35 bg-[linear-gradient(145deg,rgba(108,145,91,0.17),rgba(255,255,255,0.045)_58%)]",
+      glow: "bg-[#8FB47F]/20",
+      title: "text-[#B7D7A9]",
+      value: "text-[#F1F5ED]",
+    },
+  }[tone];
+
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <h3 className="text-xl font-bold">{title}</h3>
-      <p className="mt-3 text-white/70">{text}</p>
+    <div
+      className={`relative overflow-hidden rounded-[1.75rem] border p-7 shadow-[0_18px_55px_rgba(0,0,0,0.18)] md:p-8 ${toneStyles.card} ${className}`}
+    >
+      <span
+        aria-hidden="true"
+        className={`absolute -right-10 -top-12 size-32 rounded-full blur-3xl ${toneStyles.glow}`}
+      />
+      <h3
+        className={`relative text-lg font-black tracking-[-0.01em] md:text-xl ${toneStyles.title}`}
+      >
+        {title}
+      </h3>
+      <p
+        className={`relative mt-4 font-bold ${toneStyles.value} ${
+          emphasis === "metric"
+            ? "text-4xl leading-none tracking-[-0.04em] md:text-5xl"
+            : "text-lg leading-8 md:text-xl md:leading-9"
+        }`}
+      >
+        {text}
+      </p>
     </div>
   );
 }
