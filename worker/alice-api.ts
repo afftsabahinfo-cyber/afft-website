@@ -188,14 +188,13 @@ async function validateTurnstile(
         signal: AbortSignal.timeout(8_000),
       },
     );
-    if (!response.ok) return false;
-
     const result = (await response.json()) as {
       success?: boolean;
       hostname?: string;
       action?: string;
       [key: string]: unknown;
     };
+    if (!response.ok) return false;
     return (
       result.success === true &&
       typeof result.hostname === "string" &&
